@@ -19,10 +19,19 @@ This tool automates the process by:
 
 ## Web
 
-Visit: [https://your-website.com](https://your-website.com)
+Web client is publicly available at [https://mikomanczak.github.io/Augmented-Search-for-Semantic-Scholar/](https://mikomanczak.github.io/Augmented-Search-for-Semantic-Scholar/). 
 
 ![Explanatory diagram](docs/web-screenshot.jpg)
 
+Note that this hosted website uses Semantic Scholar without an API key. Semantic Scholar limits unauthenticated users to a shared rate limit of 1,000 requests per second, so searches performed through this website may occasionally fail.
+
+A more reliable way to use the web client is to:
+
+1. [request an API key](https://www.semanticscholar.org/product/api#api-key)
+2. clone this repository
+3. save your API key in .env file
+4. run express backend locally
+5. run react frontend locally
 
 ## CLI
 
