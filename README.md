@@ -19,7 +19,7 @@ This tool automates the process by:
 
 ## Web
 
-Web client is publicly available at [https://mikomanczak.github.io/Augmented-Search-for-Semantic-Scholar/](https://mikomanczak.github.io/Augmented-Search-for-Semantic-Scholar/). 
+Web client is publicly available at [https://mikomanczak.github.io/Augmented-Search-for-Semantic-Scholar](https://mikomanczak.github.io/Augmented-Search-for-Semantic-Scholar) 
 
 ![Explanatory diagram](docs/web-screenshot.jpg)
 
