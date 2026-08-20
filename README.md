@@ -34,20 +34,13 @@ A more reliable way to use the web client is to:
 4. run express backend locally
 5. run react frontend locally
 
-## CLI
+## Command Line Interface (CLI)
 
-```bash
-ssm search \
-  --keywords "battery electric vehicle" \
-  --keywords "hybrid electric vehicle" \
-```
+This tools is also available as a CLI. It's presumably less convenient (and more error prone) for human users but it's easier to use for agentic systems such as Claude Code or OpenAI's Codex. To use with such a tool:
 
-Example output:
-
-```
-- Found 178 unique papers:
-- Saved papers in search_results.json and search_results.csv  
-```
+1. clone this repository
+2. point your agent at src/cli
+3. ask your agent to perform search
 
 ## Publication
 
