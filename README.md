@@ -5,15 +5,16 @@ It helps researchers discover relevant papers and explore citations.
 
 ## Problem
 
-Searching for scientific papers often requires trying multiple keywords or phrases. Doing this manually results in overlapping results and unnecessary duplicate papers.
+Exploratory research (or constructing a RAG) often requires performing multiple searches for multiple phrases. Doing this can be time consuming and also results in overlapping results (duplicates).
 
 ## Solution
 
 This tool automates the process by:
-- Searching Semantic Scholar for each keyword
+- UI to enter all queries at once
+- Searching Semantic Scholar for each phrase
 - Combining all results
-- Removing duplicate papers
-- Returning a single, clean list for further review
+- Removing duplicates
+- Returning a single, clean list
 
 ![Explanatory diagram](docs/explanatory-diagram.jpg)
 
