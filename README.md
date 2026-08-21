@@ -38,7 +38,7 @@ A more reliable way to use the web client is to:
 This tool is also available as a CLI. It's presumably less convenient (and more error prone) for human users but it's easier to use for agentic systems such as Claude Code or OpenAI's Codex. To use with such a tool:
 
 1. clone this repository
-2. (optionally) request API token and save it in src/cli/.env file 
+2. (optionally) request API key and save it in src/cli/.env file 
 3. ask your agent to perform search
 
 ![Explanatory diagram](docs/cli-screenshot.png)
