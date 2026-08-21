@@ -28,18 +28,18 @@ Note that this hosted website uses Semantic Scholar without an API key. Semantic
 
 A more reliable way to use the web client is to:
 
-1. [request an API key](https://www.semanticscholar.org/product/api#api-key)
-2. clone this repository
-3. save your API key in src/web/.env file
-4. run the web client locally
+1. [Request an API key](https://www.semanticscholar.org/product/api#api-key)
+2. Clone this repository
+3. Save your API key in src/web/.env file
+4. Run the web client locally
 
 ## Command Line Interface (CLI)
 
 This tool is also available as a CLI. It's presumably less convenient (and more error prone) for human users but it's easier to use for agentic systems such as Claude Code or OpenAI's Codex. To use with such a tool:
 
-1. clone this repository
-2. (optionally) request API key and save it in src/cli/.env file 
-3. ask your agent to perform search
+1. Clone this repository
+2. (Optionally) request API key and save it in src/cli/.env file 
+3. Ask your agent to perform search
 
 ![Explanatory diagram](docs/cli-screenshot.png)
 
