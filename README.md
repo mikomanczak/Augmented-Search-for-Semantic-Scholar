@@ -48,3 +48,8 @@ This tool is also available as a CLI. It's presumably less convenient (and more 
 An early version of this tool was used in _"Methodology for AI-Based Search Strategy of Scientific Papers: Exemplary Search for Hybrid and Battery Electric Vehicles in the Semantic Scholar Database"_ 
 
 [https://www.mdpi.com/2304-6775/12/4/49](https://www.mdpi.com/2304-6775/12/4/49)
+
+## License
+
+MIT-0: free to use, modify, and distribute. No attribution or acknowledgement required.
+
