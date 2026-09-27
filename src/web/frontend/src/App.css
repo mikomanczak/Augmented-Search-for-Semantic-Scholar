@@ -35,7 +35,7 @@ button {
   height: 100vh;
   min-height: 0;
   margin: 0 auto;
-  padding: 24px 16px 18px;
+  padding: 58px 16px 18px;
   overflow: auto;
 }
 
@@ -146,7 +146,7 @@ button {
 .queries-card {
   display: flex;
   min-height: 0;
-  height: calc(100vh - 42px);
+  height: calc(100vh - 76px);
   flex-direction: column;
 }
 
@@ -399,7 +399,7 @@ input::placeholder {
 .settings-card {
   display: flex;
   min-height: 0;
-  height: calc(100vh - 42px);
+  height: calc(100vh - 76px);
   flex-direction: column;
   background: #0d1117;
   overflow-y: auto;
@@ -760,6 +760,31 @@ select {
   color: #aeb9c9;
 }
 
+.rate-limit-notice {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.rate-limit-notice h2 {
+  margin: 0 0 8px;
+  color: inherit;
+  font-size: 16px;
+}
+
+.rate-limit-notice p {
+  margin: 6px 0 0;
+  line-height: 1.6;
+}
+
+.rate-limit-art {
+  flex: 0 0 auto;
+  margin: 0;
+  color: #ffb86b;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
 .results-error {
   border-color: #7f3038;
   color: #ff9ba3;
@@ -774,7 +799,7 @@ select {
   .app-shell {
     height: auto;
     min-height: 100vh;
-    padding: 20px 12px 14px;
+    padding: 58px 12px 14px;
   }
 
   .stepper {
@@ -794,6 +819,11 @@ select {
   .settings-card {
     min-height: auto;
     height: auto;
+  }
+
+  .rate-limit-notice {
+    align-items: flex-start;
+    gap: 14px;
   }
 
   .queries-card,

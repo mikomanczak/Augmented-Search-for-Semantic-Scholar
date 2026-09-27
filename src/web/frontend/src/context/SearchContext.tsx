@@ -113,6 +113,7 @@ type SearchContextValue = {
   results: Paper[];
   isSearching: boolean;
   searchError: string | null;
+  rateLimited: boolean;
   search: () => Promise<void>;
 };
 
@@ -130,6 +131,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const [results, setResults] = useState<Paper[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [rateLimited, setRateLimited] = useState(false);
 
   const search = async () => {
     const combinedQuery = keywords.map(keyword => `(${keyword})`).join(' | ');
@@ -137,6 +139,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
 
     setIsSearching(true);
     setSearchError(null);
+    setRateLimited(false);
     setResults([]);
     try {
       const params = new URLSearchParams({
@@ -156,8 +159,9 @@ export function SearchProvider({ children }: { children: ReactNode }) {
         headers: apiKey ? { 'x-api-key': apiKey } : undefined,
       });
       if (!response.ok) {
+        if (response.status === 429) setRateLimited(true);
         const detail = response.status === 429
-          ? 'Semantic Scholar rate limit reached. Please wait a moment and try again.'
+          ? 'Semantic Scholar rate limit reached.'
           : `Semantic Scholar search failed (${response.status}). Please try again.`;
         throw new Error(detail);
       }
@@ -241,6 +245,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     results,
     isSearching,
     searchError,
+    rateLimited,
     search,
   };
 
