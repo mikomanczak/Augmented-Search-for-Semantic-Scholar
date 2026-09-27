@@ -129,7 +129,7 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
                     type="button"
                     role="checkbox"
                     aria-checked={selected}
-                    className={`chip${selected ? ' chip--selected' : ''}`}
+                    className={`chip${selected ? ' chip--enabled' : ' chip--disabled'}`}
                     onClick={() => togglePublicationType(type)}
                   >
                     {type.replace(/([a-z0-9])([A-Z])/g, '$1 $2').toLowerCase()}
