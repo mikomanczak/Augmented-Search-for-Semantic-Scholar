@@ -132,7 +132,7 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
                     className={`chip${selected ? ' chip--selected' : ''}`}
                     onClick={() => togglePublicationType(type)}
                   >
-                    {type}
+                    {type.replace(/([a-z0-9])([A-Z])/g, '$1 $2').toLowerCase()}
                   </button>
                 );
               })}
