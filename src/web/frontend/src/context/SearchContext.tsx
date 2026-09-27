@@ -60,7 +60,7 @@ const DEFAULT_STATE: PersistedState = {
   endYear: '2024',
   openAccessOnly: false,
   minCitations: '',
-  publicationTypes: [],
+  publicationTypes: [...PUBLICATION_TYPES],
 };
 
 function loadPersistedState(): PersistedState {

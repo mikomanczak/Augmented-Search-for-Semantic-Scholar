@@ -492,10 +492,7 @@ select {
   font-size: 12px;
   font-weight: 600;
   line-height: 1.2;
-  transition:
-    border-color 150ms ease,
-    background 150ms ease,
-    color 150ms ease;
+  transition: opacity 150ms ease;
 }
 
 .chip:hover {
@@ -503,15 +500,12 @@ select {
   background: #21262d;
 }
 
-.chip--selected {
-  border-color: #2ea043;
-  background: rgb(35 134 54 / 18%);
-  color: white;
+.chip--enabled {
+  opacity: 1;
 }
 
-.chip--selected:hover {
-  border-color: #3fb950;
-  background: rgb(35 134 54 / 26%);
+.chip--disabled {
+  opacity: 0.5;
 }
 
 .toggle-row {
