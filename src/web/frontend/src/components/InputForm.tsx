@@ -1,10 +1,12 @@
-import { FormEvent } from 'react';
+import { CSSProperties, FormEvent, PointerEvent, useRef, useState } from 'react';
 import { PUBLICATION_TYPES, useSearch } from '../context/SearchContext';
 import HighlightedQueryEditor, { validateQuery } from './HighlightedQueryEditor';
 import InfoIcon from './InfoIcon';
 import QuerySyntaxHelp from './QuerySyntaxHelp';
 
 export default function InputForm({ onSearch, isSearching }: { onSearch: () => void; isSearching: boolean }) {
+  const [editorWidth, setEditorWidth] = useState(62);
+  const queriesContentRef = useRef<HTMLDivElement>(null);
   const {
     keywordText,
     setKeywordText,
@@ -30,6 +32,18 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
     if (!validationError) onSearch();
   };
 
+  const resizeEditor = (event: PointerEvent<HTMLDivElement>) => {
+    const bounds = queriesContentRef.current?.getBoundingClientRect();
+    if (!bounds) return;
+    const percent = ((event.clientX - bounds.left) / bounds.width) * 100;
+    setEditorWidth(Math.min(85, Math.max(30, percent)));
+  };
+
+  const handleResizeStart = (event: PointerEvent<HTMLDivElement>) => {
+    event.currentTarget.setPointerCapture(event.pointerId);
+    resizeEditor(event);
+  };
+
   return (
     <form className="input-form" onSubmit={handleSubmit}>
       <div className="form-grid">
@@ -38,12 +52,32 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
           <label className="field-label" htmlFor="keywords">
             Enter queries to search for (one per line) <InfoIcon />
           </label>
-          <div className="queries-content">
+          <div
+            className="queries-content"
+            ref={queriesContentRef}
+            style={{ '--editor-width': `${editorWidth}%` } as CSSProperties}
+          >
             <HighlightedQueryEditor
               id="keywords"
               value={keywordText}
               onChange={setKeywordText}
               placeholder={`Enter up to ${maxKeywords} queries`}
+            />
+            <div
+              className="queries-splitter"
+              role="separator"
+              aria-label="Resize query editor and syntax help"
+              aria-orientation="vertical"
+              aria-valuemin={30}
+              aria-valuemax={85}
+              aria-valuenow={Math.round(editorWidth)}
+              tabIndex={0}
+              onPointerDown={handleResizeStart}
+              onPointerMove={event => event.buttons === 1 && resizeEditor(event)}
+              onKeyDown={event => {
+                if (event.key === 'ArrowLeft') setEditorWidth(width => Math.max(30, width - 2));
+                if (event.key === 'ArrowRight') setEditorWidth(width => Math.min(85, width + 2));
+              }}
             />
             <QuerySyntaxHelp />
           </div>
