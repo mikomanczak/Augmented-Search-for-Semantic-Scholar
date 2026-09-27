@@ -1,6 +1,6 @@
 import { FormEvent } from 'react';
 import { PUBLICATION_TYPES, useSearch } from '../context/SearchContext';
-import HighlightedQueryEditor from './HighlightedQueryEditor';
+import HighlightedQueryEditor, { validateQuery } from './HighlightedQueryEditor';
 import InfoIcon from './InfoIcon';
 import QuerySyntaxHelp from './QuerySyntaxHelp';
 
@@ -23,10 +23,11 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
     togglePublicationType,
     maxKeywords,
   } = useSearch();
+  const validationError = validateQuery(keywordText);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSearch();
+    if (!validationError) onSearch();
   };
 
   return (
@@ -46,6 +47,11 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
             />
             <QuerySyntaxHelp />
           </div>
+          {validationError && (
+            <p className="query-validation" role="alert">
+              Line {validationError.line}: {validationError.message}
+            </p>
+          )}
           <p className="keyword-count" aria-live="polite">
             {keywordCount} / {maxKeywords} queries
           </p>
@@ -152,7 +158,7 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
             </button>
           </div>
           <div className="submit-bar">
-              <button className="primary-button" type="submit" disabled={keywordCount === 0 || isSearching}>
+              <button className="primary-button" type="submit" disabled={keywordCount === 0 || !!validationError || isSearching}>
                 <span className="search-icon" aria-hidden="true" />
                 {isSearching ? 'Searching…' : 'Start Search'}
             </button>

@@ -15,6 +15,59 @@ type TokenType =
 
 type Token = { type: TokenType; value: string };
 
+export type QueryValidation = { line: number; message: string } | null;
+
+export function validateQuery(input: string): QueryValidation {
+  const lines = input.split(/\r?\n/);
+  for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
+    const line = lines[lineIndex].trim();
+    if (!line) continue;
+    let depth = 0;
+    let inPhrase = false;
+    let previous: 'operand' | 'operator' | 'open' | 'close' | null = null;
+    const tokens = line.match(/"(?:[^"\\]|\\.)*"|"|\(|\)|\+|\||-|[^\s()+|*-]+|\*/g) ?? [];
+    for (const token of tokens) {
+      if (token.startsWith('"') && token.length > 1 && token.endsWith('"')) {
+        if (previous === 'operand' || previous === 'close') return { line: lineIndex + 1, message: 'Add an operator between terms.' };
+        previous = 'operand';
+        continue;
+      }
+      if (token === '"') {
+        inPhrase = !inPhrase;
+        if (!inPhrase) previous = 'operand';
+        continue;
+      }
+      if (inPhrase) continue;
+      if (token === '(') {
+        if (previous === 'operand' || previous === 'close') return { line: lineIndex + 1, message: 'Add an operator before “(”.' };
+        depth++;
+        previous = 'open';
+      } else if (token === ')') {
+        if (depth === 0) return { line: lineIndex + 1, message: 'Unexpected “)”.' };
+        if (previous !== 'operand' && previous !== 'close') return { line: lineIndex + 1, message: 'Add a search term before “)”.' };
+        depth--;
+        previous = 'close';
+      } else if (token === '+' || token === '|' || token === '-') {
+        if (token === '-' && (previous === null || previous === 'operator' || previous === 'open')) {
+          previous = 'operator';
+          continue;
+        }
+        if (previous !== 'operand' && previous !== 'close') return { line: lineIndex + 1, message: `“${token}” needs a term before it.` };
+        previous = 'operator';
+      } else if (token === '*') {
+        if (previous !== 'operand') return { line: lineIndex + 1, message: 'Use “*” after a search term.' };
+      } else if (token) {
+        if (previous === 'operand' || previous === 'close') return { line: lineIndex + 1, message: 'Add an operator between terms.' };
+        previous = 'operand';
+      }
+    }
+    if (inPhrase) return { line: lineIndex + 1, message: 'Close the unclosed quotation mark.' };
+    if (depth > 0) return { line: lineIndex + 1, message: 'Close the unclosed parenthesis.' };
+    if (previous === 'operator' || previous === 'open') return { line: lineIndex + 1, message: 'Finish the expression with a search term.' };
+  }
+  return null;
+}
+
 const TERM_STOP = /[\s+|\-()*~"\n]/;
 
 function tokenize(input: string): Token[] {
