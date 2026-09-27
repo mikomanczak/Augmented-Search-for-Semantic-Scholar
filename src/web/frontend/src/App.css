@@ -418,7 +418,6 @@ input::placeholder {
 
 .filter-group {
   padding: 16px 0;
-  border-top: 1px solid #21262d;
 }
 
 .card-heading + .filter-group {
@@ -598,7 +597,6 @@ select {
 .submit-bar {
   margin-top: 14px;
   padding-top: 14px;
-  border-top: 1px solid #1d2a3a;
 }
 
 .primary-button {
