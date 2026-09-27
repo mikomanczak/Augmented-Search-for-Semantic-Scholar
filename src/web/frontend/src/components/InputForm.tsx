@@ -4,7 +4,7 @@ import HighlightedQueryEditor from './HighlightedQueryEditor';
 import InfoIcon from './InfoIcon';
 import QuerySyntaxHelp from './QuerySyntaxHelp';
 
-export default function InputForm({ onSearch }: { onSearch: () => void }) {
+export default function InputForm({ onSearch, isSearching }: { onSearch: () => void; isSearching: boolean }) {
   const {
     keywordText,
     setKeywordText,
@@ -152,9 +152,9 @@ export default function InputForm({ onSearch }: { onSearch: () => void }) {
             </button>
           </div>
           <div className="submit-bar">
-            <button className="primary-button" type="submit" disabled={keywordCount === 0}>
-              <span className="search-icon" aria-hidden="true" />
-              Start Search
+              <button className="primary-button" type="submit" disabled={keywordCount === 0 || isSearching}>
+                <span className="search-icon" aria-hidden="true" />
+                {isSearching ? 'Searching…' : 'Start Search'}
             </button>
           </div>
         </section>

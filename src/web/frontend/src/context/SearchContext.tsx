@@ -31,6 +31,18 @@ export const PUBLICATION_TYPES = [
 
 export type PublicationType = (typeof PUBLICATION_TYPES)[number];
 
+export type Paper = {
+  paperId: string;
+  title: string;
+  abstract?: string | null;
+  year?: number | null;
+  authors?: { authorId?: string | null; name: string }[];
+  venue?: string | null;
+  citationCount?: number | null;
+  url?: string;
+  openAccessPdf?: { url: string } | null;
+};
+
 type PersistedState = {
   keywordText: string;
   resultsPerKeyword: string;
@@ -98,6 +110,10 @@ type SearchContextValue = {
   setPublicationTypes: (value: PublicationType[] | ((prev: PublicationType[]) => PublicationType[])) => void;
   togglePublicationType: (value: PublicationType) => void;
   maxKeywords: number;
+  results: Paper[];
+  isSearching: boolean;
+  searchError: string | null;
+  search: () => Promise<void>;
 };
 
 const SearchContext = createContext<SearchContextValue | undefined>(undefined);
@@ -111,6 +127,48 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const [openAccessOnly, setOpenAccessOnly] = useState(initial.openAccessOnly);
   const [minCitations, setMinCitationsRaw] = useState(initial.minCitations);
   const [publicationTypes, setPublicationTypes] = useState<PublicationType[]>(initial.publicationTypes);
+  const [results, setResults] = useState<Paper[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchError, setSearchError] = useState<string | null>(null);
+
+  const search = async () => {
+    const combinedQuery = keywords.map(keyword => `(${keyword})`).join(' | ');
+    if (!combinedQuery) return;
+
+    setIsSearching(true);
+    setSearchError(null);
+    setResults([]);
+    try {
+      const params = new URLSearchParams({
+        query: combinedQuery,
+        limit: String(Math.min(100, Math.max(1, Number(resultsPerKeyword) || 50))),
+        fields: 'paperId,title,abstract,year,authors,venue,citationCount,url,openAccessPdf',
+      });
+      if (startYear && endYear) params.set('publicationDateOrYear', `${startYear}:${endYear}`);
+      else if (startYear) params.set('publicationDateOrYear', `${startYear}:`);
+      else if (endYear) params.set('publicationDateOrYear', `:${endYear}`);
+      if (minCitations) params.set('minCitationCount', minCitations);
+      if (publicationTypes.length) params.set('publicationTypes', publicationTypes.join(','));
+      if (openAccessOnly) params.set('openAccessPdf', 'true');
+
+      const apiKey = import.meta.env.VITE_SEMANTIC_SCHOLAR_API_KEY;
+      const response = await fetch(`https://api.semanticscholar.org/graph/v1/paper/search?${params}`, {
+        headers: apiKey ? { 'x-api-key': apiKey } : undefined,
+      });
+      if (!response.ok) {
+        const detail = response.status === 429
+          ? 'Semantic Scholar rate limit reached. Please wait a moment and try again.'
+          : `Semantic Scholar search failed (${response.status}). Please try again.`;
+        throw new Error(detail);
+      }
+      const payload = await response.json() as { data?: Paper[] };
+      setResults(payload.data ?? []);
+    } catch (error) {
+      setSearchError(error instanceof Error ? error.message : 'Search failed. Please try again.');
+    } finally {
+      setIsSearching(false);
+    }
+  };
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -180,6 +238,10 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     setPublicationTypes,
     togglePublicationType,
     maxKeywords: MAX_KEYWORDS,
+    results,
+    isSearching,
+    searchError,
+    search,
   };
 
   return <SearchContext.Provider value={value}>{children}</SearchContext.Provider>;
