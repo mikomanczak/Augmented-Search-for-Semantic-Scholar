@@ -13,7 +13,8 @@
 
 body {
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   margin: 0;
   background-color: #0d1117;
 }
@@ -31,9 +32,11 @@ button {
 
 .app-shell {
   width: min(1480px, 100%);
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 0;
   margin: 0 auto;
   padding: 24px 16px 18px;
+  overflow: auto;
 }
 
 .stepper {
@@ -105,12 +108,14 @@ button {
 .input-form {
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(280px, 1fr);
   gap: 12px;
+  min-height: 0;
 }
 
 .card {
@@ -140,7 +145,8 @@ button {
 
 .queries-card {
   display: flex;
-  min-height: 770px;
+  min-height: 0;
+  height: calc(100vh - 42px);
   flex-direction: column;
 }
 
@@ -186,6 +192,12 @@ button {
   flex: 1;
   grid-template-columns: minmax(210px, 0.9fr) minmax(260px, 1.1fr);
   gap: 18px;
+}
+
+.query-validation {
+  margin: 10px 0 0;
+  color: #ff9ba3;
+  font-size: 12px;
 }
 
 textarea,
@@ -386,9 +398,11 @@ input::placeholder {
 
 .settings-card {
   display: flex;
-  min-height: 570px;
+  min-height: 0;
+  height: calc(100vh - 42px);
   flex-direction: column;
   background: #0d1117;
+  overflow-y: auto;
 }
 
 .settings-card .field-label,
@@ -752,7 +766,14 @@ select {
 }
 
 @media (max-width: 760px) {
+  body {
+    overflow: auto;
+    height: auto;
+  }
+
   .app-shell {
+    height: auto;
+    min-height: 100vh;
     padding: 20px 12px 14px;
   }
 
@@ -772,6 +793,7 @@ select {
   .queries-card,
   .settings-card {
     min-height: auto;
+    height: auto;
   }
 
   .queries-card,
