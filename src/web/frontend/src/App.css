@@ -832,3 +832,158 @@ select {
   }
 
 }
+
+.theme-toggle {
+  position: fixed;
+  z-index: 5;
+  top: 12px;
+  right: max(16px, calc((100vw - 1480px) / 2 + 16px));
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border: 1px solid #35445a;
+  border-radius: 999px;
+  background: #151b23;
+  color: #c9d1d9;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+}
+
+.theme-toggle:hover {
+  border-color: #8b949e;
+}
+
+:root[data-theme="light"] {
+  color: #1f2937;
+  background: #f3f6fa;
+}
+
+:root[data-theme="light"] body {
+  background: #f3f6fa;
+}
+
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .results-header,
+:root[data-theme="light"] .paper-card,
+:root[data-theme="light"] .results-message,
+:root[data-theme="light"] .results-error {
+  border-color: #d8e0ea;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(31 41 55 / 4%);
+}
+
+:root[data-theme="light"] .card-heading {
+  border-color: #e2e8f0;
+  background: #f8fafc;
+  color: #172033;
+}
+
+:root[data-theme="light"] .field-label,
+:root[data-theme="light"] .year-fieldset legend,
+:root[data-theme="light"] .publication-types-fieldset legend,
+:root[data-theme="light"] .settings-card .field-label,
+:root[data-theme="light"] .settings-card .year-fieldset legend,
+:root[data-theme="light"] .settings-card .publication-types-fieldset legend,
+:root[data-theme="light"] .syntax-heading,
+:root[data-theme="light"] .toggle-title {
+  color: #344054;
+}
+
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] select,
+:root[data-theme="light"] input[type="number"] {
+  border-color: #cbd5e1;
+  background-color: #fff;
+  color: #1f2937;
+}
+
+:root[data-theme="light"] .query-editor__highlight {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #1f2937;
+}
+
+:root[data-theme="light"] .query-editor__textarea {
+  background: transparent;
+  caret-color: #1f2937;
+}
+
+:root[data-theme="light"] .qtok--term { color: #1f2937; }
+:root[data-theme="light"] .qtok--and { color: #16803c; }
+:root[data-theme="light"] .qtok--or { color: #a15c00; }
+:root[data-theme="light"] .qtok--not { color: #c2343d; }
+:root[data-theme="light"] .qtok--phrase,
+:root[data-theme="light"] .qtok--phrase-open { color: #8a5b00; }
+:root[data-theme="light"] .qtok--wildcard,
+:root[data-theme="light"] .qtok--proximity { color: #7739a8; }
+:root[data-theme="light"] .qtok--paren { color: #1769aa; }
+
+:root[data-theme="light"] .keyword-count,
+:root[data-theme="light"] .syntax-help,
+:root[data-theme="light"] .about-card p,
+:root[data-theme="light"] .toggle-description,
+:root[data-theme="light"] .results-header p,
+:root[data-theme="light"] .paper-meta {
+  color: #667085;
+}
+
+:root[data-theme="light"] .syntax-help {
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .syntax-list code {
+  background: #eef2f7;
+  color: #344054;
+}
+
+:root[data-theme="light"] .filter-group {
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .chip {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  color: #344054;
+}
+
+:root[data-theme="light"] .chip:hover,
+:root[data-theme="light"] .secondary-button {
+  border-color: #aab7c8;
+  background: #eef2f7;
+  color: #1f2937;
+}
+
+:root[data-theme="light"] .theme-toggle {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #344054;
+  box-shadow: 0 2px 8px rgb(31 41 55 / 10%);
+}
+
+:root[data-theme="light"] .step { color: #667085; }
+:root[data-theme="light"] .step--active { color: #172033; }
+:root[data-theme="light"] .step__number {
+  border-color: #cbd5e1;
+  background: #fff;
+}
+:root[data-theme="light"] .step:not(:last-child)::after { background: #d8e0ea; }
+:root[data-theme="light"] .step--reached:not(:last-child)::after { background: linear-gradient(90deg, #2867ef, #d8e0ea); }
+:root[data-theme="light"] .results-header h1,
+:root[data-theme="light"] .paper-card h2 { color: #172033; }
+:root[data-theme="light"] .paper-abstract { color: #475467; }
+:root[data-theme="light"] .paper-card h2 a,
+:root[data-theme="light"] .paper-pdf { color: #245fc4; }
+:root[data-theme="light"] .submit-bar { border-color: #e2e8f0; }
+:root[data-theme="light"] .placeholder-view { background: #f8fafc; color: #667085; }
+:root[data-theme="light"] .results-error { border-color: #e6a3a8; color: #a61b29; }
+
+@media (max-width: 560px) {
+  .theme-toggle {
+    top: 8px;
+    right: 10px;
+    padding: 6px 9px;
+  }
+}
