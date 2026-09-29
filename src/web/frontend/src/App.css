@@ -1081,6 +1081,30 @@ select {
 
 :root[data-theme="light"] .syntax-help {
   border-color: #e2e8f0;
+  background: #fff;
+}
+
+:root[data-theme="light"] .syntax-help__header {
+  border-color: #e2e8f0;
+  background: #f8fafc;
+}
+
+:root[data-theme="light"] .syntax-help__title,
+:root[data-theme="light"] .syntax-examples-heading {
+  color: #667085;
+}
+
+:root[data-theme="light"] .syntax-help__toggle {
+  color: #475467;
+}
+
+:root[data-theme="light"] .syntax-help__toggle:hover {
+  background: #e2e8f0;
+  color: #1f2937;
+}
+
+:root[data-theme="light"] .queries-splitter::after {
+  background: #d0d5dd;
 }
 
 :root[data-theme="light"] .syntax-list code {
