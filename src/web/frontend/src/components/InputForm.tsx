@@ -83,7 +83,8 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
                 if (event.key === 'ArrowRight') {
                   setEditorWidth(width => {
                     const nextWidth = Math.min(97, width + 2);
-                    if (event.currentTarget.parentElement?.getBoundingClientRect().width * (1 - nextWidth / 100) <= 84) {
+                    const parentWidth = event.currentTarget.parentElement?.getBoundingClientRect().width;
+                    if (parentWidth !== undefined && parentWidth * (1 - nextWidth / 100) <= 84) {
                       setSyntaxHelpCollapsed(true);
                     }
                     return nextWidth;
