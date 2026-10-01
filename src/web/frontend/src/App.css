@@ -413,6 +413,7 @@ input::placeholder {
   font-size: 9px;
   font-weight: 700;
   letter-spacing: .09em;
+  user-select: none;
 }
 
 .syntax-help__toggle {
@@ -459,6 +460,7 @@ input::placeholder {
   margin: 0 0 8px;
   color: #c2cad6;
   font-size: 12px;
+  white-space: nowrap;
 }
 
 .syntax-examples-heading {
