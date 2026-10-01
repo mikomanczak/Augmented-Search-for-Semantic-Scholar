@@ -6,6 +6,7 @@ import QuerySyntaxHelp from './QuerySyntaxHelp';
 
 export default function InputForm({ onSearch, isSearching }: { onSearch: () => void; isSearching: boolean }) {
   const [editorWidth, setEditorWidth] = useState(62);
+  const [syntaxHelpCollapsed, setSyntaxHelpCollapsed] = useState(false);
   const queriesContentRef = useRef<HTMLDivElement>(null);
   const {
     keywordText,
@@ -36,7 +37,9 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
     const bounds = queriesContentRef.current?.getBoundingClientRect();
     if (!bounds) return;
     const percent = ((event.clientX - bounds.left) / bounds.width) * 100;
-    setEditorWidth(Math.min(85, Math.max(30, percent)));
+    const nextWidth = Math.min(97, Math.max(30, percent));
+    setEditorWidth(nextWidth);
+    if (bounds.right - event.clientX <= 84) setSyntaxHelpCollapsed(true);
   };
 
   const handleResizeStart = (event: PointerEvent<HTMLDivElement>) => {
@@ -74,12 +77,39 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
               tabIndex={0}
               onPointerDown={handleResizeStart}
               onPointerMove={event => event.buttons === 1 && resizeEditor(event)}
+              onPointerUp={resizeEditor}
               onKeyDown={event => {
                 if (event.key === 'ArrowLeft') setEditorWidth(width => Math.max(30, width - 2));
-                if (event.key === 'ArrowRight') setEditorWidth(width => Math.min(85, width + 2));
+                if (event.key === 'ArrowRight') {
+                  setEditorWidth(width => {
+                    const nextWidth = Math.min(97, width + 2);
+                    if (event.currentTarget.parentElement?.getBoundingClientRect().width * (1 - nextWidth / 100) <= 84) {
+                      setSyntaxHelpCollapsed(true);
+                    }
+                    return nextWidth;
+                  });
+                }
               }}
             />
-            <QuerySyntaxHelp />
+            <QuerySyntaxHelp
+              isCollapsed={syntaxHelpCollapsed}
+              onDragExpand={clientX => {
+                const bounds = queriesContentRef.current?.getBoundingClientRect();
+                if (!bounds) return;
+                const remainingWidth = bounds.right - clientX;
+                if (remainingWidth <= 84) {
+                  setSyntaxHelpCollapsed(true);
+                  return;
+                }
+                const percent = ((clientX - bounds.left) / bounds.width) * 100;
+                setEditorWidth(Math.min(97, Math.max(30, percent)));
+                setSyntaxHelpCollapsed(false);
+              }}
+              onCollapsedChange={collapsed => {
+                if (!collapsed) setEditorWidth(width => Math.min(width, 85));
+                setSyntaxHelpCollapsed(collapsed);
+              }}
+            />
           </div>
           {validationError && (
             <p className="query-validation" role="alert">

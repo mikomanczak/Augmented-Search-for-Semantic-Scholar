@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { PointerEvent, useRef } from 'react';
 
 const OPERATORS = [
   ['+', 'for AND operation'],
@@ -34,37 +34,68 @@ function SyntaxList({ items }: { items: string[][] }) {
   );
 }
 
-export default function QuerySyntaxHelp() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+export default function QuerySyntaxHelp({
+  isCollapsed,
+  onCollapsedChange,
+  onDragExpand,
+}: {
+  isCollapsed: boolean;
+  onCollapsedChange: (collapsed: boolean) => void;
+  onDragExpand: (clientX: number) => void;
+}) {
+  const dragStartX = useRef<number | null>(null);
+  const dragged = useRef(false);
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (!isCollapsed || event.button !== 0) return;
+    dragStartX.current = event.clientX;
+    dragged.current = false;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (dragStartX.current === null || event.buttons !== 1) return;
+    if (Math.abs(event.clientX - dragStartX.current) < 4 && !dragged.current) return;
+    dragged.current = true;
+    onDragExpand(event.clientX);
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (dragStartX.current !== null && dragged.current) onDragExpand(event.clientX);
+    dragStartX.current = null;
+  };
 
   return (
     <aside className={`syntax-help${isCollapsed ? ' syntax-help--collapsed' : ''}`} aria-label="Query syntax help">
       <div
         className="syntax-help__header"
-        onClick={isCollapsed ? () => setIsCollapsed(false) : undefined}
-        onKeyDown={isCollapsed ? event => {
+        onClick={() => {
+          if (dragged.current) {
+            dragged.current = false;
+            return;
+          }
+          onCollapsedChange(!isCollapsed);
+        }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onKeyDown={event => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
-            setIsCollapsed(false);
+            onCollapsedChange(!isCollapsed);
           }
-        } : undefined}
-        role={isCollapsed ? 'button' : undefined}
-        tabIndex={isCollapsed ? 0 : undefined}
-        aria-label={isCollapsed ? 'Expand syntax help' : undefined}
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label={isCollapsed ? 'Expand syntax help' : 'Collapse syntax help'}
+        aria-expanded={!isCollapsed}
       >
         <span className="syntax-help__title">QUERY SYNTAX</span>
         {isCollapsed ? (
           <span className="syntax-help__toggle" aria-hidden="true">‹</span>
         ) : (
-          <button
-            className="syntax-help__toggle"
-            type="button"
-            aria-label="Collapse syntax help"
-            aria-expanded="true"
-            onClick={() => setIsCollapsed(true)}
-          >
-            <span aria-hidden="true">›</span>
-          </button>
+          <span className="syntax-help__toggle" aria-hidden="true">›</span>
         )}
       </div>
       {!isCollapsed && (

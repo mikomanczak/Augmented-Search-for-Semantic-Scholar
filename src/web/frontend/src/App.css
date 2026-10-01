@@ -190,7 +190,7 @@ button {
   display: grid;
   min-height: 0;
   flex: 1;
-  grid-template-columns: minmax(210px, var(--editor-width, 62%)) 8px minmax(220px, 1fr);
+  grid-template-columns: minmax(210px, var(--editor-width, 62%)) 8px minmax(0, 1fr);
   gap: 0;
 }
 
@@ -405,6 +405,7 @@ input::placeholder {
   padding: 0 7px 0 10px;
   border-bottom: 1px solid #263345;
   background: #151e2a;
+  cursor: pointer;
 }
 
 .syntax-help__title {
@@ -427,11 +428,6 @@ input::placeholder {
   cursor: pointer;
   font-size: 18px;
   line-height: 1;
-}
-
-.syntax-help__toggle:hover {
-  background: #263345;
-  color: #edf3fc;
 }
 
 .syntax-help__content {
@@ -1096,11 +1092,6 @@ select {
 
 :root[data-theme="light"] .syntax-help__toggle {
   color: #475467;
-}
-
-:root[data-theme="light"] .syntax-help__toggle:hover {
-  background: #e2e8f0;
-  color: #1f2937;
 }
 
 :root[data-theme="light"] .queries-splitter::after {
