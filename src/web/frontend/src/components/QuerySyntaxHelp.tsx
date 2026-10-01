@@ -47,7 +47,7 @@ export default function QuerySyntaxHelp({
   const dragged = useRef(false);
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    if (!isCollapsed || event.button !== 0) return;
+    if (event.button !== 0) return;
     dragStartX.current = event.clientX;
     dragged.current = false;
     event.currentTarget.setPointerCapture(event.pointerId);
