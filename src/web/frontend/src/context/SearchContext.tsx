@@ -111,6 +111,7 @@ type SearchContextValue = {
   togglePublicationType: (value: PublicationType) => void;
   maxKeywords: number;
   results: Paper[];
+  hasSuccessfulSearch: boolean;
   isSearching: boolean;
   searchError: string | null;
   rateLimited: boolean;
@@ -129,6 +130,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const [minCitations, setMinCitationsRaw] = useState(initial.minCitations);
   const [publicationTypes, setPublicationTypes] = useState<PublicationType[]>(initial.publicationTypes);
   const [results, setResults] = useState<Paper[]>([]);
+  const [hasSuccessfulSearch, setHasSuccessfulSearch] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [rateLimited, setRateLimited] = useState(false);
@@ -141,6 +143,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     setSearchError(null);
     setRateLimited(false);
     setResults([]);
+    setHasSuccessfulSearch(false);
     try {
       const params = new URLSearchParams({
         query: combinedQuery,
@@ -167,6 +170,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
       }
       const payload = await response.json() as { data?: Paper[] };
       setResults(payload.data ?? []);
+      setHasSuccessfulSearch(true);
     } catch (error) {
       setSearchError(error instanceof Error ? error.message : 'Search failed. Please try again.');
     } finally {
@@ -243,6 +247,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     togglePublicationType,
     maxKeywords: MAX_KEYWORDS,
     results,
+    hasSuccessfulSearch,
     isSearching,
     searchError,
     rateLimited,

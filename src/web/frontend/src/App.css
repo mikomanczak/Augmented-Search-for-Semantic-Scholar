@@ -786,12 +786,29 @@ select {
   font-size: 13px;
 }
 
+.results-header__actions,
+.results-export {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.results-export__label {
+  color: #95a2b4;
+  font-size: 12px;
+}
+
 .secondary-button {
   padding: 9px 13px;
   border: 1px solid #35445a;
   border-radius: 6px;
   background: #151b23;
   cursor: pointer;
+}
+
+.secondary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .paper-list {
@@ -966,6 +983,16 @@ select {
 }
 
 @media (max-width: 560px) {
+  .results-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .results-header__actions,
+  .results-export {
+    flex-wrap: wrap;
+  }
+
   .step__label {
     max-width: 80px;
     white-space: normal;
@@ -1112,7 +1139,8 @@ select {
 :root[data-theme="light"] .about-card p,
 :root[data-theme="light"] .toggle-description,
 :root[data-theme="light"] .results-header p,
-:root[data-theme="light"] .paper-meta {
+:root[data-theme="light"] .paper-meta,
+:root[data-theme="light"] .results-export__label {
   color: #667085;
 }
 

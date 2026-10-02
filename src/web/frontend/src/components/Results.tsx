@@ -1,4 +1,5 @@
 import { useSearch } from '../context/SearchContext';
+import Export from './Export';
 
 export default function Results({ onBack }: { onBack: () => void }) {
   const { keywords, results, isSearching, searchError, rateLimited, search } = useSearch();
@@ -12,7 +13,10 @@ export default function Results({ onBack }: { onBack: () => void }) {
           <h1>Search results</h1>
           <p>{keywords.length} queries combined · {results.length} papers</p>
         </div>
-        <button className="secondary-button" type="button" onClick={onBack}>Edit search</button>
+        <div className="results-header__actions">
+          <Export />
+          <button className="secondary-button" type="button" onClick={onBack}>Edit search</button>
+        </div>
       </header>
       {isSearching && <p className="results-message" role="status">Searching Semantic Scholar…</p>}
       {searchError && (isRateLimitError || isFetchFailure ? (
