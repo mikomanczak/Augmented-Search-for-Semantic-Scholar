@@ -852,31 +852,70 @@ select {
 .rate-limit-notice {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
+  padding: 24px;
+  border-color: #665331;
+  background: linear-gradient(135deg, #191811 0%, #11161d 72%);
+  color: #d7dee8;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 16%);
 }
 
 .rate-limit-notice h2 {
   margin: 0 0 8px;
-  color: inherit;
-  font-size: 16px;
+  color: #f1d7a2;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.rate-limit-notice > div {
+  min-width: 0;
+  flex: 1;
 }
 
 .rate-limit-notice p {
   margin: 6px 0 0;
+  color: #adb8c7;
   line-height: 1.6;
 }
 
+.rate-limit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.rate-limit-actions > * {
+  width: auto;
+  flex: 0 1 auto;
+  padding-right: 16px;
+  padding-left: 16px;
+  min-height: 40px;
+  border-radius: 7px;
+}
+
+.api-key-docs-button {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (max-width: 520px) {
+  .rate-limit-actions {
+    flex-wrap: wrap;
+  }
+}
+
 .rate-limit-art {
+  display: block;
   flex: 0 0 auto;
+  width: 150px;
+  height: 150px;
   margin: 0;
-  color: #ffb86b;
-  font-size: 13px;
-  line-height: 1.25;
+  object-fit: contain;
 }
 
 .results-error {
-  border-color: #7f3038;
-  color: #ff9ba3;
+  border-color: #665331;
+  color: #e5c986;
 }
 
 @media (max-width: 760px) {
@@ -1140,11 +1179,19 @@ select {
 :root[data-theme="light"] .results-header h1,
 :root[data-theme="light"] .paper-card h2 { color: #172033; }
 :root[data-theme="light"] .paper-abstract { color: #475467; }
+:root[data-theme="light"] .rate-limit-notice {
+  border-color: #e4d2a8;
+  background: linear-gradient(135deg, #fffaf0 0%, #fff 75%);
+  color: #344054;
+}
+:root[data-theme="light"] .rate-limit-notice h2 { color: #674d18; }
+:root[data-theme="light"] .rate-limit-notice p { color: #596579; }
+:root[data-theme="light"] .rate-limit-art { filter: brightness(0.62) saturate(0.8); }
 :root[data-theme="light"] .paper-card h2 a,
 :root[data-theme="light"] .paper-pdf { color: #245fc4; }
 :root[data-theme="light"] .submit-bar { border-color: #e2e8f0; }
 :root[data-theme="light"] .placeholder-view { background: #f8fafc; color: #667085; }
-:root[data-theme="light"] .results-error { border-color: #e6a3a8; color: #a61b29; }
+:root[data-theme="light"] .results-error { border-color: #e4d2a8; color: #735619; }
 
 @media (max-width: 560px) {
   .theme-toggle {
