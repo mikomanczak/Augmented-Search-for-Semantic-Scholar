@@ -1,7 +1,25 @@
 import { useSearch } from '../context/SearchContext';
+import { useMemo, useState } from 'react';
+
+type SortOrder = 'relevance' | 'publication-date' | 'citation-count';
 
 export default function Results({ onBack }: { onBack: () => void }) {
   const { keywords, results, isSearching, searchError, rateLimited } = useSearch();
+  const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
+  const sortedResults = useMemo(() => {
+    if (sortOrder === 'relevance') return results;
+    return results
+      .map((paper, index) => ({ paper, index }))
+      .sort((a, b) => {
+        const aValue = sortOrder === 'publication-date' ? a.paper.year : a.paper.citationCount;
+        const bValue = sortOrder === 'publication-date' ? b.paper.year : b.paper.citationCount;
+        if (aValue == null && bValue == null) return a.index - b.index;
+        if (aValue == null) return 1;
+        if (bValue == null) return -1;
+        return bValue - aValue || a.index - b.index;
+      })
+      .map(({ paper }) => paper);
+  }, [results, sortOrder]);
   const isRateLimitError = rateLimited || /rate.?limit|too many requests|quota exceeded|\b429\b/i.test(searchError ?? '');
   const isFetchFailure = /failed to fetch|networkerror|network request failed/i.test(searchError ?? '');
 
@@ -12,7 +30,17 @@ export default function Results({ onBack }: { onBack: () => void }) {
           <h1>Search results</h1>
           <p>{keywords.length} queries combined · {results.length} papers</p>
         </div>
-        <button className="secondary-button" type="button" onClick={onBack}>Edit search</button>
+        <div className="results-actions">
+          <label className="sort-control">
+            <span>Sort by</span>
+            <select value={sortOrder} onChange={event => setSortOrder(event.target.value as SortOrder)}>
+              <option value="relevance">Relevance</option>
+              <option value="publication-date">Publication date (newest)</option>
+              <option value="citation-count">Citation count (highest)</option>
+            </select>
+          </label>
+          <button className="secondary-button" type="button" onClick={onBack}>Edit search</button>
+        </div>
       </header>
       {isSearching && <p className="results-message" role="status">Searching Semantic Scholar…</p>}
       {searchError && (isRateLimitError || isFetchFailure ? (
@@ -33,7 +61,7 @@ export default function Results({ onBack }: { onBack: () => void }) {
         <p className="results-message">No papers found. Try changing your query or filters.</p>
       )}
       <div className="paper-list">
-        {results.map(paper => (
+        {sortedResults.map(paper => (
           <article className="paper-card" key={paper.paperId}>
             <h2>{paper.url ? <a href={paper.url} target="_blank" rel="noreferrer">{paper.title}</a> : paper.title}</h2>
             <p className="paper-meta">

@@ -786,6 +786,25 @@ select {
   font-size: 13px;
 }
 
+.results-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #95a2b4;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.sort-control select {
+  min-width: 200px;
+}
+
 .secondary-button {
   padding: 9px 13px;
   border: 1px solid #35445a;
@@ -913,6 +932,25 @@ select {
   .rate-limit-notice {
     align-items: flex-start;
     gap: 14px;
+  }
+
+  .results-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .results-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .sort-control {
+    flex: 1 1 220px;
+  }
+
+  .sort-control select {
+    min-width: 0;
+    flex: 1;
   }
 
   .queries-card,
