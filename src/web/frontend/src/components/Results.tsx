@@ -1,8 +1,28 @@
 import { useSearch } from '../context/SearchContext';
+import { useMemo, useState } from 'react';
 import Export from './Export';
+
+type SortOrder = 'relevance' | 'newest' | 'oldest' | 'most-cited' | 'least-cited';
 
 export default function Results({ onBack }: { onBack: () => void }) {
   const { keywords, results, isSearching, searchError, rateLimited, search } = useSearch();
+  const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
+  const sortedResults = useMemo(() => {
+    if (sortOrder === 'relevance') return results;
+    return results
+      .map((paper, index) => ({ paper, index }))
+      .sort((a, b) => {
+        const byDate = sortOrder === 'newest' || sortOrder === 'oldest';
+        const aValue = byDate ? a.paper.year : a.paper.citationCount;
+        const bValue = byDate ? b.paper.year : b.paper.citationCount;
+        if (aValue == null && bValue == null) return a.index - b.index;
+        if (aValue == null) return 1;
+        if (bValue == null) return -1;
+        const descending = sortOrder === 'newest' || sortOrder === 'most-cited';
+        return (descending ? bValue - aValue : aValue - bValue) || a.index - b.index;
+      })
+      .map(({ paper }) => paper);
+  }, [results, sortOrder]);
   const isRateLimitError = rateLimited || /rate.?limit|too many requests|quota exceeded|\b429\b/i.test(searchError ?? '');
   const isFetchFailure = /failed to fetch|networkerror|network request failed/i.test(searchError ?? '');
 
@@ -14,6 +34,16 @@ export default function Results({ onBack }: { onBack: () => void }) {
           <p>{keywords.length} queries combined · {results.length} papers</p>
         </div>
         <div className="results-header__actions">
+          <label className="sort-control">
+            <span>Sort by</span>
+            <select value={sortOrder} onChange={event => setSortOrder(event.target.value as SortOrder)}>
+              <option value="relevance">Relevance</option>
+              <option value="newest">Publication date (newest)</option>
+              <option value="oldest">Publication date (oldest)</option>
+              <option value="most-cited">Citation count (highest)</option>
+              <option value="least-cited">Citation count (lowest)</option>
+            </select>
+          </label>
           <Export />
           <button className="secondary-button" type="button" onClick={onBack}>Edit search</button>
         </div>
@@ -48,7 +78,7 @@ export default function Results({ onBack }: { onBack: () => void }) {
         <p className="results-message">No papers found. Try changing your query or filters.</p>
       )}
       <div className="paper-list">
-        {results.map(paper => (
+        {sortedResults.map(paper => (
           <article className="paper-card" key={paper.paperId}>
             <h2>{paper.url ? <a href={paper.url} target="_blank" rel="noreferrer">{paper.title}</a> : paper.title}</h2>
             <p className="paper-meta">

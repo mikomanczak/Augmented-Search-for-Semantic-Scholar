@@ -793,6 +793,19 @@ select {
   gap: 8px;
 }
 
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #95a2b4;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.sort-control select {
+  min-width: 200px;
+}
+
 .results-export__label {
   color: #95a2b4;
   font-size: 12px;
@@ -969,6 +982,25 @@ select {
   .rate-limit-notice {
     align-items: flex-start;
     gap: 14px;
+  }
+
+  .results-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .results-header__actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .sort-control {
+    flex: 1 1 220px;
+  }
+
+  .sort-control select {
+    min-width: 0;
+    flex: 1;
   }
 
   .queries-card,
