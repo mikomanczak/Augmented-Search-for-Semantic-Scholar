@@ -28,6 +28,9 @@ export default function Results({ onBack }: { onBack: () => void }) {
 
   return (
     <section className="results-view">
+      <a className="results-back" href="#search" onClick={event => { event.preventDefault(); onBack(); }}>
+        <span aria-hidden="true">←</span> Edit search
+      </a>
       <header className="results-header">
         <div>
           <h1>Search results</h1>
@@ -35,17 +38,19 @@ export default function Results({ onBack }: { onBack: () => void }) {
         </div>
         <div className="results-header__actions">
           <label className="sort-control">
-            <span>Sort by</span>
-            <select value={sortOrder} onChange={event => setSortOrder(event.target.value as SortOrder)}>
-              <option value="relevance">Relevance</option>
-              <option value="newest">Publication date (newest)</option>
-              <option value="oldest">Publication date (oldest)</option>
-              <option value="most-cited">Citation count (highest)</option>
-              <option value="least-cited">Citation count (lowest)</option>
+            <select
+              aria-label="Sort by"
+              value={sortOrder}
+              onChange={event => setSortOrder(event.target.value as SortOrder)}
+            >
+              <option value="relevance">Sort: Relevance</option>
+              <option value="newest">Sort: Publication date (newest)</option>
+              <option value="oldest">Sort: Publication date (oldest)</option>
+              <option value="most-cited">Sort: Citation count (highest)</option>
+              <option value="least-cited">Sort: Citation count (lowest)</option>
             </select>
           </label>
           <Export />
-          <button className="secondary-button" type="button" onClick={onBack}>Edit search</button>
         </div>
       </header>
       {isSearching && <p className="results-message" role="status">Searching Semantic Scholar…</p>}
