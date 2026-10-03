@@ -53,27 +53,29 @@ export default function Export() {
   const { results, isSearching, hasSuccessfulSearch } = useSearch();
   const disabled = isSearching || results.length === 0;
 
+  function handleExport(format: string) {
+    if (format === 'json') {
+      downloadFile(JSON.stringify(results, null, 2), 'application/json;charset=utf-8', 'search-results.json');
+    } else if (format === 'csv') {
+      downloadFile(toCsv(results), 'text/csv;charset=utf-8', 'search-results.csv');
+    }
+  }
+
   if (!hasSuccessfulSearch || isSearching) return null;
 
   return (
-    <div className="results-export" aria-label="Download search results">
-      <span className="results-export__label">Download results</span>
-      <button
-        className="secondary-button"
-        type="button"
+    <div className="results-export">
+      <select
+        className="results-export__select"
+        aria-label="Export search results"
         disabled={disabled}
-        onClick={() => downloadFile(JSON.stringify(results, null, 2), 'application/json;charset=utf-8', 'search-results.json')}
+        value=""
+        onChange={event => handleExport(event.target.value)}
       >
-        JSON
-      </button>
-      <button
-        className="secondary-button"
-        type="button"
-        disabled={disabled}
-        onClick={() => downloadFile(toCsv(results), 'text/csv;charset=utf-8', 'search-results.csv')}
-      >
-        CSV
-      </button>
+        <option value="" disabled>Export</option>
+        <option value="json">JSON</option>
+        <option value="csv">CSV</option>
+      </select>
     </div>
   );
 }
