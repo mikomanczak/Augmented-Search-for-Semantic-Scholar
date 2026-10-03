@@ -1,7 +1,7 @@
 import { useSearch } from '../context/SearchContext';
 import { useMemo, useState } from 'react';
 
-type SortOrder = 'relevance' | 'publication-date' | 'citation-count';
+type SortOrder = 'relevance' | 'newest' | 'oldest' | 'most-cited' | 'least-cited';
 
 export default function Results({ onBack }: { onBack: () => void }) {
   const { keywords, results, isSearching, searchError, rateLimited } = useSearch();
@@ -11,12 +11,14 @@ export default function Results({ onBack }: { onBack: () => void }) {
     return results
       .map((paper, index) => ({ paper, index }))
       .sort((a, b) => {
-        const aValue = sortOrder === 'publication-date' ? a.paper.year : a.paper.citationCount;
-        const bValue = sortOrder === 'publication-date' ? b.paper.year : b.paper.citationCount;
+        const byDate = sortOrder === 'newest' || sortOrder === 'oldest';
+        const aValue = byDate ? a.paper.year : a.paper.citationCount;
+        const bValue = byDate ? b.paper.year : b.paper.citationCount;
         if (aValue == null && bValue == null) return a.index - b.index;
         if (aValue == null) return 1;
         if (bValue == null) return -1;
-        return bValue - aValue || a.index - b.index;
+        const descending = sortOrder === 'newest' || sortOrder === 'most-cited';
+        return (descending ? bValue - aValue : aValue - bValue) || a.index - b.index;
       })
       .map(({ paper }) => paper);
   }, [results, sortOrder]);
@@ -35,8 +37,10 @@ export default function Results({ onBack }: { onBack: () => void }) {
             <span>Sort by</span>
             <select value={sortOrder} onChange={event => setSortOrder(event.target.value as SortOrder)}>
               <option value="relevance">Relevance</option>
-              <option value="publication-date">Publication date (newest)</option>
-              <option value="citation-count">Citation count (highest)</option>
+              <option value="newest">Publication date (newest)</option>
+              <option value="oldest">Publication date (oldest)</option>
+              <option value="most-cited">Citation count (highest)</option>
+              <option value="least-cited">Citation count (lowest)</option>
             </select>
           </label>
           <button className="secondary-button" type="button" onClick={onBack}>Edit search</button>
