@@ -7,6 +7,7 @@ type SortOrder = 'relevance' | 'newest' | 'oldest' | 'most-cited' | 'least-cited
 export default function Results({ onBack }: { onBack: () => void }) {
   const { keywords, results, isSearching, searchError, rateLimited, search } = useSearch();
   const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
+  const [view, setView] = useState<'full' | 'compact'>('full');
   const sortedResults = useMemo(() => {
     if (sortOrder === 'relevance') return results;
     return results
@@ -37,6 +38,10 @@ export default function Results({ onBack }: { onBack: () => void }) {
           <p>{keywords.length} queries combined · {results.length} papers</p>
         </div>
         <div className="results-header__actions">
+          <div className="results-view-switch" role="group" aria-label="Results view">
+            <button type="button" aria-pressed={view === 'full'} onClick={() => setView('full')}>Full view</button>
+            <button type="button" aria-pressed={view === 'compact'} onClick={() => setView('compact')}>Compact view</button>
+          </div>
           <label className="sort-control">
             <select
               aria-label="Sort by"
@@ -91,7 +96,7 @@ export default function Results({ onBack }: { onBack: () => void }) {
                 paper.citationCount != null ? `${paper.citationCount} citations` : null]
                 .filter(Boolean).join(' · ')}
             </p>
-            {paper.abstract && <p className="paper-abstract">{paper.abstract}</p>}
+            {view === 'full' && paper.abstract && <p className="paper-abstract">{paper.abstract}</p>}
             {paper.openAccessPdf?.url && <a className="paper-pdf" href={paper.openAccessPdf.url} target="_blank" rel="noreferrer">Open access PDF</a>}
           </article>
         ))}

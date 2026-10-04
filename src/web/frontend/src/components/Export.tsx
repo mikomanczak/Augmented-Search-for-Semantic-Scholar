@@ -65,6 +65,9 @@ export default function Export() {
 
   return (
     <div className="results-export">
+      <svg className="results-export__icon" aria-hidden="true" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2.75v9.5m0 0 3.5-3.5M10 12.25l-3.5-3.5M3.75 13.25v3h12.5v-3" />
+      </svg>
       <select
         className="results-export__select"
         aria-label="Export search results"
