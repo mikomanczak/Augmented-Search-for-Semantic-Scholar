@@ -8,6 +8,7 @@ export default function Results({ onBack }: { onBack: () => void }) {
   const { keywords, results, isSearching, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
   const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
   const [view, setView] = useState<'full' | 'compact'>('full');
+  const [filtersExpanded, setFiltersExpanded] = useState(false);
   const [textFilter, setTextFilter] = useState('');
   const [yearFrom, setYearFrom] = useState('');
   const [yearTo, setYearTo] = useState('');
@@ -54,7 +55,13 @@ export default function Results({ onBack }: { onBack: () => void }) {
         <span aria-hidden="true">←</span> Edit search
       </a>
       <div className="results-overview">
-        <header className="results-header">
+        <header
+          className="results-header"
+          onClick={event => {
+            if (event.target instanceof Element && event.target.closest('button, a, input, select, textarea, label')) return;
+            setFiltersExpanded(expanded => !expanded);
+          }}
+        >
           <div>
             <h1>Search results</h1>
             <p>{keywords.length} queries combined · Showing {filteredResults.length} of {results.length} papers</p>
@@ -82,46 +89,51 @@ export default function Results({ onBack }: { onBack: () => void }) {
           </div>
         </header>
         {results.length > 0 && (
-          <details className="results-filter-panel">
-          <summary>
-            <span>Refine results</span>
-            {hasActiveFilters && <span className="results-filter-count">{activeFilterCount} active {activeFilterCount === 1 ? 'filter' : 'filters'}</span>}
-          </summary>
-          <section className="results-filters" aria-label="Filter search results">
-          <label className="results-filter results-filter--text">
-            <span>Search titles and abstracts</span>
-            <input
-              type="search"
-              value={textFilter}
-              onChange={event => setTextFilter(event.target.value)}
-              placeholder="Filter papers…"
-            />
-          </label>
-          <fieldset className="results-filter results-filter--years">
-            <legend>Publication year</legend>
-            <input type="number" min="1900" max="2100" aria-label="Publication year from" placeholder="From" value={yearFrom} onChange={event => setYearFrom(event.target.value)} />
-            <span aria-hidden="true">–</span>
-            <input type="number" min="1900" max="2100" aria-label="Publication year to" placeholder="To" value={yearTo} onChange={event => setYearTo(event.target.value)} />
-          </fieldset>
-          <label className="results-filter results-filter--citations">
-            <span>Minimum citations</span>
-            <input type="number" min="0" step="1" placeholder="Any" value={minCitations} onChange={event => setMinCitations(event.target.value)} />
-          </label>
-          <label className={`results-filter results-filter--checkbox${openAccessOnly ? ' results-filter--checkbox-selected' : ''}`}>
-            <input type="checkbox" checked={openAccessOnly} onChange={event => setOpenAccessOnly(event.target.checked)} />
-            <span>Open access only</span>
-          </label>
-          <button
-            className={`clear-results-filters${hasActiveFilters ? '' : ' clear-results-filters--hidden'}`}
-            type="button"
-            disabled={!hasActiveFilters}
-            aria-hidden={!hasActiveFilters}
-            onClick={() => {
-            setTextFilter(''); setYearFrom(''); setYearTo(''); setMinCitations(''); setOpenAccessOnly(false);
-            }}
-          >Clear filters</button>
-          </section>
-          </details>
+          <div className={`results-filter-panel${filtersExpanded ? ' results-filter-panel--expanded' : ''}`}>
+            {!filtersExpanded && (
+              <button
+                className="results-filter-toggle"
+                type="button"
+                aria-expanded={false}
+                aria-controls="result-filters"
+                onClick={() => setFiltersExpanded(true)}
+              />
+            )}
+            <section id="result-filters" className="results-filters" aria-label="Filter search results" hidden={!filtersExpanded}>
+              <label className="results-filter results-filter--text">
+                <span>Search titles and abstracts</span>
+                <input
+                  type="search"
+                  value={textFilter}
+                  onChange={event => setTextFilter(event.target.value)}
+                  placeholder="Filter papers…"
+                />
+              </label>
+              <fieldset className="results-filter results-filter--years">
+                <legend>Publication year</legend>
+                <input type="number" min="1900" max="2100" aria-label="Publication year from" placeholder="From" value={yearFrom} onChange={event => setYearFrom(event.target.value)} />
+                <span aria-hidden="true">–</span>
+                <input type="number" min="1900" max="2100" aria-label="Publication year to" placeholder="To" value={yearTo} onChange={event => setYearTo(event.target.value)} />
+              </fieldset>
+              <label className="results-filter results-filter--citations">
+                <span>Minimum citations</span>
+                <input type="number" min="0" step="1" placeholder="Any" value={minCitations} onChange={event => setMinCitations(event.target.value)} />
+              </label>
+              <label className={`results-filter results-filter--checkbox${openAccessOnly ? ' results-filter--checkbox-selected' : ''}`}>
+                <input type="checkbox" checked={openAccessOnly} onChange={event => setOpenAccessOnly(event.target.checked)} />
+                <span>Open access only</span>
+              </label>
+              <button
+                className={`clear-results-filters${hasActiveFilters ? '' : ' clear-results-filters--hidden'}`}
+                type="button"
+                disabled={!hasActiveFilters}
+                aria-hidden={!hasActiveFilters}
+                onClick={() => {
+                  setTextFilter(''); setYearFrom(''); setYearTo(''); setMinCitations(''); setOpenAccessOnly(false);
+                }}
+              >Clear filters</button>
+            </section>
+          </div>
         )}
       </div>
       {isSearching && <p className="results-message" role="status">Searching Semantic Scholar…</p>}
