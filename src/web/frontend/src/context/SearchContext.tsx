@@ -13,6 +13,65 @@ const EXAMPLE_KEYWORDS = [
   'range anxiety',
 ];
 
+const MOCK_RESULTS: Paper[] = [
+  {
+    paperId: 'mock-ev-adoption',
+    title: 'Mock paper: Factors shaping battery electric vehicle adoption',
+    abstract: 'Synthetic result for local interface previews. This abstract mentions consumer preferences, charging access, and range anxiety.',
+    year: 2024,
+    authors: [{ name: 'Alex Example' }, { name: 'Jamie Sample' }],
+    venue: 'Mock Journal of Sustainable Mobility',
+    citationCount: 42,
+    url: 'https://example.invalid/mock-ev-adoption',
+    openAccessPdf: { url: 'https://example.invalid/mock-ev-adoption.pdf' },
+  },
+  {
+    paperId: 'mock-battery-review',
+    title: 'Mock paper: Recent advances in lithium-ion battery technology',
+    abstract: 'Synthetic review abstract for local previews, covering battery chemistry, energy density, and electric vehicle performance.',
+    year: 2022,
+    authors: [{ name: 'Morgan Researcher' }],
+    venue: 'Mock Energy Review',
+    citationCount: 128,
+  },
+  {
+    paperId: 'mock-charging',
+    title: 'Mock paper: Public charging infrastructure and electric car use',
+    abstract: 'Synthetic result exploring charging networks, access equity, and the relationship between infrastructure and adoption.',
+    year: 2020,
+    authors: [{ name: 'Taylor Scholar' }, { name: 'Casey Analyst' }],
+    venue: 'Mock Transport Studies',
+    citationCount: 76,
+    openAccessPdf: { url: 'https://example.invalid/mock-charging.pdf' },
+  },
+  {
+    paperId: 'mock-range-anxiety',
+    title: 'Mock paper: Understanding range anxiety among electric vehicle drivers',
+    abstract: 'Synthetic abstract about driver experience, trip planning, and perceived range limitations.',
+    year: 2018,
+    authors: [{ name: 'Riley Example' }],
+    venue: 'Mock Journal of Transport Psychology',
+    citationCount: 19,
+  },
+  {
+    paperId: 'mock-early-batteries',
+    title: 'Mock paper: Battery performance in early electric vehicles',
+    abstract: 'Synthetic result about historical battery performance and vehicle range.',
+    year: 2012,
+    authors: [{ name: 'Jordan Sample' }],
+    venue: 'Mock Engineering Proceedings',
+    citationCount: 8,
+    openAccessPdf: { url: 'https://example.invalid/mock-early-batteries.pdf' },
+  },
+];
+
+function isLocalMockMode(): boolean {
+  if (typeof window === 'undefined') return false;
+  const hostname = window.location.hostname;
+  const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '[::1]' || hostname === '::1';
+  return isLocalhost && new URLSearchParams(window.location.search).has('mock_results');
+}
+
 export const PUBLICATION_TYPES = [
   'Review',
   'JournalArticle',
@@ -115,6 +174,7 @@ type SearchContextValue = {
   isSearching: boolean;
   searchError: string | null;
   rateLimited: boolean;
+  isMockResultsEnabled: boolean;
   search: () => Promise<void>;
 };
 
@@ -134,6 +194,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [rateLimited, setRateLimited] = useState(false);
+  const isMockResultsEnabled = isLocalMockMode();
 
   const search = async () => {
     const combinedQuery = keywords.map(keyword => `(${keyword})`).join(' | ');
@@ -145,6 +206,12 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     setResults([]);
     setHasSuccessfulSearch(false);
     try {
+      if (isMockResultsEnabled) {
+        setResults(MOCK_RESULTS);
+        setHasSuccessfulSearch(true);
+        return;
+      }
+
       const params = new URLSearchParams({
         query: combinedQuery,
         limit: String(Math.min(100, Math.max(1, Number(resultsPerKeyword) || 50))),
@@ -251,6 +318,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     isSearching,
     searchError,
     rateLimited,
+    isMockResultsEnabled,
     search,
   };
 

@@ -49,15 +49,16 @@ function toCsv(papers: Paper[]): string {
   ].join('\r\n')}`;
 }
 
-export default function Export() {
+export default function Export({ papers }: { papers?: Paper[] }) {
   const { results, isSearching, hasSuccessfulSearch } = useSearch();
-  const disabled = isSearching || results.length === 0;
+  const exportResults = papers ?? results;
+  const disabled = isSearching || exportResults.length === 0;
 
   function handleExport(format: string) {
     if (format === 'json') {
-      downloadFile(JSON.stringify(results, null, 2), 'application/json;charset=utf-8', 'search-results.json');
+      downloadFile(JSON.stringify(exportResults, null, 2), 'application/json;charset=utf-8', 'search-results.json');
     } else if (format === 'csv') {
-      downloadFile(toCsv(results), 'text/csv;charset=utf-8', 'search-results.csv');
+      downloadFile(toCsv(exportResults), 'text/csv;charset=utf-8', 'search-results.csv');
     }
   }
 
