@@ -1,7 +1,6 @@
 import { CSSProperties, FormEvent, PointerEvent, useRef, useState } from 'react';
 import { PUBLICATION_TYPES, useSearch } from '../context/SearchContext';
 import HighlightedQueryEditor, { validateQuery } from './HighlightedQueryEditor';
-import InfoIcon from './InfoIcon';
 import QuerySyntaxHelp from './QuerySyntaxHelp';
 
 export default function InputForm({ onSearch, isSearching }: { onSearch: () => void; isSearching: boolean }) {
@@ -24,7 +23,6 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
     setMinCitations,
     publicationTypes,
     togglePublicationType,
-    maxKeywords,
   } = useSearch();
   const validationError = validateQuery(keywordText);
 
@@ -52,9 +50,6 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
       <div className="form-grid">
         <section className="card queries-card" aria-labelledby="queries-heading">
           <h2 className="card-heading" id="queries-heading">Queries</h2>
-          <label className="field-label" htmlFor="keywords">
-            Enter queries to search for (one per line) <InfoIcon />
-          </label>
           <div
             className="queries-content"
             ref={queriesContentRef}
@@ -63,8 +58,9 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
             <HighlightedQueryEditor
               id="keywords"
               value={keywordText}
+              keywordCount={keywordCount}
               onChange={setKeywordText}
-              placeholder={`Enter up to ${maxKeywords} queries`}
+              placeholder="Enter queries, one per line"
             />
             <div
               className="queries-splitter"
@@ -117,9 +113,6 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
               Line {validationError.line}: {validationError.message}
             </p>
           )}
-          <p className="keyword-count" aria-live="polite">
-            {keywordCount} / {maxKeywords} queries
-          </p>
         </section>
 
         <section className="card settings-card" aria-labelledby="settings-heading">

@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 
-const MAX_KEYWORDS = 20;
 const STORAGE_KEY = 'augmented-search:state:v1';
 
 const EXAMPLE_KEYWORDS = [
@@ -168,7 +167,6 @@ type SearchContextValue = {
   publicationTypes: PublicationType[];
   setPublicationTypes: (value: PublicationType[] | ((prev: PublicationType[]) => PublicationType[])) => void;
   togglePublicationType: (value: PublicationType) => void;
-  maxKeywords: number;
   results: Paper[];
   hasSuccessfulSearch: boolean;
   isSearching: boolean;
@@ -279,8 +277,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   };
 
   const setKeywordText = (value: string) => {
-    const lines = value.split(/\r?\n/);
-    setKeywordTextRaw(lines.slice(0, MAX_KEYWORDS).join('\n'));
+    setKeywordTextRaw(value);
   };
 
   const { keywords, keywordCount } = useMemo(() => {
@@ -290,7 +287,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
       .filter(Boolean);
     return {
       keywords: parsed,
-      keywordCount: Math.min(parsed.length, MAX_KEYWORDS),
+      keywordCount: parsed.length,
     };
   }, [keywordText]);
 
@@ -312,7 +309,6 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     publicationTypes,
     setPublicationTypes,
     togglePublicationType,
-    maxKeywords: MAX_KEYWORDS,
     results,
     hasSuccessfulSearch,
     isSearching,
