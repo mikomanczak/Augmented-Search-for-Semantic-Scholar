@@ -89,6 +89,35 @@ export const PUBLICATION_TYPES = [
 
 export type PublicationType = (typeof PUBLICATION_TYPES)[number];
 
+// Semantic Scholar Academic Graph API: https://api.semanticscholar.org/graph/v1/swagger.json
+export const FIELDS_OF_STUDY = [
+  'Agricultural and Food Sciences',
+  'Art',
+  'Biology',
+  'Business',
+  'Chemistry',
+  'Computer Science',
+  'Economics',
+  'Education',
+  'Engineering',
+  'Environmental Science',
+  'Geography',
+  'Geology',
+  'History',
+  'Law',
+  'Linguistics',
+  'Materials Science',
+  'Mathematics',
+  'Medicine',
+  'Philosophy',
+  'Physics',
+  'Political Science',
+  'Psychology',
+  'Sociology',
+] as const;
+
+export type FieldOfStudy = (typeof FIELDS_OF_STUDY)[number];
+
 export type Paper = {
   paperId: string;
   title: string;
@@ -103,7 +132,7 @@ export type Paper = {
 
 type PersistedState = {
   keywordText: string;
-  resultsPerKeyword: string;
+  fieldsOfStudy: FieldOfStudy[];
   startYear: string;
   endYear: string;
   openAccessOnly: boolean;
@@ -113,7 +142,7 @@ type PersistedState = {
 
 const DEFAULT_STATE: PersistedState = {
   keywordText: EXAMPLE_KEYWORDS.join('\n'),
-  resultsPerKeyword: '50',
+  fieldsOfStudy: [],
   startYear: '2010',
   endYear: '2024',
   openAccessOnly: false,
@@ -133,10 +162,15 @@ function loadPersistedState(): PersistedState {
           (value): value is PublicationType => typeof value === 'string' && validTypes.has(value),
         ))
       : DEFAULT_STATE.publicationTypes;
+    const validFields = new Set<string>(FIELDS_OF_STUDY);
+    const fieldsOfStudy = Array.isArray(parsed.fieldsOfStudy)
+      ? [...new Set(parsed.fieldsOfStudy.filter(
+          (value): value is FieldOfStudy => typeof value === 'string' && validFields.has(value),
+        ))]
+      : DEFAULT_STATE.fieldsOfStudy;
     return {
       keywordText: typeof parsed.keywordText === 'string' ? parsed.keywordText : DEFAULT_STATE.keywordText,
-      resultsPerKeyword:
-        typeof parsed.resultsPerKeyword === 'string' ? parsed.resultsPerKeyword : DEFAULT_STATE.resultsPerKeyword,
+      fieldsOfStudy,
       startYear: typeof parsed.startYear === 'string' ? parsed.startYear : DEFAULT_STATE.startYear,
       endYear: typeof parsed.endYear === 'string' ? parsed.endYear : DEFAULT_STATE.endYear,
       openAccessOnly:
@@ -154,8 +188,9 @@ type SearchContextValue = {
   setKeywordText: (value: string) => void;
   keywords: string[];
   keywordCount: number;
-  resultsPerKeyword: string;
-  setResultsPerKeyword: (value: string) => void;
+  fieldsOfStudy: FieldOfStudy[];
+  toggleFieldOfStudy: (value: FieldOfStudy) => void;
+  clearFieldsOfStudy: () => void;
   startYear: string;
   setStartYear: (value: string) => void;
   endYear: string;
@@ -181,7 +216,7 @@ const SearchContext = createContext<SearchContextValue | undefined>(undefined);
 export function SearchProvider({ children }: { children: ReactNode }) {
   const initial = useMemo(loadPersistedState, []);
   const [keywordText, setKeywordTextRaw] = useState(initial.keywordText);
-  const [resultsPerKeyword, setResultsPerKeyword] = useState(initial.resultsPerKeyword);
+  const [fieldsOfStudy, setFieldsOfStudy] = useState<FieldOfStudy[]>(initial.fieldsOfStudy);
   const [startYear, setStartYear] = useState(initial.startYear);
   const [endYear, setEndYear] = useState(initial.endYear);
   const [openAccessOnly, setOpenAccessOnly] = useState(initial.openAccessOnly);
@@ -212,12 +247,13 @@ export function SearchProvider({ children }: { children: ReactNode }) {
 
       const params = new URLSearchParams({
         query: combinedQuery,
-        limit: String(Math.min(100, Math.max(1, Number(resultsPerKeyword) || 50))),
+        limit: '50',
         fields: 'paperId,title,abstract,year,authors,venue,citationCount,url,openAccessPdf',
       });
       if (startYear && endYear) params.set('publicationDateOrYear', `${startYear}:${endYear}`);
       else if (startYear) params.set('publicationDateOrYear', `${startYear}:`);
       else if (endYear) params.set('publicationDateOrYear', `:${endYear}`);
+      if (fieldsOfStudy.length) params.set('fieldsOfStudy', fieldsOfStudy.join(','));
       if (minCitations) params.set('minCitationCount', minCitations);
       if (publicationTypes.length) params.set('publicationTypes', publicationTypes.join(','));
       if (openAccessOnly) params.set('openAccessPdf', 'true');
@@ -248,7 +284,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     try {
       const payload: PersistedState = {
         keywordText,
-        resultsPerKeyword,
+        fieldsOfStudy,
         startYear,
         endYear,
         openAccessOnly,
@@ -259,7 +295,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     } catch {
       // ignore quota / access errors
     }
-  }, [keywordText, resultsPerKeyword, startYear, endYear, openAccessOnly, minCitations, publicationTypes]);
+  }, [keywordText, fieldsOfStudy, startYear, endYear, openAccessOnly, minCitations, publicationTypes]);
 
   const setMinCitations = (value: string) => {
     if (value === '') {
@@ -269,6 +305,14 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     const digits = value.replace(/[^0-9]/g, '');
     setMinCitationsRaw(digits);
   };
+
+  const toggleFieldOfStudy = (value: FieldOfStudy) => {
+    setFieldsOfStudy(prev =>
+      prev.includes(value) ? prev.filter(entry => entry !== value) : [...prev, value],
+    );
+  };
+
+  const clearFieldsOfStudy = () => setFieldsOfStudy([]);
 
   const togglePublicationType = (value: PublicationType) => {
     setPublicationTypes(prev =>
@@ -296,8 +340,9 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     setKeywordText,
     keywords,
     keywordCount,
-    resultsPerKeyword,
-    setResultsPerKeyword,
+    fieldsOfStudy,
+    toggleFieldOfStudy,
+    clearFieldsOfStudy,
     startYear,
     setStartYear,
     endYear,

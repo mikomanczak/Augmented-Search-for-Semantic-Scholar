@@ -1,5 +1,5 @@
 import { CSSProperties, FormEvent, PointerEvent, useRef, useState } from 'react';
-import { PUBLICATION_TYPES, useSearch } from '../context/SearchContext';
+import { FIELDS_OF_STUDY, PUBLICATION_TYPES, useSearch } from '../context/SearchContext';
 import HighlightedQueryEditor, { validateQuery } from './HighlightedQueryEditor';
 import QuerySyntaxHelp from './QuerySyntaxHelp';
 
@@ -11,8 +11,9 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
     keywordText,
     setKeywordText,
     keywordCount,
-    resultsPerKeyword,
-    setResultsPerKeyword,
+    fieldsOfStudy,
+    toggleFieldOfStudy,
+    clearFieldsOfStudy,
     startYear,
     setStartYear,
     endYear,
@@ -119,20 +120,53 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
           <h2 className="card-heading" id="settings-heading">Search settings</h2>
 
           <div className="filter-group">
-            <label className="field-label" htmlFor="results-per-keyword">
-              Max results per query
-            </label>
-            <input
-              id="results-per-keyword"
-              type="number"
-              min="1"
-              max="100"
-              step="1"
-              inputMode="numeric"
-              value={resultsPerKeyword}
-              onChange={event => setResultsPerKeyword(event.target.value)}
-              placeholder="50"
-            />
+            <span className="field-label" id="fields-of-study-label">Fields of study</span>
+            <details
+              className="fields-of-study"
+              onBlur={event => {
+                if (!event.currentTarget.contains(event.relatedTarget)) event.currentTarget.open = false;
+              }}
+              onKeyDown={event => {
+                if (event.key === 'Escape') {
+                  event.currentTarget.open = false;
+                  event.currentTarget.querySelector('summary')?.focus();
+                }
+              }}
+            >
+              <summary aria-labelledby="fields-of-study-label fields-of-study-selection">
+                <span id="fields-of-study-selection">
+                  {fieldsOfStudy.length === 0
+                    ? 'All fields'
+                    : fieldsOfStudy.length === 1
+                      ? fieldsOfStudy[0]
+                      : `${fieldsOfStudy.length} fields selected`}
+                </span>
+                <span aria-hidden="true">⌄</span>
+              </summary>
+              <div className="fields-of-study__menu">
+                <button type="button" onClick={clearFieldsOfStudy} disabled={fieldsOfStudy.length === 0}>
+                  Clear selection
+                </button>
+                <div className="fields-of-study__options" role="group" aria-labelledby="fields-of-study-label">
+                  {FIELDS_OF_STUDY.map(field => (
+                    <label
+                      key={field}
+                      onPointerDown={event => {
+                        // Keep focus inside the dropdown until the label activates its checkbox.
+                        if (!(event.target instanceof HTMLInputElement)) event.preventDefault();
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={fieldsOfStudy.includes(field)}
+                        onChange={() => toggleFieldOfStudy(field)}
+                      />
+                      <span>{field}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            </details>
           </div>
 
           <fieldset className="filter-group year-fieldset">
