@@ -151,9 +151,10 @@ type Props = {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  keywordCount: number;
 };
 
-export default function HighlightedQueryEditor({ id, value, onChange, placeholder }: Props) {
+export default function HighlightedQueryEditor({ id, value, onChange, placeholder, keywordCount }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const preRef = useRef<HTMLPreElement>(null);
 
@@ -187,6 +188,7 @@ export default function HighlightedQueryEditor({ id, value, onChange, placeholde
       </pre>
       <textarea
         id={id}
+        aria-label="Queries"
         ref={textareaRef}
         className="query-editor__textarea"
         value={value}
@@ -195,6 +197,9 @@ export default function HighlightedQueryEditor({ id, value, onChange, placeholde
         placeholder={placeholder}
         spellCheck={false}
       />
+      <p className="keyword-count" aria-live="polite">
+        {keywordCount} {keywordCount === 1 ? 'query' : 'queries'}
+      </p>
     </div>
   );
 }
