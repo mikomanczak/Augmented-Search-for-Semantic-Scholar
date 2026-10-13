@@ -172,7 +172,7 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
           </div>
 
           <fieldset className="filter-group year-fieldset">
-            <legend>Year range (optional)</legend>
+            <legend>Publication year</legend>
             <div className="year-range">
               <input
                 type="number"
@@ -198,7 +198,7 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
 
           <div className="filter-group">
             <label className="field-label" htmlFor="min-citations">
-              Minimum number of citations (optional)
+              Minimum number of citations
             </label>
             <input
               id="min-citations"
@@ -213,7 +213,7 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
           </div>
 
           <fieldset className="filter-group publication-types-fieldset">
-            <legend>Publication type (optional)</legend>
+            <legend>Publication type</legend>
             <div className="publication-types">
               {PUBLICATION_TYPES.map(type => {
                 const selected = publicationTypes.includes(type);
