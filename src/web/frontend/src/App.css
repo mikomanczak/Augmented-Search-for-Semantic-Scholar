@@ -1093,7 +1093,8 @@ select {
   margin-top: 22px;
 }
 
-.results-export__formats button {
+.results-export__formats button,
+.results-export__pdfs button {
   min-height: 38px;
   padding: 0 13px;
   border: 1px solid var(--border-default);
@@ -1103,7 +1104,17 @@ select {
   cursor: pointer;
 }
 
-.results-export__formats button:hover { border-color: var(--border-muted); }
+.results-export__formats button:hover:not(:disabled),
+.results-export__pdfs button:hover:not(:disabled) { border-color: var(--border-muted); }
+
+.results-export__dialog button:disabled { opacity: 0.5; cursor: not-allowed; }
+.results-export__pdfs { border-top: 1px solid var(--border-default); margin-top: 20px; padding-top: 20px; }
+.results-export__pdf-button { width: 100%; }
+.results-export__pdfs p { margin: 10px 0 0; color: #95a2b4; font-size: 13px; line-height: 1.5; }
+.results-export__progress { margin-top: 16px; }
+.results-export__progress progress { width: 100%; accent-color: #3fb950; }
+.results-export__progress button { margin-top: 12px; }
+.results-export__pdfs .results-export__status { color: inherit; }
 
 :root[data-theme="light"] .results-export__button {
   border-color: #1a7f37;
@@ -1117,7 +1128,10 @@ select {
 }
 
 :root[data-theme="light"] .results-export__dialog-header p { color: #667085; }
-:root[data-theme="light"] .results-export__formats button { background: #f2f4f7; color: #344054; }
+:root[data-theme="light"] .results-export__formats button,
+:root[data-theme="light"] .results-export__pdfs button { background: #f2f4f7; color: #344054; }
+:root[data-theme="light"] .results-export__pdfs p { color: #667085; }
+:root[data-theme="light"] .results-export__pdfs .results-export__status { color: inherit; }
 
 .secondary-button {
   padding: 9px 13px;

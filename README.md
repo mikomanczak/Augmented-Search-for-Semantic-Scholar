@@ -33,6 +33,52 @@ A more reliable way to use the web client is to:
 3. Save your API key in src/web/.env file
 4. Run the web client locally
 
+### Download open access PDFs
+
+After searching, open **Download** and choose **Download open access PDFs (.zip)**.
+The archive contains PDFs from the currently loaded results and a `download-report.json`
+listing successes and failures. Duplicate paper IDs and PDF URLs are downloaded once.
+Downloads run three at a time, with a 20 MB limit per PDF, a 100 MB transfer limit per
+batch, and a 30-second timeout per file. Cancel stops the batch without saving an archive.
+Publisher landing pages, blocked links and other unavailable files appear in the report.
+
+The GitHub Pages version fetches PDFs directly in the browser. Publishers that do not
+allow cross-origin requests cannot be downloaded this way. For better coverage, run
+the PDF service locally (Node.js 22.18+):
+
+```sh
+cd src/web/backend
+npm ci
+npm start
+```
+
+In another terminal, start the frontend:
+
+```sh
+cd src/web/frontend
+npm ci
+npm run dev
+```
+
+Open the URL printed by Vite. The development server forwards PDF requests to
+`http://127.0.0.1:3000`. The service follows up to five redirects, validates PDF bytes,
+blocks private/reserved network destinations on every hop, pins DNS results to each
+connection, and caps active publisher downloads at six. It cannot bypass publisher
+authentication or anti-bot restrictions, or resolve arbitrary landing pages into PDFs.
+
+To use a separately hosted PDF service, set `VITE_PDF_API_URL` to its full
+`https://your-service.example/api/pdfs` endpoint before building the frontend, or set
+the repository Actions variable `VITE_PDF_API_URL` for the GitHub Pages build. Set
+`PDF_ALLOWED_ORIGINS` on the service to a comma-separated list of approved website
+origins (for example `https://mikomanczak.github.io`). Localhost origins are allowed
+for development. `HOST` defaults to `127.0.0.1`; use `HOST=0.0.0.0` when your hosting
+platform requires it, and set `PORT` as needed. For public hosting, apply access and
+request-rate limits at your gateway; CORS is not authentication. Keep the API URL
+on HTTPS when serving the frontend over HTTPS.
+
+Run `npm test` in each directory to check the archive flow and download protections;
+run `npm run build` in each directory to check TypeScript and build the app.
+
 ## Command Line Interface (CLI)
 
 This tool is also available as a CLI. It's presumably less convenient (and more error prone) for human users but it's easier to use for agentic systems such as Claude Code or OpenAI's Codex. To use with such a tool:
@@ -52,4 +98,3 @@ An early version of this tool was used in _"Methodology for AI-Based Search Stra
 ## License
 
 MIT-0: free to use, modify, and distribute. No attribution or acknowledgement required.
-
