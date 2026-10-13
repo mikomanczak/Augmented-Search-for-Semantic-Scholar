@@ -1148,7 +1148,7 @@ select {
 }
 
 .paper-card h2 a {
-  color: #8fb4ff;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -1631,7 +1631,6 @@ select {
 :root[data-theme="light"] .rate-limit-notice h2 { color: #674d18; }
 :root[data-theme="light"] .rate-limit-notice p { color: #596579; }
 :root[data-theme="light"] .rate-limit-art { filter: brightness(0.62) saturate(0.8); }
-:root[data-theme="light"] .paper-card h2 a { color: #245fc4; }
 :root[data-theme="light"] .submit-bar { border-color: var(--border-default); }
 :root[data-theme="light"] .placeholder-view { background: #f8fafc; color: #667085; }
 :root[data-theme="light"] .results-error { border-color: var(--border-warning); color: #735619; }
