@@ -1004,7 +1004,7 @@ select {
 
 .sort-control select {
   height: 34px;
-  min-width: 200px;
+  min-width: 240px;
 }
 
 .results-export__label {
@@ -1020,7 +1020,7 @@ select {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.7;
-  color: #95a2b4;
+  color: inherit;
 }
 
 .results-export__button {
@@ -1029,15 +1029,18 @@ select {
   align-items: center;
   gap: 8px;
   padding: 0 12px;
-  border: 1px solid var(--border-default);
+  border: 1px solid #2ea043;
   border-radius: 6px;
-  background: #0d1117;
-  color: #c9d1d9;
+  background: #238636;
+  color: #fff;
   cursor: pointer;
   white-space: nowrap;
 }
 
-.results-export__button:hover:not(:disabled) { border-color: var(--border-muted); }
+.results-export__button:hover:not(:disabled) {
+  border-color: #3fb950;
+  background: #2ea043;
+}
 
 .results-export__button:disabled {
   opacity: 0.5;
@@ -1075,8 +1078,7 @@ select {
 .results-export__close {
   width: 30px;
   height: 30px;
-  border: 1px solid var(--border-default);
-  border-radius: 5px;
+  border: none;
   background: transparent;
   color: inherit;
   cursor: pointer;
@@ -1104,8 +1106,9 @@ select {
 .results-export__formats button:hover { border-color: var(--border-muted); }
 
 :root[data-theme="light"] .results-export__button {
-  background: #fff;
-  color: #344054;
+  border-color: #1a7f37;
+  background: #1a7f37;
+  color: #fff;
 }
 
 :root[data-theme="light"] .results-export__dialog {
@@ -1136,7 +1139,7 @@ select {
 
 .paper-card {
   padding: 18px 20px;
-  border: 1px solid var(--border-default);
+  border: 1px solid #171e28;
   border-radius: 8px;
   background: #0d1117;
 }
@@ -1148,12 +1151,8 @@ select {
 }
 
 .paper-card h2 a {
-  color: inherit;
+  color: #eef2f8;
   text-decoration: none;
-}
-
-.paper-card h2 a:hover {
-  text-decoration: underline;
 }
 
 .paper-heading {
@@ -1205,7 +1204,7 @@ select {
 .paper-badge--year { font-variant-numeric: tabular-nums; }
 .paper-badge--citations { border-color: #2b5b42; background: #122b20; color: #8bdfad; }
 .paper-badge--pdf { border-color: #85502b; background: #332013; color: #ffbc80; text-decoration: none; }
-.paper-badge--pdf:hover { border-color: #ffbc80; text-decoration: underline; }
+.paper-badge--pdf:hover { border-color: #ffbc80; }
 .paper-card a:focus-visible { outline: 2px solid var(--border-accent); outline-offset: 3px; }
 
 :root[data-theme="light"] .paper-badge { background: #f6f8fa; color: #475467; }
@@ -1346,7 +1345,7 @@ select {
   }
 
   .sort-control {
-    flex: 1 1 220px;
+    flex: 1 1 264px;
   }
 
   .sort-control select {
@@ -1470,10 +1469,15 @@ select {
 
 :root[data-theme="light"] .card,
 :root[data-theme="light"] .results-header,
-:root[data-theme="light"] .paper-card,
 :root[data-theme="light"] .results-message,
 :root[data-theme="light"] .results-error {
   border-color: var(--border-default);
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(31 41 55 / 4%);
+}
+
+:root[data-theme="light"] .paper-card {
+  border-color: #edf0f3;
   background: #fff;
   box-shadow: 0 2px 8px rgb(31 41 55 / 4%);
 }
@@ -1603,6 +1607,7 @@ select {
 :root[data-theme="light"] .step--reached:not(:last-child)::after { background: linear-gradient(90deg, #2867ef, #d8e0ea); }
 :root[data-theme="light"] .results-header h1,
 :root[data-theme="light"] .paper-card h2 { color: #172033; }
+:root[data-theme="light"] .paper-card h2 a { color: #172033; }
 :root[data-theme="light"] .results-overview {
   border-color: var(--border-default);
   background: #fff;
@@ -1650,7 +1655,7 @@ select {
   --header-border: var(--border-default);
   position: fixed;
   z-index: 5;
-  top: 8px;
+  top: 0;
   left: max(16px, calc((100vw - 1480px) / 2 + 16px));
   right: max(16px, calc((100vw - 1480px) / 2 + 16px));
   display: flex;
@@ -1747,7 +1752,7 @@ select {
 }
 :root[data-theme="light"] .query-editor__footer { background: #fff; }
 :root[data-theme="light"] .query-validation { color: #b42318; }
-
+.paper-card h2 a
 /* Align the Queries and Search settings header rows. */
 .card-heading,
 .settings-card .card-heading {
