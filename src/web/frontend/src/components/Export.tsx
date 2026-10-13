@@ -1,4 +1,5 @@
 import { Paper, useSearch } from '../context/SearchContext';
+import { useRef } from 'react';
 
 const CSV_COLUMNS = [
   'paperId',
@@ -53,6 +54,7 @@ export default function Export({ papers }: { papers?: Paper[] }) {
   const { results, isSearching, hasSuccessfulSearch } = useSearch();
   const exportResults = papers ?? results;
   const disabled = isSearching || exportResults.length === 0;
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   function handleExport(format: string) {
     if (format === 'json') {
@@ -60,26 +62,46 @@ export default function Export({ papers }: { papers?: Paper[] }) {
     } else if (format === 'csv') {
       downloadFile(toCsv(exportResults), 'text/csv;charset=utf-8', 'search-results.csv');
     }
+    dialogRef.current?.close();
   }
 
   if (!hasSuccessfulSearch || isSearching) return null;
 
   return (
     <div className="results-export">
-      <svg className="results-export__icon" aria-hidden="true" viewBox="0 0 20 20" fill="none">
-        <path d="M10 2.75v9.5m0 0 3.5-3.5M10 12.25l-3.5-3.5M3.75 13.25v3h12.5v-3" />
-      </svg>
-      <select
-        className="results-export__select"
-        aria-label="Export search results"
+      <button
+        className="results-export__button"
+        type="button"
+        aria-haspopup="dialog"
         disabled={disabled}
-        value=""
-        onChange={event => handleExport(event.target.value)}
+        onClick={() => dialogRef.current?.showModal()}
       >
-        <option value="" disabled>Export</option>
-        <option value="json">JSON</option>
-        <option value="csv">CSV</option>
-      </select>
+        <svg className="results-export__icon" aria-hidden="true" viewBox="0 0 20 20" fill="none">
+          <path d="M10 2.75v9.5m0 0 3.5-3.5M10 12.25l-3.5-3.5M3.75 13.25v3h12.5v-3" />
+        </svg>
+        Download
+      </button>
+      <dialog
+        className="results-export__dialog"
+        ref={dialogRef}
+        aria-labelledby="results-export-title"
+        onClick={event => {
+          if (event.target === dialogRef.current) dialogRef.current.close();
+        }}
+      >
+        <div className="results-export__dialog-header">
+          <div>
+            <h2 id="results-export-title">Export search results</h2>
+            <p>{exportResults.length} {exportResults.length === 1 ? 'paper' : 'papers'} will be exported.</p>
+          </div>
+          <button className="results-export__close" type="button" aria-label="Close export dialog"
+            onClick={() => dialogRef.current?.close()}>×</button>
+        </div>
+        <div className="results-export__formats">
+          <button type="button" onClick={() => handleExport('csv')}>Download CSV</button>
+          <button type="button" onClick={() => handleExport('json')}>Download JSON</button>
+        </div>
+      </dialog>
     </div>
   );
 }

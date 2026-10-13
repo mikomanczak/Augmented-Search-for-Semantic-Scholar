@@ -240,7 +240,12 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     setHasSuccessfulSearch(false);
     try {
       if (isMockResultsEnabled) {
-        setResults(MOCK_RESULTS);
+        setResults(MOCK_RESULTS.filter(paper =>
+          (!startYear || (paper.year != null && paper.year >= Number(startYear))) &&
+          (!endYear || (paper.year != null && paper.year <= Number(endYear))) &&
+          (!minCitations || (paper.citationCount != null && paper.citationCount >= Number(minCitations))) &&
+          (!openAccessOnly || Boolean(paper.openAccessPdf?.url)),
+        ));
         setHasSuccessfulSearch(true);
         return;
       }

@@ -1,4 +1,4 @@
-import { UIEvent, useLayoutEffect, useRef } from 'react';
+import { UIEvent, useId, useLayoutEffect, useRef } from 'react';
 
 type TokenType =
   | 'and'
@@ -152,9 +152,11 @@ type Props = {
   onChange: (value: string) => void;
   placeholder?: string;
   keywordCount: number;
+  validationError?: QueryValidation;
 };
 
-export default function HighlightedQueryEditor({ id, value, onChange, placeholder, keywordCount }: Props) {
+export default function HighlightedQueryEditor({ id, value, onChange, placeholder, keywordCount, validationError }: Props) {
+  const validationId = useId();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const preRef = useRef<HTMLPreElement>(null);
 
@@ -183,31 +185,42 @@ export default function HighlightedQueryEditor({ id, value, onChange, placeholde
 
   return (
     <div className="query-editor">
-      <div className="query-editor__line-numbers" aria-hidden="true">
-        {Array.from({ length: lineCount }, (_, index) => <span key={index}>{index + 1}</span>)}
+      <div className="query-editor__input">
+        <div className="query-editor__line-numbers" aria-hidden="true">
+          {Array.from({ length: lineCount }, (_, index) => <span key={index}>{index + 1}</span>)}
+        </div>
+        <pre className="query-editor__highlight" aria-hidden="true" ref={preRef}>
+          {tokens.map((token, index) => (
+            <span key={index} className={`qtok qtok--${token.type}`}>
+              {token.value}
+            </span>
+          ))}
+          {trailingNewline}
+        </pre>
+        <textarea
+          id={id}
+          aria-label="Queries"
+          aria-invalid={Boolean(validationError)}
+          aria-describedby={validationError ? validationId : undefined}
+          ref={textareaRef}
+          className="query-editor__textarea"
+          value={value}
+          onChange={event => onChange(event.target.value)}
+          onScroll={syncScroll}
+          placeholder={placeholder}
+          spellCheck={false}
+        />
       </div>
-      <pre className="query-editor__highlight" aria-hidden="true" ref={preRef}>
-        {tokens.map((token, index) => (
-          <span key={index} className={`qtok qtok--${token.type}`}>
-            {token.value}
-          </span>
-        ))}
-        {trailingNewline}
-      </pre>
-      <textarea
-        id={id}
-        aria-label="Queries"
-        ref={textareaRef}
-        className="query-editor__textarea"
-        value={value}
-        onChange={event => onChange(event.target.value)}
-        onScroll={syncScroll}
-        placeholder={placeholder}
-        spellCheck={false}
-      />
-      <p className="keyword-count" aria-live="polite">
-        {keywordCount} {keywordCount === 1 ? 'query' : 'queries'}
-      </p>
+      <div className="query-editor__footer">
+        {validationError && (
+          <p className="query-validation" id={validationId} role="alert">
+            Line {validationError.line}: {validationError.message}
+          </p>
+        )}
+        <p className="keyword-count" aria-live="polite">
+          {keywordCount} {keywordCount === 1 ? 'query' : 'queries'}
+        </p>
+      </div>
     </div>
   );
 }

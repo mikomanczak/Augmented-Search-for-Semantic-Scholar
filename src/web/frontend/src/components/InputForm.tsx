@@ -60,6 +60,7 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
               id="keywords"
               value={keywordText}
               keywordCount={keywordCount}
+              validationError={validationError}
               onChange={setKeywordText}
               placeholder="Enter queries, one per line"
             />
@@ -109,11 +110,6 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
               }}
             />
           </div>
-          {validationError && (
-            <p className="query-validation" role="alert">
-              Line {validationError.line}: {validationError.message}
-            </p>
-          )}
         </section>
 
         <section className="card settings-card" aria-labelledby="settings-heading">
