@@ -1203,16 +1203,15 @@ select {
 }
 
 .paper-badge--year { font-variant-numeric: tabular-nums; }
-.paper-badge--venue { color: #aeb9c9; }
 .paper-badge--citations { border-color: #2b5b42; background: #122b20; color: #8bdfad; }
-.paper-badge--pdf { border-color: #7d343b; background: #35171c; color: #ffb3ba; text-decoration: none; }
-.paper-badge--pdf:hover { border-color: #ffb3ba; text-decoration: underline; }
+.paper-badge--pdf { border-color: #85502b; background: #332013; color: #ffbc80; text-decoration: none; }
+.paper-badge--pdf:hover { border-color: #ffbc80; text-decoration: underline; }
 .paper-card a:focus-visible { outline: 2px solid var(--border-accent); outline-offset: 3px; }
 
 :root[data-theme="light"] .paper-badge { background: #f6f8fa; color: #475467; }
 :root[data-theme="light"] .paper-badge--citations { border-color: #acd9bc; background: #edf9f0; color: #176b38; }
-:root[data-theme="light"] .paper-badge--pdf { border-color: #f1b5bd; background: #fff0f1; color: #b42335; }
-:root[data-theme="light"] .paper-badge--pdf:hover { border-color: #b42335; }
+:root[data-theme="light"] .paper-badge--pdf { border-color: #efc49d; background: #fff3e8; color: #9a470c; }
+:root[data-theme="light"] .paper-badge--pdf:hover { border-color: #9a470c; }
 
 .paper-abstract {
   margin: 12px 0 0;

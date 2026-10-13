@@ -98,7 +98,6 @@ export default function Results() {
               <h2>{paper.url ? <a href={paper.url} target="_blank" rel="noreferrer">{paper.title}</a> : paper.title}</h2>
               <div className="paper-badges">
                 {paper.year != null && <span className="paper-badge paper-badge--year" aria-label={`Published in ${paper.year}`}>{paper.year}</span>}
-                {paper.venue && <span className="paper-badge paper-badge--venue">{paper.venue}</span>}
                 {paper.citationCount != null && (
                   <span
                     className="paper-badge paper-badge--citations"
@@ -122,7 +121,11 @@ export default function Results() {
                 )}
               </div>
             </div>
-            {!!paper.authors?.length && <p className="paper-meta">{paper.authors.map(author => author.name).join(', ')}</p>}
+            {(paper.venue || !!paper.authors?.length) && (
+              <p className="paper-meta">
+                {[paper.venue, paper.authors?.map(author => author.name).join(', ')].filter(Boolean).join(' · ')}
+              </p>
+            )}
             {view === 'full' && paper.abstract && <p className="paper-abstract">{paper.abstract}</p>}
           </article>
         ))}
