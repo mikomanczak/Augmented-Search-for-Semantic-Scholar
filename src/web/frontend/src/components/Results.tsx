@@ -94,14 +94,36 @@ export default function Results() {
       <div className="paper-list">
         {sortedResults.map(paper => (
           <article className="paper-card" key={paper.paperId}>
-            <h2>{paper.url ? <a href={paper.url} target="_blank" rel="noreferrer">{paper.title}</a> : paper.title}</h2>
-            <p className="paper-meta">
-              {[paper.year, paper.venue, paper.authors?.map(author => author.name).join(', '),
-                paper.citationCount != null ? `${paper.citationCount} citations` : null]
-                .filter(Boolean).join(' · ')}
-            </p>
+            <div className="paper-heading">
+              <h2>{paper.url ? <a href={paper.url} target="_blank" rel="noreferrer">{paper.title}</a> : paper.title}</h2>
+              <div className="paper-badges">
+                {paper.year != null && <span className="paper-badge paper-badge--year" aria-label={`Published in ${paper.year}`}>{paper.year}</span>}
+                {paper.venue && <span className="paper-badge paper-badge--venue">{paper.venue}</span>}
+                {paper.citationCount != null && (
+                  <span
+                    className="paper-badge paper-badge--citations"
+                    aria-label={`${paper.citationCount.toLocaleString()} ${paper.citationCount === 1 ? 'citation' : 'citations'}`}
+                    title={`${paper.citationCount.toLocaleString()} ${paper.citationCount === 1 ? 'citation' : 'citations'}`}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+                      <path d="M10 11H4V7h6v7a5 5 0 0 1-5 5M20 11h-6V7h6v7a5 5 0 0 1-5 5" />
+                    </svg>
+                    {paper.citationCount.toLocaleString()}
+                  </span>
+                )}
+                {paper.openAccessPdf?.url && (
+                  <a className="paper-badge paper-badge--pdf" href={paper.openAccessPdf.url} target="_blank" rel="noreferrer">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+                      <path d="M14 2v6h6M8 13h8M8 17h5" />
+                    </svg>
+                    PDF
+                  </a>
+                )}
+              </div>
+            </div>
+            {!!paper.authors?.length && <p className="paper-meta">{paper.authors.map(author => author.name).join(', ')}</p>}
             {view === 'full' && paper.abstract && <p className="paper-abstract">{paper.abstract}</p>}
-            {paper.openAccessPdf?.url && <a className="paper-pdf" href={paper.openAccessPdf.url} target="_blank" rel="noreferrer">Open access PDF</a>}
           </article>
         ))}
       </div>
