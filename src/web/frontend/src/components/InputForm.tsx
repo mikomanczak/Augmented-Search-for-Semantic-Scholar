@@ -141,7 +141,9 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
                       ? fieldsOfStudy[0]
                       : `${fieldsOfStudy.length} fields selected`}
                 </span>
-                <span aria-hidden="true">⌄</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+                  <path d="m3 4.5 3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </summary>
               <div className="fields-of-study__menu">
                 <button type="button" onClick={clearFieldsOfStudy} disabled={fieldsOfStudy.length === 0}>
