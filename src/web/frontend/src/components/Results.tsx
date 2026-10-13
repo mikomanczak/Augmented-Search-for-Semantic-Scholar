@@ -4,7 +4,7 @@ import Export from './Export';
 
 type SortOrder = 'relevance' | 'newest' | 'oldest' | 'most-cited' | 'least-cited';
 
-export default function Results({ onBack }: { onBack: () => void }) {
+export default function Results() {
   const { keywords, results, isSearching, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
   const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
   const [view, setView] = useState<'full' | 'compact'>('full');
@@ -51,9 +51,6 @@ export default function Results({ onBack }: { onBack: () => void }) {
 
   return (
     <section className="results-view">
-      <a className="results-back" href="#search" onClick={event => { event.preventDefault(); onBack(); }}>
-        <span aria-hidden="true">←</span> Edit search
-      </a>
       <div className="results-overview">
         <header
           className="results-header"

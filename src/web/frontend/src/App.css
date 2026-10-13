@@ -465,16 +465,19 @@ input::placeholder {
   transform: rotate(180deg);
 }
 
-.syntax-heading {
-  margin: 0 0 8px;
+.syntax-heading,
+.syntax-examples-heading {
   color: #c2cad6;
   font-size: 12px;
+}
+
+.syntax-heading {
+  margin: 0 0 8px;
   white-space: nowrap;
 }
 
 .syntax-examples-heading {
   margin: 12px 0 7px;
-  color: #8996a8;
 }
 
 .syntax-list {
@@ -529,10 +532,6 @@ input::placeholder {
 .card-heading + .filter-group {
   border-top: 0;
   padding-top: 16px;
-}
-
-.settings-card .submit-bar {
-  margin-top: auto;
 }
 
 select,
@@ -629,7 +628,7 @@ select {
 }
 
 .fields-of-study__options label:hover { background: rgb(127 127 127 / 12%); }
-.fields-of-study__options input { margin: 0; accent-color: #356fef; }
+.fields-of-study__options input { margin: 0; accent-color: #636c76; }
 
 :root[data-theme="light"] .fields-of-study summary,
 :root[data-theme="light"] .fields-of-study__menu {
@@ -858,6 +857,10 @@ select {
 .results-back:hover {
   color: #fff;
   text-decoration: underline;
+}
+
+.app-header .results-back:hover {
+  text-decoration: none;
 }
 
 .results-overview {
@@ -1091,8 +1094,8 @@ select {
 }
 
 .results-filter--checkbox input:checked {
-  border-color: var(--border-accent);
-  background: #2867ef;
+  border-color: #636c76;
+  background: #636c76;
 }
 
 .results-filter--checkbox input:checked::before {
@@ -1116,8 +1119,8 @@ select {
 }
 
 :root[data-theme="light"] .results-filter--checkbox input:checked {
-  border-color: var(--border-accent);
-  background: #2867ef;
+  border-color: #636c76;
+  background: rgb(13, 17, 23);
 }
 :root[data-theme="light"] .results-filter--checkbox {
   border-color: var(--border-default);
@@ -1544,6 +1547,7 @@ select {
 :root[data-theme="light"] .settings-card .year-fieldset legend,
 :root[data-theme="light"] .settings-card .publication-types-fieldset legend,
 :root[data-theme="light"] .syntax-heading,
+:root[data-theme="light"] .syntax-examples-heading,
 :root[data-theme="light"] .toggle-title {
   color: #344054;
 }
@@ -1599,8 +1603,7 @@ select {
   background: #f6f8fa;
 }
 
-:root[data-theme="light"] .syntax-help__title,
-:root[data-theme="light"] .syntax-examples-heading {
+:root[data-theme="light"] .syntax-help__title {
   color: #667085;
 }
 
@@ -1771,7 +1774,7 @@ select {
 .app-header .theme-toggle:hover { border-color: var(--header-muted); }
 .app-header .theme-toggle > span { font-size: 17px; line-height: 1; }
 .brand:focus-visible, .source-link:focus-visible, .app-header .theme-toggle:focus-visible { outline: 2px solid var(--header-muted); outline-offset: 3px; }
-.results-view .results-back { position: static; width: fit-content; }
+.app-header .results-back { position: static; width: fit-content; }
 :root[data-theme="light"] .app-header { --header-text: #1f2328; --header-muted: #656d76; --header-border: var(--border-default); background: #f3f6fa; }
 :root[data-theme="light"] .brand-mark { background: #1f2328; }
 :root[data-theme="light"] .brand-mark svg { stroke: #fff; }
@@ -1794,7 +1797,9 @@ select {
 .settings-card .filter-group { padding: 0; margin: 0 0 16px; }
 .settings-card .card-heading + .filter-group { padding-top: 16px; }
 .settings-card input[type="number"],
-.settings-card select { height: 32px; padding: 0 9px; font-size: 12px; }
+.settings-card select,
+.settings-card .fields-of-study summary { height: 32px; padding: 0 9px; font-size: 12px; }
+.settings-card .fields-of-study summary { min-height: 32px; }
 .settings-card select { background-position: calc(100% - 18px) 13px, calc(100% - 13px) 13px; }
 .settings-card .year-range { grid-template-columns: minmax(0, 1fr) 12px minmax(0, 1fr); gap: 6px; }
 .settings-card .publication-types { gap: 6px; }

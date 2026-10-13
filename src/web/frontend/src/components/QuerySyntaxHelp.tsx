@@ -1,24 +1,24 @@
 import { PointerEvent, useRef } from 'react';
 
 const OPERATORS = [
-  ['+', 'for AND operation'],
-  ['|', 'for OR operation'],
-  ['-', 'negates a term'],
-  ['" "', 'collects terms into a phrase'],
-  ['*', 'can be used to match a prefix'],
-  ['( )', 'for precedence'],
-  ['~N', 'after a word matches within the edit distance of N (Defaults to 2 if N is omitted)'],
-  ['"..."~N', 'after a phrase matches with the phrase terms separated up to N terms apart'],
+  ['+', 'require both terms (AND)'],
+  ['|', 'match either term (OR)'],
+  ['-', 'exclude a term'],
+  ['" "', 'match an exact phrase'],
+  ['*', 'match a word prefix'],
+  ['( )', 'group terms'],
+  ['~N', 'allow N edits to a word (default: 2)'],
+  ['"..."~N', 'allow up to N words between phrase terms'],
 ];
 
 const EXAMPLES = [
-  ['fish ladder', 'matches papers that contain “fish” and “ladder”'],
-  ['fish -ladder', 'matches papers that contain “fish” but not “ladder”'],
-  ['fish | ladder', 'matches papers that contain “fish” or “ladder”'],
-  ['"fish ladder"', 'matches papers that contain the phrase “fish ladder”'],
-  ['(fish ladder) | outflow', 'matches papers that contain “fish” and “ladder” OR “outflow”'],
-  ['fish~', 'matches papers that contain “fish”, “fist”, “fihs”, etc.'],
-  ['"fish ladder"~3', 'matches papers that contain the phrase “fish ladder” or “fish is on a ladder”'],
+  ['fish ladder', 'both “fish” and “ladder”'],
+  ['fish -ladder', '“fish” without “ladder”'],
+  ['fish | ladder', '“fish” or “ladder”'],
+  ['"fish ladder"', 'exact phrase “fish ladder”'],
+  ['(fish ladder) | outflow', 'both “fish” and “ladder”, or “outflow”'],
+  ['fish~', '“fish”, “fist”, “fihs”, etc.'],
+  ['"fish ladder"~3', '“fish ladder” or “fish is on a ladder”'],
 ];
 
 function SyntaxList({ items }: { items: string[][] }) {
