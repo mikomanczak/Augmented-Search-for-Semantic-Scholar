@@ -36,6 +36,7 @@ export default function Results() {
             <p>{keywords.length} queries combined · Showing {results.length} papers</p>
             {isMockResultsEnabled && <span className="mock-results-badge">Local mock data</span>}
           </div>
+          <Export papers={results} />
         </header>
       </div>
       {isSearching && <p className="results-message" role="status">Searching Semantic Scholar…</p>}
@@ -88,7 +89,6 @@ export default function Results() {
               </select>
             </label>
           </div>
-          <Export papers={results} />
         </div>
       )}
       <div className="paper-list">

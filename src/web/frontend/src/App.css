@@ -910,6 +910,8 @@ select {
   background: transparent;
 }
 
+.results-header > .results-export { flex: 0 0 auto; }
+
 .results-header h1,
 .paper-card h2 {
   margin: 0;
@@ -955,7 +957,11 @@ select {
   gap: 8px;
 }
 
-.results-toolbar__controls { flex-wrap: wrap; }
+.results-toolbar__controls {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: auto;
+}
 .results-toolbar > .results-export { margin-left: auto; }
 
 .results-view-switch {
@@ -1291,6 +1297,7 @@ select {
   .results-toolbar__controls {
     width: 100%;
     flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .sort-control {
