@@ -294,6 +294,25 @@ textarea {
   white-space: pre-wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  padding-left: 52px;
+}
+
+.query-editor__line-numbers {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 32px;
+  left: 0;
+  display: flex;
+  width: 40px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 14px 8px 14px 0;
+  color: #778397;
+  font: 13px/2.15 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  text-align: right;
+  pointer-events: none;
+  user-select: none;
 }
 
 .query-editor__highlight {
@@ -1794,7 +1813,7 @@ select {
 .settings-card .field-label,
 .settings-card .year-fieldset legend,
 .settings-card .publication-types-fieldset legend { margin-bottom: 6px; font-size: 12px; }
-.settings-card .filter-group { padding: 0; margin: 0 0 16px; }
+.settings-card .filter-group { padding: 0; margin: 0 0 20px; }
 .settings-card .card-heading + .filter-group { padding-top: 16px; }
 .settings-card input[type="number"],
 .settings-card select,

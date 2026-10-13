@@ -120,7 +120,7 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
           <h2 className="card-heading" id="settings-heading">Search settings</h2>
 
           <div className="filter-group">
-            <span className="field-label" id="fields-of-study-label">Fields of study</span>
+            <span className="field-label" id="fields-of-study-label">Field of study</span>
             <details
               className="fields-of-study"
               onBlur={event => {
@@ -237,7 +237,7 @@ export default function InputForm({ onSearch, isSearching }: { onSearch: () => v
             <div>
               <span className="toggle-title">Open Access Only</span>
               <span className="toggle-description">
-                Filter results to include only open access papers
+                include only open access papers
               </span>
             </div>
             <button
