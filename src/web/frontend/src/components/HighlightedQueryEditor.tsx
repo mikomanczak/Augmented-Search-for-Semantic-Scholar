@@ -163,6 +163,8 @@ export default function HighlightedQueryEditor({ id, value, onChange, placeholde
     if (!pre) return;
     pre.scrollTop = event.currentTarget.scrollTop;
     pre.scrollLeft = event.currentTarget.scrollLeft;
+    const lineNumbers = event.currentTarget.parentElement?.querySelector<HTMLElement>('.query-editor__line-numbers');
+    if (lineNumbers) lineNumbers.scrollTop = event.currentTarget.scrollTop;
   };
 
   useLayoutEffect(() => {
@@ -171,13 +173,19 @@ export default function HighlightedQueryEditor({ id, value, onChange, placeholde
     if (!pre || !textarea) return;
     pre.scrollTop = textarea.scrollTop;
     pre.scrollLeft = textarea.scrollLeft;
+    const lineNumbers = textarea.parentElement?.querySelector<HTMLElement>('.query-editor__line-numbers');
+    if (lineNumbers) lineNumbers.scrollTop = textarea.scrollTop;
   }, [value]);
 
   const tokens = tokenize(value);
+  const lineCount = value.split('\n').length;
   const trailingNewline = value.endsWith('\n') ? '\n' : '';
 
   return (
     <div className="query-editor">
+      <div className="query-editor__line-numbers" aria-hidden="true">
+        {Array.from({ length: lineCount }, (_, index) => <span key={index}>{index + 1}</span>)}
+      </div>
       <pre className="query-editor__highlight" aria-hidden="true" ref={preRef}>
         {tokens.map((token, index) => (
           <span key={index} className={`qtok qtok--${token.type}`}>
