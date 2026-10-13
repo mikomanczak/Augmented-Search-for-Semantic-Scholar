@@ -91,7 +91,7 @@ export default function QuerySyntaxHelp({
         aria-label={isCollapsed ? 'Expand syntax help' : 'Collapse syntax help'}
         aria-expanded={!isCollapsed}
       >
-        <span className="syntax-help__title">QUERY SYNTAX</span>
+        <span className="syntax-help__title">SYNTAX CHEATSHEET</span>
         {isCollapsed ? (
           <span className="syntax-help__toggle" aria-hidden="true">‹</span>
         ) : (
