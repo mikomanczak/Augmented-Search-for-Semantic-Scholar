@@ -1,13 +1,16 @@
 import { useSearch } from '../context/SearchContext';
 import { Fragment, useMemo, useState } from 'react';
 import Export from './Export';
+import QueryOverlap from './QueryOverlap';
+import TopicMap from './TopicMap';
 
 type SortOrder = 'relevance' | 'newest' | 'oldest' | 'most-cited' | 'least-cited';
 
 export default function Results() {
-  const { keywords, results, isSearching, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
+  const { keywords, queryResults, results, isSearching, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
   const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
   const [view, setView] = useState<'full' | 'compact'>('full');
+  const [isHeaderExpanded, setIsHeaderExpanded] = useState(true);
   const sortedResults = useMemo(() => {
     if (sortOrder === 'relevance') return results;
     return results
@@ -31,12 +34,27 @@ export default function Results() {
     <section className="results-view">
       <div className="results-overview">
         <header className="results-header">
-          <div>
+          <div className="results-header__summary">
             <h1>Search results</h1>
-            <p>{keywords.length} queries combined · Showing {results.length} papers</p>
+            <p>{queryResults.length || keywords.length} queries combined · Showing {results.length} papers</p>
             {isMockResultsEnabled && <span className="mock-results-badge">Local mock data</span>}
           </div>
           <Export papers={results} />
+          {results.length > 0 && (
+            <button className="results-header__toggle" type="button"
+              aria-label={`${isHeaderExpanded ? 'Collapse' : 'Expand'} results header`}
+              aria-expanded={isHeaderExpanded} aria-controls="results-header-details"
+              onClick={() => setIsHeaderExpanded(expanded => !expanded)}>
+              <span>{isHeaderExpanded ? 'Collapse' : 'Expand'}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d={isHeaderExpanded ? 'm6 15 6-6 6 6' : 'm6 9 6 6 6-6'} />
+              </svg>
+            </button>
+          )}
+          <div className="results-header__details" id="results-header-details" hidden={!isHeaderExpanded}>
+            {queryResults.length === 3 && <QueryOverlap queries={queryResults} />}
+            {results.length > 0 && <TopicMap key={results.map(paper => paper.paperId).join(',')} papers={results} queries={queryResults} isMock={isMockResultsEnabled} />}
+          </div>
         </header>
       </div>
       {isSearching && <p className="results-message" role="status">Searching Semantic Scholar…</p>}

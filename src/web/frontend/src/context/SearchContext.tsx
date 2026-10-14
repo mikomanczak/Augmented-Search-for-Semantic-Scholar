@@ -1,5 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import mockResults from './mock-results.json';
+import mockBrowserResults from './mock-results2 copy.json';
+import mockTypescriptResults from './mock-results3.json';
+import type { QueryResult } from '../lib/query-overlap';
 
 const STORAGE_KEY = 'augmented-search:state:v1';
 
@@ -13,7 +16,11 @@ const EXAMPLE_KEYWORDS = [
   'range anxiety',
 ];
 
-const MOCK_RESULTS: Paper[] = mockResults;
+const MOCK_QUERY_RESULTS: QueryResult[] = [
+  { query: 'JavaScript', papers: mockResults },
+  { query: 'Browser', papers: mockBrowserResults.data },
+  { query: 'TypeScript', papers: mockTypescriptResults.data },
+];
 
 function isLocalMockMode(): boolean {
   if (typeof window === 'undefined') return false;
@@ -73,6 +80,7 @@ export type Paper = {
   paperId: string;
   title: string;
   abstract?: string | null;
+  embedding?: { model: string; vector: number[] } | null;
   year?: number | null;
   authors?: { authorId?: string | null; name: string }[];
   venue?: string | null;
@@ -154,6 +162,7 @@ type SearchContextValue = {
   setPublicationTypes: (value: PublicationType[] | ((prev: PublicationType[]) => PublicationType[])) => void;
   togglePublicationType: (value: PublicationType) => void;
   results: Paper[];
+  queryResults: QueryResult[];
   hasSuccessfulSearch: boolean;
   isSearching: boolean;
   searchError: string | null;
@@ -166,7 +175,7 @@ const SearchContext = createContext<SearchContextValue | undefined>(undefined);
 
 export function SearchProvider({ children }: { children: ReactNode }) {
   const initial = useMemo(loadPersistedState, []);
-  const [keywordText, setKeywordTextRaw] = useState(initial.keywordText);
+  const [keywordText, setKeywordTextRaw] = useState(isLocalMockMode() ? MOCK_QUERY_RESULTS.map(result => result.query).join('\n') : initial.keywordText);
   const [fieldsOfStudy, setFieldsOfStudy] = useState<FieldOfStudy[]>(initial.fieldsOfStudy);
   const [startYear, setStartYear] = useState(initial.startYear);
   const [endYear, setEndYear] = useState(initial.endYear);
@@ -174,6 +183,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const [minCitations, setMinCitationsRaw] = useState(initial.minCitations);
   const [publicationTypes, setPublicationTypes] = useState<PublicationType[]>(initial.publicationTypes);
   const [results, setResults] = useState<Paper[]>([]);
+  const [queryResults, setQueryResults] = useState<QueryResult[]>([]);
   const [hasSuccessfulSearch, setHasSuccessfulSearch] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
@@ -188,15 +198,21 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     setSearchError(null);
     setRateLimited(false);
     setResults([]);
+    setQueryResults([]);
     setHasSuccessfulSearch(false);
     try {
       if (isMockResultsEnabled) {
-        setResults(MOCK_RESULTS.filter(paper =>
-          (!startYear || (paper.year != null && paper.year >= Number(startYear))) &&
-          (!endYear || (paper.year != null && paper.year <= Number(endYear))) &&
-          (!minCitations || (paper.citationCount != null && paper.citationCount >= Number(minCitations))) &&
-          (!openAccessOnly || Boolean(paper.openAccessPdf?.url)),
-        ));
+        const mockQueries = MOCK_QUERY_RESULTS.map(result => ({
+          ...result,
+          papers: result.papers.filter(paper =>
+            (!startYear || (paper.year != null && paper.year >= Number(startYear))) &&
+            (!endYear || (paper.year != null && paper.year <= Number(endYear))) &&
+            (!minCitations || (paper.citationCount != null && paper.citationCount >= Number(minCitations))) &&
+            (!openAccessOnly || Boolean(paper.openAccessPdf?.url)),
+          ),
+        }));
+        setQueryResults(mockQueries);
+        setResults([...new Map(mockQueries.flatMap(result => result.papers).map(paper => [paper.paperId, paper])).values()]);
         setHasSuccessfulSearch(true);
         return;
       }
@@ -311,6 +327,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     setPublicationTypes,
     togglePublicationType,
     results,
+    queryResults,
     hasSuccessfulSearch,
     isSearching,
     searchError,
