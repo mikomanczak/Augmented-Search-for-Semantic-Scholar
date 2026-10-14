@@ -1189,6 +1189,11 @@ select {
   line-height: 1.6;
 }
 
+.paper-meta a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .paper-badges {
   display: flex;
   flex-wrap: wrap;

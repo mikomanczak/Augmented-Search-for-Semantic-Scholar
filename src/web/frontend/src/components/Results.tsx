@@ -1,5 +1,5 @@
 import { useSearch } from '../context/SearchContext';
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import Export from './Export';
 
 type SortOrder = 'relevance' | 'newest' | 'oldest' | 'most-cited' | 'least-cited';
@@ -123,7 +123,18 @@ export default function Results() {
             </div>
             {(paper.venue || !!paper.authors?.length) && (
               <p className="paper-meta">
-                {[paper.venue, paper.authors?.map(author => author.name).join(', ')].filter(Boolean).join(' · ')}
+                {paper.venue}
+                {paper.venue && !!paper.authors?.length && ' · '}
+                {paper.authors?.map((author, index) => (
+                  <Fragment key={`${author.authorId ?? author.name}-${index}`}>
+                    {index > 0 && ', '}
+                    {author.authorId ? (
+                      <a href={`https://www.semanticscholar.org/author/${encodeURIComponent(author.authorId)}`} target="_blank" rel="noreferrer">
+                        {author.name}
+                      </a>
+                    ) : author.name}
+                  </Fragment>
+                ))}
               </p>
             )}
             {view === 'full' && paper.abstract && <p className="paper-abstract">{paper.abstract}</p>}
