@@ -1,11 +1,12 @@
 import { useSearch } from '../context/SearchContext';
 import { Fragment, useMemo, useState } from 'react';
 import Export from './Export';
+import QueryOverlap from './QueryOverlap';
 
 type SortOrder = 'relevance' | 'newest' | 'oldest' | 'most-cited' | 'least-cited';
 
 export default function Results() {
-  const { keywords, results, isSearching, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
+  const { keywords, queryResults, results, isSearching, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
   const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
   const [view, setView] = useState<'full' | 'compact'>('full');
   const sortedResults = useMemo(() => {
@@ -31,12 +32,13 @@ export default function Results() {
     <section className="results-view">
       <div className="results-overview">
         <header className="results-header">
-          <div>
+          <div className="results-header__summary">
             <h1>Search results</h1>
-            <p>{keywords.length} queries combined · Showing {results.length} papers</p>
+            <p>{queryResults.length || keywords.length} queries combined · Showing {results.length} papers</p>
             {isMockResultsEnabled && <span className="mock-results-badge">Local mock data</span>}
           </div>
           <Export papers={results} />
+          {queryResults.length === 3 && <QueryOverlap queries={queryResults} />}
         </header>
       </div>
       {isSearching && <p className="results-message" role="status">Searching Semantic Scholar…</p>}

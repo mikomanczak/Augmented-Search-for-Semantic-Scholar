@@ -1,0 +1,1553 @@
+{
+    "total": 214,
+    "offset": 0,
+    "next": 50,
+    "data": [
+        {
+            "paperId": "02f847204e1ce5351a29ad949b0b104b969adb1c",
+            "url": "https://www.semanticscholar.org/paper/02f847204e1ce5351a29ad949b0b104b969adb1c",
+            "title": "Implementasi Next.Js, Typescript, Dan Tailwind Css Untuk Pengembangan Aplikasi Frontend Sistem Inventory Perusahaan Apar (Studi Kasus: CV Indoka Surya Jaya)",
+            "venue": "Jikom : Jurnal Informatika dan Komputer",
+            "year": 2024,
+            "citationCount": 15,
+            "openAccessPdf": {
+                "url": "https://ojs.stikombanyuwangi.ac.id/index.php/jikom/article/download/195/108",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.55794/jikom.v14i2.195?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.55794/jikom.v14i2.195, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": null,
+                    "name": "Ketut Arya Bayu Wirya Kesuma"
+                },
+                {
+                    "authorId": "2105413597",
+                    "name": "I. Wijaya"
+                },
+                {
+                    "authorId": "143851555",
+                    "name": "I. E. Putra"
+                }
+            ],
+            "abstract": "This research succeeded in developing an internal management system using Next.js for the integration of key features such as customer, supplier, category, unit, product, purchase and invoice management. The use of TypeScript increases code security and clarity, and ensures the system is verified through Black Box Testing. Implementing Tailwind CSS in creating company landing pages strengthens online representation with a responsive and modern design. It is hoped that this system can significantly increase operational efficiency and be adaptive to changes in company needs in the future."
+        },
+        {
+            "paperId": "b78f599100040a2e97472c1ed19479687ee8a5ea",
+            "url": "https://www.semanticscholar.org/paper/b78f599100040a2e97472c1ed19479687ee8a5ea",
+            "title": "Do Machine Learning Models Produce TypeScript Types that Type Check?",
+            "venue": "Dagstuhl Artifacts Ser.",
+            "year": 2023,
+            "citationCount": 14,
+            "openAccessPdf": {
+                "url": "https://arxiv.org/pdf/2302.12163",
+                "status": "GREEN",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2302.12163, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "39043661",
+                    "name": "Ming-Ho Yee"
+                },
+                {
+                    "authorId": "2100712",
+                    "name": "Arjun Guha"
+                }
+            ],
+            "abstract": "Type migration is the process of adding types to untyped code to gain assurance at compile time. TypeScript and other gradual type systems facilitate type migration by allowing programmers to start with imprecise types and gradually strengthen them. However, adding types is a manual effort and several migrations on large, industry codebases have been reported to have taken several years. In the research community, there has been significant interest in using machine learning to automate TypeScript type migration. Existing machine learning models report a high degree of accuracy in predicting individual TypeScript type annotations. However, in this paper we argue that accuracy can be misleading, and we should address a different question: can an automatic type migration tool produce code that passes the TypeScript type checker? We present TypeWeaver, a TypeScript type migration tool that can be used with an arbitrary type prediction model. We evaluate TypeWeaver with three models from the literature: DeepTyper, a recurrent neural network; LambdaNet, a graph neural network; and InCoder, a general-purpose, multi-language transformer that supports fill-in-the-middle tasks. Our tool automates several steps that are necessary for using a type prediction model, (1) importing types for a project's dependencies; (2) migrating JavaScript modules to TypeScript notation; (3) inserting predicted type annotations into the program to produce TypeScript when needed; and (4) rejecting non-type predictions when needed. We evaluate TypeWeaver on a dataset of 513 JavaScript packages, including packages that have never been typed before. With the best type prediction model, we find that only 21% of packages type check, but more encouragingly, 69% of files type check successfully."
+        },
+        {
+            "paperId": "02479ea4f78ba8261e3e3e8b5e7ecc7a63333635",
+            "url": "https://www.semanticscholar.org/paper/02479ea4f78ba8261e3e3e8b5e7ecc7a63333635",
+            "title": "TypeScript\u2019s Evolution: An Analysis of Feature Adoption Over Time",
+            "venue": "IEEE Working Conference on Mining Software Repositories",
+            "year": 2023,
+            "citationCount": 10,
+            "openAccessPdf": {
+                "url": "https://arxiv.org/pdf/2303.09802",
+                "status": "GREEN",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2303.09802, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "51133081",
+                    "name": "Joshua D. Scarsbrook"
+                },
+                {
+                    "authorId": "1744759",
+                    "name": "M. Utting"
+                },
+                {
+                    "authorId": "145726880",
+                    "name": "R. Ko"
+                }
+            ],
+            "abstract": "TypeScript is a quickly evolving superset of JavaScript with active development of new features. Our paper seeks to understand how quickly these features are adopted by the developer community. Existing work in JavaScript shows the adoption of dynamic language features can be a major hindrance to static analysis. As TypeScript evolves the addition of features makes the underlying standard more and more difficult to keep up with. In our work we present an analysis of 454 open source TypeScript repositories and study the adoption of 13 language features over the past three years. We show that while new versions of the TypeScript compiler are aggressively adopted by the community, the same cannot be said for language features. While some experience strong growth others are rarely adopted by projects. Our work serves as a starting point for future study of the adoption of features in TypeScript. We also release our analysis and data gathering software as open source in the hope it helps the programming languages community."
+        },
+        {
+            "paperId": "475615b230f0fe5a8dffa5970a90c0d98c94827c",
+            "url": "https://www.semanticscholar.org/paper/475615b230f0fe5a8dffa5970a90c0d98c94827c",
+            "title": "To Type or Not to Type? A Systematic Comparison of the Software Quality of JavaScript and TypeScript Applications on GitHub",
+            "venue": "IEEE Working Conference on Mining Software Repositories",
+            "year": 2022,
+            "citationCount": 41,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2203.11115, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "48174976",
+                    "name": "Justus Bogner"
+                },
+                {
+                    "authorId": "2159545628",
+                    "name": "Manuel Merkel"
+                }
+            ],
+            "abstract": "JavaScript (JS) is one of the most popular programming languages, and widely used for web apps, mobile apps, desktop clients, and even backend development. Due to its dynamic and flexible nature, however, JS applications often have a reputation for poor software quality. While the type-safe superset TypeScript (TS) offers features to address these prejudices, there is currently insufficient empirical evidence to broadly support the claim that TS applications exhibit better software quality than JS applications. We therefore conducted a repository mining study based on 604 GitHub projects (299 for JS, 305 for TS) with over 16M LoC. Using SonarQube and the GitHub API, we collected and analyzed four facets of software quality: a) code quality (# of code smells per LoC), b) code understandability (cognitive complexity per LoC), c) bug proneness (bug fix commit ratio), and d) bug resolution time (mean time a bug issue is open). For TS, we also collected how frequently the type-safety ignoring any type was used per project via ESLint. The analysis indicates that TS applications exhibit significantly better code quality and understandability than JS applications. Contrary to expectations, however, bug proneness and bug resolution time of our TS sample were not significantly lower than for JS: the mean bug fix commit ratio of TS projects was more than 60% larger (0.126 vs. 0.206), and TS projects needed on average more than an additional day to fix bugs (31.86 vs. 33.04 days). Furthermore, reducing the usage of the any type in TS apps appears to be beneficial: its frequency was significantly correlated with all metrics except bug proneness, even though the correlations were of small strengths (Spearman's rho between 0.17 and 0.26). Our results indicate that the perceived positive influence of Type-Script for avoiding bugs in comparison to JavaScript may be more complicated than assumed. While using TS seems to have benefits, it does not automatically lead to less and easier to fix bugs. However, more research is needed in this area, especially concerning the potential influence of project complexity and developer experience."
+        },
+        {
+            "paperId": "60de0cf2b755e20b12d5d456c8bb817ab57d25f4",
+            "url": "https://www.semanticscholar.org/paper/60de0cf2b755e20b12d5d456c8bb817ab57d25f4",
+            "title": "Implementing a Groundwater Monitoring System in the Jukskei River Catchment: a TypeScript and MySQL Approach",
+            "venue": "2023 International Conference on Electrical, Computer and Energy Technologies (ICECET)",
+            "year": 2023,
+            "citationCount": 3,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/ICECET58911.2023.10389560?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/ICECET58911.2023.10389560, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2280597541",
+                    "name": "Daphine Achiro"
+                },
+                {
+                    "authorId": "103923305",
+                    "name": "R. Alowo"
+                },
+                {
+                    "authorId": "2300399968",
+                    "name": "German K. Nkhonjera"
+                }
+            ],
+            "abstract": "The Jukskei River population has since grown to nearly 400,000 people. The Jukskei catchment water resources are therefore pressured to serve. Several challenges concerning groundwater management have been identified in South Africa's Jukskei Catchment. The results showed that there are gaps in the data records. Since there is no access to regulation terms (such as meters), official accreditation of monitoring capabilities and apparatus (such as apps) is required. There is a need to build many groundwater level monitoring stations with systems in TypeScript and MySQL, considering demands and human requirements as per normal densities in distinct locations of South Africa. Groundwater level raw data should be transformed into marketable products, such as concise reports on sensitive locations (such as dolomite compartments, wetlands, aquifers, and solitary sources, using apps in TypeScript and MySQL). Groundwater monitoring infrastructure has been vandalized and stolen during the rising civil turmoil. In this research, a big data-based technology/app was designed for predictive analytics and visualisation of groundwater monitoring in pretested on boreholes in the Jukskei catchment of South Africa. Using TypeScript ad SQL programming, a program / an algorithm was designed for the necessary groundwater and river water flow from the gauging station/site. Selection/identification of a suitable mobile phone / smart phone solution was done. Various steps were linked as a system using, (IoT /wireless/ thinking to enable the researcher to test the linked steps/system. i.e., Collect water levels from 18 boreholes. The contribution of this research is the development of an application for an improved groundwater monitoring framework that redress the highlighted gaps."
+        },
+        {
+            "paperId": "fab636ef521c60636b57e7c1c28f9eb0a6c4d756",
+            "url": "https://www.semanticscholar.org/paper/fab636ef521c60636b57e7c1c28f9eb0a6c4d756",
+            "title": "ManyTypes4TypeScript: A Comprehensive TypeScript Dataset for Sequence-Based Type Inference",
+            "venue": "IEEE Working Conference on Mining Software Repositories",
+            "year": 2022,
+            "citationCount": 9,
+            "openAccessPdf": {
+                "url": "https://dl.acm.org/doi/pdf/10.1145/3524842.3528507",
+                "status": "HYBRID",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3524842.3528507?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3524842.3528507, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1382369659",
+                    "name": "Kevin Jesse"
+                },
+                {
+                    "authorId": "114875459",
+                    "name": "Prem Devanbu"
+                }
+            ],
+            "abstract": "In this paper, we present ManyTypes4TypeScript, a very large corpus for training and evaluating machine-learning models for sequence-based type inference in TypeScript. The dataset includes over 9 million type annotations, across 13,953 projects and 539,571 files. The dataset is approximately 10x larger than analogous type inference datasets for Python, and is the largest available for Type-Script. We also provide API access to the dataset, which can be integrated into any tokenizer and used with any state-of-the-art sequence-based model. Finally, we provide analysis and performance results for state-of-the-art code-specific models, for baselining. ManyTypes4TypeScript is available on Huggingface, Zenodo, and CodeXGLUE."
+        },
+        {
+            "paperId": "68dfc95ef3fa9997bb1fa8deef29dcf904a5b5d3",
+            "url": "https://www.semanticscholar.org/paper/68dfc95ef3fa9997bb1fa8deef29dcf904a5b5d3",
+            "title": "SODA: a TypeScript/JavaScript library for visualizing biological sequence annotation",
+            "venue": "NAR Genomics and Bioinformatics",
+            "year": 2022,
+            "citationCount": 5,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nargab/article-pdf/4/4/lqac077/46350391/lqac077.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2205.06349, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2095278983",
+                    "name": "J. Roddy"
+                },
+                {
+                    "authorId": "67003453",
+                    "name": "George Lesica"
+                },
+                {
+                    "authorId": "2398949",
+                    "name": "T. Wheeler"
+                }
+            ],
+            "abstract": "Abstract We present SODA, a lightweight and open-source visualization library for biological sequence annotations that enables straightforward development of flexible, dynamic and interactive web graphics. SODA is implemented in TypeScript and can be used as a library within TypeScript and JavaScript."
+        },
+        {
+            "paperId": "b92562ab3bc71eb3b76380bec9dfb24e616fb33f",
+            "url": "https://www.semanticscholar.org/paper/b92562ab3bc71eb3b76380bec9dfb24e616fb33f",
+            "title": "Communication-safe web programming in TypeScript with routed multiparty session types",
+            "venue": "International Conference on Compiler Construction",
+            "year": 2021,
+            "citationCount": 23,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2101.04622, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1610949659",
+                    "name": "Anson Miu"
+                },
+                {
+                    "authorId": "145051217",
+                    "name": "Francisco Ferreira"
+                },
+                {
+                    "authorId": "143884638",
+                    "name": "N. Yoshida"
+                },
+                {
+                    "authorId": "2114902961",
+                    "name": "Fang-Yi Zhou"
+                }
+            ],
+            "abstract": "Modern web programming involves coordinating interactions between browser clients and a server. Typically, the interactions in web-based distributed systems are informally described, making it hard to ensure correctness, especially communication safety, i.e. all endpoints progress without type errors or deadlocks, conforming to a specified protocol. We present STScript, a toolchain that generates TypeScript APIs for communication-safe web development over WebSockets, and RouST, a new session type theory that supports multiparty communications with routing mechanisms. STScript provides developers with TypeScript APIs generated from a communication protocol specification based on RouST. The generated APIs build upon TypeScript concurrency practices, complement the event-driven style of programming in full-stack web development, and are compatible with the Node.js runtime for server-side endpoints and the React.js framework for browser-side endpoints. RouST can express multiparty interactions routed via an intermediate participant. It supports peer-to-peer communication between browser-side endpoints by routing communication via the server in a way that avoids excessive serialisation. RouST guarantees communication safety for endpoint web applications written using STScript APIs. We evaluate the expressiveness of STScript for modern web programming using several production-ready case studies deployed as web applications."
+        },
+        {
+            "paperId": "0054a6ca4d68a6f67f2cef7e35e1a2d829cb788d",
+            "url": "https://www.semanticscholar.org/paper/0054a6ca4d68a6f67f2cef7e35e1a2d829cb788d",
+            "title": "Generation of TypeScript declaration files from JavaScript code",
+            "venue": "MPLR",
+            "year": 2021,
+            "citationCount": 11,
+            "openAccessPdf": {
+                "url": "https://arxiv.org/pdf/2108.08027",
+                "status": "GREEN",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2108.08027, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2123597286",
+                    "name": "Fernando Cristiani"
+                },
+                {
+                    "authorId": "1702178",
+                    "name": "Peter Thiemann"
+                }
+            ],
+            "abstract": "Developers are starting to write large and complex applications in TypeScript, a typed dialect of JavaScript. TypeScript applications integrate JavaScript libraries via typed descriptions of their APIs called declaration files. DefinitelyTyped is the standard public repository for these files. The repository is populated and maintained manually by volunteers, which is error-prone and time consuming. Discrepancies between a declaration file and the JavaScript implementation lead to incorrect feedback from the TypeScript IDE and, thus, to incorrect uses of the underlying JavaScript library. This work presents dts-generate, a tool that generates TypeScript declaration files for JavaScript libraries uploaded to the NPM registry. It extracts code examples from the documentation written by the developer, executes the library driven by the examples, gathers run-time information, and generates a declaration file based on this information. To evaluate the tool, 249 declaration files were generated directly from an NPM module and 111 of these were compared with the corresponding declaration file provided on DefinitelyTyped. All these files either exhibited no differences at all or differences that can be resolved by extending the developer-provided examples."
+        },
+        {
+            "paperId": "24b70d8b3b9335fb5fe31c99ef90173fc004fce3",
+            "url": "https://www.semanticscholar.org/paper/24b70d8b3b9335fb5fe31c99ef90173fc004fce3",
+            "title": "Automated Test Data Generation for Typescript Web Applications",
+            "venue": "International Conference on Knowledge and Systems Engineering",
+            "year": 2021,
+            "citationCount": 5,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/KSE53942.2021.9648782?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/KSE53942.2021.9648782, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "30614606",
+                    "name": "Thu T. H. Doan"
+                },
+                {
+                    "authorId": "2112293151",
+                    "name": "D. Nguyen"
+                },
+                {
+                    "authorId": "2460701886",
+                    "name": "H. Pham"
+                }
+            ],
+            "abstract": "This research proposes a Pattern-based Unit Testing method, namely PUT, to generate test data automatically for Typescript web applications. The main idea is to analyze the internal structure of source code to detect patterns of attribute usages. These patterns are then used to generate test data directly. An implemented tool and experimental results are presented to demonstrate the effectiveness of PUT in comparison with the automated random method. It shows that PUT could increase function coverage by 3.57 %-23.81 %, statement coverage by 0.5%-27.41 %, and branch coverage by 3.3%-39.24%. Therefore, PUT could provide potential usefulness for automated unit testing of Typescript web applications in practice."
+        },
+        {
+            "paperId": "23ba70604a9a64f56c33f8486df78ad93bd574b5",
+            "url": "https://www.semanticscholar.org/paper/23ba70604a9a64f56c33f8486df78ad93bd574b5",
+            "title": "The Role of TypeScript in Enhancing Development with Modern JavaScript Frameworks",
+            "venue": "International Journal of Science and Research (IJSR)",
+            "year": 2021,
+            "citationCount": 4,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.21275/sr24401234212",
+                "status": "GOLD",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.21275/sr24401234212?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.21275/sr24401234212, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2507113010",
+                    "name": "Phani Sekhar Emmanni"
+                }
+            ],
+            "abstract": ": TypeScript has emerged as a key player in enhancing the robustness and maintainability of applications developed with modern JavaScript frameworks such as React, Angular, and Vue. This scholarly article delves into the transformative role of TypeScript by examining its integration within these frameworks, highlighting the myriad benefits it brings to the development process. Through empirical analysis, case studies, and developer testimonials, we explore how TypeScript\u2019s static typing system significantly reduces runtime errors, thereby enhancing code quality and reliability. The study further investigates TypeScript's impact on developer productivity, facilitated by improved tooling support that accelerates the development cycle and simplifies project maintenance, especially in large-scale applications. By offering a comparative analysis of projects before and after adopting TypeScript, the article illustrates the tangible improvements in error detection, code maintainability, and collaboration among development teams. This comprehensive review underscores TypeScript\u2019s indispensability in modern web development, positioning it as a critical tool for developers seeking to build scalable, high-quality web applications with the latest JavaScript frameworks. Through this exploration, the article aims to contribute to the broader understanding of TypeScript\u2019s role in elevating the standards of web development practices today."
+        },
+        {
+            "paperId": "7b012d6f157341499888b9486768fd374373e53a",
+            "url": "https://www.semanticscholar.org/paper/7b012d6f157341499888b9486768fd374373e53a",
+            "title": "Microsoft MakeCode: embedded programming for education, in blocks and TypeScript",
+            "venue": "SPLASH-E",
+            "year": 2019,
+            "citationCount": 51,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3358711.3361630?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3358711.3361630, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "144434028",
+                    "name": "T. Ball"
+                },
+                {
+                    "authorId": "1397391471",
+                    "name": "Abhijith Chatra"
+                },
+                {
+                    "authorId": "2494619259",
+                    "name": "Peli de Halleux"
+                },
+                {
+                    "authorId": "144356949",
+                    "name": "Steve Hodges"
+                },
+                {
+                    "authorId": "145973243",
+                    "name": "Micha\u0142 Moskal"
+                },
+                {
+                    "authorId": "2069248114",
+                    "name": "Jacqueline Russell"
+                }
+            ],
+            "abstract": "Microsoft MakeCode (https://www.makecode.com) is a platform and accompanying web app for simplifying the programming of microcontroller-based devices in the classroom. For each device, MakeCode provides a customized end-to-end experience in the web browser consisting of code editors, device simulator, debugger, compiler to machine code, and linker to a pre-compiled C++ runtime, as well as a documentation and tutorial system. We present an overview of MakeCode and detail the major design decisions behind the platform."
+        },
+        {
+            "paperId": "7acf1351658ce79f506ce3f78dd268801f91fc17",
+            "url": "https://www.semanticscholar.org/paper/7acf1351658ce79f506ce3f78dd268801f91fc17",
+            "title": "Modern Full-Stack Development: Using TypeScript, React, Node.js, Webpack, and Docker",
+            "venue": "",
+            "year": 2020,
+            "citationCount": 8,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1007/978-1-4842-5738-8?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1007/978-1-4842-5738-8, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "35614356",
+                    "name": "Frank W. Zammetti"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "84bafb9e1d67c2d9540471c2ddb0f6365e304c91",
+            "url": "https://www.semanticscholar.org/paper/84bafb9e1d67c2d9540471c2ddb0f6365e304c91",
+            "title": "Hidden inheritance: an inline caching design for TypeScript performance",
+            "venue": "Proc. ACM Program. Lang.",
+            "year": 2020,
+            "citationCount": 6,
+            "openAccessPdf": {
+                "url": "https://dl.acm.org/doi/pdf/10.1145/3428242",
+                "status": "GOLD",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3428242?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3428242, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2482242742",
+                    "name": "Zhe-Feng Wu"
+                },
+                {
+                    "authorId": "2408864535",
+                    "name": "Zhenhang Sun"
+                },
+                {
+                    "authorId": "2028615009",
+                    "name": "Kai Gong"
+                },
+                {
+                    "authorId": "2028621415",
+                    "name": "Lingyun Chen"
+                },
+                {
+                    "authorId": "2058127959",
+                    "name": "Bin Liao"
+                },
+                {
+                    "authorId": "9710951",
+                    "name": "Yihua Jin"
+                }
+            ],
+            "abstract": "TypeScript is a dynamically typed language widely used to develop large-scale applications nowadays. These applications are usually designed with complex class or interface hierarchies and have highly polymorphic behaviors. These object-oriented (OO) features will lead to inefficient inline caches (ICs) or trigger deoptimizations, which impact the performance of TypeScript applications. To address this problem, we introduce an inline caching design called hidden inheritance (HI). The basic idea of HI is to cache the static information of class or interface hierarchies into hidden classes, which are leveraged to generate efficient inline caches for improving the performance of OO-style TypeScript programs. The HI design is implemented in a TypeScript engine STSC (Static TypeScript Compiler) including a static compiler and a runtime system. STSC statically generates hidden classes and enhanced inline caches, which are applied to generate specialized machine code via ahead-of-time compilation (AOTC) or just-in-time compilation (JITC). To evaluate the efficiency of this technique, we implement STSC on a state-of-the-art JavaScript virtual machine V8 and demonstrate its performance improvements on industrial benchmarks and applications."
+        },
+        {
+            "paperId": "f8ca6c22d238930e357427dcfb68e29dbb1d1133",
+            "url": "https://www.semanticscholar.org/paper/f8ca6c22d238930e357427dcfb68e29dbb1d1133",
+            "title": "Generating Interactive WebSocket Applications in TypeScript",
+            "venue": "PLACES@ETAPS",
+            "year": 2020,
+            "citationCount": 5,
+            "openAccessPdf": {
+                "url": "https://arxiv.org/pdf/2004.01321.pdf",
+                "status": "GOLD",
+                "license": "CCBYNCND",
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2004.01321, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1610949659",
+                    "name": "Anson Miu"
+                },
+                {
+                    "authorId": "145051217",
+                    "name": "Francisco Ferreira"
+                },
+                {
+                    "authorId": "143884638",
+                    "name": "N. Yoshida"
+                },
+                {
+                    "authorId": "2114902961",
+                    "name": "Fang-Yi Zhou"
+                }
+            ],
+            "abstract": "Advancements in mobile device computing power have made interactive web applications possible, allowing the web browser to render contents dynamically and support low-latency communication with the server. This comes at a cost to the developer, who now needs to reason more about correctness of communication patterns in their application as web applications support more complex communication patterns. \nMultiparty session types (MPST) provide a framework for verifying conformance of implementations to their prescribed communication protocol. Existing proposals for applying the MPST framework in application developments either neglect the event-driven nature of web applications, or lack compatibility with industry tools and practices, which discourages mainstream adoption by web developers. \nIn this paper, we present an implementation of the MPST framework for developing interactive web applications using familiar industry tools using TypeScript and the React.js framework. The developer can use the Scribble protocol language to specify the protocol and use the Scribble toolchain to validate and obtain the local protocol for each role. The local protocol describes the interactions of the global communication protocol observed by the role. We encode the local protocol into TypeScript types, catering for server-side and client-side targets separately. We show that our encoding guarantees that only implementations which conform to the protocol can type-check. We demonstrate the effectiveness of our approach through a web-based implementation of the classic Noughts and Crosses game from an MPST formalism of the game logic."
+        },
+        {
+            "paperId": "014fff81fff4dbaff28260c45864b57c5e1ad4c7",
+            "url": "https://www.semanticscholar.org/paper/014fff81fff4dbaff28260c45864b57c5e1ad4c7",
+            "title": "Static TypeScript: an implementation of a static compiler for the TypeScript language",
+            "venue": "MPLR",
+            "year": 2019,
+            "citationCount": 11,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3357390.3361032?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3357390.3361032, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2306678076",
+                    "name": "Thomas Ball"
+                },
+                {
+                    "authorId": "2494619259",
+                    "name": "Peli de Halleux"
+                },
+                {
+                    "authorId": "145973243",
+                    "name": "Micha\u0142 Moskal"
+                }
+            ],
+            "abstract": "While the programming of microcontroller-based embeddable devices typically is the realm of the C language, such devices are now finding their way into the classroom for CS education, even at the level of middle school. As a result, the use of scripting languages (such as JavaScript and Python) for microcontrollers is on the rise. We present Static TypeScript (STS), a subset of TypeScript (itself, a gradually typed superset of JavaScript), and its compiler/linker toolchain, which is implemented fully in TypeScript and runs in the web browser. STS is designed to be useful in practice (especially in education), while being amenable to static compilation targeting small devices. A user\u2019s STS program is compiled to machine code in the browser and linked against a precompiled C++ runtime, producing an executable that is more efficient than the prevalent embedded interpreter approach, extending battery life and making it possible to run on devices with as little as 16 kB of RAM (such as the BBC micro:bit). This paper is primarily a description of the STS system and the technical challenges of implementing embedded programming platforms in the classroom."
+        },
+        {
+            "paperId": "009f4f0e6c3a9767b9044ba34d679d1b118c9e7b",
+            "url": "https://www.semanticscholar.org/paper/009f4f0e6c3a9767b9044ba34d679d1b118c9e7b",
+            "title": "ProSeqViewer: an interactive, responsive and efficient TypeScript library for visualization of sequences and alignments in web applications",
+            "venue": "Bioinform.",
+            "year": 2021,
+            "citationCount": 3,
+            "openAccessPdf": {
+                "url": "http://hdl.handle.net/11577/3410569",
+                "status": "GREEN",
+                "license": "other-oa",
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1093/bioinformatics/btab764?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1093/bioinformatics/btab764, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2058843901",
+                    "name": "Martina Bevilacqua"
+                },
+                {
+                    "authorId": "5368200",
+                    "name": "L. Paladin"
+                },
+                {
+                    "authorId": "1801645",
+                    "name": "S. Tosatto"
+                },
+                {
+                    "authorId": "3209136",
+                    "name": "D. Piovesan"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "b5b8e12ff53eb5573848f939262fef305eb1bf1a",
+            "url": "https://www.semanticscholar.org/paper/b5b8e12ff53eb5573848f939262fef305eb1bf1a",
+            "title": "[\"Inneratomic Energy\" as the \"New Path\" Towards Becoming \"Master of the World\" : On a\u00a0Hitherto Unknown Typescript from October 1944].",
+            "venue": "NTM. International Journal of History and Ethics of Natural Sciences, Technology and Medicine",
+            "year": 2020,
+            "citationCount": 3,
+            "openAccessPdf": {
+                "url": "https://link.springer.com/content/pdf/10.1007/s00048-020-00241-z.pdf",
+                "status": "HYBRID",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1007/s00048-020-00241-z?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1007/s00048-020-00241-z, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "144732454",
+                    "name": "Klaus Hentschel"
+                }
+            ],
+            "abstract": "Among the papers of Rudolf Tomaschek (1895-1966) I\u00a0discovered a\u00a030-page typescript from 1944 by his then assistant Hugo Watzlawek (1912-1995) entitled \"Interatomare Energie\". Nowadays one would rather say 'inneratomic energy' or 'nuclear energy' since the typescript treats issues of nuclear engineering including its potential military uses. It presents an unfiltered, surprisingly informed view into the technocratic mindset, state of knowledge and application horizon of a\u00a0\"technical nuclear physicist\" in the Third Reich. Watzlawek in 1944 urgently petitions for more funding for research in nuclear physics and technology, citing analogous research underway in America. The present paper places the typescript within its historical and technical context. My succinctly annotated transcription of the original text-also made freely available online-provides full accessibility to this document."
+        },
+        {
+            "paperId": "3d9cbb6a495d626f1fc7e8514f90d4ab0b1e47d5",
+            "url": "https://www.semanticscholar.org/paper/3d9cbb6a495d626f1fc7e8514f90d4ab0b1e47d5",
+            "title": "Type test scripts for TypeScript testing",
+            "venue": "Proc. ACM Program. Lang.",
+            "year": 2017,
+            "citationCount": 22,
+            "openAccessPdf": {
+                "url": "https://dl.acm.org/doi/pdf/10.1145/3133914",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3133914?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3133914, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1977570248",
+                    "name": "E. Kristensen"
+                },
+                {
+                    "authorId": "144188798",
+                    "name": "Anders M\u00f8ller"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "4282f9ef79f7687ba6dec7bcea55e51f8112a4c2",
+            "url": "https://www.semanticscholar.org/paper/4282f9ef79f7687ba6dec7bcea55e51f8112a4c2",
+            "title": "Mixed Messages: Measuring Conformance and Non-Interference in TypeScript",
+            "venue": "European Conference on Object-Oriented Programming",
+            "year": 2017,
+            "citationCount": 19,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.4230/LIPIcs.ECOOP.2017.28?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.4230/LIPIcs.ECOOP.2017.28, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2111787988",
+                    "name": "Jack Williams"
+                },
+                {
+                    "authorId": "144408277",
+                    "name": "J. Garrett Morris"
+                },
+                {
+                    "authorId": "1781875",
+                    "name": "P. Wadler"
+                },
+                {
+                    "authorId": "20567597",
+                    "name": "Jakub Zalewski"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "f7d316f7c032934a43c46766921375b6962dbbbb",
+            "url": "https://www.semanticscholar.org/paper/f7d316f7c032934a43c46766921375b6962dbbbb",
+            "title": "Inference and Evolution of TypeScript Declaration Files",
+            "venue": "Fundamental Approaches to Software Engineering",
+            "year": 2017,
+            "citationCount": 16,
+            "openAccessPdf": {
+                "url": "https://pure.au.dk/ws/files/126129178/6.1.pdf",
+                "status": "GOLD",
+                "license": "other-oa",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1007/978-3-662-54494-5_6?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1007/978-3-662-54494-5_6, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1977570248",
+                    "name": "E. Kristensen"
+                },
+                {
+                    "authorId": "144188798",
+                    "name": "Anders M\u00f8ller"
+                }
+            ],
+            "abstract": "TypeScript is a typed extension of JavaScript that has become widely used. More than 2000 JavaScript libraries now have publicly available TypeScript declaration files, which allows the libraries to be used when programming TypeScript applications. Such declaration files are written manually, however, and they are often lagging behind the continuous development of the libraries, thereby hindering their usability. The existing tool tscheck is capable of detecting mismatches between the libraries and their declaration files, but it is less suitable when creating and evolving declaration files. \n \nIn this work we present the tools tsinfer and tsevolve that are designed to assist the construction of new TypeScript declaration files and support the co-evolution of the declaration files as the underlying JavaScript libraries evolve. Our experimental results involving major libraries demonstrate that tsinfer and tsevolve are superior to tscheck regarding these tasks and that the tools are sufficiently fast and precise for practical use."
+        },
+        {
+            "paperId": "2ca30d7cf4716fe81097472a37deaed3a33de9da",
+            "url": "https://www.semanticscholar.org/paper/2ca30d7cf4716fe81097472a37deaed3a33de9da",
+            "title": "Refinement types for TypeScript",
+            "venue": "ACM-SIGPLAN Symposium on Programming Language Design and Implementation",
+            "year": 2016,
+            "citationCount": 62,
+            "openAccessPdf": {
+                "url": "https://arxiv.org/pdf/1604.02480",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1604.02480, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "3072186",
+                    "name": "Panagiotis Vekris"
+                },
+                {
+                    "authorId": "31699790",
+                    "name": "B. Cosman"
+                },
+                {
+                    "authorId": "143944551",
+                    "name": "Ranjit Jhala"
+                }
+            ],
+            "abstract": "We present Refined TypeScript (RSC), a lightweight refinement type system for TypeScript, that enables static verification of higher-order, imperative programs. We develop a formal system for RSC that delineates the interaction between refinement types and mutability, and enables flow-sensitive reasoning by translating input programs to an equivalent intermediate SSA form. By establishing type safety for the intermediate form, we prove safety for the input programs. Next, we extend the core to account for imperative and dynamic features of TypeScript, including overloading, type reflection, ad hoc type hierarchies and object initialization. Finally, we evaluate RSC on a set of real-world benchmarks, including parts of the Octane benchmarks, D3, Transducers, and the TypeScript compiler. We show how RSC successfully establishes a number of value dependent properties, such as the safety of array accesses and downcasts, while incurring a modest overhead in type annotations and code restructuring."
+        },
+        {
+            "paperId": "26ac3ad840d8d773eec2ab7fc60d441b34c6adc5",
+            "url": "https://www.semanticscholar.org/paper/26ac3ad840d8d773eec2ab7fc60d441b34c6adc5",
+            "title": "Safe & Efficient Gradual Typing for TypeScript",
+            "venue": "ACM-SIGACT Symposium on Principles of Programming Languages",
+            "year": 2015,
+            "citationCount": 132,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1145/2775051.2676971?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/2775051.2676971, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "3351977",
+                    "name": "Aseem Rastogi"
+                },
+                {
+                    "authorId": "2202482",
+                    "name": "Nikhil Swamy"
+                },
+                {
+                    "authorId": "25650985",
+                    "name": "C. Fournet"
+                },
+                {
+                    "authorId": "1724401",
+                    "name": "G. Bierman"
+                },
+                {
+                    "authorId": "3072186",
+                    "name": "Panagiotis Vekris"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "1469b0cbb109c2a788a346dd0480070de8334dea",
+            "url": "https://www.semanticscholar.org/paper/1469b0cbb109c2a788a346dd0480070de8334dea",
+            "title": "Understanding TypeScript",
+            "venue": "European Conference on Object-Oriented Programming",
+            "year": 2014,
+            "citationCount": 237,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1007/978-3-662-44202-9_11?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1007/978-3-662-44202-9_11, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1724401",
+                    "name": "G. Bierman"
+                },
+                {
+                    "authorId": "145832079",
+                    "name": "M. Abadi"
+                },
+                {
+                    "authorId": "3301439",
+                    "name": "Mads Torgersen"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "0b9d9312d42ee79ff09d47be9146bea121dac3c2",
+            "url": "https://www.semanticscholar.org/paper/0b9d9312d42ee79ff09d47be9146bea121dac3c2",
+            "title": "Concrete Types for TypeScript",
+            "venue": "European Conference on Object-Oriented Programming",
+            "year": 2015,
+            "citationCount": 56,
+            "openAccessPdf": {
+                "url": "https://drops.dagstuhl.de/opus/volltexte/2015/5218/pdf/8.pdf",
+                "status": "GREEN",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.4230/LIPIcs.ECOOP.2015.76?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.4230/LIPIcs.ECOOP.2015.76, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "36713497",
+                    "name": "Gregor Richards"
+                },
+                {
+                    "authorId": "1773432",
+                    "name": "Francesco Zappa Nardelli"
+                },
+                {
+                    "authorId": "144376283",
+                    "name": "J. Vitek"
+                }
+            ],
+            "abstract": "Typescript extends JavaScript with optional type annotations that are, by design, unsound and, that the Typescript compiler discards as it emits code. This design point preserves programming idioms developers are familiar with, and allows them to leave their legacy code unchanged, while offering a measure of static error checking in parts of the program that have type annotations. We present an alternative design for TypeScript, one where it is possible to support the same degree of dynamism, but where types can be strengthened to provide hard guarantees. We report on an implementation, called StrongScript, that improves runtime performance of typed programs when run on a modified version of the V8 JavaScript engine."
+        },
+        {
+            "paperId": "0e40e5a7d2ffcb0e6bcf1989a854cfe76e9c250c",
+            "url": "https://www.semanticscholar.org/paper/0e40e5a7d2ffcb0e6bcf1989a854cfe76e9c250c",
+            "title": "Animating Typescript Using Aesthetically Evolved Images",
+            "venue": "EvoMUSART",
+            "year": 2016,
+            "citationCount": 7,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1007/978-3-319-31008-4_9?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1007/978-3-319-31008-4_9, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "153647228",
+                    "name": "Ashley Mills"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "2020498cd27feb41069b39a0982b65d033e49ffb",
+            "url": "https://www.semanticscholar.org/paper/2020498cd27feb41069b39a0982b65d033e49ffb",
+            "title": "An empirical investigation of the effects of type systems and code completion on API usability using TypeScript and JavaScript in MS visual studio",
+            "venue": "Dynamic Languages Symposium",
+            "year": 2015,
+            "citationCount": 26,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1145/2816707.2816720?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/2816707.2816720, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2140712440",
+                    "name": "Lars Fischer"
+                },
+                {
+                    "authorId": "1718329",
+                    "name": "Stefan Hanenberg"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "0c85abd759cbe878b186a8b01f202a38f048f445",
+            "url": "https://www.semanticscholar.org/paper/0c85abd759cbe878b186a8b01f202a38f048f445",
+            "title": "Checking correctness of TypeScript interfaces for JavaScript libraries",
+            "venue": "Conference on Object-Oriented Programming Systems, Languages, and Applications",
+            "year": 2014,
+            "citationCount": 55,
+            "openAccessPdf": {
+                "url": "https://cs.au.dk/~amoeller/papers/tscheck/paper.pdf",
+                "status": "GREEN",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1145/2714064.2660215?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/2714064.2660215, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2041539",
+                    "name": "Asger Feldthaus"
+                },
+                {
+                    "authorId": "144188798",
+                    "name": "Anders M\u00f8ller"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "966e34b319fc15e0d7d2596d1d3f27b11a363cbb",
+            "url": "https://www.semanticscholar.org/paper/966e34b319fc15e0d7d2596d1d3f27b11a363cbb",
+            "title": "JavaScript API misuse detection by using typescript",
+            "venue": "International Conference on Modularity",
+            "year": 2014,
+            "citationCount": 13,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1145/2584469.2584472?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/2584469.2584472, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "38099718",
+                    "name": "Jihyeok Park"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "1ab4bb9186a8995bbe65409f7131d4609479ac4c",
+            "url": "https://www.semanticscholar.org/paper/1ab4bb9186a8995bbe65409f7131d4609479ac4c",
+            "title": "Pro TypeScript: Application-Scale JavaScript Development",
+            "venue": "",
+            "year": 2014,
+            "citationCount": 4,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at http://mail.capitaogervasiooliveira.pi.gov.br/cgi-bin/content/view.php?data=pro_typescript_application_scale_javascript_development_pdf&filetype=pdf&id=d5393a84f3f153af07f097c79c34dbbd, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "49133068",
+                    "name": "Steve Fenton"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "38e61d9a65aa483ad0fb4a219fe54d4e6a2f6c36",
+            "url": "https://www.semanticscholar.org/paper/38e61d9a65aa483ad0fb4a219fe54d4e6a2f6c36",
+            "title": "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence, August 31, 1955",
+            "venue": "The AI Magazine",
+            "year": 2006,
+            "citationCount": 2030,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1609/aimag.v27i4.1904?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1609/aimag.v27i4.1904, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "143805238",
+                    "name": "John McCarthy"
+                },
+                {
+                    "authorId": "1847175",
+                    "name": "M. Minsky"
+                },
+                {
+                    "authorId": "143635905",
+                    "name": "N. Rochester"
+                },
+                {
+                    "authorId": "2064167177",
+                    "name": "C. Shannon"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "f1bd7ea3a63b78a60b5d90d91fdb4a1d7ac0de8e",
+            "url": "https://www.semanticscholar.org/paper/f1bd7ea3a63b78a60b5d90d91fdb4a1d7ac0de8e",
+            "title": "CrossCodeEval: A Diverse and Multilingual Benchmark for Cross-File Code Completion",
+            "venue": "Neural Information Processing Systems",
+            "year": 2023,
+            "citationCount": 323,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2310.11248, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1902935998",
+                    "name": "Yangruibo Ding"
+                },
+                {
+                    "authorId": "2259065741",
+                    "name": "Zi-Jian Wang"
+                },
+                {
+                    "authorId": "38123220",
+                    "name": "Wasi Uddin Ahmad"
+                },
+                {
+                    "authorId": "2113455281",
+                    "name": "Hantian Ding"
+                },
+                {
+                    "authorId": "2260656017",
+                    "name": "Ming Tan"
+                },
+                {
+                    "authorId": "2258956994",
+                    "name": "Nihal Jain"
+                },
+                {
+                    "authorId": "2221639706",
+                    "name": "Murali Krishna Ramanathan"
+                },
+                {
+                    "authorId": "1701451",
+                    "name": "Ramesh Nallapati"
+                },
+                {
+                    "authorId": "50339091",
+                    "name": "Parminder Bhatia"
+                },
+                {
+                    "authorId": "2258962983",
+                    "name": "Dan Roth"
+                },
+                {
+                    "authorId": "2258965075",
+                    "name": "Bing Xiang"
+                }
+            ],
+            "abstract": "Code completion models have made significant progress in recent years, yet current popular evaluation datasets, such as HumanEval and MBPP, predominantly focus on code completion tasks within a single file. This over-simplified setting falls short of representing the real-world software development scenario where repositories span multiple files with numerous cross-file dependencies, and accessing and understanding cross-file context is often required to complete the code correctly. To fill in this gap, we propose CrossCodeEval, a diverse and multilingual code completion benchmark that necessitates an in-depth cross-file contextual understanding to complete the code accurately. CrossCodeEval is built on a diverse set of real-world, open-sourced, permissively-licensed repositories in four popular programming languages: Python, Java, TypeScript, and C#. To create examples that strictly require cross-file context for accurate completion, we propose a straightforward yet efficient static-analysis-based approach to pinpoint the use of cross-file context within the current file. Extensive experiments on state-of-the-art code language models like CodeGen and StarCoder demonstrate that CrossCodeEval is extremely challenging when the relevant cross-file context is absent, and we see clear improvements when adding these context into the prompt. However, despite such improvements, the pinnacle of performance remains notably unattained even with the highest-performing model, indicating that CrossCodeEval is also capable of assessing model's capability in leveraging extensive context to make better code completion. Finally, we benchmarked various methods in retrieving cross-file context, and show that CrossCodeEval can also be used to measure the capability of code retrievers."
+        },
+        {
+            "paperId": "a4c6cb385a90441061218f50abe2871d5e384a2e",
+            "url": "https://www.semanticscholar.org/paper/a4c6cb385a90441061218f50abe2871d5e384a2e",
+            "title": "IntelliCode compose: code generation using transformer",
+            "venue": "ESEC/SIGSOFT FSE",
+            "year": 2020,
+            "citationCount": 643,
+            "openAccessPdf": {
+                "url": "https://arxiv.org/pdf/2005.08025",
+                "status": "GREEN",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2005.08025, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "47090739",
+                    "name": "Alexey Svyatkovskiy"
+                },
+                {
+                    "authorId": "1702996983",
+                    "name": "Shao-Kun Deng"
+                },
+                {
+                    "authorId": "2072784644",
+                    "name": "Sheng-Yu Fu"
+                },
+                {
+                    "authorId": "145507437",
+                    "name": "Neel Sundaresan"
+                }
+            ],
+            "abstract": "In software development through integrated development environments (IDEs), code completion is one of the most widely used features. Nevertheless, majority of integrated development environments only support completion of methods and APIs, or arguments. In this paper, we introduce IntelliCode Compose \u2013 a general-purpose multilingual code completion tool which is capable of predicting sequences of code tokens of arbitrary types, generating up to entire lines of syntactically correct code. It leverages state-of-the-art generative transformer model trained on 1.2 billion lines of source code in Python, C#, JavaScript and TypeScript programming languages. IntelliCode Compose is deployed as a cloud-based web service. It makes use of client-side tree-based caching, efficient parallel implementation of the beam search decoder, and compute graph optimizations to meet edit-time completion suggestion requirements in the Visual Studio Code IDE and Azure Notebook. Our best model yields an average edit similarity of 86.7% and a perplexity of 1.82 for Python programming language."
+        },
+        {
+            "paperId": "5801fe568d99339a730bc0f6b2e8fdc82dbe09fe",
+            "url": "https://www.semanticscholar.org/paper/5801fe568d99339a730bc0f6b2e8fdc82dbe09fe",
+            "title": "Hayek's Geldtheoretische Untersuchungen: New insights from a 1925\u201329 typescript",
+            "venue": "",
+            "year": 2011,
+            "citationCount": 4,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1080/09672567.2010.540338?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1080/09672567.2010.540338, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "114312249",
+                    "name": "Hansjoerg Klausinger"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "6a2cc1d747649de900df4250d6fe2d9f3f547d65",
+            "url": "https://www.semanticscholar.org/paper/6a2cc1d747649de900df4250d6fe2d9f3f547d65",
+            "title": "SpecTra: Enhancing the Code Translation Ability of Language Models by Generating Multi-Modal Specifications",
+            "venue": "arXiv.org",
+            "year": 2024,
+            "citationCount": 36,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.48550/arXiv.2405.18574?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.48550/arXiv.2405.18574, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "80503259",
+                    "name": "V. Nitin"
+                },
+                {
+                    "authorId": "2256709660",
+                    "name": "Baishakhi Ray"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "1d36a3a3467708994b57bb738f02ac27eb2e7223",
+            "url": "https://www.semanticscholar.org/paper/1d36a3a3467708994b57bb738f02ac27eb2e7223",
+            "title": "Cubic splines to model relationships between continuous variables and outcomes: a guide for clinicians",
+            "venue": "Bone Marrow Transplantation",
+            "year": 2019,
+            "citationCount": 390,
+            "openAccessPdf": {
+                "url": "https://www.nature.com/articles/s41409-019-0679-x.pdf",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1038/s41409-019-0679-x?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1038/s41409-019-0679-x, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "134162905",
+                    "name": "J. Gauthier"
+                },
+                {
+                    "authorId": "2465890705",
+                    "name": "Q.-V. Wu"
+                },
+                {
+                    "authorId": "2077100948",
+                    "name": "T. Gooley"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "0ae195342b90c199835a9daaff5e951cf7296a35",
+            "url": "https://www.semanticscholar.org/paper/0ae195342b90c199835a9daaff5e951cf7296a35",
+            "title": "Accuracy Evaluation of SBOM Tools for Web Applications and System-Level Software",
+            "venue": "ARES",
+            "year": 2024,
+            "citationCount": 24,
+            "openAccessPdf": {
+                "url": "https://dl.acm.org/doi/pdf/10.1145/3664476.3670926?download=true",
+                "status": "HYBRID",
+                "license": "CCBYSA",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3664476.3670926?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3664476.3670926, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2313248443",
+                    "name": "Andreas Halbritter"
+                },
+                {
+                    "authorId": "2301050690",
+                    "name": "Dominik Merli"
+                }
+            ],
+            "abstract": "Recent vulnerabilities in software like Log4j raise the question whether the software supply chain is secured sufficiently. Governmental initiatives in the United States (US) and the European Union (EU) demand a Software Bill of Materials (SBOM) for solving this issue. An SBOM has to be produced by using creation tools and it has to be accurate and complete. In the past, there had been investigations in this field of research. However, no detailed investigation of several tools producing SBOMs has been conducted regarding accuracy and reliability. For this reason, we present a selection of four popular programming languages: Python, C, Rust and Typescript. For web application software we consider Python and Typescript while for system-level software C and Rust are investigated. They build the base for four sample software projects and their package manager. For manual checking, the software projects are kept small with a small amount of packages and a single dependency. The open-source analysis tools are categorized as programming language dependent and general tools, and run in the standard execution mode on the software projects. The results were checked against completeness and the National Telecommunications and Information Administration (NTIA) minimum and recommended elements. There is no recommendation for a specific tool as no tool fulfills every requirement, only two tools can be recommended in a limited way. Many tools do not provide a complete SBOM, as they do not depict every test package and dependency. Governmental initiatives should define further specifications on SBOM for example regarding their accuracy and depth. Further research in this field, for example for proprietary tools or other programming languages is desirable."
+        },
+        {
+            "paperId": "6215aff8dc9c8595477b7d60746ef968c5f369c4",
+            "url": "https://www.semanticscholar.org/paper/6215aff8dc9c8595477b7d60746ef968c5f369c4",
+            "title": "Automated Infrastructure as Code Program Testing",
+            "venue": "IEEE Transactions on Software Engineering",
+            "year": 2024,
+            "citationCount": 20,
+            "openAccessPdf": {
+                "url": "https://www.alexandria.unisg.ch/handle/20.500.14171/120132",
+                "status": "GREEN",
+                "license": "other-oa",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/TSE.2024.3393070?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/TSE.2024.3393070, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1381280760",
+                    "name": "Daniel Sokolowski"
+                },
+                {
+                    "authorId": "2248032398",
+                    "name": "David Spielmann"
+                },
+                {
+                    "authorId": "2299396078",
+                    "name": "Guido Salvaneschi"
+                }
+            ],
+            "abstract": "Infrastructure as Code (IaC) enables efficient deployment and operation, which are crucial to releasing software quickly. As setups can be complex, developers implement IaC programs in general-purpose programming languages like TypeScript and Python, using PL-IaC solutions like Pulumi and AWS CDK. The reliability of such IaC programs is even more relevant than in traditional software because a bug in IaC impacts the whole system. Yet, even though testing is a standard development practice, it is rarely used for IaC programs. For instance, in August 2022, less than 1 % of the public Pulumi IaC programs on GitHub implemented tests. Available IaC program testing techniques severely limit the development velocity or require much development effort. To solve these issues, we propose Automated Configuration Testing (ACT), a methodology to test IaC programs in many configurations quickly and with low effort. ACT automatically mocks all resource definitions in the IaC program and uses generator and oracle plugins for test generation and validation. We implement ACT in ProTI, a testing tool for Pulumi TypeScript with a type-based generator and oracle, and support for application specifications. Our evaluation with 6 081 programs from GitHub and artificial benchmarks shows that ProTI can directly be applied to existing IaC programs, quickly finds bugs where current techniques are infeasible, and enables reusing existing generators and oracles thanks to its pluggable architecture."
+        },
+        {
+            "paperId": "b78b87d608bc169f6b045fa24436d0beee711585",
+            "url": "https://www.semanticscholar.org/paper/b78b87d608bc169f6b045fa24436d0beee711585",
+            "title": "Anglo-Saxon Studies in Archaeology and History 23",
+            "venue": "Medieval Archaeology",
+            "year": 2024,
+            "citationCount": 21,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1080/00766097.2024.2419247?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1080/00766097.2024.2419247, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1580372528",
+                    "name": "E. Brownlee"
+                }
+            ],
+            "abstract": "Articles must be in English, and printed out on A4 paper (or its nearest equivalent). A brief abstract of no more than 200 words should be included at the head of the article. All copy (including quotations, appendices, lists, endnotes, bibliographies and captions) must be printed with double spacing, on one side of the paper only. Do not justify right-hand margins and avoid splitting a word at the end of a line. All pages must be numbered. Two copies of the typescript should be submitted and the author is recommended to retain a duplicate copy. An electronic copy is also required and can be sent to the editor on floppy disc, CDROM or via e-mail."
+        },
+        {
+            "paperId": "ea1b62a03ab16c4acca6f7041c6f096bedec244b",
+            "url": "https://www.semanticscholar.org/paper/ea1b62a03ab16c4acca6f7041c6f096bedec244b",
+            "title": "Deep learning type inference",
+            "venue": "ESEC/SIGSOFT FSE",
+            "year": 2018,
+            "citationCount": 225,
+            "openAccessPdf": {
+                "url": "https://discovery.ucl.ac.uk/10066386/1/Barr_fse2018-j2t.pdf",
+                "status": "GREEN",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3236024.3236051?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3236024.3236051, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "22747364",
+                    "name": "Vincent J. Hellendoorn"
+                },
+                {
+                    "authorId": "145193818",
+                    "name": "Christian Bird"
+                },
+                {
+                    "authorId": "1757975",
+                    "name": "Earl T. Barr"
+                },
+                {
+                    "authorId": "3216345",
+                    "name": "Miltiadis Allamanis"
+                }
+            ],
+            "abstract": "Dynamically typed languages such as JavaScript and Python are increasingly popular, yet static typing has not been totally eclipsed: Python now supports type annotations and languages like TypeScript offer a middle-ground for JavaScript: a strict superset of JavaScript, to which it transpiles, coupled with a type system that permits partially typed programs. However, static typing has a cost: adding annotations, reading the added syntax, and wrestling with the type system to fix type errors. Type inference can ease the transition to more statically typed code and unlock the benefits of richer compile-time information, but is limited in languages like JavaScript as it cannot soundly handle duck-typing or runtime evaluation via eval. We propose DeepTyper, a deep learning model that understands which types naturally occur in certain contexts and relations and can provide type suggestions, which can often be verified by the type checker, even if it could not infer the type initially. DeepTyper, leverages an automatically aligned corpus of tokens and types to accurately predict thousands of variable and function type annotations. Furthermore, we demonstrate that context is key in accurately assigning these types and introduce a technique to reduce overfitting on local cues while highlighting the need for further improvements. Finally, we show that our model can interact with a compiler to provide more than 4,000 additional type annotations with over 95% precision that could not be inferred without the aid of DeepTyper."
+        },
+        {
+            "paperId": "021bbcefc993c389bad6c1daefd8ff92d0fc2441",
+            "url": "https://www.semanticscholar.org/paper/021bbcefc993c389bad6c1daefd8ff92d0fc2441",
+            "title": "Contrastive Code Representation Learning",
+            "venue": "Conference on Empirical Methods in Natural Language Processing",
+            "year": 2020,
+            "citationCount": 191,
+            "openAccessPdf": {
+                "url": "https://aclanthology.org/2021.emnlp-main.482.pdf",
+                "status": "HYBRID",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2007.04973, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2066974703",
+                    "name": "Paras Jain"
+                },
+                {
+                    "authorId": "1623995772",
+                    "name": "Ajay Jain"
+                },
+                {
+                    "authorId": "1993655237",
+                    "name": "Tianjun Zhang"
+                },
+                {
+                    "authorId": "1689992",
+                    "name": "P. Abbeel"
+                },
+                {
+                    "authorId": "49988044",
+                    "name": "Joseph E. Gonzalez"
+                },
+                {
+                    "authorId": "2055174324",
+                    "name": "Ion Stoica"
+                }
+            ],
+            "abstract": "Recent work learns contextual representations of source code by reconstructing tokens from their context. For downstream semantic understanding tasks like code clone detection, these representations should ideally capture program functionality. However, we show that the popular reconstruction-based RoBERTa model is sensitive to source code edits, even when the edits preserve semantics. We propose ContraCode: a contrastive pre-training task that learns code functionality, not form. ContraCode pre-trains a neural network to identify functionally similar variants of a program among many non-equivalent distractors. We scalably generate these variants using an automated source-to-source compiler as a form of data augmentation. Contrastive pre-training outperforms RoBERTa on an adversarial code clone detection benchmark by 39% AUROC. Surprisingly, improved adversarial robustness translates to better accuracy over natural code; ContraCode improves summarization and TypeScript type inference accuracy by 2 to 13 percentage points over competitive baselines. All source is available at https://github.com/parasj/contracode."
+        },
+        {
+            "paperId": "9600ac2386161acb418f9eb44553f6050b931acf",
+            "url": "https://www.semanticscholar.org/paper/9600ac2386161acb418f9eb44553f6050b931acf",
+            "title": "The PIPr Dataset of Public Infrastructure as Code Programs",
+            "venue": "IEEE Working Conference on Mining Software Repositories",
+            "year": 2024,
+            "citationCount": 13,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.1145/3643991.3644888",
+                "status": "HYBRID",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3643991.3644888?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3643991.3644888, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1381280760",
+                    "name": "Daniel Sokolowski"
+                },
+                {
+                    "authorId": "2248032398",
+                    "name": "David Spielmann"
+                },
+                {
+                    "authorId": "2299396078",
+                    "name": "Guido Salvaneschi"
+                }
+            ],
+            "abstract": "With Programming Languages Infrastructure as Code (PL-IaC), developers implement IaC programs in popular imperative programming languages like Python and Typescript. Such programs generate the declarative target state of the deployment, i.e., they describe what to set up, not how to set it up. Despite the popularity of PL-IaC, which has grown more than ten times from 2020 to 2023, we know little about how developers apply it and how IaC programs differ from other software. Such knowledge is essential to effectively use existing software engineering techniques and develop new ones for PL-IaC. To shed light on PL-IaC in practice, we present PIPr, the first systematic PL-IaC dataset. PIPr is based on 37 712 public IaC programs on GitHub from August 2022 and includes initial analyses, assessing the programming languages, testing techniques, and licenses of the IaC programs. Beyond the metadata and analysis results of all IaC programs, PIPr contains the code of all 15 504 IaC programs whose licenses permit redistribution. PIPr sets the ground for future in-depth investigations on PL-IaC in practice.CCS CONCEPTS\u2022Software and its engineering Architecture description languages; Software configuration\u2192 management and version control systems; Cloud computing."
+        },
+        {
+            "paperId": "d6a8b7ccda5f570f68d96a868d98573a53ef07b1",
+            "url": "https://www.semanticscholar.org/paper/d6a8b7ccda5f570f68d96a868d98573a53ef07b1",
+            "title": "Optimizing Antenna Positioning for Enhanced Wireless Coverage: A Genetic Algorithm Approach",
+            "venue": "Italian National Conference on Sensors",
+            "year": 2024,
+            "citationCount": 13,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.3390/s24072165",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC11014192, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2246196509",
+                    "name": "Francisco Calles-Esteban"
+                },
+                {
+                    "authorId": "2075987803",
+                    "name": "Alvaro Olmedo"
+                },
+                {
+                    "authorId": "104958799",
+                    "name": "C. J. Hell\u00edn"
+                },
+                {
+                    "authorId": "2218042928",
+                    "name": "Adri\u00e1n Valledor"
+                },
+                {
+                    "authorId": "143802702",
+                    "name": "Josefa G\u00f3mez"
+                },
+                {
+                    "authorId": "145571290",
+                    "name": "A. Tayebi"
+                }
+            ],
+            "abstract": "The precise placement of antennas is essential to ensure effective coverage, service quality, and network capacity in wireless communications, particularly given the exponential growth of mobile connectivity. The antenna positioning problem (APP) has evolved from theoretical approaches to practical solutions employing advanced algorithms, such as evolutionary algorithms. This study focuses on developing innovative web tools harnessing genetic algorithms to optimize antenna positioning, starting from propagation loss calculations. To achieve this, seven empirical models were reviewed and integrated into an antenna positioning web tool. Results demonstrate that, with minimal configuration and careful model selection, a detailed analysis of antenna positioning in any area is feasible. The tool was developed using Java 17 and TypeScript 5.1.6, utilizing the JMetal framework to apply genetic algorithms, and features a React-based web interface facilitating application integration. For future research, consideration is given to implementing a server capable of analyzing the environment based on specific area selection, thereby enhancing the precision and objectivity of antenna positioning analysis."
+        },
+        {
+            "paperId": "e751da90d445feab14155cb71c2a23c35fba65fa",
+            "url": "https://www.semanticscholar.org/paper/e751da90d445feab14155cb71c2a23c35fba65fa",
+            "title": "LLM-Based Java Concurrent Program to ArkTS Converter",
+            "venue": "International Conference on Automated Software Engineering",
+            "year": 2024,
+            "citationCount": 10,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3691620.3695362?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3691620.3695362, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2327050428",
+                    "name": "Run-Lin Liu"
+                },
+                {
+                    "authorId": "2326803308",
+                    "name": "Yuhang Lin"
+                },
+                {
+                    "authorId": "2326740468",
+                    "name": "Yunge Hu"
+                },
+                {
+                    "authorId": "2326644934",
+                    "name": "Zhe Zhang"
+                },
+                {
+                    "authorId": "2260832395",
+                    "name": "Xiang Gao"
+                }
+            ],
+            "abstract": "HarmonyOS NEXT is a distributed operating system developed to support HarmonyOS native apps. To support the new and independent Harmony ecosystem, developers are required to migrate their applications from Android to HarmonyOS. However, HarmonyOS utilizes ArkTS, a superset of TypeScript, as the programming language for application development. Hence, migrating applications to HarmonyOS requires translating programs across different program languages, e.g., Java, which is known to be very challenging, especially for concurrency programs. Java utilizes shared memory to implement concurrency programs, while ArkTS relies on message passing (i.e., Actor model). This paper presents an LLM-based concurrent Java program to ArkTS converter.Our converter utilizes large language models (LLMs) for efficient code translation, integrating ArkTS\u2019s SharedArrayBuffer API to create ThreadBridge, a library that replicates Java\u2019s shared memory model. Using LLM\u2019s Chain-of-Thought mechanism, the translation process is divided into specialized chains: the TS chain, concurrency chain, and synchronization chain, each handling TypeScript syntax, concurrency patterns, and synchronization logic with precision.This study offers solutions to bridge concurrency model differences between Java and ArkTS, reducing manual code rewriting and speeding up adaptation for HarmonyOS NEXT. Experiments show the converter successfully compiles 66% of 53 test samples, with 69% accuracy for compiled results. Overall, the approach shows promise in converting concurrent Java programs to ArkTS, laying the foundation for future improvements."
+        },
+        {
+            "paperId": "29fc7ff02e68537a86d32978bfd2e8e45258e77d",
+            "url": "https://www.semanticscholar.org/paper/29fc7ff02e68537a86d32978bfd2e8e45258e77d",
+            "title": "LambdaNet: Probabilistic Type Inference using Graph Neural Networks",
+            "venue": "International Conference on Learning Representations",
+            "year": 2020,
+            "citationCount": 119,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2005.02161, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "49319137",
+                    "name": "Jiayi Wei"
+                },
+                {
+                    "authorId": "2067482988",
+                    "name": "Maruth Goyal"
+                },
+                {
+                    "authorId": "1814094",
+                    "name": "Greg Durrett"
+                },
+                {
+                    "authorId": "1714075",
+                    "name": "I. Dillig"
+                }
+            ],
+            "abstract": "As gradual typing becomes increasingly popular in languages like Python and Typescript, there is a growing need to infer type annotations. While type annotations help with tasks like code completion and static error catching, these annotations cannot be fully inferred by compilers and are tedious to annotate by hand. This paper proposes a probabilistic type inference scheme for Typescript based on a graph neural network. Our approach first uses lightweight source code analysis to generate a program abstraction called a type dependency graph, which links type variables with logical constraints as well as name and usage information. Given this program abstraction, we then use a graph neural network to propagate information between related type variables and eventually make type predictions. Our neural architecture can predict both standard types, like number or string, as well as user-defined types that have not been encountered during training. Our experimental results show that our approach outperforms prior work in this space by 14% (absolute) on library types, while having the ability to make type predictions that are out of scope for existing techniques."
+        },
+        {
+            "paperId": "8e71af3fbec666e67c0fcfefedb38881027a0254",
+            "url": "https://www.semanticscholar.org/paper/8e71af3fbec666e67c0fcfefedb38881027a0254",
+            "title": "NL2Type: Inferring JavaScript Function Types from Natural Language Information",
+            "venue": "International Conference on Software Engineering",
+            "year": 2019,
+            "citationCount": 138,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/ICSE.2019.00045?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/ICSE.2019.00045, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "32166282",
+                    "name": "Rabee Sohail Malik"
+                },
+                {
+                    "authorId": "1954023",
+                    "name": "Jibesh Patra"
+                },
+                {
+                    "authorId": "1884064",
+                    "name": "Michael Pradel"
+                }
+            ],
+            "abstract": "JavaScript is dynamically typed and hence lacks the type safety of statically typed languages, leading to suboptimal IDE support, difficult to understand APIs, and unexpected runtime behavior. Several gradual type systems have been proposed, e.g., Flow and TypeScript, but they rely on developers to annotate code with types. This paper presents NL2Type, a learning-based approach for predicting likely type signatures of JavaScript functions. The key idea is to exploit natural language information in source code, such as comments, function names, and parameter names, a rich source of knowledge that is typically ignored by type inference algorithms. We formulate the problem of predicting types as a classification problem and train a recurrent, LSTM-based neural model that, after learning from an annotated code base, predicts function types for unannotated code. We evaluate the approach with a corpus of 162,673 JavaScript files from real-world projects. NL2Type predicts types with a precision of 84.1% and a recall of 78.9% when considering only the top-most suggestion, and with a precision of 95.5% and a recall of 89.6% when considering the top-5 suggestions. The approach outperforms both JSNice, a state-of-the-art approach that analyzes implementations of functions instead of natural language information, and DeepTyper, a recent type prediction approach that is also based on deep learning. Beyond predicting types, NL2Type serves as a consistency checker for existing type annotations. We show that it discovers 39 inconsistencies that deserve developer attention (from a manual analysis of 50 warnings), most of which are due to incorrect type annotations."
+        },
+        {
+            "paperId": "9d7e9879ec486d6a72258701d16ebc3e4272eb8e",
+            "url": "https://www.semanticscholar.org/paper/9d7e9879ec486d6a72258701d16ebc3e4272eb8e",
+            "title": "ENFSI 2022 multidisciplinary collaborative exercise: organisation and outcomes",
+            "venue": "Forensic Science International: Synergy",
+            "year": 2024,
+            "citationCount": 6,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.1016/j.fsisyn.2024.100465",
+                "status": "GOLD",
+                "license": "CCBYNCND",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC11002892, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "122993479",
+                    "name": "F. Zampa"
+                },
+                {
+                    "authorId": "2320246872",
+                    "name": "H. Bandey"
+                },
+                {
+                    "authorId": "49989797",
+                    "name": "A. B\u00e9cue"
+                },
+                {
+                    "authorId": "2295544428",
+                    "name": "E. Bouzaid"
+                },
+                {
+                    "authorId": "1571641998",
+                    "name": "M. J. Branco"
+                },
+                {
+                    "authorId": "2295538529",
+                    "name": "J. Buegler"
+                },
+                {
+                    "authorId": "2295543452",
+                    "name": "M. Kambosos"
+                },
+                {
+                    "authorId": "2295538515",
+                    "name": "S. Kneppers"
+                },
+                {
+                    "authorId": null,
+                    "name": "K. Kriiska-Maiv\u00e4li"
+                },
+                {
+                    "authorId": "48993815",
+                    "name": "A. Mattei"
+                },
+                {
+                    "authorId": "2295543383",
+                    "name": "L. Zatkalikova"
+                }
+            ],
+            "abstract": "The use of collaborative exercises (CE) and proficiency tests (PT) as part of the governance programme for any forensic science laboratory has become commonplace and recommended by several international organisations. Traditionally these have been discipline-specific exercises testing a laboratory's ability in a single area of forensic science. However, the \u201creal\u201d world is normally more complex and, in many instances, forensic material must be examined for a number of different evidence types. This article summarises the concepts, planning, design, preparation, implementation, co-ordination and evaluation of the 2022 Multidisciplinary Collaborative Exercise (2022-MdCE) covering a range of forensic disciplines, specifically DNA, fingerprint, documents and handwriting. The exercise consisted of a questioned letter with typescript text and a signature. In addition, the letter contained a visible bloody fingermark in the area of the signature, a visible staining in the lower left-hand corner, a latent fingermark and an indented impression. The analysis of the results showed that, in the investigation of the bloody fingermark, the priority was given to the DNA examination. Some critical issues emerged in relation to the biological (DNA)/ink sampling strategies when applied before fingermark visualisation. Another outcome of the exercise has been to demonstrate the importance of indented impressions, which have been underestimated by a significant number of participants. As setters, more in-depth studies are needed to produce consistent samples. This concerns all the disciplined involved but especially DNA and fingermarks. Based on this exercise, it is believed that this approach to testing of forensic disciplines allows the analysis of good practice within the various scientific areas, as well as scrutinising the process and sequence of events for examining the material within a forensic laboratory in the best conservative way for all kind of evidences."
+        },
+        {
+            "paperId": "80ab9c24f40bcf75edbe1b629b29031eff957cd5",
+            "url": "https://www.semanticscholar.org/paper/80ab9c24f40bcf75edbe1b629b29031eff957cd5",
+            "title": "Integrated Visual Software Analytics on the GitHub Platform",
+            "venue": "De Computis",
+            "year": 2024,
+            "citationCount": 7,
+            "openAccessPdf": {
+                "url": "https://www.mdpi.com/2073-431X/13/2/33/pdf?version=1706174086",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.3390/computers13020033?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3390/computers13020033, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "3431595",
+                    "name": "Willy Scheibel"
+                },
+                {
+                    "authorId": "2223534785",
+                    "name": "Jasper Blum"
+                },
+                {
+                    "authorId": "2281573384",
+                    "name": "Franziska Lauterbach"
+                },
+                {
+                    "authorId": "2038524133",
+                    "name": "D. Atzberger"
+                },
+                {
+                    "authorId": "2054576367",
+                    "name": "J\u00fcrgen D\u00f6llner"
+                }
+            ],
+            "abstract": "Readily available software analysis and analytics tools are often operated within external services, where the measured software analysis data are kept internally and no external access to the data is available. We propose an approach to integrate visual software analysis on the GitHub platform by leveraging GitHub Actions and the GitHub API, covering both analysis and visualization. The process is to perform software analysis for each commit, e.g., static source code complexity metrics, and augment the commit using the resulting data, stored as git objects within the same repository. We show that this approach is feasible by integrating it into 64 open source TypeScript projects. Furthermore, we analyze the impact on Continuous Integration (CI) run time and repository storage. The stored software analysis data are externally accessible to allow for visualization tools, such as software maps. The effort to integrate our approach is limited to enabling the analysis component within a project\u2019s CI on GitHub and embed an HTML snippet into the project\u2019s website for visualization. This enables a large amount of projects to have access to software analysis as well as provide means to communicate the current status of a project."
+        },
+        {
+            "paperId": "706fc333fc951f48ea26169d88478b5e4c36e82c",
+            "url": "https://www.semanticscholar.org/paper/706fc333fc951f48ea26169d88478b5e4c36e82c",
+            "title": "InstructExcel: A Benchmark for Natural Language Instruction in Excel",
+            "venue": "Conference on Empirical Methods in Natural Language Processing",
+            "year": 2023,
+            "citationCount": 22,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2310.14495, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2279043150",
+                    "name": "Justin Payan"
+                },
+                {
+                    "authorId": "1817207",
+                    "name": "Swaroop Mishra"
+                },
+                {
+                    "authorId": "2134941824",
+                    "name": "Mukul Singh"
+                },
+                {
+                    "authorId": "2262217842",
+                    "name": "Carina Negreanu"
+                },
+                {
+                    "authorId": "2028516",
+                    "name": "Christian P\u00f6litz"
+                },
+                {
+                    "authorId": "2064619864",
+                    "name": "Chitta Baral"
+                },
+                {
+                    "authorId": "2109961337",
+                    "name": "Subhro Roy"
+                },
+                {
+                    "authorId": "120801503",
+                    "name": "Rasika Chakravarthy"
+                },
+                {
+                    "authorId": "2407046051",
+                    "name": "Benjamin Van Durme"
+                },
+                {
+                    "authorId": "2074997",
+                    "name": "E. Nouri"
+                }
+            ],
+            "abstract": "With the evolution of Large Language Models (LLMs) we can solve increasingly more complex NLP tasks across various domains, including spreadsheets. This work investigates whether LLMs can generate code (Excel OfficeScripts, a TypeScript API for executing many tasks in Excel) that solves Excel specific tasks provided via natural language user instructions. To do so we introduce a new large-scale benchmark, InstructExcel, created by leveraging the 'Automate' feature in Excel to automatically generate OfficeScripts from users' actions. Our benchmark includes over 10k samples covering 170+ Excel operations across 2,000 publicly available Excel spreadsheets. Experiments across various zero-shot and few-shot settings show that InstructExcel is a hard benchmark for state of the art models like GPT-4. We observe that (1) using GPT-4 over GPT-3.5, (2) providing more in-context examples, and (3) dynamic prompting can help improve performance on this benchmark."
+        },
+        {
+            "paperId": "6675906c0078092ea404ee26a4efdd11ebfbffdc",
+            "url": "https://www.semanticscholar.org/paper/6675906c0078092ea404ee26a4efdd11ebfbffdc",
+            "title": "Dynamic Human-in-the-Loop Assertion Generation",
+            "venue": "IEEE Transactions on Software Engineering",
+            "year": 2023,
+            "citationCount": 22,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/TSE.2022.3217544?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/TSE.2022.3217544, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2028211848",
+                    "name": "Lucas Zamprogno"
+                },
+                {
+                    "authorId": "121845222",
+                    "name": "Braxton Hall"
+                },
+                {
+                    "authorId": "1789705",
+                    "name": "Reid Holmes"
+                },
+                {
+                    "authorId": "1790391",
+                    "name": "J. Atlee"
+                }
+            ],
+            "abstract": "Test cases use assertions to check program behaviour. While these assertions may not be complex, they are themselves code that must be written correctly in order to determine whether a test case should pass or fail. We claim that most test assertions are relatively repetitive and straight-forward, making their construction well suited to automation and that this automation can reduce developer effort while improving assertion quality. Examining 33,873 assertions from 105 projects revealed that developer-written assertions fall into twelve high-level categories, confirming that the vast majority (<inline-formula><tex-math notation=\"LaTeX\">$>$</tex-math><alternatives><mml:math><mml:mo>></mml:mo></mml:math><inline-graphic xlink:href=\"holmes-ieq1-3217544.gif\"/></alternatives></inline-formula>90%) of test assertions are fairly simple in practice. We created AutoAssert, a human-in-the-loop tool to fit naturally into a developer's test-writing workflow by automatically generating assertions for JavaScript and TypeScript test cases. A developer invokes AutoAssert by identifying the variable they want validated; AutoAssert uses dynamic analysis to generate assertions relevant for this variable and its runtime values, injecting the assertions into the test case for the developer to accept, modify, delete. Comparing AutoAssert's assertions to those written by developers, we found that the assertions generated by AutoAssert are the same kind of assertion as was written by developers 84% of the time in a sample of over 1,000 assertions. Additionally we validated the utility of AutoAssert-generated assertions with 17 developers who found the majority of generated assertions to be useful and expressed considerable interest in using such a tool for their own projects."
+        }
+    ]
+}

@@ -1,0 +1,3109 @@
+{
+    "total": 35935,
+    "offset": 0,
+    "next": 50,
+    "data": [
+        {
+            "paperId": "4f7d1e04c9d30ce12df3e085d10d70997e6ea1a5",
+            "url": "https://www.semanticscholar.org/paper/4f7d1e04c9d30ce12df3e085d10d70997e6ea1a5",
+            "title": "The human genome browser at UCSC.",
+            "venue": "Genome Research",
+            "year": 2002,
+            "citationCount": 10629,
+            "openAccessPdf": {
+                "url": "https://genome.cshlp.org/content/12/6/996.full.pdf",
+                "status": "BRONZE",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1101/GR.229102?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1101/GR.229102, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                },
+                {
+                    "authorId": "2070640",
+                    "name": "C. Sugnet"
+                },
+                {
+                    "authorId": "1716986",
+                    "name": "T. Furey"
+                },
+                {
+                    "authorId": "2295905430",
+                    "name": "Krishna M. Roskin"
+                },
+                {
+                    "authorId": "47077632",
+                    "name": "T. Pringle"
+                },
+                {
+                    "authorId": "3018206",
+                    "name": "A. Zahler"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                }
+            ],
+            "abstract": "As vertebrate genome sequences near completion and research refocuses to their analysis, the issue of effective genome annotation display becomes critical. A mature web tool for rapid and reliable display of any requested portion of the genome at any scale, together with several dozen aligned annotation tracks, is provided at http://genome.ucsc.edu. This browser displays assembly contigs and gaps, mRNA and expressed sequence tag alignments, multiple gene predictions, cross-species homologies, single nucleotide polymorphisms, sequence-tagged sites, radiation hybrid data, transposon repeats, and more as a stack of coregistered tracks. Text and sequence-based searches provide quick and precise access to any region of specific interest. Secondary links from individual features lead to sequence details and supplementary off-site databases. One-half of the annotation tracks are computed at the University of California, Santa Cruz from publicly available sequence data; collaborators worldwide provide the rest. Users can stably add their own custom tracks to the browser for educational or research purposes. The conceptual and technical framework of the browser, its underlying MYSQL database, and overall use are described. The web site currently serves over 50,000 pages per day to over 3000 different users."
+        },
+        {
+            "paperId": "2f3efe44083af91cef562c1a3451eee2f8601d22",
+            "url": "https://www.semanticscholar.org/paper/2f3efe44083af91cef562c1a3451eee2f8601d22",
+            "title": "WebGPT: Browser-assisted question-answering with human feedback",
+            "venue": "arXiv.org",
+            "year": 2021,
+            "citationCount": 2127,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2112.09332, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "7406311",
+                    "name": "Reiichiro Nakano"
+                },
+                {
+                    "authorId": "2052366271",
+                    "name": "Jacob Hilton"
+                },
+                {
+                    "authorId": "2054519183",
+                    "name": "S. Balaji"
+                },
+                {
+                    "authorId": "49387725",
+                    "name": "Jeff Wu"
+                },
+                {
+                    "authorId": "31793034",
+                    "name": "Long Ouyang"
+                },
+                {
+                    "authorId": "2149054292",
+                    "name": "Christina Kim"
+                },
+                {
+                    "authorId": "144239765",
+                    "name": "Christopher Hesse"
+                },
+                {
+                    "authorId": "150298413",
+                    "name": "Shantanu Jain"
+                },
+                {
+                    "authorId": "13622184",
+                    "name": "V. Kosaraju"
+                },
+                {
+                    "authorId": "2058848938",
+                    "name": "W. Saunders"
+                },
+                {
+                    "authorId": "2115903168",
+                    "name": "Xu Jiang"
+                },
+                {
+                    "authorId": "6062736",
+                    "name": "K. Cobbe"
+                },
+                {
+                    "authorId": "2146257131",
+                    "name": "Tyna Eloundou"
+                },
+                {
+                    "authorId": "2064404342",
+                    "name": "G. Krueger"
+                },
+                {
+                    "authorId": "2146257251",
+                    "name": "Kevin Button"
+                },
+                {
+                    "authorId": "2146257375",
+                    "name": "Matthew Knight"
+                },
+                {
+                    "authorId": "1490681878",
+                    "name": "Benjamin Chess"
+                },
+                {
+                    "authorId": "47971768",
+                    "name": "John D. Schulman"
+                }
+            ],
+            "abstract": "We fine-tune GPT-3 to answer long-form questions using a text-based web-browsing environment, which allows the model to search and navigate the web. By setting up the task so that it can be performed by humans, we are able to train models on the task using imitation learning, and then optimize answer quality with human feedback. To make human evaluation of factual accuracy easier, models must collect references while browsing in support of their answers. We train and evaluate our models on ELI5, a dataset of questions asked by Reddit users. Our best model is obtained by fine-tuning GPT-3 using behavior cloning, and then performing rejection sampling against a reward model trained to predict human preferences. This model's answers are preferred by humans 56% of the time to those of our human demonstrators, and 69% of the time to the highest-voted answer from Reddit."
+        },
+        {
+            "paperId": "1681e8a30e1418ee830fad23a41aca147007ad8c",
+            "url": "https://www.semanticscholar.org/paper/1681e8a30e1418ee830fad23a41aca147007ad8c",
+            "title": "The UCSC Genome Browser database: 2025 update",
+            "venue": "Nucleic Acids Research",
+            "year": 2024,
+            "citationCount": 557,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/53/D1/D1243/60120664/gkae974.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC11701590, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2058976517",
+                    "name": "Gerardo Perez"
+                },
+                {
+                    "authorId": "2227166184",
+                    "name": "Galt P. Barber"
+                },
+                {
+                    "authorId": "2078304529",
+                    "name": "Anna Benet-Pag\u00e8s"
+                },
+                {
+                    "authorId": "2054480233",
+                    "name": "J. Casper"
+                },
+                {
+                    "authorId": "2227165442",
+                    "name": "Hiram Clawson"
+                },
+                {
+                    "authorId": "2088906174",
+                    "name": "Mark Diekhans"
+                },
+                {
+                    "authorId": "153238913",
+                    "name": "Clay Fischer"
+                },
+                {
+                    "authorId": "115487091",
+                    "name": "Jairo Navarro Gonzalez"
+                },
+                {
+                    "authorId": "2227165464",
+                    "name": "Angie S. Hinrichs"
+                },
+                {
+                    "authorId": "96930029",
+                    "name": "Christopher M. Lee"
+                },
+                {
+                    "authorId": "1400938280",
+                    "name": "Luis R. Nassar"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "2327257",
+                    "name": "M. V. van Baren"
+                },
+                {
+                    "authorId": "1878088",
+                    "name": "Charles J. Vaske"
+                },
+                {
+                    "authorId": "2237647760",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "113370706",
+                    "name": "W. Kent"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                }
+            ],
+            "abstract": "Abstract The UCSC Genome Browser (https://genome.ucsc.edu) is a widely utilized web-based tool for visualization and analysis of genomic data, encompassing over 4000 assemblies from diverse organisms. Since its release in 2001, it has become an essential resource for genomics and bioinformatics research. Annotation data available on Genome Browser includes both internally created and maintained tracks as well as custom tracks and track hubs provided by the research community. This last year's updates include over 25 new annotation tracks such as the gnomAD 4.1 track on the human GRCh38/hg38 assembly, the addition of three new public hubs, and significant expansions to the Genome Archive[GenArk) system for interacting with the enormous variety of assemblies. We have also made improvements to our interface, including updates to the browser graphic page, such as a new popup dialog feature that now displays item details without requiring navigation away from the main Genome Browser page. GenePred tracks have been upgraded with right-click options for zooming and precise navigation, along with enhanced mouseOver functions. Additional improvements include a new grouping feature for track hubs and hub description info links. A new tutorial focusing on Clinical Genetics has also been added to the UCSC Genome Browser."
+        },
+        {
+            "paperId": "73bb64ec0f1541e58e668845334f14c58d5f79a6",
+            "url": "https://www.semanticscholar.org/paper/73bb64ec0f1541e58e668845334f14c58d5f79a6",
+            "title": "Refusal-Trained LLMs Are Easily Jailbroken As Browser Agents",
+            "venue": "arXiv.org",
+            "year": 2024,
+            "citationCount": 76,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2410.13886, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2326841682",
+                    "name": "Priyanshu Kumar"
+                },
+                {
+                    "authorId": "2263519562",
+                    "name": "Elaine Lau"
+                },
+                {
+                    "authorId": "2203247479",
+                    "name": "Saranya Vijayakumar"
+                },
+                {
+                    "authorId": "2326838876",
+                    "name": "Tu Trinh"
+                },
+                {
+                    "authorId": "2326840001",
+                    "name": "Scale Red Team"
+                },
+                {
+                    "authorId": "2326839808",
+                    "name": "Elaine T. Chang"
+                },
+                {
+                    "authorId": "2299153561",
+                    "name": "Vaughn Robinson"
+                },
+                {
+                    "authorId": "2265402399",
+                    "name": "Sean M. Hendryx"
+                },
+                {
+                    "authorId": "2326909982",
+                    "name": "Shuyan Zhou"
+                },
+                {
+                    "authorId": "2623167",
+                    "name": "Matt Fredrikson"
+                },
+                {
+                    "authorId": "2290014338",
+                    "name": "Summer Yue"
+                },
+                {
+                    "authorId": "2317036962",
+                    "name": "Zifan Wang"
+                }
+            ],
+            "abstract": "For safety reasons, large language models (LLMs) are trained to refuse harmful user instructions, such as assisting dangerous activities. We study an open question in this work: does the desired safety refusal, typically enforced in chat contexts, generalize to non-chat and agentic use cases? Unlike chatbots, LLM agents equipped with general-purpose tools, such as web browsers and mobile devices, can directly influence the real world, making it even more crucial to refuse harmful instructions. In this work, we primarily focus on red-teaming browser agents, LLMs that manipulate information via web browsers. To this end, we introduce Browser Agent Red teaming Toolkit (BrowserART), a comprehensive test suite designed specifically for red-teaming browser agents. BrowserART is consist of 100 diverse browser-related harmful behaviors (including original behaviors and ones sourced from HarmBench [Mazeika et al., 2024] and AirBench 2024 [Zeng et al., 2024b]) across both synthetic and real websites. Our empirical study on state-of-the-art browser agents reveals that, while the backbone LLM refuses harmful instructions as a chatbot, the corresponding agent does not. Moreover, attack methods designed to jailbreak refusal-trained LLMs in the chat settings transfer effectively to browser agents. With human rewrites, GPT-4o and o1-preview-based browser agents attempted 98 and 63 harmful behaviors (out of 100), respectively. We publicly release BrowserART and call on LLM developers, policymakers, and agent developers to collaborate on improving agent safety"
+        },
+        {
+            "paperId": "bdf66b618ec636ea4807091af5083231e946e243",
+            "url": "https://www.semanticscholar.org/paper/bdf66b618ec636ea4807091af5083231e946e243",
+            "title": "The UCSC Genome Browser database: 2024 update",
+            "venue": "Nucleic Acids Research",
+            "year": 2023,
+            "citationCount": 235,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/advance-article-pdf/doi/10.1093/nar/gkad987/53343570/gkad987.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC10767968, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "2227166184",
+                    "name": "Galt P. Barber"
+                },
+                {
+                    "authorId": "2078304529",
+                    "name": "Anna Benet-Pag\u00e8s"
+                },
+                {
+                    "authorId": "2054480233",
+                    "name": "J. Casper"
+                },
+                {
+                    "authorId": "2227165442",
+                    "name": "Hiram Clawson"
+                },
+                {
+                    "authorId": "2280329679",
+                    "name": "Melissa S. Cline"
+                },
+                {
+                    "authorId": "2088906172",
+                    "name": "Mark Diekhans"
+                },
+                {
+                    "authorId": "153238913",
+                    "name": "Clay Fischer"
+                },
+                {
+                    "authorId": "1682235904",
+                    "name": "Jairo Navarro Gonzalez"
+                },
+                {
+                    "authorId": "48182379",
+                    "name": "G. Hickey"
+                },
+                {
+                    "authorId": "2227165464",
+                    "name": "Angie S. Hinrichs"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "31082793",
+                    "name": "Brian T. Lee"
+                },
+                {
+                    "authorId": "96930029",
+                    "name": "Christopher M. Lee"
+                },
+                {
+                    "authorId": "8926744",
+                    "name": "Philippe le Mercier"
+                },
+                {
+                    "authorId": "2657340",
+                    "name": "K. Miga"
+                },
+                {
+                    "authorId": "1400938280",
+                    "name": "Luis R. Nassar"
+                },
+                {
+                    "authorId": "2092653842",
+                    "name": "P. Nejad"
+                },
+                {
+                    "authorId": "2227165519",
+                    "name": "Benedict Paten"
+                },
+                {
+                    "authorId": "2139967149",
+                    "name": "Gerardo Perez"
+                },
+                {
+                    "authorId": "1402950943",
+                    "name": "Daniel Schmelter"
+                },
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "1382603585",
+                    "name": "B. Wick"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "2064098780",
+                    "name": "David Haussler"
+                },
+                {
+                    "authorId": "113370706",
+                    "name": "W. Kent"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                }
+            ],
+            "abstract": "Abstract The UCSC Genome Browser (https://genome.ucsc.edu) is a web-based genomic visualization and analysis tool that serves data to over 7,000 distinct users per day worldwide. It provides annotation data on thousands of genome assemblies, ranging from human to SARS-CoV2. This year, we have introduced new data from the Human Pangenome Reference Consortium and on viral genomes including SARS-CoV2. We have added 1,200 new genomes to our GenArk genome system, increasing the overall diversity of our genomic representation. We have added support for nine new user-contributed track hubs to our public hub system. Additionally, we have released 29 new tracks on the human genome and 11 new tracks on the mouse genome. Collectively, these new features expand both the breadth and depth of the genomic knowledge that we share publicly with users worldwide."
+        },
+        {
+            "paperId": "148c212eaea8741972ef15beda8252ec5d966e64",
+            "url": "https://www.semanticscholar.org/paper/148c212eaea8741972ef15beda8252ec5d966e64",
+            "title": "JBrowse 2: a modular genome browser with views of synteny and structural variation",
+            "venue": "bioRxiv",
+            "year": 2022,
+            "citationCount": 799,
+            "openAccessPdf": {
+                "url": "https://genomebiology.biomedcentral.com/counter/pdf/10.1186/s13059-023-02914-z",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC10108523, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2525378",
+                    "name": "Colin M. Diesh"
+                },
+                {
+                    "authorId": "2117294439",
+                    "name": "Garrett J Stevens"
+                },
+                {
+                    "authorId": "2117266805",
+                    "name": "Peter Xie"
+                },
+                {
+                    "authorId": null,
+                    "name": "Teresa De Jesus Martinez"
+                },
+                {
+                    "authorId": "1647227206",
+                    "name": "Elliot A. Hershberg"
+                },
+                {
+                    "authorId": "2390210981",
+                    "name": "Angela M. Leung"
+                },
+                {
+                    "authorId": "2165577442",
+                    "name": "Emma Guo"
+                },
+                {
+                    "authorId": "122889952",
+                    "name": "S. Dider"
+                },
+                {
+                    "authorId": "49051047",
+                    "name": "Junjun Zhang"
+                },
+                {
+                    "authorId": "2165577435",
+                    "name": "Caroline Bridge"
+                },
+                {
+                    "authorId": "2091836053",
+                    "name": "Gregory Hogue"
+                },
+                {
+                    "authorId": "2053241302",
+                    "name": "Andrew G. Duncan"
+                },
+                {
+                    "authorId": "2238260068",
+                    "name": "Matthew L. Morgan"
+                },
+                {
+                    "authorId": "2180410899",
+                    "name": "Tia Flores"
+                },
+                {
+                    "authorId": "5913056",
+                    "name": "B. Bimber"
+                },
+                {
+                    "authorId": "2358245",
+                    "name": "R. Haw"
+                },
+                {
+                    "authorId": "39424226",
+                    "name": "S. Cain"
+                },
+                {
+                    "authorId": "49917397",
+                    "name": "R. Buels"
+                },
+                {
+                    "authorId": "2065680399",
+                    "name": "Lincoln D. Stein"
+                },
+                {
+                    "authorId": "145233347",
+                    "name": "Ian H. Holmes"
+                }
+            ],
+            "abstract": "We present JBrowse 2, a general-purpose genome annotation browser offering enhanced visualization of complex structural variation and evolutionary relationships. It retains core features of JBrowse while adding new views for synteny, dotplots, breakpoints, gene fusions, and whole-genome overviews. It allows users to share sessions, open multiple genomes, and navigate between views. It can be embedded in a web page, used as a standalone application, or run from Jupyter notebooks or R sessions. These improvements are enabled by a ground-up redesign using modern web technology. We describe application functionality, use cases, performance benchmarks, and implementation notes for web administrators and developers."
+        },
+        {
+            "paperId": "74163c1216afb4e0017f4905347dcc4ca7c942b7",
+            "url": "https://www.semanticscholar.org/paper/74163c1216afb4e0017f4905347dcc4ca7c942b7",
+            "title": "The UCSC Genome Browser database: 2023 update",
+            "venue": "Nucleic Acids Res.",
+            "year": 2022,
+            "citationCount": 483,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/51/D1/D1188/48441150/gkac1072.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC9825520, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1400938280",
+                    "name": "Luis R. Nassar"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "2078304529",
+                    "name": "Anna Benet-Pag\u00e8s"
+                },
+                {
+                    "authorId": "2054480233",
+                    "name": "J. Casper"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "153238913",
+                    "name": "Clay Fischer"
+                },
+                {
+                    "authorId": "115487091",
+                    "name": "Jairo Navarro Gonzalez"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "31082793",
+                    "name": "Brian T. Lee"
+                },
+                {
+                    "authorId": "96930029",
+                    "name": "Christopher M. Lee"
+                },
+                {
+                    "authorId": "2136891737",
+                    "name": "Pranav Muthuraman"
+                },
+                {
+                    "authorId": "2136887943",
+                    "name": "Beagan Nguy"
+                },
+                {
+                    "authorId": "2136712913",
+                    "name": "Tiana Pereira"
+                },
+                {
+                    "authorId": "145971508",
+                    "name": "Parisa Nejad"
+                },
+                {
+                    "authorId": "2139967149",
+                    "name": "Gerardo Perez"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "1402950943",
+                    "name": "Daniel Schmelter"
+                },
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "1382603585",
+                    "name": "B. Wick"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "2237647760",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                },
+                {
+                    "authorId": "113370706",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "Abstract The UCSC Genome Browser (https://genome.ucsc.edu) is an omics data consolidator, graphical viewer, and general bioinformatics resource that continues to serve the community as it enters its 23rd year. This year has seen an emphasis in clinical data, with new tracks and an expanded Recommended Track Sets feature on hg38 as well as the addition of a single cell track group. SARS-CoV-2 continues to remain a focus, with regular annotation updates to the browser and continued curation of our phylogenetic sequence placing tool, hgPhyloPlace, whose tree has now reached over 12M sequences. Our GenArk resource has also grown, offering over 2500 hubs and a system for users to request any absent assemblies. We have expanded our bigBarChart display type and created new ways to visualize data via bigRmsk and dynseq display. Displaying custom annotations is now easier due to our chromAlias system which eliminates the requirement for renaming sequence names to the UCSC standard. Users involved in data generation may also be interested in our new tools and trackDb settings which facilitate the creation and display of their custom annotations."
+        },
+        {
+            "paperId": "f83f76c648359efd9b70171ba1ae69065cc1aaf4",
+            "url": "https://www.semanticscholar.org/paper/f83f76c648359efd9b70171ba1ae69065cc1aaf4",
+            "title": "An \u201cElectronic Fluorescent Pictograph\u201d Browser for Exploring and Analyzing Large-Scale Biological Data Sets",
+            "venue": "PLoS ONE",
+            "year": 2007,
+            "citationCount": 2639,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.1371/journal.pone.0000718",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC1934936, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2068599355",
+                    "name": "D. Winter"
+                },
+                {
+                    "authorId": "5234434",
+                    "name": "Ben Vinegar"
+                },
+                {
+                    "authorId": "6903900",
+                    "name": "Hardeep Nahal"
+                },
+                {
+                    "authorId": "123961195",
+                    "name": "R. Ammar"
+                },
+                {
+                    "authorId": "2070346691",
+                    "name": "Greg V. Wilson"
+                },
+                {
+                    "authorId": "143710560",
+                    "name": "N. Provart"
+                }
+            ],
+            "abstract": "Background The exploration of microarray data and data from other high-throughput projects for hypothesis generation has become a vital aspect of post-genomic research. For the non-bioinformatics specialist, however, many of the currently available tools provide overwhelming amounts of data that are presented in a non-intuitive way. Methodology/Principal Findings In order to facilitate the interpretation and analysis of microarray data and data from other large-scale data sets, we have developed a tool, which we have dubbed the electronic Fluorescent Pictograph \u2013 or eFP \u2013 Browser, available at http://www.bar.utoronto.ca/, for exploring microarray and other data for hypothesis generation. This eFP Browser engine paints data from large-scale data sets onto pictographic representations of the experimental samples used to generate the data sets. We give examples of using the tool to present Arabidopsis gene expression data from the AtGenExpress Consortium (Arabidopsis eFP Browser), data for subcellular localization of Arabidopsis proteins (Cell eFP Browser), and mouse tissue atlas microarray data (Mouse eFP Browser). Conclusions/Significance The eFP Browser software is easily adaptable to microarray or other large-scale data sets from any organism and thus should prove useful to a wide community for visualizing and interpreting these data sets for hypothesis generation."
+        },
+        {
+            "paperId": "d474f3dae01847a98c06c849ec2a01482bff23b4",
+            "url": "https://www.semanticscholar.org/paper/d474f3dae01847a98c06c849ec2a01482bff23b4",
+            "title": "The UCSC Table Browser data retrieval tool",
+            "venue": "Nucleic Acids Res.",
+            "year": 2004,
+            "citationCount": 2415,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/32/suppl_1/D493/7621914/gkh103.pdf",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1093/nar/gkh103?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1093/nar/gkh103, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2411905",
+                    "name": "Donna Karolchik"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "1716986",
+                    "name": "T. Furey"
+                },
+                {
+                    "authorId": "2295905430",
+                    "name": "Krishna M. Roskin"
+                },
+                {
+                    "authorId": "2070640",
+                    "name": "C. Sugnet"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "8a77adf1bde82647db55126513053b5c4021e3e0",
+            "url": "https://www.semanticscholar.org/paper/8a77adf1bde82647db55126513053b5c4021e3e0",
+            "title": "Interactive metagenomic visualization in a Web browser",
+            "venue": "BMC Bioinformatics",
+            "year": 2011,
+            "citationCount": 2026,
+            "openAccessPdf": {
+                "url": "https://bmcbioinformatics.biomedcentral.com/counter/pdf/10.1186/1471-2105-12-385",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC3190407, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "3144024",
+                    "name": "Brian D. Ondov"
+                },
+                {
+                    "authorId": "2726716",
+                    "name": "N. Bergman"
+                },
+                {
+                    "authorId": "2468566",
+                    "name": "A. Phillippy"
+                }
+            ],
+            "abstract": "BackgroundA critical output of metagenomic studies is the estimation of abundances of taxonomical or functional groups. The inherent uncertainty in assignments to these groups makes it important to consider both their hierarchical contexts and their prediction confidence. The current tools for visualizing metagenomic data, however, omit or distort quantitative hierarchical relationships and lack the facility for displaying secondary variables.ResultsHere we present Krona, a new visualization tool that allows intuitive exploration of relative abundances and confidences within the complex hierarchies of metagenomic classifications. Krona combines a variant of radial, space-filling displays with parametric coloring and interactive polar-coordinate zooming. The HTML5 and JavaScript implementation enables fully interactive charts that can be explored with any modern Web browser, without the need for installed software or plug-ins. This Web-based architecture also allows each chart to be an independent document, making them easy to share via e-mail or post to a standard Web server. To illustrate Krona's utility, we describe its application to various metagenomic data sets and its compatibility with popular metagenomic analysis tools.ConclusionsKrona is both a powerful metagenomic visualization tool and a demonstration of the potential of HTML5 for highly accessible bioinformatic visualizations. Its rich and interactive displays facilitate more informed interpretations of metagenomic analyses, while its implementation as a browser-based application makes it extremely portable and easily adopted into existing analysis packages. Both the Krona rendering code and conversion tools are freely available under a BSD open-source license, and available from: http://krona.sourceforge.net."
+        },
+        {
+            "paperId": "186de699670b7b121077cf2129c9b8a508d4d159",
+            "url": "https://www.semanticscholar.org/paper/186de699670b7b121077cf2129c9b8a508d4d159",
+            "title": "The UCSC Genome Browser database: 2021 update",
+            "venue": "Nucleic Acids Res.",
+            "year": 2020,
+            "citationCount": 444,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/49/D1/D1046/35364254/gkaa1070.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC7779060, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1682235904",
+                    "name": "Jairo Navarro Gonzalez"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "1402950943",
+                    "name": "Daniel Schmelter"
+                },
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "1401102986",
+                    "name": "Conner C. Powell"
+                },
+                {
+                    "authorId": "1400938280",
+                    "name": "Luis R. Nassar"
+                },
+                {
+                    "authorId": "1953032873",
+                    "name": "Nathan D Maulding"
+                },
+                {
+                    "authorId": "96930029",
+                    "name": "Christopher M. Lee"
+                },
+                {
+                    "authorId": "31082793",
+                    "name": "Brian T. Lee"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "2688264",
+                    "name": "A. Fyfe"
+                },
+                {
+                    "authorId": "40418049",
+                    "name": "Jason D. Fernandes"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "2054480233",
+                    "name": "J. Casper"
+                },
+                {
+                    "authorId": "2078304529",
+                    "name": "Anna Benet-Pag\u00e8s"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                },
+                {
+                    "authorId": "113370706",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "Abstract For more than two decades, the UCSC Genome Browser database (https://genome.ucsc.edu) has provided high-quality genomics data visualization and genome annotations to the research community. As the field of genomics grows and more data become available, new modes of display are required to accommodate new technologies. New features released this past year include a Hi-C heatmap display, a phased family trio display for VCF files, and various track visualization improvements. Striving to keep data up-to-date, new updates to gene annotations include GENCODE Genes, NCBI RefSeq Genes, and Ensembl Genes. New data tracks added for human and mouse genomes include the ENCODE registry of candidate cis-regulatory elements, promoters from the Eukaryotic Promoter Database, and NCBI RefSeq Select and Matched Annotation from NCBI and EMBL-EBI (MANE). Within weeks of learning about the outbreak of coronavirus, UCSC released a genome browser, with detailed annotation tracks, for the SARS-CoV-2 RNA reference assembly."
+        },
+        {
+            "paperId": "e049bd1ef18a0f1cdb45477d957393cf9ef41c6d",
+            "url": "https://www.semanticscholar.org/paper/e049bd1ef18a0f1cdb45477d957393cf9ef41c6d",
+            "title": "The UCSC Genome Browser Database",
+            "venue": "Nucleic Acids Res.",
+            "year": 2003,
+            "citationCount": 2236,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/31/1/51/7128464/gkg129.pdf",
+                "status": "HYBRID",
+                "license": "public-domain",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1093/NAR/GKG129?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1093/NAR/GKG129, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2411905",
+                    "name": "Donna Karolchik"
+                },
+                {
+                    "authorId": "2396792",
+                    "name": "R. Baertsch"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "1716986",
+                    "name": "T. Furey"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "2181919",
+                    "name": "Yontao Lu"
+                },
+                {
+                    "authorId": "2295905430",
+                    "name": "Krishna M. Roskin"
+                },
+                {
+                    "authorId": "48351507",
+                    "name": "M. Schwartz"
+                },
+                {
+                    "authorId": "2070640",
+                    "name": "C. Sugnet"
+                },
+                {
+                    "authorId": "2111204587",
+                    "name": "Daryl J. Thomas"
+                },
+                {
+                    "authorId": "144153846",
+                    "name": "R. Weber"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "The University of California Santa Cruz (UCSC) Genome Browser Database is an up to date source for genome sequence data integrated with a large collection of related annotations. The database is optimized to support fast interactive performance with the web-based UCSC Genome Browser, a tool built on top of the database for rapid visualization and querying of the data at many levels. The annotations for a given genome are displayed in the browser as a series of tracks aligned with the genomic sequence. Sequence data and annotations may also be viewed in a text-based tabular format or downloaded as tab-delimited flat files. The Genome Browser Database, browsing tools and downloadable data files can all be found on the UCSC Genome Bioinformatics website (http://genome.ucsc.edu), which also contains links to documentation and related technical information."
+        },
+        {
+            "paperId": "d7045d3d7c6afa9e54fc9e8bd42f12321e5d17f2",
+            "url": "https://www.semanticscholar.org/paper/d7045d3d7c6afa9e54fc9e8bd42f12321e5d17f2",
+            "title": "Cistrome Data Browser: expanded datasets and new tools for gene regulatory analysis",
+            "venue": "Nucleic Acids Res.",
+            "year": 2018,
+            "citationCount": 757,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/47/D1/D729/27437604/gky1094.pdf",
+                "status": "GOLD",
+                "license": "CCBYNC",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC6324081, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "143771041",
+                    "name": "Rongbin Zheng"
+                },
+                {
+                    "authorId": "48635700",
+                    "name": "Chang-Xin Wan"
+                },
+                {
+                    "authorId": "33972657",
+                    "name": "S. Mei"
+                },
+                {
+                    "authorId": "48576204",
+                    "name": "Qian Qin"
+                },
+                {
+                    "authorId": "2108707370",
+                    "name": "Qiu Wu"
+                },
+                {
+                    "authorId": "2000465",
+                    "name": "Hanfei Sun"
+                },
+                {
+                    "authorId": "5365482",
+                    "name": "Chenhao Chen"
+                },
+                {
+                    "authorId": "2110721759",
+                    "name": "Myles A. Brown"
+                },
+                {
+                    "authorId": "2155168653",
+                    "name": "Xiaoyan Zhang"
+                },
+                {
+                    "authorId": "40416253",
+                    "name": "Clifford A. Meyer"
+                },
+                {
+                    "authorId": "1410262009",
+                    "name": "X. Liu"
+                }
+            ],
+            "abstract": "Abstract The Cistrome Data Browser (DB) is a resource of human and mouse cis-regulatory information derived from ChIP-seq, DNase-seq and ATAC-seq chromatin profiling assays, which map the genome-wide locations of transcription factor binding sites, histone post-translational modifications and regions of chromatin accessible to endonuclease activity. Currently, the Cistrome DB contains approximately 47,000 human and mouse samples with about 24,000 newly collected datasets compared to the previous release two years ago. Furthermore, the Cistrome DB has a new Toolkit module with several features that allow users to better utilize the large-scale ChIP-seq, DNase-seq, and ATAC-seq data. First, users can query the factors which are likely to regulate a specific gene of interest. Second, the Cistrome DB Toolkit facilitates searches for factor binding, histone modifications, and chromatin accessibility in any given genomic interval shorter than 2Mb. Third, the Toolkit can determine the most similar ChIP-seq, DNase-seq, and ATAC-seq samples in terms of genomic interval overlaps with user-provided genomic interval sets. The Cistrome DB is a user-friendly, up-to-date, and well maintained resource, and the new tools will greatly benefit the biomedical research community. The database is freely available at http://cistrome.org/db, and the Toolkit is at http://dbtoolkit.cistrome.org."
+        },
+        {
+            "paperId": "e2ee014ca2c182585d8b3fc61e97141fe0a78a61",
+            "url": "https://www.semanticscholar.org/paper/e2ee014ca2c182585d8b3fc61e97141fe0a78a61",
+            "title": "The UCSC Genome Browser database: 2019 update",
+            "venue": "Nucleic Acids Res.",
+            "year": 2018,
+            "citationCount": 700,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/47/D1/D853/27437634/gky1095.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC6323953, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "39541036",
+                    "name": "Cath Tyner"
+                },
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "96930029",
+                    "name": "Christopher M. Lee"
+                },
+                {
+                    "authorId": "31082793",
+                    "name": "Brian T. Lee"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "115487091",
+                    "name": "Jairo Navarro Gonzalez"
+                },
+                {
+                    "authorId": "2060104516",
+                    "name": "David Gibson"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "2054480233",
+                    "name": "J. Casper"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "Abstract The UCSC Genome Browser (https://genome.ucsc.edu) is a graphical viewer for exploring genome annotations. For almost two decades, the Browser has provided visualization tools for genetics and molecular biology and continues to add new data and features. This year, we added a new tool that lets users interactively arrange existing graphing tracks into new groups. Other software additions include new formats for chromosome interactions, a ChIP-Seq peak display for track hubs and improved support for HGVS. On the annotation side, we have added gnomAD, TCGA expression, RefSeq Functional elements, GTEx eQTLs, CRISPR Guides, SNPpedia and created a 30-way primate alignment on the human genome. Nine assemblies now have RefSeq-mapped gene models."
+        },
+        {
+            "paperId": "1fcf323ff79c46b401e7a3d8510f50da17073cb8",
+            "url": "https://www.semanticscholar.org/paper/1fcf323ff79c46b401e7a3d8510f50da17073cb8",
+            "title": "The UCSC Genome Browser Database: update 2006",
+            "venue": "Nucleic Acids Res.",
+            "year": 2005,
+            "citationCount": 2071,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/34/suppl_1/D590/3926288/gkj144.pdf",
+                "status": "GOLD",
+                "license": "other-oa",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC1347506, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "2411905",
+                    "name": "Donna Karolchik"
+                },
+                {
+                    "authorId": "2396792",
+                    "name": "R. Baertsch"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "2455381",
+                    "name": "G. Bejerano"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "1716986",
+                    "name": "T. Furey"
+                },
+                {
+                    "authorId": "1928061",
+                    "name": "R. Harte"
+                },
+                {
+                    "authorId": "39142825",
+                    "name": "F. Hsu"
+                },
+                {
+                    "authorId": "1403795435",
+                    "name": "Jennifer Hillman-Jackson"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "2881822",
+                    "name": "J. S. Pedersen"
+                },
+                {
+                    "authorId": "38913964",
+                    "name": "Andy Pohl"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "1710055",
+                    "name": "A. Siepel"
+                },
+                {
+                    "authorId": "2761344",
+                    "name": "Kayla E. Smith"
+                },
+                {
+                    "authorId": "2070640",
+                    "name": "C. Sugnet"
+                },
+                {
+                    "authorId": "1422540131",
+                    "name": "A. Sultan-Qurraie"
+                },
+                {
+                    "authorId": "2111204587",
+                    "name": "Daryl J. Thomas"
+                },
+                {
+                    "authorId": "1887224",
+                    "name": "Heather Trumbower"
+                },
+                {
+                    "authorId": "144153846",
+                    "name": "R. Weber"
+                },
+                {
+                    "authorId": "2671552",
+                    "name": "M. Weirauch"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "The University of California Santa Cruz Genome Browser Database (GBD) contains sequence and annotation data for the genomes of about a dozen vertebrate species and several major model organisms. Genome annotations typically include assembly data, sequence composition, genes and gene predictions, mRNA and expressed sequence tag evidence, comparative genomics, regulation, expression and variation data. The database is optimized to support fast interactive performance with web tools that provide powerful visualization and querying capabilities for mining the data. The Genome Browser displays a wide variety of annotations at all scales from single nucleotide level up to a full chromosome. The Table Browser provides direct access to the database tables and sequence data, enabling complex queries on genome-wide datasets. The Proteome Browser graphically displays protein properties. The Gene Sorter allows filtering and comparison of genes by several metrics including expression data and several gene properties. BLAT and In Silico PCR search for sequences in entire genomes in seconds. These tools are highly integrated and provide many hyperlinks to other databases and websites. The GBD, browsing tools, downloadable data files and links to documentation and other information can be found at ."
+        },
+        {
+            "paperId": "e03141b0ec0d0265483a56e4a5bb212f5ece2586",
+            "url": "https://www.semanticscholar.org/paper/e03141b0ec0d0265483a56e4a5bb212f5ece2586",
+            "title": "Cistrome Data Browser: integrated search, analysis and visualization of chromatin data",
+            "venue": "Nucleic Acids Research",
+            "year": 2023,
+            "citationCount": 65,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/advance-article-pdf/doi/10.1093/nar/gkad1069/53471376/gkad1069.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC10767960, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2637247",
+                    "name": "Len Taing"
+                },
+                {
+                    "authorId": "2202509451",
+                    "name": "Ariaki Dandawate"
+                },
+                {
+                    "authorId": "1399263337",
+                    "name": "S. L\u2019Yi"
+                },
+                {
+                    "authorId": "2241461675",
+                    "name": "N. Gehlenborg"
+                },
+                {
+                    "authorId": "2243358358",
+                    "name": "Myles Brown"
+                },
+                {
+                    "authorId": "40416253",
+                    "name": "Clifford A. Meyer"
+                }
+            ],
+            "abstract": "Abstract The Cistrome Data Browser is a resource of ChIP-seq, ATAC-seq and DNase-seq data from humans and mice. It provides maps of the genome-wide locations of transcription factors, cofactors, chromatin remodelers, histone post-translational modifications and regions of chromatin accessible to endonuclease activity. Cistrome DB v3.0 contains approximately 45 000 human and 44 000 mouse samples with about 32 000 newly collected datasets compared to the previous release. The Cistrome DB v3.0 user interface is implemented as a single page application that unifies menu driven and data driven search functions and provides an embedded genome browser, which allows users to find and visualize data more effectively. Users can find informative chromatin profiles through keyword, menu, and data-driven search tools. Browser search functions can predict the regulators of query genes as well as the cell type and factor dependent functionality of potential cis-regulatory elements. Cistrome DB v3.0 expands the display of quality control statistics, incorporates sequence logos into motif enrichment displays and includes more expansive sample metadata. Cistrome DB v3.0 is available at http://db3.cistrome.org/browser."
+        },
+        {
+            "paperId": "c4bcfeae745075c855f66a08f7fffc50b2d23cc2",
+            "url": "https://www.semanticscholar.org/paper/c4bcfeae745075c855f66a08f7fffc50b2d23cc2",
+            "title": "A browser-side view of starlink connectivity",
+            "venue": "ACM/SIGCOMM Internet Measurement Conference",
+            "year": 2022,
+            "citationCount": 142,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3517745.3561457?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3517745.3561457, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "32051996",
+                    "name": "Mohamed M. Kassem"
+                },
+                {
+                    "authorId": "37594946",
+                    "name": "Aravindh Raman"
+                },
+                {
+                    "authorId": "1768263",
+                    "name": "Diego Perino"
+                },
+                {
+                    "authorId": "2440079",
+                    "name": "Nishanth R. Sastry"
+                }
+            ],
+            "abstract": "LEO satellite \"mega-constellations\" such as SpaceX's Starlink, Amazon's Kuiper, OneWeb are launching thousands of satellites annually, promising high-bandwidth low-latency connectivity. To quantify the achievable performance of such providers, we carry out a measurement study of the spatial and temporal characteristics as well as the geographic variability of the connectivity provided by Starlink, the current leader in this space. We do this by building and deploying a browser extension that provides data about web performance seen by 28 users from 10 cities across the world. We complement this with performance tests run from three measurement nodes hosted by volunteer enthusiasts in the UK, EU and USA. Our findings suggest that although Starlink offers some of the best web performance figures among the ISPs observed, there are important sources of variability in performance such as weather conditions. The bent-pipe connection to a satellite and back to earth also forms a significant component of the observed latency. We also observe frequent and significant packet losses of up to 50% of packets, which appear to be correlated with handovers between satellites. This has an effect on achievable throughput even when using modern congestion control protocols such as BBR or CUBIC."
+        },
+        {
+            "paperId": "441ce5fbd0b8bd3647e894198f84e64a0c9967be",
+            "url": "https://www.semanticscholar.org/paper/441ce5fbd0b8bd3647e894198f84e64a0c9967be",
+            "title": "The UCSC Genome Browser database: 2022 update",
+            "venue": "Nucleic Acids Res.",
+            "year": 2021,
+            "citationCount": 254,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/50/D1/D1115/42058497/gkab959.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC8728131, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "31082793",
+                    "name": "Brian T. Lee"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "2078304529",
+                    "name": "Anna Benet-Pag\u00e8s"
+                },
+                {
+                    "authorId": "2054480233",
+                    "name": "J. Casper"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "153238913",
+                    "name": "Clay Fischer"
+                },
+                {
+                    "authorId": "115487091",
+                    "name": "Jairo Navarro Gonzalez"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "96930029",
+                    "name": "Christopher M. Lee"
+                },
+                {
+                    "authorId": "2136891737",
+                    "name": "Pranav Muthuraman"
+                },
+                {
+                    "authorId": "1400938280",
+                    "name": "Luis R. Nassar"
+                },
+                {
+                    "authorId": "2136887943",
+                    "name": "Beagan Nguy"
+                },
+                {
+                    "authorId": "2136712913",
+                    "name": "Tiana Pereira"
+                },
+                {
+                    "authorId": "2139967149",
+                    "name": "Gerardo Perez"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "1402950943",
+                    "name": "Daniel Schmelter"
+                },
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "1382603585",
+                    "name": "B. Wick"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                },
+                {
+                    "authorId": "113370706",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "Abstract The UCSC Genome Browser, https://genome.ucsc.edu, is a graphical viewer for exploring genome annotations. The website provides integrated tools for visualizing, comparing, analyzing, and sharing both publicly available and user-generated genomic datasets. Data highlights this year include a collection of easily accessible public hub assemblies on new organisms, now featuring BLAT alignment and PCR capabilities, and new and updated clinical tracks (gnomAD, DECIPHER, CADD, REVEL). We introduced a new Track Sets feature and enhanced variant displays to aid in the interpretation of clinical data. We also added a tool to rapidly place new SARS-CoV-2 genomes in a global phylogenetic tree enabling researchers to view the context of emerging mutations in our SARS-CoV-2 Genome Browser. Other new software focuses on usability features, including more informative mouseover displays and new fonts."
+        },
+        {
+            "paperId": "7ab93b4e25df1b2c6877e0d02d0e6c03a86b77d4",
+            "url": "https://www.semanticscholar.org/paper/7ab93b4e25df1b2c6877e0d02d0e6c03a86b77d4",
+            "title": "jsPsych: A JavaScript library for creating behavioral experiments in a Web browser",
+            "venue": "Behavior Research Methods",
+            "year": 2014,
+            "citationCount": 1508,
+            "openAccessPdf": {
+                "url": "http://www.indiana.edu/%7Epcl/papers/jspsychbrm.pdf",
+                "status": "GREEN",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.3758/s13428-014-0458-y?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.3758/s13428-014-0458-y, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "49284468",
+                    "name": "J. D. de Leeuw"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "b1025c2c7829701d1449ea0ccdd3859f540b13fc",
+            "url": "https://www.semanticscholar.org/paper/b1025c2c7829701d1449ea0ccdd3859f540b13fc",
+            "title": "WashU Epigenome Browser update 2022",
+            "venue": "Nucleic Acids Res.",
+            "year": 2022,
+            "citationCount": 125,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/50/W1/W774/44379516/gkac238.pdf",
+                "status": "GOLD",
+                "license": "CCBYNC",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC9252771, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "46599410",
+                    "name": "Dao-Feng Li"
+                },
+                {
+                    "authorId": "36357900",
+                    "name": "Deepak Purushotham"
+                },
+                {
+                    "authorId": "2114348896",
+                    "name": "J. Harrison"
+                },
+                {
+                    "authorId": "3521155",
+                    "name": "Silas Hsu"
+                },
+                {
+                    "authorId": "39748015",
+                    "name": "X. Zhuo"
+                },
+                {
+                    "authorId": "1569651851",
+                    "name": "Changxu Fan"
+                },
+                {
+                    "authorId": "2119051902",
+                    "name": "Shan Liu"
+                },
+                {
+                    "authorId": "2162118738",
+                    "name": "Vincent Xu"
+                },
+                {
+                    "authorId": "2162337266",
+                    "name": "Samuel Chen"
+                },
+                {
+                    "authorId": "8613065",
+                    "name": "Jason Xu"
+                },
+                {
+                    "authorId": "2162117312",
+                    "name": "Shinyi Ouyang"
+                },
+                {
+                    "authorId": "2162117167",
+                    "name": "Angela S. Wu"
+                },
+                {
+                    "authorId": "26417456",
+                    "name": "Ting Wang"
+                }
+            ],
+            "abstract": "Abstract WashU Epigenome Browser (https://epigenomegateway.wustl.edu/browser/) is a web-based genomic data exploration tool that provides visualization, integration, and analysis of epigenomic datasets. The newly renovated user interface and functions have enabled researchers to engage with the browser and genomic data more efficiently and effectively since 2018. Here, we introduce a new integrated panel design in the browser that allows users to interact with 1D (genomic features), 2D (such as Hi-C), 3D (genome structure), and 4D (time series) data in a single web page. The browser can display three-dimensional chromatin structures with the 3D viewer module. The 4D tracks, called \u2018Dynamic\u2019 tracks, animatedly display time-series data, allowing for a more striking visual impact to identify the gene or genomic region candidates as a function of time. Genomic data, such as annotation features, numerical values, and chromatin interaction data can all be viewed in the dynamic track mode. Imaging data from microscopy experiments can also be displayed in the browser. In addition to software development, we continue to service and expand the data hubs we host for large consortia including 4DN, Roadmap Epigenomics, TaRGET and ENCODE, among others. Our growing user/developer community developed additional track types as plugins, such as qBed and dynseq tracks, which extend the utility of the browser. The browser serves as a foundation for additional genomics platforms including the WashU Virus Genome Browser (for COVID-19 research) and the Comparative Genome Browser. The WashU Epigenome Browser can also be accessed freely through Amazon Web Services at https://epigenomegateway.org/."
+        },
+        {
+            "paperId": "a0339c0f79020a4f110313880451a139b637699d",
+            "url": "https://www.semanticscholar.org/paper/a0339c0f79020a4f110313880451a139b637699d",
+            "title": "The 3D Genome Browser: a web-based browser for visualizing 3D genome organization and long-range chromatin interactions",
+            "venue": "Genome Biology",
+            "year": 2017,
+            "citationCount": 541,
+            "openAccessPdf": {
+                "url": "https://genomebiology.biomedcentral.com/track/pdf/10.1186/s13059-018-1519-9",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC6172833, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "49417787",
+                    "name": "Yan-Li Wang"
+                },
+                {
+                    "authorId": "2059836188",
+                    "name": "Fan Song"
+                },
+                {
+                    "authorId": "2202061750",
+                    "name": "Bo Zhang"
+                },
+                {
+                    "authorId": "2143381425",
+                    "name": "Li-Jun Zhang"
+                },
+                {
+                    "authorId": "2111063163",
+                    "name": "Jie Xu"
+                },
+                {
+                    "authorId": "50479452",
+                    "name": "Dai-Yong Kuang"
+                },
+                {
+                    "authorId": "46599410",
+                    "name": "Dao-Feng Li"
+                },
+                {
+                    "authorId": "40538706",
+                    "name": "Mayank N. K. Choudhary"
+                },
+                {
+                    "authorId": "50025181",
+                    "name": "Yun Li"
+                },
+                {
+                    "authorId": "144769393",
+                    "name": "Ming Hu"
+                },
+                {
+                    "authorId": "145585561",
+                    "name": "R. Hardison"
+                },
+                {
+                    "authorId": "26417456",
+                    "name": "Ting Wang"
+                },
+                {
+                    "authorId": "143962373",
+                    "name": "Feng Yue"
+                }
+            ],
+            "abstract": "Here, we introduce the 3D Genome Browser, http://3dgenome.org, which allows users to conveniently explore both their own and over 300 publicly available chromatin interaction data of different types. We design a new binary data format for Hi-C data that reduces the file size by at least a magnitude and allows users to visualize chromatin interactions over millions of base pairs within seconds. Our browser provides multiple methods linking distal cis-regulatory elements with their potential target genes. Users can seamlessly integrate thousands of other omics data to gain a comprehensive view of both regulatory landscape and 3D genome structure."
+        },
+        {
+            "paperId": "d717eec68e4d1e334a7e1c10c1d41174c2f40517",
+            "url": "https://www.semanticscholar.org/paper/d717eec68e4d1e334a7e1c10c1d41174c2f40517",
+            "title": "The Activity Browser - An open source LCA software building on top of the brightway framework",
+            "venue": "Softw. Impacts",
+            "year": 2020,
+            "citationCount": 269,
+            "openAccessPdf": {
+                "url": "http://www.softwareimpacts.com/article/S2665963819300120/pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1016/j.simpa.2019.100012?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1016/j.simpa.2019.100012, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2351045843",
+                    "name": "B. Steubing"
+                },
+                {
+                    "authorId": "2488503430",
+                    "name": "Daniel de Koning"
+                },
+                {
+                    "authorId": "145971347",
+                    "name": "Adrian Haas"
+                },
+                {
+                    "authorId": "6881409",
+                    "name": "C. Mutel"
+                }
+            ],
+            "abstract": "Abstract The Activity Browser is an open source software for advanced Life Cycle Assessment (LCA). The Activity Browser provides a graphical user interface (GUI) to the brightway LCA framework and makes common tasks such as managing projects and databases, modeling life cycle inventories, and analyzing LCA results easier and more intuitive. In addition, it provides advanced features for LCA modeling and data analyses and thus facilitates state-of-the-art LCA research. It can be extended to implement novel LCA modeling approaches and analyses as needed."
+        },
+        {
+            "paperId": "4eea8aba05f484b181b530a87140fa5293004b24",
+            "url": "https://www.semanticscholar.org/paper/4eea8aba05f484b181b530a87140fa5293004b24",
+            "title": "UCSC Cell Browser: visualize your single-cell data",
+            "venue": "bioRxiv",
+            "year": 2020,
+            "citationCount": 261,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/bioinformatics/article-pdf/37/23/4578/41641625/btab503.pdf",
+                "status": "HYBRID",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC8652023, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "46271884",
+                    "name": "A. Bhaduri"
+                },
+                {
+                    "authorId": "1411115878",
+                    "name": "N. Markov"
+                },
+                {
+                    "authorId": "47690379",
+                    "name": "P. Moreno"
+                },
+                {
+                    "authorId": "35843432",
+                    "name": "T. Nowakowski"
+                },
+                {
+                    "authorId": "3112908",
+                    "name": "I. Papatheodorou"
+                },
+                {
+                    "authorId": "3434652",
+                    "name": "A. Pollen"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "2004976794",
+                    "name": "Lucas Seninge"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                }
+            ],
+            "abstract": "Summary As the use of single-cell technologies has grown, so has the need for tools to explore these large, complicated datasets. The UCSC Cell Browser is a tool that allows scientists to visualize gene expression and metadata annotation distribution throughout a single-cell dataset or multiple datasets. Availability and implementation We provide the UCSC Cell Browser as a free website where users can explore a growing collection of single-cell datasets and a freely available python package for scientists to create stable, self-contained visualizations for their own single-cell datasets. Learn more at https://cells.ucsc.edu. Contact cells@ucsc.edu"
+        },
+        {
+            "paperId": "56e0d12eee334f92e8fe39953a5139faa6674dfd",
+            "url": "https://www.semanticscholar.org/paper/56e0d12eee334f92e8fe39953a5139faa6674dfd",
+            "title": "The ExAC browser: displaying reference data information from over 60 000 exomes",
+            "venue": "bioRxiv",
+            "year": 2016,
+            "citationCount": 711,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/45/D1/D840/8847295/gkw971.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC5210650, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1813912",
+                    "name": "K. Karczewski"
+                },
+                {
+                    "authorId": "4014920",
+                    "name": "B. Weisburd"
+                },
+                {
+                    "authorId": "145384889",
+                    "name": "B. Thomas"
+                },
+                {
+                    "authorId": "9689752",
+                    "name": "M. Solomonson"
+                },
+                {
+                    "authorId": "6223930",
+                    "name": "D. Ruderfer"
+                },
+                {
+                    "authorId": "144036824",
+                    "name": "D. Kavanagh"
+                },
+                {
+                    "authorId": "7507328",
+                    "name": "T. Hamamsy"
+                },
+                {
+                    "authorId": "3015823",
+                    "name": "M. Lek"
+                },
+                {
+                    "authorId": "6255853",
+                    "name": "K. Samocha"
+                },
+                {
+                    "authorId": "49530267",
+                    "name": "B. Cummings"
+                },
+                {
+                    "authorId": "3349985",
+                    "name": "Daniel P. Birnbaum"
+                },
+                {
+                    "authorId": "2286557067",
+                    "name": "E. Consortium"
+                },
+                {
+                    "authorId": "144524355",
+                    "name": "M. Daly"
+                },
+                {
+                    "authorId": "2029438",
+                    "name": "D. MacArthur"
+                }
+            ],
+            "abstract": "Worldwide, hundreds of thousands of humans have had their genomes or exomes sequenced, and access to the resulting data sets can provide valuable information for variant interpretation and understanding gene function. Here, we present a lightweight, flexible browser framework to display large population datasets of genetic variation. We demonstrate its use for exome sequence data from 60,706 individuals in the Exome Aggregation Consortium (ExAC). The ExAC browser provides gene- and transcript-centric displays of variation, a critical view for clinical applications. Additionally, we provide a variant display, which includes population frequency and functional annotation data as well as short read support for the called variant. This browser is open-source, freely available, and has already been used extensively by clinical laboratories worldwide."
+        },
+        {
+            "paperId": "0be6f2f0329230040e2a2dbd4b9e321ef33a2c11",
+            "url": "https://www.semanticscholar.org/paper/0be6f2f0329230040e2a2dbd4b9e321ef33a2c11",
+            "title": "The UCSC Genome Browser database: update 2011",
+            "venue": "Nucleic Acids Res.",
+            "year": 2010,
+            "citationCount": 1887,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/39/suppl_1/D876/7639350/gkq963.pdf",
+                "status": "GOLD",
+                "license": "CCBYNC",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC3242726, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2256824",
+                    "name": "P. Fujita"
+                },
+                {
+                    "authorId": "2243895129",
+                    "name": "Brooke L. Rhead"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "2411905",
+                    "name": "Donna Karolchik"
+                },
+                {
+                    "authorId": "32813672",
+                    "name": "Melissa S. Cline"
+                },
+                {
+                    "authorId": "39080699",
+                    "name": "M. Goldman"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "2292717516",
+                    "name": "A. Coelho"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "2170555",
+                    "name": "T. Dreszer"
+                },
+                {
+                    "authorId": "50706815",
+                    "name": "B. Giardine"
+                },
+                {
+                    "authorId": "1928061",
+                    "name": "R. Harte"
+                },
+                {
+                    "authorId": "1403795435",
+                    "name": "Jennifer Hillman-Jackson"
+                },
+                {
+                    "authorId": "39142825",
+                    "name": "F. Hsu"
+                },
+                {
+                    "authorId": "3335079",
+                    "name": "V. Kirkup"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "2638089",
+                    "name": "Katrina Learned"
+                },
+                {
+                    "authorId": "46651528",
+                    "name": "Chin H. Li"
+                },
+                {
+                    "authorId": "35124971",
+                    "name": "L. Meyer"
+                },
+                {
+                    "authorId": "38913964",
+                    "name": "Andy Pohl"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "2761344",
+                    "name": "Kayla E. Smith"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "113370706",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "The University of California, Santa Cruz Genome Browser (http://genome.ucsc.edu) offers online access to a database of genomic sequence and annotation data for a wide variety of organisms. The Browser also has many tools for visualizing, comparing and analyzing both publicly available and user-generated genomic data sets, aligning sequences and uploading user data. Among the features released this year are a gene search tool and annotation track drag-reorder functionality as well as support for BAM and BigWig/BigBed file formats. New display enhancements include overlay of multiple wiggle tracks through use of transparent coloring, options for displaying transformed wiggle data, a \u2018mean+whiskers\u2019 windowing function for display of wiggle data at high zoom levels, and more color schemes for microarray data. New data highlights include seven new genome assemblies, a Neandertal genome data portal, phenotype and disease association data, a human RNA editing track, and a zebrafish Conservation track. We also describe updates to existing tracks."
+        },
+        {
+            "paperId": "36ee6757e8f1a8f53d7506190ad305fd3b67a9b6",
+            "url": "https://www.semanticscholar.org/paper/36ee6757e8f1a8f53d7506190ad305fd3b67a9b6",
+            "title": "WashU Epigenome Browser update 2019",
+            "venue": "Nucleic Acids Res.",
+            "year": 2019,
+            "citationCount": 252,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.1093/nar/gkz348",
+                "status": "GOLD",
+                "license": "CCBYNC",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC6602459, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "46599410",
+                    "name": "Dao-Feng Li"
+                },
+                {
+                    "authorId": "3521155",
+                    "name": "Silas Hsu"
+                },
+                {
+                    "authorId": "36357900",
+                    "name": "Deepak Purushotham"
+                },
+                {
+                    "authorId": "4728262",
+                    "name": "R. Sears"
+                },
+                {
+                    "authorId": "26417456",
+                    "name": "Ting Wang"
+                }
+            ],
+            "abstract": "Abstract The WashU Epigenome Browser (https://epigenomegateway.wustl.edu/) provides visualization, integration and analysis tools for epigenomic datasets. Since 2010, it has provided the scientific community with data from large consortia including the Roadmap Epigenomics and the ENCODE projects. Recently, we refactored the codebase, redesigned the user interface, and developed various novel features. New features include: (i) visualization using virtual reality (VR), which has implications in biology education and the study of 3D chromatin structure; (ii) expanded public data hubs, including data from the 4DN, ENCODE, Roadmap Epigenomics, TaRGET, IHEC and TCGA consortia; (iii) a more responsive user interface; (iv) a history of interactions, which enables undo and redo; (v) a feature we call Live Browsing, which allows multiple users to collaborate remotely on the same session; (vi) the ability to visualize local tracks and data hubs. Amazon Web Services also hosts the redesign at https://epigenomegateway.org/."
+        },
+        {
+            "paperId": "0138303df7273798be19b6777a47c7ddc8c21c1e",
+            "url": "https://www.semanticscholar.org/paper/0138303df7273798be19b6777a47c7ddc8c21c1e",
+            "title": "Fingerprinting the Fingerprinters: Learning to Detect Browser Fingerprinting Behaviors",
+            "venue": "IEEE Symposium on Security and Privacy",
+            "year": 2020,
+            "citationCount": 156,
+            "openAccessPdf": {
+                "url": "https://arxiv.org/pdf/2008.04480",
+                "status": "GREEN",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2008.04480, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2066229431",
+                    "name": "Umar Iqbal"
+                },
+                {
+                    "authorId": "2414224",
+                    "name": "Steven Englehardt"
+                },
+                {
+                    "authorId": "34616778",
+                    "name": "Zubair Shafiq"
+                }
+            ],
+            "abstract": "Browser fingerprinting is an invasive and opaque stateless tracking technique. Browser vendors, academics, and standards bodies have long struggled to provide meaningful protections against browser fingerprinting that are both accurate and do not degrade user experience. We propose FP-Inspector, a machine learning based syntactic-semantic approach to accurately detect browser fingerprinting. We show that FP-Inspector performs well, allowing us to detect 26% more fingerprinting scripts than the state-of-the-art. We show that an API-level fingerprinting countermeasure, built upon FP-Inspector, helps reduce website breakage by a factor of 2. We use FP-Inspector to perform a measurement study of browser fingerprinting on top-100K websites. We find that browser fingerprinting is now present on more than 10% of the top-100K websites and over a quarter of the top-10K websites. We also discover previously unreported uses of JavaScript APIs by fingerprinting scripts suggesting that they are looking to exploit APIs in new and unexpected ways."
+        },
+        {
+            "paperId": "2dc561b9010288d24a7428dcf62c3d09452828bb",
+            "url": "https://www.semanticscholar.org/paper/2dc561b9010288d24a7428dcf62c3d09452828bb",
+            "title": "Prime+Probe 1, JavaScript 0: Overcoming Browser-based Side-Channel Defenses",
+            "venue": "USENIX Security Symposium",
+            "year": 2021,
+            "citationCount": 82,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2103.04952, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "51982655",
+                    "name": "A. Shusterman"
+                },
+                {
+                    "authorId": "2041811590",
+                    "name": "Ayush Agarwal"
+                },
+                {
+                    "authorId": "1410566393",
+                    "name": "Sioli O'Connell"
+                },
+                {
+                    "authorId": "2062558",
+                    "name": "Daniel Genkin"
+                },
+                {
+                    "authorId": "3214290",
+                    "name": "Yossef Oren"
+                },
+                {
+                    "authorId": "49968838",
+                    "name": "Y. Yarom"
+                }
+            ],
+            "abstract": "The \"eternal war in cache\" has reached browsers, with multiple cache-based side-channel attacks and countermeasures being suggested. A common approach for countermeasures is to disable or restrict JavaScript features deemed essential for carrying out attacks. To assess the effectiveness of this approach, in this work we seek to identify those JavaScript features which are essential for carrying out a cache-based attack. We develop a sequence of attacks with progressively decreasing dependency on JavaScript features, culminating in the first browser-based side-channel attack which is constructed entirely from Cascading Style Sheets (CSS) and HTML, and works even when script execution is completely blocked. We then show that avoiding JavaScript features makes our techniques architecturally agnostic, resulting in microarchitectural website fingerprinting attacks that work across hardware platforms including Intel Core, AMD Ryzen, Samsung Exynos, and Apple M1 architectures. As a final contribution, we evaluate our techniques in hardened browser environments including the Tor browser, Deter-Fox (Cao el al., CCS 2017), and Chrome Zero (Schwartz et al., NDSS 2018). We confirm that none of these approaches completely defend against our attacks. We further argue that the protections of Chrome Zero need to be more comprehensively applied, and that the performance and user experience of Chrome Zero will be severely degraded if this approach is taken."
+        },
+        {
+            "paperId": "393fc513beab1418b24ed2e0882e9d3034734001",
+            "url": "https://www.semanticscholar.org/paper/393fc513beab1418b24ed2e0882e9d3034734001",
+            "title": "UCSC Genome Browser enters 20th year",
+            "venue": "Nucleic Acids Res.",
+            "year": 2019,
+            "citationCount": 193,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/48/D1/D756/31697526/gkz1012.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC7145642, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "96930029",
+                    "name": "Christopher M. Lee"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "2054480233",
+                    "name": "J. Casper"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "115487091",
+                    "name": "Jairo Navarro Gonzalez"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "31082793",
+                    "name": "Brian T. Lee"
+                },
+                {
+                    "authorId": "1400938280",
+                    "name": "Luis R. Nassar"
+                },
+                {
+                    "authorId": "1401102986",
+                    "name": "Conner C. Powell"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "1402950943",
+                    "name": "Daniel Schmelter"
+                },
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "Abstract The University of California Santa Cruz Genome Browser website (https://genome.ucsc.edu) enters its 20th year of providing high-quality genomics data visualization and genome annotations to the research community. In the past year, we have added a new option to our web BLAT tool that allows search against all genomes, a single-cell expression viewer (https://cells.ucsc.edu), a \u2018lollipop\u2019 plot display mode for high-density variation data, a RESTful API for data extraction and a custom-track backup feature. New datasets include Tabula Muris single-cell expression data, GeneHancer regulatory annotations, The Cancer Genome Atlas Pan-Cancer variants, Genome Reference Consortium Patch sequences, new ENCODE transcription factor binding site peaks and clusters, the Database of Genomic Variants Gold Standard Variants, Genomenon Mastermind variants and three new multi-species alignment tracks."
+        },
+        {
+            "paperId": "325f05dbda2a08834daa6e04fed6d48436130bb7",
+            "url": "https://www.semanticscholar.org/paper/325f05dbda2a08834daa6e04fed6d48436130bb7",
+            "title": "The UCSC Genome Browser database: 2018 update",
+            "venue": "Nucleic Acids Res.",
+            "year": 2017,
+            "citationCount": 455,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/46/D1/D762/33043750/gkx1020.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC5753355, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2054480233",
+                    "name": "J. Casper"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "71699166",
+                    "name": "C. Villarreal"
+                },
+                {
+                    "authorId": "39541036",
+                    "name": "Cath Tyner"
+                },
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "96930029",
+                    "name": "Christopher M. Lee"
+                },
+                {
+                    "authorId": "31082793",
+                    "name": "Brian T. Lee"
+                },
+                {
+                    "authorId": "2411905",
+                    "name": "Donna Karolchik"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                },
+                {
+                    "authorId": "3279928",
+                    "name": "L. Guruvadoo"
+                },
+                {
+                    "authorId": "1682235904",
+                    "name": "Jairo Navarro Gonzalez"
+                },
+                {
+                    "authorId": "2060104516",
+                    "name": "David Gibson"
+                },
+                {
+                    "authorId": "4638079",
+                    "name": "Ian T. Fiddes"
+                },
+                {
+                    "authorId": "6200291",
+                    "name": "Christopher Eisenhart"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "37929439",
+                    "name": "J. Armstrong"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "Abstract The UCSC Genome Browser (https://genome.ucsc.edu) provides a web interface for exploring annotated genome assemblies. The assemblies and annotation tracks are updated on an ongoing basis\u201412 assemblies and more than 28 tracks were added in the past year. Two recent additions are a display of CRISPR/Cas9 guide sequences and an interactive navigator for gene interactions. Other upgrades from the past year include a command-line version of the Variant Annotation Integrator, support for Human Genome Variation Society variant nomenclature input and output, and a revised highlighting tool that now supports multiple simultaneous regions and colors."
+        },
+        {
+            "paperId": "8f808034ee0043de01a254745e8880e84eedc67d",
+            "url": "https://www.semanticscholar.org/paper/8f808034ee0043de01a254745e8880e84eedc67d",
+            "title": "Disease trajectory browser for exploring temporal, population-wide disease progression patterns in 7.2 million Danish patients",
+            "venue": "Nature Communications",
+            "year": 2020,
+            "citationCount": 114,
+            "openAccessPdf": {
+                "url": "https://www.nature.com/articles/s41467-020-18682-4.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC7532164, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1417175632",
+                    "name": "T. Siggaard"
+                },
+                {
+                    "authorId": "89136460",
+                    "name": "R. Reguant"
+                },
+                {
+                    "authorId": "1401949081",
+                    "name": "I. J\u00f8rgensen"
+                },
+                {
+                    "authorId": "30111814",
+                    "name": "A. D. Haue"
+                },
+                {
+                    "authorId": "105030017",
+                    "name": "Mette Lademann"
+                },
+                {
+                    "authorId": "1404847321",
+                    "name": "Alejandro Aguayo-Orozco"
+                },
+                {
+                    "authorId": "151474535",
+                    "name": "J. Hjaltelin"
+                },
+                {
+                    "authorId": "31443717",
+                    "name": "A. B. Jensen"
+                },
+                {
+                    "authorId": "3738271",
+                    "name": "K. Banasik"
+                },
+                {
+                    "authorId": "8169197",
+                    "name": "S. Brunak"
+                }
+            ],
+            "abstract": "We present the Danish Disease Trajectory Browser (DTB), a tool for exploring almost 25 years of data from the Danish National Patient Register. In the dataset comprising 7.2 million patients and 122 million admissions, users can identify diagnosis pairs with statistically significant directionality and combine them to linear disease trajectories. Users can search for one or more disease codes (ICD-10 classification) and explore disease progression patterns via an array of functionalities. For example, a set of linear trajectories can be merged into a disease trajectory network displaying the entire multimorbidity spectrum of a disease in a single connected graph. Using data from the Danish Register for Causes of Death mortality is also included. The tool is disease-agnostic across both rare and common diseases and is showcased by exploring multimorbidity in Down syndrome (ICD-10 code Q90) and hypertension (ICD-10 code I10). Finally, we show how search results can be customized and exported from the browser in a format of choice (i.e. JSON, PNG, JPEG and CSV). The Danish health system has been collecting health-related data on the entire Danish population for years. Here the authors present the Danish Disease Trajectory Browser (DTB), which allows users to explore population-wide disease progression patterns from data collected between 1994 and 2018."
+        },
+        {
+            "paperId": "115ddaf47fbcb710779721c04395e1a0fd524f5d",
+            "url": "https://www.semanticscholar.org/paper/115ddaf47fbcb710779721c04395e1a0fd524f5d",
+            "title": "Browser Fingerprinting: A survey",
+            "venue": "",
+            "year": 2020,
+            "citationCount": 131,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at http://www-sop.inria.fr/members/Nataliia.Bielova/papers/Lape-etal-20-TWEB.pdf, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2119598",
+                    "name": "Pierre Laperdrix"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "f41ae561b4bad3649a566a491ae410dea6d187c1",
+            "url": "https://www.semanticscholar.org/paper/f41ae561b4bad3649a566a491ae410dea6d187c1",
+            "title": "PhishFarm: A Scalable Framework for Measuring the Effectiveness of Evasion Techniques against Browser Phishing Blacklists",
+            "venue": "IEEE Symposium on Security and Privacy",
+            "year": 2019,
+            "citationCount": 138,
+            "openAccessPdf": {
+                "url": "https://ieeexplore.ieee.org/ielx7/8826229/8835208/08835369.pdf",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1109/SP.2019.00049?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/SP.2019.00049, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "34493724",
+                    "name": "Adam Oest"
+                },
+                {
+                    "authorId": "3434559",
+                    "name": "Yeganeh Safaei"
+                },
+                {
+                    "authorId": "2527531",
+                    "name": "Adam Doup\u00e9"
+                },
+                {
+                    "authorId": "1720429",
+                    "name": "Gail-Joon Ahn"
+                },
+                {
+                    "authorId": "2340822",
+                    "name": "Brad Wardman"
+                },
+                {
+                    "authorId": "1393266050",
+                    "name": "Kevin Tyers"
+                }
+            ],
+            "abstract": "Phishing attacks have reached record volumes in recent years. Simultaneously, modern phishing websites are growing in sophistication by employing diverse cloaking techniques to avoid detection by security infrastructure. In this paper, we present PhishFarm: a scalable framework for methodically testing the resilience of anti-phishing entities and browser blacklists to attackers' evasion efforts. We use PhishFarm to deploy 2,380 live phishing sites (on new, unique, and previously-unseen .com domains) each using one of six different HTTP request filters based on real phishing kits. We reported subsets of these sites to 10 distinct anti-phishing entities and measured both the occurrence and timeliness of native blacklisting in major web browsers to gauge the effectiveness of protection ultimately extended to victim users and organizations. Our experiments revealed shortcomings in current infrastructure, which allows some phishing sites to go unnoticed by the security community while remaining accessible to victims. We found that simple cloaking techniques representative of real-world attacks\u2014 including those based on geolocation, device type, or JavaScript\u2014 were effective in reducing the likelihood of blacklisting by over 55% on average. We also discovered that blacklisting did not function as intended in popular mobile browsers (Chrome, Safari, and Firefox), which left users of these browsers particularly vulnerable to phishing attacks. Following disclosure of our findings, anti-phishing entities are now better able to detect and mitigate several cloaking techniques (including those that target mobile users), and blacklisting has also become more consistent between desktop and mobile platforms\u2014 but work remains to be done by anti-phishing entities to ensure users are adequately protected. Our PhishFarm framework is designed for continuous monitoring of the ecosystem and can be extended to test future state-of-the-art evasion techniques used by malicious websites."
+        },
+        {
+            "paperId": "a8ee02b473803e06f7686a49ccb429ac5700bee0",
+            "url": "https://www.semanticscholar.org/paper/a8ee02b473803e06f7686a49ccb429ac5700bee0",
+            "title": "The UCSC SARS-CoV-2 Genome Browser",
+            "venue": "Nature Genetics",
+            "year": 2020,
+            "citationCount": 94,
+            "openAccessPdf": {
+                "url": "https://www.nature.com/articles/s41588-020-0700-8.pdf",
+                "status": "HYBRID",
+                "license": "other-oa",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC8016453, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "40418049",
+                    "name": "Jason D. Fernandes"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "115487091",
+                    "name": "Jairo Navarro Gonzalez"
+                },
+                {
+                    "authorId": "31082793",
+                    "name": "Brian T. Lee"
+                },
+                {
+                    "authorId": "1400938280",
+                    "name": "Luis R. Nassar"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "35327533",
+                    "name": "S. Nerli"
+                },
+                {
+                    "authorId": "47652703",
+                    "name": "A. Rao"
+                },
+                {
+                    "authorId": "1402950943",
+                    "name": "Daniel Schmelter"
+                },
+                {
+                    "authorId": null,
+                    "name": "Alastair Fyfe"
+                },
+                {
+                    "authorId": null,
+                    "name": "Nathan Maulding"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "1727802",
+                    "name": "T. Lowe"
+                },
+                {
+                    "authorId": "145729499",
+                    "name": "M. Ares"
+                },
+                {
+                    "authorId": "1682128208",
+                    "name": "Russ Corbet-Detig"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                }
+            ],
+            "abstract": "The UCSC SARS-CoV-2 Genome Browser (https://genome.ucsc.edu/covid19.html) is an adaptation of our popular genome-browser visualization tool for this virus, containing many annotation tracks and new features, including conservation with similar viruses, immune epitopes, RT\u2013PCR and sequencing primers and CRISPR guides. We invite all investigators to contribute to this resource to accelerate research and development activities globally."
+        },
+        {
+            "paperId": "d49de02c0bede2605097a194dde7c41173d4f32c",
+            "url": "https://www.semanticscholar.org/paper/d49de02c0bede2605097a194dde7c41173d4f32c",
+            "title": "Browser Fingerprinting",
+            "venue": "ACM Transactions on the Web",
+            "year": 2019,
+            "citationCount": 124,
+            "openAccessPdf": {
+                "url": "https://hal.archives-ouvertes.fr/hal-02864872/file/browserfp-survey.pdf",
+                "status": "GREEN",
+                "license": "other-oa",
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1905.01051, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2119598",
+                    "name": "Pierre Laperdrix"
+                },
+                {
+                    "authorId": "2370674",
+                    "name": "Nataliia Bielova"
+                },
+                {
+                    "authorId": "1730420",
+                    "name": "B. Baudry"
+                },
+                {
+                    "authorId": "1693350",
+                    "name": "Gildas Avoine"
+                }
+            ],
+            "abstract": "With this article, we survey the research performed in the domain of browser fingerprinting, while providing an accessible entry point to newcomers in the field. We explain how this technique works and where it stems from. We analyze the related work in detail to understand the composition of modern fingerprints and see how this technique is currently used online. We systematize existing defense solutions into different categories and detail the current challenges yet to overcome."
+        },
+        {
+            "paperId": "cc2e61a5b87d08ace5b1eab7cfca68e6e5ad63f7",
+            "url": "https://www.semanticscholar.org/paper/cc2e61a5b87d08ace5b1eab7cfca68e6e5ad63f7",
+            "title": "RAPID: Resource and API-Based Detection Against In-Browser Miners",
+            "venue": "Asia-Pacific Computer Systems Architecture Conference",
+            "year": 2018,
+            "citationCount": 200,
+            "openAccessPdf": {
+                "url": "https://dl.acm.org/doi/pdf/10.1145/3274694.3274735",
+                "status": "HYBRID",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3274694.3274735?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3274694.3274735, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2492852878",
+                    "name": "Juan D. Parra Rodriguez"
+                },
+                {
+                    "authorId": "2095521162",
+                    "name": "Joachim Posegga"
+                }
+            ],
+            "abstract": "Direct access to the system's resources such as the GPU, persistent storage and networking has enabled in-browser crypto-mining. Thus, there has been a massive response by rogue actors who abuse browsers for mining without the user's consent. This trend has grown steadily for the last months until this practice, i.e., CryptoJacking, has been acknowledged as the number one security threat by several antivirus companies. Considering this, and the fact that these attacks do not behave as JavaScript malware or other Web attacks, we propose and evaluate several approaches to detect in-browser mining. To this end, we collect information from the top 330.500 Alexa sites. Mainly, we used real-life browsers to visit sites while monitoring resourcerelated API calls and the browser's resource consumption, e.g., CPU. Our detection mechanisms are based on dynamic monitoring, so they are resistant to JavaScript obfuscation. Furthermore, our detection techniques can generalize well and classify previously unseen samples with up to 99.99% precision and recall for the benign class and up to 96% precision and recall for the mining class. These results demonstrate the applicability of detection mechanisms as a server-side approach, e.g., to support the enhancement of existing blacklists. Last but not least, we evaluated the feasibility of deploying prototypical implementations of some detection mechanisms directly on the browser. Specifically, we measured the impact of in-browser API monitoring on page-loading time and performed micro-benchmarks for the execution of some classifiers directly within the browser. In this regard, we ascertain that, even though there are engineering challenges to overcome, it is feasible and bene!cial for users to bring the mining detection to the browser."
+        },
+        {
+            "paperId": "c2dfaf2b331dfa6cc84f8ef5b7ea30efa039a0f7",
+            "url": "https://www.semanticscholar.org/paper/c2dfaf2b331dfa6cc84f8ef5b7ea30efa039a0f7",
+            "title": "Outguard: Detecting In-Browser Covert Cryptocurrency Mining in the Wild",
+            "venue": "The Web Conference",
+            "year": 2019,
+            "citationCount": 95,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.1145/3308558.3313665",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3308558.3313665?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3308558.3313665, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1964482",
+                    "name": "Amin Kharraz"
+                },
+                {
+                    "authorId": "10030115",
+                    "name": "Zane Ma"
+                },
+                {
+                    "authorId": "51196425",
+                    "name": "Paul Murley"
+                },
+                {
+                    "authorId": "38515566",
+                    "name": "Chaz Lever"
+                },
+                {
+                    "authorId": "143799336",
+                    "name": "Joshua Mason"
+                },
+                {
+                    "authorId": "145596465",
+                    "name": "Andrew K. Miller"
+                },
+                {
+                    "authorId": "145161823",
+                    "name": "N. Borisov"
+                },
+                {
+                    "authorId": "2805955",
+                    "name": "M. Antonakakis"
+                },
+                {
+                    "authorId": "144831527",
+                    "name": "Michael D. Bailey"
+                }
+            ],
+            "abstract": "In-browser cryptojacking is a form of resource abuse that leverages end-users' machines to mine cryptocurrency without obtaining the users' consent. In this paper, we design, implement, and evaluate Outguard, an automated cryptojacking detection system. We construct a large ground-truth dataset, extract several features using an instrumented web browser, and ultimately select seven distinctive features that are used to build an SVM classification model. Outguardachieves a 97.9% TPR and 1.1% FPR and is reasonably tolerant to adversarial evasions. We utilized Outguardin the wild by deploying it across the Alexa Top 1M websites and found 6,302 cryptojacking sites, of which 3,600 are new detections that were absent from the training data. These cryptojacking sites paint a broad picture of the cryptojacking ecosystem, with particular emphasis on the prevalence of cryptojacking websites and the shared infrastructure that provides clues to the operators behind the cryptojacking phenomenon."
+        },
+        {
+            "paperId": "096459bb1ad69b89ad73e08b880c344d7995139d",
+            "url": "https://www.semanticscholar.org/paper/096459bb1ad69b89ad73e08b880c344d7995139d",
+            "title": "Carnus: Exploring the Privacy Threats of Browser Extension Fingerprinting",
+            "venue": "Network and Distributed System Security Symposium",
+            "year": 2020,
+            "citationCount": 61,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.14722/ndss.2020.24383",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.14722/ndss.2020.24383?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.14722/ndss.2020.24383, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "108383622",
+                    "name": "Soroush Karami"
+                },
+                {
+                    "authorId": "1823511",
+                    "name": "Panagiotis Ilia"
+                },
+                {
+                    "authorId": "66792956",
+                    "name": "Konstantinos Solomos"
+                },
+                {
+                    "authorId": "9545278",
+                    "name": "Jason Polakis"
+                }
+            ],
+            "abstract": "\u2014With users becoming increasingly privacy-aware and browser vendors incorporating anti-tracking mechanisms, browser \ufb01ngerprinting has garnered signi\ufb01cant attention. Accord-ingly, prior work has proposed techniques for identifying browser extensions and using them as part of a device\u2019s \ufb01ngerprint. While previous studies have demonstrated how extensions can be detected through their web accessible resources, there exists a signi\ufb01cant gap regarding techniques that indirectly detect extensions through behavioral artifacts. In fact, no prior study has demonstrated that this can be done in an automated fashion. In this paper, we bridge this gap by presenting the \ufb01rst fully automated creation and detection of behavior-based extension \ufb01ngerprints. We also introduce two novel \ufb01ngerprinting techniques that monitor extensions\u2019 communication patterns, namely outgoing HTTP requests and intra-browser message exchanges. These techniques comprise the core of Carnus, a modular system for the static and dynamic analysis of extensions, which we use to create the largest set of extension \ufb01ngerprints to date. We leverage our dataset of 29,428 detectable extensions to conduct a comprehensive investigation of extension \ufb01ngerprinting in realistic settings and demonstrate the practicality of our attack. Our in-depth analysis con\ufb01rms the robustness of our techniques, as 83.6% - 87.92% of our behavior-based \ufb01ngerprints remain effective against a state-of-the-art countermeasure. Subsequently, we aim to explore the true extent of the privacy threat that extension \ufb01ngerprinting poses to users, and present a novel study on the feasibility of inference attacks that reveal private and sensitive user information based on the functionality and nature of their extensions. We \ufb01rst collect over 1.44 million public user reviews of our detectable extensions, which provide a unique macroscopic view of the browser extension ecosystem and enable a more precise evaluation of the discriminatory power of extensions as well as a new deanonymization vector. We also automatically categorize extensions based on the developers\u2019 descriptions and identify those that can lead to"
+        },
+        {
+            "paperId": "fbbe83989ce11b91ab0dfb0d5e822b08cd885f48",
+            "url": "https://www.semanticscholar.org/paper/fbbe83989ce11b91ab0dfb0d5e822b08cd885f48",
+            "title": "The UCSC Genome Browser database: update 2010",
+            "venue": "Nucleic Acids Res.",
+            "year": 2009,
+            "citationCount": 1354,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/38/suppl_1/D613/11218186/gkp939.pdf",
+                "status": "GOLD",
+                "license": "CCBYNC",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC2808870, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2243895129",
+                    "name": "Brooke L. Rhead"
+                },
+                {
+                    "authorId": "2411905",
+                    "name": "Donna Karolchik"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "2256824",
+                    "name": "P. Fujita"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "2761344",
+                    "name": "Kayla E. Smith"
+                },
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "38913964",
+                    "name": "Andy Pohl"
+                },
+                {
+                    "authorId": "3374905",
+                    "name": "Michael Pheasant"
+                },
+                {
+                    "authorId": "35124971",
+                    "name": "L. Meyer"
+                },
+                {
+                    "authorId": "2638089",
+                    "name": "Katrina Learned"
+                },
+                {
+                    "authorId": "39142825",
+                    "name": "F. Hsu"
+                },
+                {
+                    "authorId": "1403795435",
+                    "name": "Jennifer Hillman-Jackson"
+                },
+                {
+                    "authorId": "1928061",
+                    "name": "R. Harte"
+                },
+                {
+                    "authorId": "50706815",
+                    "name": "B. Giardine"
+                },
+                {
+                    "authorId": "2170555",
+                    "name": "T. Dreszer"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "The University of California, Santa Cruz (UCSC) Genome Browser website (http://genome.ucsc.edu/) provides a large database of publicly available sequence and annotation data along with an integrated tool set for examining and comparing the genomes of organisms, aligning sequence to genomes, and displaying and sharing users\u2019 own annotation data. As of September 2009, genomic sequence and a basic set of annotation \u2018tracks\u2019 are provided for 47 organisms, including 14 mammals, 10 non-mammal vertebrates, 3 invertebrate deuterostomes, 13 insects, 6 worms and a yeast. New data highlights this year include an updated human genome browser, a 44-species multiple sequence alignment track, improved variation and phenotype tracks and 16 new genome-wide ENCODE tracks. New features include drag-and-zoom navigation, a Wiki track for user-added annotations, new custom track formats for large datasets (bigBed and bigWig), a new multiple alignment output tool, links to variation and protein structure tools, in silico PCR utility enhancements, and improved track configuration tools."
+        },
+        {
+            "paperId": "6c1d890700fcad0beb4e8edd5a3b754b3e3f8977",
+            "url": "https://www.semanticscholar.org/paper/6c1d890700fcad0beb4e8edd5a3b754b3e3f8977",
+            "title": "A First Look at Browser-Based Cryptojacking",
+            "venue": "2018 IEEE European Symposium on Security and Privacy Workshops (EuroS&PW)",
+            "year": 2018,
+            "citationCount": 156,
+            "openAccessPdf": {
+                "url": "https://arxiv.org/pdf/1803.02887",
+                "status": "GREEN",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1803.02887, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "36480735",
+                    "name": "Shayan Eskandari"
+                },
+                {
+                    "authorId": "40897639",
+                    "name": "Andreas Leoutsarakos"
+                },
+                {
+                    "authorId": "40895830",
+                    "name": "Troy Mursch"
+                },
+                {
+                    "authorId": "47125503",
+                    "name": "Jeremy Clark"
+                }
+            ],
+            "abstract": "In this paper, we examine the recent trend to- wards in-browser mining of cryptocurrencies; in particular, the mining of Monero through Coinhive and similar code- bases. In this model, a user visiting a website will download a JavaScript code that executes client-side in her browser, mines a cryptocurrency\u2014typically without her consent or knowledge\u2014and pays out the seigniorage to the website. Websites may consciously employ this as an alternative or to supplement advertisement revenue, may offer premium content in exchange for mining, or may be unwittingly serving the code as a result of a breach (in which case the seigniorage is collected by the attacker). The cryptocurrency Monero is preferred seemingly for its unfriendliness to large-scale ASIC mining that would drive browser-based efforts out of the market, as well as for its purported privacy features. In this paper, we survey this landscape, conduct some measurements to establish its prevalence and profitability, outline an ethical framework for considering whether it should be classified as an attack or business opportunity, and make suggestions for the detection, mitigation and/or prevention of browser-based mining for non- consenting users."
+        },
+        {
+            "paperId": "97a178d03d075e2a06132d6a45cef2bb4ea6be19",
+            "url": "https://www.semanticscholar.org/paper/97a178d03d075e2a06132d6a45cef2bb4ea6be19",
+            "title": "BRENDA: Browser Extension for Fake News Detection",
+            "venue": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+            "year": 2020,
+            "citationCount": 52,
+            "openAccessPdf": {
+                "url": "https://arxiv.org/pdf/2005.13270",
+                "status": "GREEN",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/2005.13270, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1720799864",
+                    "name": "Bjarte Botnevik"
+                },
+                {
+                    "authorId": "1720799817",
+                    "name": "Eirik Sakariassen"
+                },
+                {
+                    "authorId": "2852530",
+                    "name": "Vinay Setty"
+                }
+            ],
+            "abstract": "Misinformation such as fake news has drawn a lot of attention in recent years. It has serious consequences on society, politics and economy. This has lead to a rise of manually fact-checking websites such as Snopes and Politifact. However, the scale of misinformation limits their ability for verification. In this demonstration, we propose BRENDA a browser extension which can be used to automate the entire process of credibility assessments of false claims. Behind the scenes BRENDA uses a tested deep neural network architecture to automatically identify fact check worthy claims and classifies as well as presents the result along with evidence to the user. Since BRENDA is a browser extension, it facilities fast automated fact checking for the end user without having to leave the Webpage."
+        },
+        {
+            "paperId": "a155264f143aafd380f40fd0167c9b7960f64ea2",
+            "url": "https://www.semanticscholar.org/paper/a155264f143aafd380f40fd0167c9b7960f64ea2",
+            "title": "(Cross-)Browser Fingerprinting via OS and Hardware Level Features",
+            "venue": "Network and Distributed System Security Symposium",
+            "year": 2017,
+            "citationCount": 208,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.14722/NDSS.2017.23152?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.14722/NDSS.2017.23152, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "3139121",
+                    "name": "Yinzhi Cao"
+                },
+                {
+                    "authorId": "2118193393",
+                    "name": "Song Li"
+                },
+                {
+                    "authorId": "8405939",
+                    "name": "Erik Wijmans"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "9a7508c7aa498cb738d3c16d35e06a662168106b",
+            "url": "https://www.semanticscholar.org/paper/9a7508c7aa498cb738d3c16d35e06a662168106b",
+            "title": "The UCSC Genome Browser database: 2015 update",
+            "venue": "Nucleic Acids Res.",
+            "year": 2014,
+            "citationCount": 999,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/43/D1/D670/7329229/gku1177.pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC4383971, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2523183",
+                    "name": "K. Rosenbloom"
+                },
+                {
+                    "authorId": "37929439",
+                    "name": "J. Armstrong"
+                },
+                {
+                    "authorId": "34965960",
+                    "name": "G. Barber"
+                },
+                {
+                    "authorId": "2054480233",
+                    "name": "J. Casper"
+                },
+                {
+                    "authorId": "2029732",
+                    "name": "H. Clawson"
+                },
+                {
+                    "authorId": "2671293",
+                    "name": "M. Diekhans"
+                },
+                {
+                    "authorId": "2170555",
+                    "name": "T. Dreszer"
+                },
+                {
+                    "authorId": "2256824",
+                    "name": "P. Fujita"
+                },
+                {
+                    "authorId": "3279928",
+                    "name": "L. Guruvadoo"
+                },
+                {
+                    "authorId": "48613597",
+                    "name": "M. Haeussler"
+                },
+                {
+                    "authorId": "1928061",
+                    "name": "R. Harte"
+                },
+                {
+                    "authorId": "116474129",
+                    "name": "Steven G. Heitner"
+                },
+                {
+                    "authorId": "48182379",
+                    "name": "G. Hickey"
+                },
+                {
+                    "authorId": "32637701",
+                    "name": "A. Hinrichs"
+                },
+                {
+                    "authorId": "2078340",
+                    "name": "R. Hubley"
+                },
+                {
+                    "authorId": "2411905",
+                    "name": "Donna Karolchik"
+                },
+                {
+                    "authorId": "2638089",
+                    "name": "Katrina Learned"
+                },
+                {
+                    "authorId": "31082793",
+                    "name": "Brian T. Lee"
+                },
+                {
+                    "authorId": "46651528",
+                    "name": "Chin H. Li"
+                },
+                {
+                    "authorId": "2096413750",
+                    "name": "K. Miga"
+                },
+                {
+                    "authorId": "114358390",
+                    "name": "N. Nguyen"
+                },
+                {
+                    "authorId": "2053144",
+                    "name": "B. Paten"
+                },
+                {
+                    "authorId": "3144427",
+                    "name": "Brian J. Raney"
+                },
+                {
+                    "authorId": "34624894",
+                    "name": "A. Smit"
+                },
+                {
+                    "authorId": "2518811",
+                    "name": "M. Speir"
+                },
+                {
+                    "authorId": "49564559",
+                    "name": "A. Zweig"
+                },
+                {
+                    "authorId": "1733689",
+                    "name": "D. Haussler"
+                },
+                {
+                    "authorId": "7586694",
+                    "name": "Robert M. Kuhn"
+                },
+                {
+                    "authorId": "143913305",
+                    "name": "W. Kent"
+                }
+            ],
+            "abstract": "Launched in 2001 to showcase the draft human genome assembly, the UCSC Genome Browser database (http://genome.ucsc.edu) and associated tools continue to grow, providing a comprehensive resource of genome assemblies and annotations to scientists and students worldwide. Highlights of the past year include the release of a browser for the first new human genome reference assembly in 4 years in December 2013 (GRCh38, UCSC hg38), a watershed comparative genomics annotation (100-species multiple alignment and conservation) and a novel distribution mechanism for the browser (GBiB: Genome Browser in a Box). We created browsers for new species (Chinese hamster, elephant shark, minke whale), \u2018mined the web\u2019 for DNA sequences and expanded the browser display with stacked color graphs and region highlighting. As our user community increasingly adopts the UCSC track hub and assembly hub representations for sharing large-scale genomic annotation data sets and genome sequencing projects, our menu of public data hubs has tripled."
+        },
+        {
+            "paperId": "735dcde645f8ae92e12a7c677a2fe6818e675e13",
+            "url": "https://www.semanticscholar.org/paper/735dcde645f8ae92e12a7c677a2fe6818e675e13",
+            "title": "Long-Term Observation on Browser Fingerprinting: Users\u2019 Trackability and Perspective",
+            "venue": "Proceedings on Privacy Enhancing Technologies",
+            "year": 2020,
+            "citationCount": 46,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.2478/popets-2020-0041",
+                "status": "HYBRID",
+                "license": "CCBYNCND",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.2478/popets-2020-0041?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.2478/popets-2020-0041, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "152894021",
+                    "name": "Gaston Pugliese"
+                },
+                {
+                    "authorId": "145062425",
+                    "name": "C. Riess"
+                },
+                {
+                    "authorId": "39600951",
+                    "name": "Freya Gassmann"
+                },
+                {
+                    "authorId": "2916039",
+                    "name": "Z. Benenson"
+                }
+            ],
+            "abstract": "Abstract Browser fingerprinting as a tracking technique to recognize users based on their browsers\u2019 unique features or behavior has been known for more than a decade. We present the results of a 3-year online study on browser fingerprinting with more than 1,300 users. This is the first study with ground truth on user level, which allows the assessment of trackability based on fingerprints of multiple browsers and devices per user. Based on our longitudinal observations of 88,000 measurements with over 300 considered browser features, we optimized feature sets for mobile and desktop devices. Further, we conducted two user surveys to determine the representativeness of our user sample based on users\u2019 demographics and technical background, and to learn how users perceive browser fingerprinting and how they protect themselves."
+        },
+        {
+            "paperId": "68bd3de081d1baa8df24bec6ec2ad46df5e48b6c",
+            "url": "https://www.semanticscholar.org/paper/68bd3de081d1baa8df24bec6ec2ad46df5e48b6c",
+            "title": "Cistrome Data Browser: a data portal for ChIP-Seq and chromatin accessibility data in human and mouse",
+            "venue": "Nucleic Acids Res.",
+            "year": 2016,
+            "citationCount": 513,
+            "openAccessPdf": {
+                "url": "https://academic.oup.com/nar/article-pdf/45/D1/D658/8847338/gkw983.pdf",
+                "status": "GOLD",
+                "license": "CCBYNC",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC5210658, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "33972657",
+                    "name": "S. Mei"
+                },
+                {
+                    "authorId": "48576204",
+                    "name": "Qian Qin"
+                },
+                {
+                    "authorId": "2108707370",
+                    "name": "Qiu Wu"
+                },
+                {
+                    "authorId": "2000465",
+                    "name": "Hanfei Sun"
+                },
+                {
+                    "authorId": "143771041",
+                    "name": "Rongbin Zheng"
+                },
+                {
+                    "authorId": "2508496",
+                    "name": "C. Zang"
+                },
+                {
+                    "authorId": "2143361610",
+                    "name": "Mu-Yuan Zhu"
+                },
+                {
+                    "authorId": "2308159971",
+                    "name": "Jiaxi Wu"
+                },
+                {
+                    "authorId": "1485312763",
+                    "name": "Xiaohui Shi"
+                },
+                {
+                    "authorId": "2637247",
+                    "name": "Len Taing"
+                },
+                {
+                    "authorId": "40609711",
+                    "name": "Tao Liu"
+                },
+                {
+                    "authorId": "2110721759",
+                    "name": "Myles A. Brown"
+                },
+                {
+                    "authorId": "40416253",
+                    "name": "Clifford A. Meyer"
+                },
+                {
+                    "authorId": "1410262009",
+                    "name": "X. Liu"
+                }
+            ],
+            "abstract": "Chromatin immunoprecipitation, DNase I hypersensitivity and transposase-accessibility assays combined with high-throughput sequencing enable the genome-wide study of chromatin dynamics, transcription factor binding and gene regulation. Although rapidly accumulating publicly available ChIP-seq, DNase-seq and ATAC-seq data are a valuable resource for the systematic investigation of gene regulation processes, a lack of standardized curation, quality control and analysis procedures have hindered extensive reuse of these data. To overcome this challenge, we built the Cistrome database, a collection of ChIP-seq and chromatin accessibility data (DNase-seq and ATAC-seq) published before January 1, 2016, including 13 366 human and 9953 mouse samples. All the data have been carefully curated and processed with a streamlined analysis pipeline and evaluated with comprehensive quality control metrics. We have also created a user-friendly web server for data query, exploration and visualization. The resulting Cistrome DB (Cistrome Data Browser), available online at http://cistrome.org/db, is expected to become a valuable resource for transcriptional and epigenetic regulation studies."
+        },
+        {
+            "paperId": "012c0fde4a532d2294dd2c091b879c26729a44ce",
+            "url": "https://www.semanticscholar.org/paper/012c0fde4a532d2294dd2c091b879c26729a44ce",
+            "title": "Hiding in the Crowd: an Analysis of the Effectiveness of Browser Fingerprinting at Large Scale",
+            "venue": "The Web Conference",
+            "year": 2018,
+            "citationCount": 143,
+            "openAccessPdf": {
+                "url": "http://dl.acm.org/ft_gateway.cfm?id=3186097&type=pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3178876.3186097?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3178876.3186097, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1404303257",
+                    "name": "Alejandro G\u00f3mez-Boix"
+                },
+                {
+                    "authorId": "2119598",
+                    "name": "Pierre Laperdrix"
+                },
+                {
+                    "authorId": "1730420",
+                    "name": "B. Baudry"
+                }
+            ],
+            "abstract": "Browser fingerprinting is a stateless technique, which consists in collecting a wide range of data about a device through browser APIs. Past studies have demonstrated that modern devices present so much diversity that fingerprints can be exploited to identify and track users online. With this work, we want to evaluate if browser fingerprinting is still effective at uniquely identifying a large group of users when analyzing millions of fingerprints over a few months. We collected 2,067,942 browser fingerprints from one of the top 15 French websites. The analysis of this novel dataset sheds a new light on the ever-growing browser fingerprinting domain. The key insight is that the percentage of unique fingerprints in our dataset is much lower than what was reported in the past: only 33.6% of fingerprints are unique by opposition to over 80% in previous studies. We show that non-unique fingerprints tend to be fragile. If some features of the fingerprint change, it is very probable that the fingerprint will become unique. We also confirm that the current evolution of web technologies is benefiting users\u00bb privacy significantly as the removal of plugins brings down substantively the rate of unique desktop machines."
+        },
+        {
+            "paperId": "e406579f2a410c5424557e940912c50b68632f69",
+            "url": "https://www.semanticscholar.org/paper/e406579f2a410c5424557e940912c50b68632f69",
+            "title": "EmPoWeb: Empowering Web Applications with Browser Extensions",
+            "venue": "IEEE Symposium on Security and Privacy",
+            "year": 2019,
+            "citationCount": 66,
+            "openAccessPdf": {
+                "url": "https://ieeexplore.ieee.org/ielx7/8826229/8835208/08835286.pdf",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://arxiv.org/abs/1901.03397, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "9928882",
+                    "name": "Doli\u00e9re Francis Som\u00e9"
+                }
+            ],
+            "abstract": "Browser extensions are third party programs, tightly integrated to browsers, where they execute with elevated privileges in order to provide users with additional functionalities. Unlike web applications, extensions are not subject to the Same Origin Policy (SOP) and therefore can read and write user data on any web application. They also have access to sensitive user information including browsing history, bookmarks, credentials (cookies) and list of installed extensions. They have access to a permanent storage in which they can store data as long as they are installed in the user's browser. They can trigger the download of arbitrary files and save them on the user's device. For security reasons, browser extensions and web applications are executed in separate contexts. Nonetheless, in all major browsers, extensions and web applications can interact by exchanging messages. Through these communication channels, a web application can exploit extension privileged capabilities and thereby access and exfiltrate sensitive user information. In this work, we analyzed the communication interfaces exposed to web applications by Chrome, Firefox and Opera browser extensions. As a result, we identified many extensions that web applications can exploit to access privileged capabilities. Through extensions' APIS, web applications can bypass SOP and access user data on any other web application, access user credentials (cookies), browsing history, bookmarks, list of installed extensions, extensions storage, and download and save arbitrary files in the user's device. Our results demonstrate that the communications between browser extensions and web applications pose serious security and privacy threats to browsers, web applications and more importantly to users. We discuss countermeasures and proposals, and believe that our study and in particular the tool we used to detect and exploit these threats, can be used as part of extensions review process by browser vendors to help them identify and fix the aforementioned problems in extensions."
+        },
+        {
+            "paperId": "9f737e005261fe9015ea86a5f722dbd0587202db",
+            "url": "https://www.semanticscholar.org/paper/9f737e005261fe9015ea86a5f722dbd0587202db",
+            "title": "An Experience Sampling Study of User Reactions to Browser Warnings in the Field",
+            "venue": "International Conference on Human Factors in Computing Systems",
+            "year": 2018,
+            "citationCount": 147,
+            "openAccessPdf": {
+                "url": "http://dl.acm.org/ft_gateway.cfm?id=3174086&type=pdf",
+                "status": "HYBRID",
+                "license": "CCBYNCND",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3173574.3174086?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3173574.3174086, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "1778110",
+                    "name": "R. Reeder"
+                },
+                {
+                    "authorId": "2838694",
+                    "name": "A. Felt"
+                },
+                {
+                    "authorId": "1802071",
+                    "name": "Sunny Consolvo"
+                },
+                {
+                    "authorId": "3395906",
+                    "name": "Nathan Malkin"
+                },
+                {
+                    "authorId": "50789683",
+                    "name": "Christopher Thompson"
+                },
+                {
+                    "authorId": "2645852",
+                    "name": "S. Egelman"
+                }
+            ],
+            "abstract": "Web browser warnings should help protect people from malware, phishing, and network attacks. Adhering to warnings keeps people safer online. Recent improvements in warning design have raised adherence rates, but they could still be higher. And prior work suggests many people still do not understand them. Thus, two challenges remain: increasing both comprehension and adherence rates. To dig deeper into user decision making and comprehension of warnings, we performed an experience sampling study of web browser security warnings, which involved surveying over 6,000 Chrome and Firefox users in situ to gather reasons for adhering or not to real warnings. We find these reasons are many and vary with context. Contrary to older prior work, we do not find a single dominant failure in modern warning design---like habituation---that prevents effective decisions. We conclude that further improvements to warnings will require solving a range of smaller contextual misunderstandings."
+        },
+        {
+            "paperId": "5d6f06c07d3e9f1e9d5f6b36a08f551e0efa85c0",
+            "url": "https://www.semanticscholar.org/paper/5d6f06c07d3e9f1e9d5f6b36a08f551e0efa85c0",
+            "title": "Fill in the Blanks: Empirical Analysis of the Privacy Threats of Browser Form Autofill",
+            "venue": "Conference on Computer and Communications Security",
+            "year": 2020,
+            "citationCount": 41,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1145/3372297.3417271?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1145/3372297.3417271, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2118201000",
+                    "name": "Xu Lin"
+                },
+                {
+                    "authorId": "1823511",
+                    "name": "Panagiotis Ilia"
+                },
+                {
+                    "authorId": "9545278",
+                    "name": "Jason Polakis"
+                }
+            ],
+            "abstract": "Providing functionality that streamlines the more tedious aspects of website interaction is of paramount importance to browsers as it can significantly improve the overall user experience. Browsers' autofill functionality exemplifies this goal, as it alleviates the burden of repetitively typing the same information across websites. At the same time, however, it also presents a significant privacy risk due to the inherent disparity between the browser's interpretation of a given web page and what users can visually perceive. In this paper we present the first, to our knowledge, comprehensive exploration of the privacy threats of autofill functionality. We first develop a series of new techniques for concealing the presence of form elements that allow us to obtain sensitive user information while bypassing existing browser defenses. Alarmingly, our large-scale study in the Alexa top 100K reveals the widespread use of such deceptive techniques for stealthily obtaining user-identifying information, as they are present in at least 5.8% of the forms that are autofilled by Chrome. Subsequently, our in-depth investigation of browsers' autofill functionality reveals a series of flaws and idiosyncrasies, which we exploit through a series of novel attack vectors that target specific aspects of browsers' behavior. By chaining these together we are able to demonstrate a novel invasive side-channel attack that exploits browser's autofill preview functionality for inferring sensitive information even when users choose to not utilize autofill. This attack affects all major Chromium-based browsers and allows attackers to probe users' autofill profiles for over a hundred thousand candidate values (e.g., credit card and phone numbers). Overall, while the preview mode is intended as a protective measure for enabling more informed decisions, ultimately it creates a new avenue of exposure that circumvents a user's choice to not divulge their information. In light of our findings, we have disclosed our techniques to the affected vendors, and have also created a Chrome extension that can prevent our attacks and mitigate this threat until our countermeasures are incorporated into browsers."
+        },
+        {
+            "paperId": "8d6fd3522bc80cb512c3bb1f93ce52643fb976a1",
+            "url": "https://www.semanticscholar.org/paper/8d6fd3522bc80cb512c3bb1f93ce52643fb976a1",
+            "title": "FP-STALKER: Tracking Browser Fingerprint Evolutions",
+            "venue": "IEEE Symposium on Security and Privacy",
+            "year": 2018,
+            "citationCount": 127,
+            "openAccessPdf": {
+                "url": "https://ieeexplore.ieee.org/ielx7/8418581/8418583/08418634.pdf",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1109/SP.2018.00008?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1109/SP.2018.00008, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "3547569",
+                    "name": "Antoine Vastel"
+                },
+                {
+                    "authorId": "2119598",
+                    "name": "Pierre Laperdrix"
+                },
+                {
+                    "authorId": "2286083",
+                    "name": "Walter Rudametkin"
+                },
+                {
+                    "authorId": "1809154",
+                    "name": "Romain Rouvoy"
+                }
+            ],
+            "abstract": null
+        }
+    ]
+}
