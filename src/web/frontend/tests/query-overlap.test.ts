@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { getQueryOverlap } from '../src/lib/query-overlap.ts';
+import { getOverlapPapers, getQueryOverlap } from '../src/lib/query-overlap.ts';
 
 const paper = (paperId: string) => ({ paperId, title: paperId });
 
@@ -16,6 +16,12 @@ test('partitions all seven exact intersections and deduplicates within each quer
   assert.deepEqual(result.regions.map(region => region.papers.map(paper => paper.paperId)), [
     ['a'], ['b'], ['ab'], ['c'], ['ac'], ['bc'], ['abc'],
   ]);
+  assert.deepEqual(getOverlapPapers(result.regions, 3, true).map(paper => paper.paperId), ['ab']);
+  assert.deepEqual(getOverlapPapers(result.regions, 3, false).map(paper => paper.paperId), ['ab', 'abc']);
+  assert.equal(getOverlapPapers(result.regions, 1, false).length, result.matrix[0][0]);
+  result.matrix.forEach((row, i) => row.forEach((count, j) => {
+    assert.equal(getOverlapPapers(result.regions, (1 << i) | (1 << j), false).length, count);
+  }));
 });
 
 test('keeps empty regions for disjoint and empty query results', () => {
@@ -28,4 +34,5 @@ test('keeps empty regions for disjoint and empty query results', () => {
   assert.equal(result.shared, 0);
   assert.deepEqual(result.matrix, [[1, 0, 0], [0, 1, 0], [0, 0, 0]]);
   assert.deepEqual(result.regions.map(region => region.papers.length), [1, 1, 0, 0, 0, 0, 0]);
+  assert.deepEqual(getOverlapPapers(result.regions, 3, false), []);
 });

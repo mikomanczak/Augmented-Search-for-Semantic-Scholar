@@ -80,6 +80,7 @@ export type Paper = {
   paperId: string;
   title: string;
   abstract?: string | null;
+  embedding?: { model: string; vector: number[] } | null;
   year?: number | null;
   authors?: { authorId?: string | null; name: string }[];
   venue?: string | null;

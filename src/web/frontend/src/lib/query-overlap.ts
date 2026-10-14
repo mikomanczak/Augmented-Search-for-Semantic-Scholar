@@ -2,6 +2,11 @@ import type { Paper } from '../context/SearchContext';
 
 export type QueryResult = { query: string; papers: Paper[] };
 
+export function getOverlapPapers(regions: { mask: number; papers: Paper[] }[], mask: number, exact: boolean): Paper[] {
+  return regions.filter(region => exact ? region.mask === mask : (region.mask & mask) === mask)
+    .flatMap(region => region.papers);
+}
+
 // Each bit records membership in a query; every paper belongs to one exact region.
 export function getQueryOverlap(queries: QueryResult[]) {
   const memberships = new Map<string, { paper: Paper; mask: number }>();

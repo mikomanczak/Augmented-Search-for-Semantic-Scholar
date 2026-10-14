@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { getQueryOverlap, type QueryResult } from '../lib/query-overlap';
+import { getOverlapPapers, getQueryOverlap, type QueryResult } from '../lib/query-overlap';
 
 const positions: Record<number, [number, number]> = {
   1: [116, 106], 2: [284, 106], 3: [200, 99],
@@ -8,8 +8,11 @@ const positions: Record<number, [number, number]> = {
 
 export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
   const overlap = useMemo(() => getQueryOverlap(queries), [queries]);
-  const [selectedMask, setSelectedMask] = useState(() => overlap.regions.find(region => region.papers.length > 0 && (region.mask & (region.mask - 1)) !== 0)?.mask ?? 1);
-  const selected = overlap.regions.find(region => region.mask === selectedMask)!;
+  const [selection, setSelection] = useState(() => ({
+    mask: overlap.regions.find(region => region.papers.length > 0 && (region.mask & (region.mask - 1)) !== 0)?.mask ?? 1,
+    exact: true,
+  }));
+  const selectedPapers = getOverlapPapers(overlap.regions, selection.mask, selection.exact);
   const label = (mask: number) => queries.filter((_, index) => mask & (1 << index)).map(query => query.query).join(' + ');
 
   return (
@@ -38,9 +41,11 @@ export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
               const [x, y] = positions[mask];
               return (
                 <g key={mask} className="query-overlap__region" role="button" tabIndex={0}
-                  aria-label={`${label(mask)} only: ${papers.length} ${papers.length === 1 ? 'paper' : 'papers'}`} aria-pressed={selectedMask === mask}
-                  onClick={() => setSelectedMask(mask)}
-                  onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelectedMask(mask); } }}>
+                  aria-label={`${label(mask)} only: ${papers.length} ${papers.length === 1 ? 'paper' : 'papers'}`}
+                  aria-pressed={selection.exact ? selection.mask === mask : (mask & selection.mask) === selection.mask}
+                  aria-controls="query-overlap-detail"
+                  onClick={() => setSelection({ mask, exact: true })}
+                  onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelection({ mask, exact: true }); } }}>
                   <title>{label(mask)} only: {papers.length} papers</title>
                   <rect x={x - 21} y={y - 21} width="42" height="42" rx="21" />
                   <text x={x} y={y} dominantBaseline="central">{papers.length}</text>
@@ -54,7 +59,6 @@ export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
           <div className="query-overlap__matrix">
             <h3>Overlap matrix</h3>
             <table>
-              <caption>Diagonal: total papers. Other cells: papers shared by both queries, including matches in all three.</caption>
               <thead>
                 <tr><td />{queries.map(({ query }) => <th scope="col" key={query}>{query}</th>)}</tr>
               </thead>
@@ -69,7 +73,15 @@ export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
                         title={rowIndex === columnIndex
                           ? `${queries[rowIndex].query}: ${count} total papers`
                           : `${queries[rowIndex].query} + ${queries[columnIndex].query}: ${count} shared papers`}>
-                        {count}
+                        <button className="query-overlap__cell-button" type="button"
+                          aria-label={rowIndex === columnIndex
+                            ? `${queries[rowIndex].query}: ${count} total papers`
+                            : `${queries[rowIndex].query} + ${queries[columnIndex].query}: ${count} shared papers`}
+                          aria-pressed={!selection.exact && selection.mask === ((1 << rowIndex) | (1 << columnIndex))}
+                          aria-controls="query-overlap-detail"
+                          onClick={() => setSelection({ mask: (1 << rowIndex) | (1 << columnIndex), exact: false })}>
+                          {count}
+                        </button>
                       </td>
                     ))}
                   </tr>
@@ -77,13 +89,15 @@ export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
               </tbody>
             </table>
           </div>
-          <div className="query-overlap__detail" aria-live="polite">
+          <div className="query-overlap__detail" id="query-overlap-detail" aria-live="polite">
             <span className="query-overlap__eyebrow">Selected intersection</span>
-            <h3>{label(selectedMask)}</h3>
-            <p>{selected.papers.length} {selected.papers.length === 1 ? 'paper' : 'papers'} in this region only</p>
-            {selected.papers.length ? <ul>{selected.papers.slice(0, 3).map(paper => <li key={paper.paperId}>{paper.title}</li>)}</ul>
-              : <p className="query-overlap__empty">No papers match this exact combination.</p>}
-            {selected.papers.length > 3 && <p>+ {selected.papers.length - 3} more papers</p>}
+            <h3>{label(selection.mask)}</h3>
+            <p>{selectedPapers.length} {selectedPapers.length === 1 ? 'paper' : 'papers'} {selection.exact
+              ? 'in this region only'
+              : (selection.mask & (selection.mask - 1)) === 0 ? 'matching this query' : 'shared by these queries'}</p>
+            {selectedPapers.length ? <ul>{selectedPapers.slice(0, 3).map(paper => <li key={paper.paperId}>{paper.title}</li>)}</ul>
+              : <p className="query-overlap__empty">No papers match this selection.</p>}
+            {selectedPapers.length > 3 && <p>+ {selectedPapers.length - 3} more papers</p>}
           </div>
         </div>
       </div>
