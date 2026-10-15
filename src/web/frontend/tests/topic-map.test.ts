@@ -61,8 +61,20 @@ test('batch embeddings are joined by ID, validated, and requested as SPECTER2', 
 });
 
 test('embedding failures report a retryable error', async () => {
-  globalThis.fetch = async () => new Response('', { status: 429 });
+  globalThis.fetch = async () => new Response('', { status: 429, headers: { 'Retry-After': '0' } });
   await assert.rejects(fetchTopicEmbeddings([paper('a')], new AbortController().signal), /rate limit/);
+});
+
+test('embeddings recover automatically from a rate limit and report the retry', async () => {
+  let calls = 0;
+  globalThis.fetch = async () => ++calls === 1
+    ? new Response('', { status: 429, headers: { 'Retry-After': '0' } })
+    : new Response(JSON.stringify([{ paperId: 'a', embedding: { model: 'specter_v2', vector: [1, 0] } }]));
+  const attempts: number[] = [];
+  const papers = await fetchTopicEmbeddings([paper('a')], new AbortController().signal, undefined, progress => attempts.push(progress.attempt));
+  assert.equal(calls, 2);
+  assert.deepEqual(attempts, [1]);
+  assert.deepEqual(papers[0].embedding?.vector, [1, 0]);
 });
 
 test('neighborhood layout keeps related papers together and is deterministic', () => {

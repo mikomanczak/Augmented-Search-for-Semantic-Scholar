@@ -1,0 +1,25 @@
+.retry-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.retry-status__spinner {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: retry-spin 0.9s linear infinite;
+}
+
+@keyframes retry-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retry-status__spinner { animation: none; }
+}

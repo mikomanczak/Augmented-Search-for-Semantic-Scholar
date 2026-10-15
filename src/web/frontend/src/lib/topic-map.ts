@@ -1,4 +1,5 @@
 import type { Paper } from '../context/SearchContext';
+import { fetchWithRetry, type RetryProgress } from '../../../../shared/retry.ts';
 
 export type TopicPoint = { paper: Paper; vector: number[]; x: number; y: number };
 const stopWords = new Set('a an the of in on for to and or with using from by as at is are we this that based study analysis approach new'.split(' '));
@@ -67,12 +68,12 @@ export function nearestTopics(points: TopicPoint[], paperId: string, count = 3):
     .slice(0, count);
 }
 
-export async function fetchTopicEmbeddings(papers: Paper[], signal: AbortSignal, apiKey?: string): Promise<Paper[]> {
-  const response = await fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=embedding.specter_v2', {
+export async function fetchTopicEmbeddings(papers: Paper[], signal: AbortSignal, apiKey?: string, onRetry?: (progress: RetryProgress) => void): Promise<Paper[]> {
+  const response = await fetchWithRetry('https://api.semanticscholar.org/graph/v1/paper/batch?fields=embedding.specter_v2', {
     method: 'POST', signal,
     headers: { 'Content-Type': 'application/json', ...(apiKey ? { 'x-api-key': apiKey } : {}) },
     body: JSON.stringify({ ids: papers.map(paper => paper.paperId) }),
-  });
+  }, onRetry);
   if (!response.ok) throw new Error(response.status === 429
     ? 'Semantic Scholar rate limit reached. Try loading the map again in a moment.'
     : `Could not load paper embeddings (${response.status}).`);

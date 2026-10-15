@@ -3,6 +3,7 @@ import mockResults from './mock-results.json';
 import mockBrowserResults from './mock-results2 copy.json';
 import mockTypescriptResults from './mock-results3.json';
 import type { QueryResult } from '../lib/query-overlap';
+import { fetchWithRetry, type RetryProgress } from '../../../../shared/retry.ts';
 
 const STORAGE_KEY = 'augmented-search:state:v1';
 
@@ -165,6 +166,7 @@ type SearchContextValue = {
   queryResults: QueryResult[];
   hasSuccessfulSearch: boolean;
   isSearching: boolean;
+  retryProgress: RetryProgress | null;
   searchError: string | null;
   rateLimited: boolean;
   isMockResultsEnabled: boolean;
@@ -186,6 +188,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const [queryResults, setQueryResults] = useState<QueryResult[]>([]);
   const [hasSuccessfulSearch, setHasSuccessfulSearch] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const [retryProgress, setRetryProgress] = useState<RetryProgress | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [rateLimited, setRateLimited] = useState(false);
   const isMockResultsEnabled = isLocalMockMode();
@@ -195,6 +198,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     if (!combinedQuery) return;
 
     setIsSearching(true);
+    setRetryProgress(null);
     setSearchError(null);
     setRateLimited(false);
     setResults([]);
@@ -231,9 +235,9 @@ export function SearchProvider({ children }: { children: ReactNode }) {
       if (openAccessOnly) params.set('openAccessPdf', 'true');
 
       const apiKey = import.meta.env.VITE_SEMANTIC_SCHOLAR_API_KEY;
-      const response = await fetch(`https://api.semanticscholar.org/graph/v1/paper/search?${params}`, {
+      const response = await fetchWithRetry(`https://api.semanticscholar.org/graph/v1/paper/search?${params}`, {
         headers: apiKey ? { 'x-api-key': apiKey } : undefined,
-      });
+      }, setRetryProgress);
       if (!response.ok) {
         if (response.status === 429) setRateLimited(true);
         const detail = response.status === 429
@@ -247,6 +251,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       setSearchError(error instanceof Error ? error.message : 'Search failed. Please try again.');
     } finally {
+      setRetryProgress(null);
       setIsSearching(false);
     }
   };
@@ -330,6 +335,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     queryResults,
     hasSuccessfulSearch,
     isSearching,
+    retryProgress,
     searchError,
     rateLimited,
     isMockResultsEnabled,
