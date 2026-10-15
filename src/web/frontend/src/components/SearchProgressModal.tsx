@@ -1,14 +1,13 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useRef } from 'react';
 import type { SearchProgress as Progress, FetchedPaper } from '../lib/search-queries';
 import type { RetryProgress } from '../../../../shared/retry.ts';
 import SearchProgress from './SearchProgress';
 import './SearchProgressModal.css';
 
-export default function SearchProgressModal({ progress, retryProgress, papers, children, onDismiss }: {
+export default function SearchProgressModal({ progress, retryProgress, papers, onDismiss }: {
   progress: Progress;
   retryProgress: RetryProgress | null;
   papers: FetchedPaper[];
-  children?: ReactNode;
   onDismiss: () => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -22,7 +21,7 @@ export default function SearchProgressModal({ progress, retryProgress, papers, c
   }, []);
 
   return (
-    <dialog ref={dialogRef} className={`search-progress-modal${children ? ' search-progress-modal--preview' : ''}`} tabIndex={-1}
+    <dialog ref={dialogRef} className="search-progress-modal" tabIndex={-1}
       aria-labelledby="search-progress-title" aria-describedby="search-progress-description"
       onCancel={event => { event.preventDefault(); onDismiss(); }}>
       <button className="search-progress-modal__close" type="button" onClick={onDismiss}
@@ -31,7 +30,6 @@ export default function SearchProgressModal({ progress, retryProgress, papers, c
           <path d="m6 6 12 12M18 6 6 18" />
         </svg>
       </button>
-      {children}
       <SearchProgress progress={progress} retryProgress={retryProgress} papers={papers} />
     </dialog>
   );

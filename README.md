@@ -68,6 +68,9 @@ npm ci
 npm run dev
 ```
 
+For frontend development without Semantic Scholar requests, open the Vite URL with
+`?mock_results` to search bundled example data.
+
 Open the URL printed by Vite. The development server forwards PDF requests to
 `http://127.0.0.1:3000`. The service follows up to five redirects, validates PDF bytes,
 blocks private/reserved network destinations on every hop, pins DNS results to each
