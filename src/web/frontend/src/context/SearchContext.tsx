@@ -3,7 +3,8 @@ import mockResults from './mock-results.json';
 import mockBrowserResults from './mock-results2 copy.json';
 import mockTypescriptResults from './mock-results3.json';
 import type { QueryResult } from '../lib/query-overlap';
-import { fetchWithRetry, type RetryProgress } from '../../../../shared/retry.ts';
+import type { RetryProgress } from '../../../../shared/retry.ts';
+import { searchQueries, SearchError } from '../lib/search-queries';
 
 const STORAGE_KEY = 'augmented-search:state:v1';
 
@@ -194,8 +195,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const isMockResultsEnabled = isLocalMockMode();
 
   const search = async () => {
-    const combinedQuery = keywords.map(keyword => `(${keyword})`).join(' | ');
-    if (!combinedQuery) return;
+    if (!keywords.length || isSearching) return;
 
     setIsSearching(true);
     setRetryProgress(null);
@@ -222,7 +222,6 @@ export function SearchProvider({ children }: { children: ReactNode }) {
       }
 
       const params = new URLSearchParams({
-        query: combinedQuery,
         limit: '50',
         fields: 'paperId,title,abstract,year,authors,venue,citationCount,url,openAccessPdf',
       });
@@ -235,20 +234,12 @@ export function SearchProvider({ children }: { children: ReactNode }) {
       if (openAccessOnly) params.set('openAccessPdf', 'true');
 
       const apiKey = import.meta.env.VITE_SEMANTIC_SCHOLAR_API_KEY;
-      const response = await fetchWithRetry(`https://api.semanticscholar.org/graph/v1/paper/search?${params}`, {
-        headers: apiKey ? { 'x-api-key': apiKey } : undefined,
-      }, setRetryProgress);
-      if (!response.ok) {
-        if (response.status === 429) setRateLimited(true);
-        const detail = response.status === 429
-          ? 'Semantic Scholar rate limit reached.'
-          : `Semantic Scholar search failed (${response.status}). Please try again.`;
-        throw new Error(detail);
-      }
-      const payload = await response.json() as { data?: Paper[] };
-      setResults(payload.data ?? []);
+      const completed = await searchQueries(keywords, params, apiKey, setRetryProgress);
+      setQueryResults(completed.queryResults);
+      setResults(completed.results);
       setHasSuccessfulSearch(true);
     } catch (error) {
+      if (error instanceof SearchError && error.status === 429) setRateLimited(true);
       setSearchError(error instanceof Error ? error.message : 'Search failed. Please try again.');
     } finally {
       setRetryProgress(null);
