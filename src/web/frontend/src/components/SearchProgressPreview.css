@@ -1,0 +1,13 @@
+.search-progress-preview__controls {
+  padding: 24px;
+  border: 1px dashed var(--border-muted);
+  border-radius: 12px;
+}
+.search-progress-preview__controls h1 { margin: 0 0 8px; font-size: 1.25rem; }
+.search-progress-preview__controls p { margin: 0 0 20px; }
+.search-progress-preview__controls > label { display: block; font-variant-numeric: tabular-nums; }
+.search-progress-preview__controls > input { display: block; width: 100%; margin: 14px 0 20px; accent-color: #2ea043; }
+.search-progress-preview__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+.search-progress-preview__actions label { display: flex; align-items: center; gap: 8px; }
+.search-progress-preview__actions a, .progress-preview-link { color: inherit; text-decoration: underline; }
+.progress-preview-link { display: inline-block; margin-bottom: 20px; }

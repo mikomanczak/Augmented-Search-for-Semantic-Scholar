@@ -1,0 +1,45 @@
+.search-progress-modal {
+  --progress-card-height: 280px;
+  width: min(760px, calc(100% - 32px));
+  height: var(--progress-card-height);
+  overflow: auto;
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: #0d1117;
+  color: inherit;
+  box-shadow: 0 24px 80px rgb(0 0 0 / 45%);
+}
+.search-progress-modal::backdrop { background: rgb(0 0 0 / 65%); }
+.search-progress-modal > .search-progress { margin: 0; height: 100%; overflow: auto; }
+.search-progress-modal--preview { height: 640px; }
+.search-progress-modal--preview > .search-progress { height: var(--progress-card-height); }
+.search-progress-modal > .search-progress-preview__controls { margin-bottom: 16px; }
+:root[data-theme="light"] .search-progress-modal { background: #fff; }
+
+@media (max-width: 600px) {
+  .search-progress-modal { --progress-card-height: 380px; }
+  .search-progress-modal--preview { height: 740px; }
+}
+
+.search-progress-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.search-progress-modal__close:hover { background: rgb(139 148 158 / 18%); }
+.search-progress-modal__close:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.search-progress-modal > .search-progress { padding-top: 48px; }
+.search-progress-modal > .search-progress-preview__controls { padding-right: 56px; }

@@ -1,10 +1,10 @@
-import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import mockResults from './mock-results.json';
 import mockBrowserResults from './mock-results2 copy.json';
 import mockTypescriptResults from './mock-results3.json';
 import type { QueryResult } from '../lib/query-overlap';
 import type { RetryProgress } from '../../../../shared/retry.ts';
-import { searchQueries, SearchError } from '../lib/search-queries';
+import { searchQueries, SearchError, type SearchProgress, type FetchedPaper } from '../lib/search-queries';
 
 const STORAGE_KEY = 'augmented-search:state:v1';
 
@@ -168,10 +168,13 @@ type SearchContextValue = {
   hasSuccessfulSearch: boolean;
   isSearching: boolean;
   retryProgress: RetryProgress | null;
+  searchProgress: SearchProgress | null;
+  fetchedPapers: FetchedPaper[];
   searchError: string | null;
   rateLimited: boolean;
   isMockResultsEnabled: boolean;
   search: () => Promise<void>;
+  cancelSearch: () => void;
 };
 
 const SearchContext = createContext<SearchContextValue | undefined>(undefined);
@@ -186,22 +189,42 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const [minCitations, setMinCitationsRaw] = useState(initial.minCitations);
   const [publicationTypes, setPublicationTypes] = useState<PublicationType[]>(initial.publicationTypes);
   const [results, setResults] = useState<Paper[]>([]);
+  const [fetchedPapers, setFetchedPapers] = useState<FetchedPaper[]>([]);
   const [queryResults, setQueryResults] = useState<QueryResult[]>([]);
   const [hasSuccessfulSearch, setHasSuccessfulSearch] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const [searchProgress, setSearchProgress] = useState<SearchProgress | null>(null);
   const [retryProgress, setRetryProgress] = useState<RetryProgress | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [rateLimited, setRateLimited] = useState(false);
   const isMockResultsEnabled = isLocalMockMode();
+  const searchControllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => () => searchControllerRef.current?.abort(), []);
+
+  const cancelSearch = () => {
+    searchControllerRef.current?.abort();
+    searchControllerRef.current = null;
+    setIsSearching(false);
+    setRetryProgress(null);
+    setSearchProgress(null);
+    setFetchedPapers([]);
+    setSearchError(null);
+    setHasSuccessfulSearch(false);
+  };
 
   const search = async () => {
-    if (!keywords.length || isSearching) return;
+    if (!keywords.length || isSearching || searchControllerRef.current) return;
+    const controller = new AbortController();
+    searchControllerRef.current = controller;
 
     setIsSearching(true);
+    setSearchProgress({ completed: 0, total: keywords.length, currentQuery: keywords[0] });
     setRetryProgress(null);
     setSearchError(null);
     setRateLimited(false);
     setResults([]);
+    setFetchedPapers([]);
     setQueryResults([]);
     setHasSuccessfulSearch(false);
     try {
@@ -234,16 +257,21 @@ export function SearchProvider({ children }: { children: ReactNode }) {
       if (openAccessOnly) params.set('openAccessPdf', 'true');
 
       const apiKey = import.meta.env.VITE_SEMANTIC_SCHOLAR_API_KEY;
-      const completed = await searchQueries(keywords, params, apiKey, setRetryProgress);
+      const completed = await searchQueries(keywords, params, apiKey, setRetryProgress, setSearchProgress, setFetchedPapers, controller.signal);
+      if (controller.signal.aborted) return;
       setQueryResults(completed.queryResults);
       setResults(completed.results);
       setHasSuccessfulSearch(true);
     } catch (error) {
+      if (controller.signal.aborted) return;
       if (error instanceof SearchError && error.status === 429) setRateLimited(true);
       setSearchError(error instanceof Error ? error.message : 'Search failed. Please try again.');
     } finally {
-      setRetryProgress(null);
-      setIsSearching(false);
+      if (searchControllerRef.current === controller) {
+        searchControllerRef.current = null;
+        setRetryProgress(null);
+        setIsSearching(false);
+      }
     }
   };
 
@@ -327,10 +355,13 @@ export function SearchProvider({ children }: { children: ReactNode }) {
     hasSuccessfulSearch,
     isSearching,
     retryProgress,
+    searchProgress,
+    fetchedPapers,
     searchError,
     rateLimited,
     isMockResultsEnabled,
     search,
+    cancelSearch,
   };
 
   return <SearchContext.Provider value={value}>{children}</SearchContext.Provider>;

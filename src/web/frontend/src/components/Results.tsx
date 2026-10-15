@@ -3,12 +3,11 @@ import { Fragment, useMemo, useState } from 'react';
 import Export from './Export';
 import QueryOverlap from './QueryOverlap';
 import TopicMap from './TopicMap';
-import RetryStatus from './RetryStatus';
 
 type SortOrder = 'relevance' | 'newest' | 'oldest' | 'most-cited' | 'least-cited';
 
 export default function Results() {
-  const { keywords, queryResults, results, isSearching, retryProgress, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
+  const { keywords, queryResults, results, isMockResultsEnabled } = useSearch();
   const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
   const [view, setView] = useState<'full' | 'compact'>('full');
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
@@ -29,8 +28,6 @@ export default function Results() {
       })
       .map(({ paper }) => paper);
   }, [results, sortOrder]);
-  const isRateLimitError = rateLimited || /rate.?limit|too many requests|quota exceeded|\b429\b/i.test(searchError ?? '');
-  const isFetchFailure = /failed to fetch|networkerror|network request failed/i.test(searchError ?? '');
 
   return (
     <section className="results-view">
@@ -63,34 +60,7 @@ export default function Results() {
           </div>
         </header>
       </div>
-      {isSearching && (retryProgress ? <RetryStatus progress={retryProgress} />
-        : <p className="results-message" role="status">Searching Semantic Scholar…</p>)}
-      {searchError && (isRateLimitError || isFetchFailure ? (
-        <section className="results-error rate-limit-notice" role="alert">
-          <img className="rate-limit-art" src={`${import.meta.env.BASE_URL}rate-limit-robot.png`} alt="A friendly vintage robot" />
-          <div>
-            <h2>{isRateLimitError ? 'That was a lot of searching at once' : 'The search service didn’t respond'}</h2>
-            <p>{isRateLimitError
-              ? `${searchError} This demo uses shared public API access, which is rate limited. Please wait a little and rerun your search.`
-              : `${searchError}. The browser couldn’t read a response from Semantic Scholar, so we can’t confirm the cause. Shared public API access may be temporarily unavailable or rate limited. Please wait a little and rerun your search.`}</p>
-            <p>You can also self-host the app and provide your own Semantic Scholar API key for your searches.</p>
-            <div className="rate-limit-actions">
-              <button className="primary-button" type="button" onClick={() => void search()} disabled={isSearching}>
-                {isSearching ? 'Searching…' : 'Retry search'}
-              </button>
-              <a
-                className="secondary-button api-key-docs-button"
-                href="https://github.com/mikomanczak/Augmented-Search-for-Semantic-Scholar#web"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Run with your own API key
-              </a>
-            </div>
-          </div>
-        </section>
-      ) : <p className="results-error" role="alert">{searchError}</p>)}
-      {!isSearching && !searchError && results.length === 0 && (
+      {results.length === 0 && (
         <p className="results-message">No papers found. Try changing your query or filters.</p>
       )}
       {results.length > 0 && (

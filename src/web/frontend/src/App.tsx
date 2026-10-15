@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import Export from './components/Export';
 import InputForm from './components/InputForm';
 import Results from './components/Results';
+import SearchProgressModal from './components/SearchProgressModal';
+import SearchErrorNotice from './components/SearchErrorNotice';
+import SearchProgressPreview from './components/SearchProgressPreview';
 import { SearchProvider } from './context/SearchContext';
 import { View } from './types';
 import { useSearch } from './context/SearchContext';
@@ -16,7 +19,15 @@ function AppContent() {
       return false;
     }
   });
-  const { search, isSearching } = useSearch();
+  const { search, cancelSearch, isSearching, hasSuccessfulSearch, searchProgress, retryProgress, fetchedPapers } = useSearch();
+  const isLocalDevelopment = import.meta.env.DEV && ['localhost', '127.0.0.1', '[::1]', '::1'].includes(window.location.hostname);
+  const params = new URLSearchParams(window.location.search);
+  const isProgressPreview = isLocalDevelopment && params.has('mock_progress');
+
+  useEffect(() => {
+    if (isSearching) setView('input');
+    else if (hasSuccessfulSearch) setView('results');
+  }, [isSearching, hasSuccessfulSearch]);
 
   useEffect(() => {
     document.documentElement.dataset.theme = lightMode ? 'light' : 'dark';
@@ -56,9 +67,16 @@ function AppContent() {
           </button>
         </div>
       </header>
-      {view === 'input' && <InputForm onSearch={async () => { setView('results'); await search(); }} isSearching={isSearching} />}
-      {view === 'results' && <Results />}
-      {view === 'export' && <Export />}
+      {isProgressPreview ? <SearchProgressPreview /> : <>
+        {isLocalDevelopment && params.has('mock_results') && <a className="progress-preview-link" href="?mock_progress">Preview search progress</a>}
+        {view === 'input' && <>
+          <InputForm onSearch={() => void search()} isSearching={isSearching} />
+          <SearchErrorNotice />
+        </>}
+        {isSearching && searchProgress && <SearchProgressModal progress={searchProgress} retryProgress={retryProgress} papers={fetchedPapers} onDismiss={cancelSearch} />}
+        {view === 'results' && hasSuccessfulSearch && !isSearching && <Results />}
+        {view === 'export' && <Export />}
+      </>}
     </main>
   );
 }
