@@ -9,9 +9,9 @@
 }
 
 .search-progress__content { flex: 1; min-width: 0; }
-.search-progress__heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.search-progress__heading h2 { margin: 0; font-size: 1.15rem; line-height: 1.4; }
-.search-progress__percent { color: #56d48a; font-weight: 700; font-variant-numeric: tabular-nums; }
+.search-progress__heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.search-progress__heading h2 { flex: 1; min-width: 0; margin: 0; font-size: 1.15rem; line-height: 1.4; }
+.search-progress__percent { margin-top: 8px; text-align: right; color: #56d48a; font-size: .85rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .search-progress__track { height: 10px; overflow: hidden; border-radius: 999px; background: rgb(139 148 158 / 18%); }
 .search-progress__fill {
   height: 100%;
@@ -21,7 +21,7 @@
   transition: width .65s cubic-bezier(.22, 1, .36, 1);
   animation: search-shimmer 3s linear infinite;
 }
-.search-progress__note { margin: 10px 0 12px; color: #aab8ca; font-size: .9rem; line-height: 1.6; }
+.search-progress__note { margin: 10px 0 30px; color: #aab8ca; font-size: .9rem; line-height: 1.6; }
 .search-progress__paper-title { display: flex; gap: .35em; margin: 12px 0 0; color: #aab8ca; font-size: .8rem; }
 .search-progress__paper-title span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #c5d7ef; }
 

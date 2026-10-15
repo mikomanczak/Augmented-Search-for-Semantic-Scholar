@@ -3,7 +3,6 @@ import Export from './components/Export';
 import InputForm from './components/InputForm';
 import Results from './components/Results';
 import SearchProgressModal from './components/SearchProgressModal';
-import SearchErrorNotice from './components/SearchErrorNotice';
 import { SearchProvider } from './context/SearchContext';
 import { View } from './types';
 import { useSearch } from './context/SearchContext';
@@ -18,7 +17,7 @@ function AppContent() {
       return false;
     }
   });
-  const { search, cancelSearch, isSearching, hasSuccessfulSearch, searchProgress, retryProgress, fetchedPapers } = useSearch();
+  const { search, cancelSearch, isSearching, hasSuccessfulSearch, searchProgress, searchError, retryProgress, fetchedPapers } = useSearch();
 
   useEffect(() => {
     if (isSearching) setView('input');
@@ -65,9 +64,8 @@ function AppContent() {
       </header>
       {view === 'input' && <>
         <InputForm onSearch={() => void search()} isSearching={isSearching} />
-        <SearchErrorNotice />
       </>}
-      {isSearching && searchProgress && <SearchProgressModal progress={searchProgress} retryProgress={retryProgress} papers={fetchedPapers} onDismiss={cancelSearch} />}
+      {(isSearching || searchError) && searchProgress && <SearchProgressModal progress={searchProgress} searchError={searchError} retryProgress={retryProgress} papers={fetchedPapers} onDismiss={cancelSearch} />}
       {view === 'results' && hasSuccessfulSearch && !isSearching && <Results />}
       {view === 'export' && <Export />}
     </main>
