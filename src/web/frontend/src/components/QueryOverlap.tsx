@@ -79,7 +79,6 @@ export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
               );
             })}
           </svg>
-          <figcaption>Counts show exact intersections; circle sizes are illustrative.</figcaption>
         </figure>
         <div className="query-overlap__aside">
           <div className="query-overlap__matrix">
