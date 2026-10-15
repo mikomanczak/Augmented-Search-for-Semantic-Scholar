@@ -24,7 +24,7 @@ export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
   return (
     <section className="query-overlap" aria-label="Query result overlap">
       <div className="query-overlap__heading">
-        <div><h2>How your queries connect</h2><p>Explore unique and shared papers across three queries.</p></div>
+        <div><h3>How your queries connect</h3><p>Explore unique and shared papers across three queries.</p></div>
         <span>{overlap.total} unique <span aria-hidden="true">·</span> {overlap.shared} shared</span>
       </div>
       <div className="query-overlap__body">

@@ -57,7 +57,7 @@ export default function TopicMap({ papers, queries, isMock }: { papers: Paper[];
   return (
     <section className="topic-map" aria-labelledby="topic-map-heading">
       <header className="topic-map__header">
-        <div><h2 id="topic-map-heading">Topic map</h2><p>Explore papers by similarity</p></div>
+        <div><h3 id="topic-map-heading">Topic map</h3><p>Explore papers by similarity</p></div>
         <div className="topic-map__controls">
           {isMock && <span className="topic-map__badge">Title similarity preview</span>}
         </div>
