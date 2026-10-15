@@ -2,12 +2,15 @@ import { useEffect, useMemo, useState } from 'react';
 import type { Paper } from '../context/SearchContext';
 import type { QueryResult } from '../lib/query-overlap';
 import { fetchTopicEmbeddings, nearestTopics, normalizeVector, mapNeighborhoods, titleVectors } from '../lib/topic-map';
+import type { RetryProgress } from '../../../../shared/retry.ts';
+import RetryStatus from './RetryStatus';
 
 const colors = ['#58a6ff', '#bc8cff', '#3fb950'];
 
 export default function TopicMap({ papers, queries, isMock }: { papers: Paper[]; queries: QueryResult[]; isMock: boolean }) {
   const [embeddedPapers, setEmbeddedPapers] = useState<Paper[]>([]);
   const [loading, setLoading] = useState(!isMock);
+  const [retryProgress, setRetryProgress] = useState<RetryProgress | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
   const [selectedId, setSelectedId] = useState(papers[0]?.paperId ?? '');
@@ -17,11 +20,12 @@ export default function TopicMap({ papers, queries, isMock }: { papers: Paper[];
     if (isMock) return;
     const controller = new AbortController();
     setLoading(true);
+    setRetryProgress(null);
     setError(null);
-    void fetchTopicEmbeddings(papers, controller.signal, import.meta.env.VITE_SEMANTIC_SCHOLAR_API_KEY)
+    void fetchTopicEmbeddings(papers, controller.signal, import.meta.env.VITE_SEMANTIC_SCHOLAR_API_KEY, setRetryProgress)
       .then(data => { if (!controller.signal.aborted) setEmbeddedPapers(data); })
       .catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : 'Could not load the topic map.'); })
-      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
+      .finally(() => { if (!controller.signal.aborted) { setLoading(false); setRetryProgress(null); } });
     return () => controller.abort();
   }, [papers, isMock, attempt]);
 
@@ -58,7 +62,7 @@ export default function TopicMap({ papers, queries, isMock }: { papers: Paper[];
           {isMock && <span className="topic-map__badge">Title similarity preview</span>}
         </div>
       </header>
-      {loading ? <p className="topic-map__status" role="status">Loading paper embeddings…</p>
+      {loading ? (retryProgress ? <RetryStatus progress={retryProgress} /> : <p className="topic-map__status" role="status">Loading paper embeddings…</p>)
         : error ? <div className="topic-map__status" role="alert"><p>{error}</p><button type="button" onClick={() => setAttempt(value => value + 1)}>Retry loading map</button></div>
         : !points.length ? <p className="topic-map__status">No embeddings are available for these papers.</p>
         : <>

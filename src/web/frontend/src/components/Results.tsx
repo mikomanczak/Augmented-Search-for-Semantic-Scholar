@@ -3,11 +3,12 @@ import { Fragment, useMemo, useState } from 'react';
 import Export from './Export';
 import QueryOverlap from './QueryOverlap';
 import TopicMap from './TopicMap';
+import RetryStatus from './RetryStatus';
 
 type SortOrder = 'relevance' | 'newest' | 'oldest' | 'most-cited' | 'least-cited';
 
 export default function Results() {
-  const { keywords, queryResults, results, isSearching, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
+  const { keywords, queryResults, results, isSearching, retryProgress, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
   const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
   const [view, setView] = useState<'full' | 'compact'>('full');
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
@@ -62,7 +63,8 @@ export default function Results() {
           </div>
         </header>
       </div>
-      {isSearching && <p className="results-message" role="status">Searching Semantic Scholar…</p>}
+      {isSearching && (retryProgress ? <RetryStatus progress={retryProgress} />
+        : <p className="results-message" role="status">Searching Semantic Scholar…</p>)}
       {searchError && (isRateLimitError || isFetchFailure ? (
         <section className="results-error rate-limit-notice" role="alert">
           <img className="rate-limit-art" src={`${import.meta.env.BASE_URL}rate-limit-robot.png`} alt="A friendly vintage robot" />

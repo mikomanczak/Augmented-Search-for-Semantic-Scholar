@@ -33,6 +33,14 @@ A more reliable way to use the web client is to:
 3. Save your API key in src/web/.env file
 4. Run the web client locally
 
+Semantic Scholar requests in the web client automatically retry HTTP 429
+responses up to 60 times, waiting a fixed 1 second between retries by default. A valid
+`Retry-After` header (seconds or HTTP date) sets the delay instead. If the server
+requests a wait longer than 60 seconds, the rate-limit error is shown immediately.
+The web client shows an animated retry counter and countdown.
+The web client also retries network/CORS failures (shown as “Failed to fetch” by
+the browser), since these can hide the HTTP status of a rate-limit response.
+
 ### Download open access PDFs
 
 After searching, open **Download** and choose **Download open access PDFs (.zip)**.
