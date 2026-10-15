@@ -1,19 +1,29 @@
 .search-progress-modal {
   --progress-card-height: 280px;
-  width: min(760px, calc(100% - 32px));
+  width: min(500px, calc(100% - 32px));
   height: var(--progress-card-height);
   overflow: auto;
   max-width: none;
   max-height: calc(100dvh - 32px);
   padding: 0;
   border: 0;
-  border-radius: 16px;
-  background: #0d1117;
+  border-radius: 20px;
+  background: #161b22;
   color: inherit;
-  box-shadow: 0 24px 80px rgb(0 0 0 / 45%);
+  box-shadow: 0 32px 96px rgb(0 0 0 / 55%), 0 8px 24px rgb(0 0 0 / 25%);
 }
-.search-progress-modal::backdrop { background: rgb(0 0 0 / 65%); }
-.search-progress-modal > .search-progress { margin: 0; height: 100%; overflow: auto; }
+.search-progress-modal::backdrop {
+  background: rgb(0 0 0 / 60%);
+  backdrop-filter: blur(6px);
+}
+.search-progress-modal > .search-progress {
+  margin: 0;
+  height: 100%;
+  overflow: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
 :root[data-theme="light"] .search-progress-modal { background: #fff; }
 
 @media (max-width: 600px) {
@@ -35,6 +45,14 @@
   color: inherit;
   cursor: pointer;
 }
-.search-progress-modal__close:hover { background: rgb(139 148 158 / 18%); }
 .search-progress-modal__close:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-.search-progress-modal > .search-progress { padding-top: 48px; }
+.search-progress-modal > .search-progress { padding-top: 32px; padding-bottom: 48px; }
+
+.search-progress-modal--error { height: auto; padding: 48px 24px 24px; }
+.search-progress-modal--error > h2 { margin: 0 0 16px; font-size: 1.15rem; }
+.search-progress-modal--error > .results-error { margin: 0; }
+
+@media (max-width: 600px) {
+  .search-progress-modal--error { padding: 48px 18px 18px; }
+  .search-progress-modal--error > .rate-limit-notice { flex-direction: column; }
+}
