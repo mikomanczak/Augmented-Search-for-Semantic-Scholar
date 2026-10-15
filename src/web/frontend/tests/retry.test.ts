@@ -6,40 +6,40 @@ const originalFetch = globalThis.fetch;
 afterEach(() => { globalThis.fetch = originalFetch; });
 const flush = async () => { for (let i = 0; i < 10; i++) await Promise.resolve(); };
 
-test('recovers on the sixth retry, reports progress, and preserves request data', async t => {
+test('recovers on the 60th retry, reports progress, and preserves request data', async t => {
   t.mock.timers.enable({ apis: ['setTimeout', 'Date'], now: 0 });
   let calls = 0;
   const init = { method: 'POST', headers: { 'x-api-key': 'test-key' }, body: '{"ids":["a"]}' };
   globalThis.fetch = async (url, options) => {
     assert.equal(url, 'https://example.test/papers');
     assert.equal(options, init);
-    return new Response('', { status: ++calls <= 6 ? 429 : 200 });
+    return new Response('', { status: ++calls <= 60 ? 429 : 200 });
   };
   const progress: RetryProgress[] = [];
   const pending = fetchWithRetry('https://example.test/papers', init, update => progress.push(update));
-  for (const delay of [1000, 2000, 4000, 8000, 16000, 30000]) {
+  for (let retry = 0; retry < 60; retry++) {
     await flush();
     const before = calls;
-    t.mock.timers.tick(delay - 1);
+    t.mock.timers.tick(999);
     await flush();
     assert.equal(calls, before);
     t.mock.timers.tick(1);
   }
   assert.equal((await pending).status, 200);
-  assert.equal(calls, 7);
-  assert.deepEqual(progress.map(p => [p.attempt, p.maxRetries]), [[1, 6], [2, 6], [3, 6], [4, 6], [5, 6], [6, 6]]);
-  assert.equal(progress.at(-1)?.retryAt, 61000);
+  assert.equal(calls, 61);
+  assert.deepEqual(progress.map(p => [p.attempt, p.maxRetries]), Array.from({ length: 60 }, (_, index) => [index + 1, 60]));
+  assert.equal(progress.at(-1)?.retryAt, 60000);
 });
 
 test('returns the final 429 after the retry limit', async t => {
   t.mock.timers.enable({ apis: ['setTimeout'] });
   let calls = 0;
   const pending = retryOn429(async () => ({ status: 429, call: ++calls }), () => '0');
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 60; i++) {
     await flush();
     t.mock.timers.tick(0);
   }
-  assert.deepEqual(await pending, { status: 429, call: 7 });
+  assert.deepEqual(await pending, { status: 429, call: 61 });
 });
 
 test('respects Retry-After seconds and HTTP dates', async t => {
@@ -61,7 +61,7 @@ test('respects Retry-After seconds and HTTP dates', async t => {
   }
 });
 
-test('invalid Retry-After falls back to backoff; long waits surface the error', async t => {
+test('invalid Retry-After falls back to the fixed delay; long waits surface the error', async t => {
   t.mock.timers.enable({ apis: ['setTimeout', 'Date'], now: 0 });
   for (const header of ['invalid', '', '-1']) {
     let calls = 0;
@@ -100,4 +100,58 @@ test('cancellation interrupts a retry wait and prevents further requests', async
   assert.equal(calls, 1);
   await assert.rejects(retryOn429(async () => { calls++; return { status: 200 }; }, () => null, controller.signal), { name: 'AbortError' });
   assert.equal(calls, 1);
+});
+
+test('browser-hidden HTTP failures retry with connection progress and can recover', async t => {
+  t.mock.timers.enable({ apis: ['setTimeout', 'Date'], now: 0 });
+  let calls = 0;
+  globalThis.fetch = async () => {
+    calls++;
+    if (calls === 1) throw new TypeError('Failed to fetch');
+    return new Response('', { status: calls === 2 ? 429 : 200, headers: { 'Retry-After': '2' } });
+  };
+  const progress: RetryProgress[] = [];
+  const pending = fetchWithRetry('https://example.test/search', {}, update => progress.push(update));
+  await flush();
+  assert.equal(calls, 1);
+  assert.deepEqual(progress[0], { attempt: 1, maxRetries: 60, retryAt: 1000, reason: 'network' });
+  t.mock.timers.tick(1000);
+  await flush();
+  assert.equal(calls, 2);
+  assert.deepEqual(progress[1], { attempt: 2, maxRetries: 60, retryAt: 3000, reason: 'rate-limit' });
+  t.mock.timers.tick(2000);
+  assert.equal((await pending).status, 200);
+  assert.equal(calls, 3);
+});
+
+test('network failures exhaust the same 60-retry budget and preserve the final error', async t => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  let calls = 0;
+  const failure = new TypeError('Failed to fetch');
+  globalThis.fetch = async () => { calls++; throw failure; };
+  const pending = fetchWithRetry('https://example.test/search');
+  const rejected = assert.rejects(pending, error => error === failure);
+  for (let retry = 0; retry < 60; retry++) {
+    await flush();
+    t.mock.timers.tick(1000);
+  }
+  await rejected;
+  assert.equal(calls, 61);
+});
+
+test('cancels network retries and does not retry aborts or other exceptions', async () => {
+  const controller = new AbortController();
+  let calls = 0;
+  globalThis.fetch = async () => { calls++; throw new TypeError('Failed to fetch'); };
+  const pending = fetchWithRetry('https://example.test/search', { signal: controller.signal });
+  await flush();
+  controller.abort();
+  await assert.rejects(pending, { name: 'AbortError' });
+  assert.equal(calls, 1);
+  for (const error of [new Error('unexpected error'), new DOMException('Aborted', 'AbortError')]) {
+    calls = 0;
+    globalThis.fetch = async () => { calls++; throw error; };
+    await assert.rejects(fetchWithRetry('https://example.test/search'), reason => reason === error);
+    assert.equal(calls, 1);
+  }
 });

@@ -14,7 +14,7 @@ export default function RetryStatus({ progress }: { progress: RetryProgress }) {
   return (
     <div className="retry-status" role="status" aria-live="polite" aria-atomic="true">
       <span className="retry-status__spinner" aria-hidden="true" />
-      <span>Semantic Scholar is busy. Retry {progress.attempt} of {progress.maxRetries}
+      <span>{progress.reason === 'network' ? 'Could not reach Semantic Scholar.' : 'Semantic Scholar is busy.'} Retry {progress.attempt} of {progress.maxRetries}
         {seconds > 0 ? ` in ${seconds}s…` : ' — retrying…'}</span>
     </div>
   );
