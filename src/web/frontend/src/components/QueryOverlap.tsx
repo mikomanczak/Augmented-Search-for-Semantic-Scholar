@@ -1,12 +1,18 @@
-import { useMemo, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { getOverlapPapers, getQueryOverlap, type QueryResult } from '../lib/query-overlap';
 
 const positions: Record<number, [number, number]> = {
   1: [116, 106], 2: [284, 106], 3: [200, 99],
   4: [200, 260], 5: [146, 188], 6: [254, 188], 7: [200, 166],
 };
+const circles = [
+  { cx: 152, cy: 132, name: 'a' },
+  { cx: 248, cy: 132, name: 'b' },
+  { cx: 200, cy: 216, name: 'c' },
+];
 
 export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
+  const diagramId = useId();
   const overlap = useMemo(() => getQueryOverlap(queries), [queries]);
   const [selection, setSelection] = useState(() => ({
     mask: overlap.regions.find(region => region.papers.length > 0 && (region.mask & (region.mask - 1)) !== 0)?.mask ?? 1,
@@ -24,9 +30,29 @@ export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
       <div className="query-overlap__body">
         <figure className="query-overlap__figure">
           <svg viewBox="0 0 400 330" role="group" aria-label="Venn diagram of exact paper counts. Select a region to explore it.">
-            <circle className="query-overlap__circle query-overlap__circle--a" cx="152" cy="132" r="100" />
-            <circle className="query-overlap__circle query-overlap__circle--b" cx="248" cy="132" r="100" />
-            <circle className="query-overlap__circle query-overlap__circle--c" cx="200" cy="216" r="100" />
+            <defs>
+              {circles.map(({ cx, cy, name }) => (
+                <clipPath key={name} id={`${diagramId}-${name}`} clipPathUnits="userSpaceOnUse">
+                  <circle cx={cx} cy={cy} r="100" />
+                </clipPath>
+              ))}
+              <mask id={`${diagramId}-selection`} maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="330">
+                <rect width="400" height="330" fill="white" />
+                {selection.exact && circles.map(({ cx, cy, name }, index) => (
+                  !(selection.mask & (1 << index)) && <circle key={name} cx={cx} cy={cy} r="100" fill="black" />
+                ))}
+              </mask>
+            </defs>
+            {circles.map(({ cx, cy, name }) => (
+              <circle key={name} className={`query-overlap__circle query-overlap__circle--${name}`} cx={cx} cy={cy} r="100" />
+            ))}
+            <g mask={`url(#${diagramId}-selection)`} aria-hidden="true" pointerEvents="none">
+              {circles.reduce((region, { name }, index) => (
+                selection.mask & (1 << index)
+                  ? <g clipPath={`url(#${diagramId}-${name})`}>{region}</g>
+                  : region
+              ), <rect className="query-overlap__selection" width="400" height="330" />)}
+            </g>
             {queries.map(({ query }, index) => {
               const [x, y] = [[112, 58], [288, 58], [200, 292]][index];
               return (
@@ -77,7 +103,9 @@ export default function QueryOverlap({ queries }: { queries: QueryResult[] }) {
                           aria-label={rowIndex === columnIndex
                             ? `${queries[rowIndex].query}: ${count} total papers`
                             : `${queries[rowIndex].query} + ${queries[columnIndex].query}: ${count} shared papers`}
-                          aria-pressed={!selection.exact && selection.mask === ((1 << rowIndex) | (1 << columnIndex))}
+                          aria-pressed={selection.mask === ((1 << rowIndex) | (1 << columnIndex))
+                            || (selection.exact && rowIndex !== columnIndex
+                              && (selection.mask & ((1 << rowIndex) | (1 << columnIndex))) === ((1 << rowIndex) | (1 << columnIndex)))}
                           aria-controls="query-overlap-detail"
                           onClick={() => setSelection({ mask: (1 << rowIndex) | (1 << columnIndex), exact: false })}>
                           {count}
