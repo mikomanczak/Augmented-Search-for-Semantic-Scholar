@@ -10,7 +10,8 @@ export default function Results() {
   const { keywords, queryResults, results, isSearching, searchError, rateLimited, isMockResultsEnabled, search } = useSearch();
   const [sortOrder, setSortOrder] = useState<SortOrder>('relevance');
   const [view, setView] = useState<'full' | 'compact'>('full');
-  const [isHeaderExpanded, setIsHeaderExpanded] = useState(true);
+  const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
+  const isResultsInsightsEnabled = new URLSearchParams(window.location.search).has('results_insights');
   const sortedResults = useMemo(() => {
     if (sortOrder === 'relevance') return results;
     return results
@@ -40,7 +41,7 @@ export default function Results() {
             {isMockResultsEnabled && <span className="mock-results-badge">Local mock data</span>}
           </div>
           <Export papers={results} />
-          {results.length > 0 && (
+          {isResultsInsightsEnabled && results.length > 0 && (
             <button className="results-header__toggle" type="button"
               aria-label={`${isHeaderExpanded ? 'Collapse' : 'Expand'} results header`}
               aria-expanded={isHeaderExpanded} aria-controls="results-header-details"
@@ -52,8 +53,12 @@ export default function Results() {
             </button>
           )}
           <div className="results-header__details" id="results-header-details" hidden={!isHeaderExpanded}>
-            {queryResults.length === 3 && <QueryOverlap queries={queryResults} />}
-            {results.length > 0 && <TopicMap key={results.map(paper => paper.paperId).join(',')} papers={results} queries={queryResults} isMock={isMockResultsEnabled} />}
+            {(queryResults.length === 3 || results.length > 0) && (
+              <section className="results-insights" aria-label="Query overlap and topic map">
+                {queryResults.length === 3 && <QueryOverlap queries={queryResults} />}
+                {results.length > 0 && <TopicMap key={results.map(paper => paper.paperId).join(',')} papers={results} queries={queryResults} isMock={isMockResultsEnabled} />}
+              </section>
+            )}
           </div>
         </header>
       </div>
