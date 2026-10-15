@@ -1053,6 +1053,23 @@ select {
   outline-offset: 2px;
 }
 
+.results-export__selection { margin-top: 20px; }
+.results-export__selection label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+.results-export__selection select {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px;
+  border: 1px solid var(--border-default);
+  border-radius: 6px;
+  background: #21262d;
+  color: inherit;
+  font: inherit;
+}
+.results-export__selection select:focus-visible { outline: 2px solid var(--border-accent); outline-offset: 2px; }
+.results-export__selection p { margin: 8px 0 0; color: #95a2b4; font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
+:root[data-theme="light"] .results-export__selection select { background: #f2f4f7; color: #344054; }
+:root[data-theme="light"] .results-export__selection p { color: #667085; }
+
 .results-export__dialog {
   width: min(420px, calc(100vw - 32px));
   padding: 20px;
