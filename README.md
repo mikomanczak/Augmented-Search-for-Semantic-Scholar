@@ -50,9 +50,9 @@ Downloads run three at a time, with a 20 MB limit per PDF and no fixed batch-siz
 cutoff, and a 30-second timeout per file. Cancel stops the batch without saving an archive.
 Publisher landing pages, blocked links and other unavailable files appear in the report.
 
-The GitHub Pages version fetches PDFs directly in the browser. Publishers that do not
-allow cross-origin requests cannot be downloaded this way. For better coverage, run
-the PDF service locally (Node.js 22.18+):
+Production builds use the PDF service at
+`https://augmented-search-for-semantic-scholar.onrender.com/api/pdfs`.
+For local development, run the PDF service locally (Node.js 22.18+):
 
 ```sh
 cd src/web/backend
@@ -131,7 +131,7 @@ uses the current versioned Cloud Service and its article metadata, rather than
 the retired OA Web Service or scraped PMC article pages. See the
 [PMC Cloud Service documentation](https://pmc.ncbi.nlm.nih.gov/tools/pmcaws/).
 
-To use a separately hosted PDF service, set `VITE_PDF_API_URL` to its full
+To override the default PDF service, set `VITE_PDF_API_URL` to its full
 `https://your-service.example/api/pdfs` endpoint before building the frontend, or set
 the repository Actions variable `VITE_PDF_API_URL` for the GitHub Pages build. Set
 `PDF_ALLOWED_ORIGINS` on the service to a comma-separated list of approved website
