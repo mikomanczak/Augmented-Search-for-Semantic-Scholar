@@ -106,6 +106,3 @@ An early version of this tool was used in _"Methodology for AI-Based Search Stra
 
 [https://www.mdpi.com/2304-6775/12/4/49](https://www.mdpi.com/2304-6775/12/4/49)
 
-## License
-
-MIT-0: free to use, modify, and distribute. No attribution or acknowledgement required.
