@@ -91,7 +91,7 @@ test('unrelated or embargoed DOI records cannot supply a repository PDF', async 
       if (url === original) return refused();
       return { bytes: Buffer.from(JSON.stringify({ records: [record] })), url };
     };
-    await assert.rejects(resolvePdf(original, signal(), { load, externalIds: { DOI: '10.1234/test' } }), /No available PMC record/);
+    await assert.rejects(resolvePdf(original, signal(), { load, externalIds: { DOI: '10.1234/test' }, openAlex: false }), /No available PMC record/);
     assert.equal(calls, 2);
   }
 });

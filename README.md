@@ -74,13 +74,28 @@ For frontend development without Semantic Scholar requests, open the Vite URL wi
 Open the URL printed by Vite. The development server forwards PDF requests to
 `http://127.0.0.1:3000`. The service follows up to five redirects, validates PDF bytes,
 blocks private/reserved network destinations on every hop, pins DNS results to each
-connection, and caps active article downloads at six. It follows explicit PDF links
-in article pages (including `citation_pdf_url` metadata), tries at most six source
-URLs per article, and retries temporary HTTP 202/429/502/503/504 responses once.
+connection, and caps active article downloads at six. It parses article HTML to find
+PDF metadata, repository download buttons, embedded PDF objects/iframes, and PDF.js
+or Google viewer file URLs. It also recognizes observed OJS article download,
+DSpace bitstream, Digital Commons, Figshare, and journal PDF routes even when they
+do not end in `.pdf`. Relative links respect the page's base URL. Literal button
+data URLs and GET download forms are supported; page scripts and POST forms are
+never executed. Article PDF metadata and direct files take priority over generic
+download links; links labelled as citations, supplements, or datasets are skipped.
+At most four candidates per page and six source URLs per article are tried, with
+one retry for temporary HTTP 202/429/502/503/504 responses.
 `Retry-After` waits longer than two seconds are surfaced instead of retried within
 the batch. Source requests share the existing 25-second server deadline.
 Metadata responses are limited to 2 MB. The service cannot bypass
 publisher authentication or anti-bot restrictions, or discover PDFs from every page.
+
+After the original source, arXiv, and PMC fail, the backend looks up the exact DOI
+in OpenAlex and tries its explicitly open-access locations. Direct PDF URLs are
+tried before landing pages, with duplicate URLs skipped. The existing six-source
+and 25-second limits still apply. OpenAlex metadata has a five-second timeout;
+successful lookups are cached for one hour (up to 256 DOIs), and requests are spaced
+at least 200 ms apart. Basic lookups need no API key; API quota failures appear in
+the download report. This uses OpenAlex's locations API, without calling Unpaywall.
 
 The ZIP report includes final source URLs for successful downloads and attempted
 source URLs with failure reasons for unsuccessful downloads.
@@ -114,6 +129,41 @@ on HTTPS when serving the frontend over HTTPS.
 
 Run `npm test` in each directory to check the archive flow and download protections;
 run `npm run build` in each directory to check TypeScript and build the app.
+
+### Experimental headless-browser downloads
+
+The backend includes a separate Playwright experiment for PDFs that still fail.
+It is not invoked by normal downloads. Install Chromium and run it against either
+a ZIP download report or a comparison report:
+
+```sh
+cd src/web/backend
+npx playwright install chromium
+npm run test:browser
+npm run experiment:browser -- /path/to/download-report.json /tmp/pdf-browser-experiment
+```
+
+The experiment retries failed papers sequentially in fresh browser profiles. It
+can execute article-page JavaScript, follow rendered PDF links, click PDF download
+buttons, and capture PDF responses or downloads. It does not use the user's browser
+profile, log in, solve CAPTCHAs, or print webpages to PDF. Validated PDFs and an
+incrementally saved `browser-fallback-report.json` are written to the output directory.
+
+Each job has a 20-second deadline, up to three navigations, a 20 MB PDF limit, and a
+50 MB browser transfer budget. The default rendering wait is two seconds per page;
+set `BROWSER_RENDER_WAIT_MS=8000` to allow up to eight seconds for slower pages.
+`PLAYWRIGHT_BROWSERS_PATH` can select a custom Chromium installation directory.
+An authenticated local proxy checks every HTTP destination and HTTPS tunnel,
+rejects private/reserved destinations, and pins checked DNS addresses. Browser
+jobs block POSTs, WebSockets and service workers and disable non-proxied WebRTC.
+
+### Reproducing the OpenAlex location experiment
+
+`npm run experiment:openalex -- <download-report.json> <openalex-response.json> <output-directory>`
+tests a saved OpenAlex `/works` response against previously failed papers. It
+matches exact DOIs, keeps only locations with `is_oa: true`, skips URLs already
+attempted in the baseline report, and saves recovered PDFs plus an incremental
+`openalex-download-report.json` with the source's version and license metadata.
 
 ## Command Line Interface (CLI)
 

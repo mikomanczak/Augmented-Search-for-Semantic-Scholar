@@ -1,6 +1,9 @@
 import { setTimeout as delay } from 'node:timers/promises';
 import { fetchResource, PdfError } from './pdf';
+import { articleLinks } from './article-links';
+export { articleLinks } from './article-links';
 import { hasRepositoryIdentifiers, repositorySources, type PaperIdentifiers } from './repository-sources';
+import { lookupOpenAlex, normalizeDoi } from './openalex';
 
 export type DownloadAttempt = { url: string; reason: string; upstreamStatus?: number };
 export class ResolutionError extends PdfError {
@@ -9,42 +12,9 @@ export class ResolutionError extends PdfError {
   }
 }
 
-function decodeAttribute(value: string): string {
-  return value.replace(/&(?:amp|quot|apos|lt|gt|#\d+|#x[\da-f]+);/gi, entity => {
-    const named: Record<string, string> = { '&amp;': '&', '&quot;': '"', '&apos;': "'", '&lt;': '<', '&gt;': '>' };
-    if (named[entity.toLowerCase()]) return named[entity.toLowerCase()];
-    const code = entity.slice(2, -1);
-    const point = code[0].toLowerCase() === 'x' ? parseInt(code.slice(1), 16) : Number(code);
-    return point > 0 && point <= 0x10ffff ? String.fromCodePoint(point) : '';
-  });
-}
-
-// Read explicit scholarly metadata and PDF links, never execute page scripts.
-export function articleLinks(html: string, pageUrl: string): { urls: string[] } {
-  const urls: string[] = [];
-  const document = html.replace(/<!--[\s\S]*?-->|<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, '');
-  for (const tag of document.match(/<(?:meta|link|a)\b[^>]*>/gi) ?? []) {
-    const attributes: Record<string, string> = {};
-    for (const match of tag.matchAll(/([\w:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)) {
-      attributes[match[1].toLowerCase()] = decodeAttribute(match[2] ?? match[3] ?? match[4]);
-    }
-    const name = (attributes.name ?? attributes.property ?? '').toLowerCase();
-    const href = name === 'citation_pdf_url' ? attributes.content
-      : attributes.type?.toLowerCase() === 'application/pdf' || /\.pdf(?:$|[?#])/i.test(attributes.href ?? '')
-        ? attributes.href : undefined;
-    if (!href) continue;
-    try {
-      const url = new URL(href, pageUrl);
-      url.hash = '';
-      if (['http:', 'https:'].includes(url.protocol)) urls.push(url.href);
-    } catch { /* Ignore malformed metadata links. */ }
-  }
-  return { urls: [...new Set(urls)].slice(0, 4) };
-}
-
 export async function resolvePdf(
   originalUrl: string, signal: AbortSignal,
-  options: { load?: typeof fetchResource; externalIds?: PaperIdentifiers } = {},
+  options: { load?: typeof fetchResource; externalIds?: PaperIdentifiers; openAlex?: boolean } = {},
 ): Promise<{ bytes: Buffer; url: string; attempts: DownloadAttempt[] }> {
   const load = options.load ?? fetchResource;
   const attempts: DownloadAttempt[] = [];
@@ -102,6 +72,24 @@ export async function resolvePdf(
     if (source.done) break;
     const result = await trySources([source.value], 6 - requests);
     if (result) return result;
+  }
+  const doi = normalizeDoi(ids.DOI);
+  if (doi && requests < 6 && options.openAlex !== false) {
+    let sources;
+    const lookupUrl = 'https://api.openalex.org/works';
+    try {
+      sources = (await lookupOpenAlex(doi, AbortSignal.any([signal, AbortSignal.timeout(5_000)]), load)).sources;
+      if (!sources.length) attempts.push({ url: lookupUrl, reason: 'OpenAlex found no matching open-access locations.' });
+    } catch (error) {
+      signal.throwIfAborted();
+      attempts.push({ url: lookupUrl, reason: `OpenAlex lookup failed: ${error instanceof Error ? error.message : 'Unavailable.'}` });
+    }
+    for (const source of sources ?? []) {
+      if (requests >= 6) break;
+      if (seen.has(source.url)) continue;
+      const result = await trySources([source.url], 6 - requests);
+      if (result) return result;
+    }
   }
   throw new ResolutionError(attempts);
 }

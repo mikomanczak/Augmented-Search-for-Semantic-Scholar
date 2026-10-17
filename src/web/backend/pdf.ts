@@ -36,7 +36,7 @@ function withAbort<T>(promise: Promise<T>, signal: AbortSignal): Promise<T> {
 }
 
 export async function fetchResource(rawUrl: string, signal: AbortSignal, dependencies = defaults,
-  mode: 'pdf' | 'document' = 'pdf'): Promise<{ bytes: Buffer; url: string }> {
+  mode: 'pdf' | 'document' | 'json' = 'pdf'): Promise<{ bytes: Buffer; url: string }> {
   let url: URL;
   try { url = new URL(rawUrl); }
   catch { throw new PdfError('Invalid PDF URL.', 400); }
@@ -65,7 +65,7 @@ export async function fetchResource(rawUrl: string, signal: AbortSignal, depende
         lookup: (_host, _options, callback) => callback(null, target.address, target.family),
         headers: {
           'User-Agent': 'AugmentedSearch-PDFDownloader/1.0',
-          Accept: 'application/pdf, text/html;q=0.9, application/octet-stream;q=0.8',
+          Accept: mode === 'json' ? 'application/json' : 'application/pdf, text/html;q=0.9, application/octet-stream;q=0.8',
           'Accept-Encoding': 'identity',
         },
       });
