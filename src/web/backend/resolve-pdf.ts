@@ -3,7 +3,8 @@ import { fetchResource, PdfError } from './pdf';
 import { articleLinks } from './article-links';
 export { articleLinks } from './article-links';
 import { hasRepositoryIdentifiers, repositorySources, type PaperIdentifiers } from './repository-sources';
-import { lookupOpenAlex, normalizeDoi } from './openalex';
+import { figshareArticleId, figshareSources } from './figshare';
+import { lookupOpenAlex, normalizeDoi, fetchOpenAlexCachedPdf } from './openalex';
 
 export type DownloadAttempt = { url: string; reason: string; upstreamStatus?: number };
 export class ResolutionError extends PdfError {
@@ -14,12 +15,13 @@ export class ResolutionError extends PdfError {
 
 export async function resolvePdf(
   originalUrl: string, signal: AbortSignal,
-  options: { load?: typeof fetchResource; externalIds?: PaperIdentifiers; openAlex?: boolean } = {},
+  options: { load?: typeof fetchResource; externalIds?: PaperIdentifiers; openAlex?: boolean; openAlexApiKey?: string } = {},
 ): Promise<{ bytes: Buffer; url: string; attempts: DownloadAttempt[] }> {
   const load = options.load ?? fetchResource;
   const attempts: DownloadAttempt[] = [];
   const seen = new Set<string>();
   let requests = 0;
+  const figshareSeen = new Set<string>();
   async function trySources(initialUrls: string[], limit: number) {
     const queue = [...initialUrls];
     const start = requests;
@@ -57,6 +59,18 @@ export async function resolvePdf(
           : error instanceof Error ? error.message : 'Source download failed.',
           ...(error instanceof PdfError && error.upstreamStatus ? { upstreamStatus: error.upstreamStatus } : {}) });
       }
+      const articleId = figshareArticleId(url);
+      if (articleId && !figshareSeen.has(articleId)) {
+        figshareSeen.add(articleId);
+        const apiUrl = `https://api.figshare.com/v2/articles/${articleId}`;
+        try {
+          const urls = await figshareSources(articleId, AbortSignal.any([signal, AbortSignal.timeout(5_000)]), load);
+          queue.unshift(...urls.filter(link => !seen.has(link)));
+        } catch {
+          signal.throwIfAborted();
+          attempts.push({ url: apiUrl, reason: 'Figshare file lookup failed.' });
+        }
+      }
     }
     return undefined;
   }
@@ -74,11 +88,14 @@ export async function resolvePdf(
     if (result) return result;
   }
   const doi = normalizeDoi(ids.DOI);
-  if (doi && requests < 6 && options.openAlex !== false) {
+  if (doi && options.openAlex !== false) {
     let sources;
+    let cachedPdf;
     const lookupUrl = 'https://api.openalex.org/works';
     try {
-      sources = (await lookupOpenAlex(doi, AbortSignal.any([signal, AbortSignal.timeout(5_000)]), load)).sources;
+      const lookup = await lookupOpenAlex(doi, AbortSignal.any([signal, AbortSignal.timeout(5_000)]), load);
+      sources = lookup.sources;
+      cachedPdf = lookup.cachedPdf;
       if (!sources.length) attempts.push({ url: lookupUrl, reason: 'OpenAlex found no matching open-access locations.' });
     } catch (error) {
       signal.throwIfAborted();
@@ -89,6 +106,16 @@ export async function resolvePdf(
       if (seen.has(source.url)) continue;
       const result = await trySources([source.url], 6 - requests);
       if (result) return result;
+    }
+    const key = options.openAlexApiKey ?? process.env.OPENALEX_API_KEY;
+    // One final cached-file request, separate from the six publisher/repository attempts.
+    if (cachedPdf && key) {
+      try {
+        return { ...await fetchOpenAlexCachedPdf(cachedPdf, key, signal, load), attempts };
+      } catch (error) {
+        signal.throwIfAborted();
+        attempts.push({ url: cachedPdf, reason: error instanceof Error ? error.message : 'OpenAlex cached PDF download failed.' });
+      }
     }
   }
   throw new ResolutionError(attempts);

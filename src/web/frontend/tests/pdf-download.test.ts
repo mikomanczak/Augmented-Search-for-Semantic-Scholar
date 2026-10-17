@@ -153,5 +153,36 @@ test('limits concurrency to three and handles streamed oversized files', async (
   assert.equal(result.failed, 6);
   const archive = unzipSync(new Uint8Array(await result.blob.arrayBuffer()));
   const report = JSON.parse(strFromU8(archive['download-report.json']));
-  assert.match(report.papers[5].reason, /100 MB/);
+  assert.ok(report.papers.every((paper: { reason: string }) => /20 MB/.test(paper.reason)));
+});
+
+
+test('downloads more than 100 MB into one readable ZIP without failing later papers', async () => {
+  const chunk = new Uint8Array(1024 * 1024);
+  chunk.set(new TextEncoder().encode('%PDF-1.4\n'));
+  let fetched = 0;
+  globalThis.fetch = async () => {
+    fetched++;
+    let remaining = 16;
+    return new Response(new ReadableStream({
+      pull(stream) {
+        if (remaining-- > 0) stream.enqueue(chunk);
+        else stream.close();
+      },
+    }));
+  };
+  const papers = Array.from({ length: 7 }, (_, index) => ({ ...candidates[0], paperId: `large-${index}` }));
+  const result = await downloadPdfs(papers, { signal: new AbortController().signal, onProgress: () => {} });
+  assert.equal(fetched, 7);
+  assert.equal(result.downloaded, 7);
+  assert.equal(result.failed, 0);
+  assert.ok(result.blob.size > 100 * 1024 * 1024);
+  const filenames: string[] = [];
+  const archive = unzipSync(new Uint8Array(await result.blob.arrayBuffer()), {
+    filter(file) { filenames.push(file.name); return file.name === 'download-report.json'; },
+  });
+  assert.equal(filenames.filter(name => name.endsWith('.pdf')).length, 7);
+  const report = JSON.parse(strFromU8(archive['download-report.json']));
+  assert.equal(report.downloaded, 7);
+  assert.ok(report.papers.every((paper: { status: string }) => paper.status === 'downloaded'));
 });

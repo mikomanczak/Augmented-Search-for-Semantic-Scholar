@@ -46,8 +46,8 @@ the browser), since these can hide the HTTP status of a rate-limit response.
 After searching, open **Download** and choose **Download open access PDFs (.zip)**.
 The archive contains PDFs from the currently loaded results and a `download-report.json`
 listing successes and failures. Duplicate paper IDs and PDF URLs are downloaded once.
-Downloads run three at a time, with a 20 MB limit per PDF, a 100 MB transfer limit per
-batch, and a 30-second timeout per file. Cancel stops the batch without saving an archive.
+Downloads run three at a time, with a 20 MB limit per PDF and no fixed batch-size
+cutoff, and a 30-second timeout per file. Cancel stops the batch without saving an archive.
 Publisher landing pages, blocked links and other unavailable files appear in the report.
 
 The GitHub Pages version fetches PDFs directly in the browser. Publishers that do not
@@ -92,10 +92,24 @@ publisher authentication or anti-bot restrictions, or discover PDFs from every p
 After the original source, arXiv, and PMC fail, the backend looks up the exact DOI
 in OpenAlex and tries its explicitly open-access locations. Direct PDF URLs are
 tried before landing pages, with duplicate URLs skipped. The existing six-source
-and 25-second limits still apply. OpenAlex metadata has a five-second timeout;
+limit applies to publisher/repository sources. OpenAlex metadata has a five-second timeout;
 successful lookups are cached for one hour (up to 256 DOIs), and requests are spaced
 at least 200 ms apart. Basic lookups need no API key; API quota failures appear in
 the download report. This uses OpenAlex's locations API, without calling Unpaywall.
+
+Figshare article pages also use the public Figshare file API to discover PDF
+files when the webpage does not expose a working download link. Embargoed records
+and files marked as external links are skipped.
+
+To enable OpenAlex's cached PDFs as a final fallback, put an activated key in
+`src/web/backend/.env.local` as `OPENALEX_API_KEY=your-key`, then restart the backend.
+`npm start` loads this ignored file; hosted deployments can set the environment
+variable directly. The key stays on the server and is excluded from download
+reports and source headers. Cached downloads require an exact DOI match and the
+matching OpenAlex work's advertised content URL. One cached-file request is allowed
+after the six source attempts; all requests still share the 25-second deadline.
+Content requests consume the OpenAlex key's daily allowance. Without a key, cached
+files are skipped and the other fallbacks continue to work.
 
 The ZIP report includes final source URLs for successful downloads and attempted
 source URLs with failure reasons for unsuccessful downloads.

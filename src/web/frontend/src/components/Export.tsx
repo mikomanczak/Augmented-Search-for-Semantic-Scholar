@@ -168,7 +168,7 @@ export default function Export({ papers }: { papers?: Paper[] }) {
             disabled={isDownloading || pdfCandidates.length === 0} onClick={() => void handlePdfDownload()}>
             Download open access PDFs (.zip)
           </button>
-          <p>{pdfCandidates.length} unique open access {pdfCandidates.length === 1 ? 'link' : 'links'} available. Up to 20 MB per PDF and 100 MB per batch.</p>
+          <p>{pdfCandidates.length} unique open access {pdfCandidates.length === 1 ? 'link' : 'links'} available. Up to 20 MB per PDF. Larger batches are supported.</p>
           {!pdfEndpoint && <p>Some publishers block browser downloads. Unavailable PDFs will be listed in the ZIP report.</p>}
           {progress && (
             <div className="results-export__progress">
