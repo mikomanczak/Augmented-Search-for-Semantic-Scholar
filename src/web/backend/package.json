@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node index.ts",
+    "start": "node --env-file-if-exists=.env.local -r ts-node/register index.ts",
     "build": "tsc --outDir dist",
-    "test": "node --test -r ts-node/register pdf.test.ts resolve-pdf.test.ts repository-sources.test.ts article-links.test.ts browser-proxy.test.ts openalex.test.ts",
+    "test": "node --test -r ts-node/register pdf.test.ts resolve-pdf.test.ts repository-sources.test.ts article-links.test.ts browser-proxy.test.ts openalex.test.ts figshare.test.ts",
     "test:browser": "RUN_BROWSER_TESTS=1 node --test -r ts-node/register browser-pdf.test.ts",
     "experiment:browser": "ts-node browser-experiment.ts",
     "experiment:openalex": "ts-node openalex-experiment.ts"

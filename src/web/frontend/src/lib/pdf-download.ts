@@ -1,8 +1,7 @@
-import { strToU8, zip, type Zippable } from 'fflate';
+import { strToU8, Zip, ZipPassThrough } from 'fflate';
 import type { Paper } from '../context/SearchContext';
 
 const MAX_FILE_BYTES = 20 * 1024 * 1024;
-const MAX_BATCH_BYTES = 100 * 1024 * 1024;
 const CONCURRENCY = 3;
 
 export type PdfCandidate = { paperId: string; title: string; year?: number | null; url: string; externalIds?: NonNullable<Paper['externalIds']> };
@@ -37,30 +36,30 @@ function pdfFilename(paper: PdfCandidate, index: number): string {
   return `${String(index + 1).padStart(3, '0')}-${paper.year ? `${paper.year}-` : ''}${title}.pdf`;
 }
 
-function makeZip(files: Zippable, signal: AbortSignal): Promise<Uint8Array> {
-  signal.throwIfAborted();
-  return new Promise((resolve, reject) => {
-    const cancel = () => { terminate(); reject(signal.reason); };
-    const terminate = zip(files, { level: 0 }, (error, data) => {
-      signal.removeEventListener('abort', cancel);
-      if (error) reject(error);
-      else resolve(data);
-    });
-    signal.addEventListener('abort', cancel, { once: true });
-  });
-}
-
 export async function downloadPdfs(
   papers: PdfCandidate[],
   options: { signal: AbortSignal; endpoint?: string; onProgress: (progress: DownloadProgress) => void },
 ): Promise<{ blob: Blob; downloaded: number; failed: number }> {
   const { signal, endpoint, onProgress } = options;
-  const files: Zippable = Object.create(null);
+  // Store completed ZIP chunks as browser-managed Blobs rather than retaining
+  // every PDF and then allocating another contiguous buffer for the whole ZIP.
+  const parts: Blob[] = [];
+  let archiveError: Error | null = null;
+  const archive = new Zip((error, chunk) => {
+    if (error) archiveError = error;
+    else parts.push(new Blob([chunk as Uint8Array<ArrayBuffer>]));
+  });
+  function addFile(filename: string, bytes: Uint8Array) {
+    signal.throwIfAborted();
+    const file = new ZipPassThrough(filename);
+    archive.add(file);
+    file.push(bytes, true);
+    if (archiveError) throw archiveError;
+  }
   const records: DownloadRecord[] = new Array(papers.length);
   let nextIndex = 0;
   let completed = 0;
   let downloaded = 0;
-  let batchBytes = 0;
   const progress = (packaging = false) => onProgress({ completed, total: papers.length, downloaded, failed: completed - downloaded, packaging });
   progress();
 
@@ -81,7 +80,6 @@ export async function downloadPdfs(
         if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) {
           throw new Error('Invalid or unsupported PDF URL.');
         }
-        if (batchBytes >= MAX_BATCH_BYTES) throw new Error('The 100 MB batch limit was reached.');
         const response = await fetch(endpoint || url.href, {
           signal: controller.signal,
           credentials: 'omit',
@@ -106,8 +104,6 @@ export async function downloadPdfs(
           const { done, value } = await reader.read();
           if (done) break;
           size += value.length;
-          batchBytes += value.length;
-          if (batchBytes > MAX_BATCH_BYTES) throw new Error('The 100 MB batch limit was reached.');
           if (size > MAX_FILE_BYTES) throw new Error('PDF exceeds the 20 MB file limit.');
           for (let i = 0; i < value.length && signature.length < 5; i++) signature += String.fromCharCode(value[i]);
           if (signature.length === 5 && signature !== '%PDF-') throw new Error('The link returned a webpage or another non-PDF file.');
@@ -119,7 +115,7 @@ export async function downloadPdfs(
         let offset = 0;
         for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
         const filename = pdfFilename(paper, index);
-        files[filename] = bytes;
+        addFile(filename, bytes);
         let resolvedUrl = paper.url;
         try { resolvedUrl = decodeURIComponent(response.headers.get('X-Pdf-Source') ?? '') || response.url || paper.url; }
         catch { /* Retain the original URL if a source header is malformed. */ }
@@ -146,15 +142,16 @@ export async function downloadPdfs(
 
   await Promise.all(Array.from({ length: Math.min(CONCURRENCY, papers.length) }, worker));
   signal.throwIfAborted();
-  files['download-report.json'] = strToU8(JSON.stringify({
+  addFile('download-report.json', strToU8(JSON.stringify({
     createdAt: new Date().toISOString(),
     total: papers.length,
     downloaded,
     failed: papers.length - downloaded,
     papers: records,
-  }, null, 2));
+  }, null, 2)));
   progress(true);
-  const archive = await makeZip(files, signal);
+  archive.end();
+  if (archiveError) throw archiveError;
   signal.throwIfAborted();
-  return { blob: new Blob([archive as Uint8Array<ArrayBuffer>], { type: 'application/zip' }), downloaded, failed: papers.length - downloaded };
+  return { blob: new Blob(parts, { type: 'application/zip' }), downloaded, failed: papers.length - downloaded };
 }

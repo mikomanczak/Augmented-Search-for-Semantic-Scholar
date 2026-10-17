@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { openAlexSources, lookupOpenAlex } from './openalex';
 import { fetchResource } from './pdf';
 import { PdfError } from './pdf';
-import { resolvePdf } from './resolve-pdf';
+import { resolvePdf, ResolutionError } from './resolve-pdf';
 
 test('uses only exact-DOI open-access locations and tries PDFs before landing pages', () => {
   const work = { doi: 'https://doi.org/10.1234/TEST', locations: [
@@ -86,4 +86,42 @@ test('caller cancellation interrupts OpenAlex metadata lookup', async () => {
   await assert.rejects(resolvePdf('https://publisher.example/article.pdf', controller.signal, {
     load, externalIds: { DOI: '10.1234/test' },
   }), /abort/i);
+});
+
+import { openAlexCachedPdf, fetchOpenAlexCachedPdf } from './openalex';
+const cachedWork = { id: 'https://openalex.org/W123', doi: '10.1234/test', has_content: {pdf:true}, content_urls: {pdf:'https://content.openalex.org/works/W123.pdf'} };
+
+test('cached files require exact DOI, work identity and trusted content endpoint', () => {
+  assert.equal(openAlexCachedPdf(cachedWork,'10.1234/test'),cachedWork.content_urls.pdf);
+  for (const work of [{...cachedWork,doi:'10.1234/other'}, {...cachedWork,has_content:{pdf:false}}, {...cachedWork,content_urls:{pdf:'https://evil.example/file.pdf'}}, {...cachedWork,id:'https://openalex.org/W999'}]) assert.equal(openAlexCachedPdf(work,'10.1234/test'),undefined);
+});
+
+test('cached download credentials never appear in returned URLs or errors', async () => {
+  const key='test-secret-key';
+  const load: typeof fetchResource = async url => {
+    assert.equal(new URL(url).searchParams.get('api_key'),key);
+    return {url,bytes:Buffer.from('%PDF-1.4\nfixture')};
+  };
+  assert.equal((await fetchOpenAlexCachedPdf(cachedWork.content_urls.pdf,key,new AbortController().signal,load)).url,cachedWork.content_urls.pdf);
+  const fail: typeof fetchResource = async url => {throw new Error(url);};
+  await assert.rejects(fetchOpenAlexCachedPdf(cachedWork.content_urls.pdf,key,new AbortController().signal,fail),error => {
+    assert.ok(error instanceof Error);assert.ok(!error.message.includes(key));return true;
+  });
+  await assert.rejects(fetchOpenAlexCachedPdf('https://evil.example/file.pdf',key,new AbortController().signal,load),/Invalid OpenAlex/);
+});
+
+test('cache is a final fallback and needs a configured key', async () => {
+  for (const key of ['', 'test-key']) {
+    let contentCalls=0;
+    const load: typeof fetchResource = async url => {
+      if(url.includes('pmc.ncbi')) return {url,bytes:Buffer.from('{"records":[]}')};
+      if(url.includes('api.openalex'))return {url,bytes:Buffer.from(JSON.stringify({results:[{...cachedWork,locations:[]}]}))};
+      if(url.includes('content.openalex')){contentCalls++;return {url,bytes:Buffer.from('%PDF-1.4\nfixture')};}
+      throw new PdfError('Publisher returned HTTP 403.',422,403);
+    };
+    const result=resolvePdf('https://publisher.example/paper',new AbortController().signal,{load,externalIds:{DOI:'10.1234/test'},openAlexApiKey:key});
+    if(key)assert.equal((await result).url,cachedWork.content_urls.pdf);
+    else await assert.rejects(result,ResolutionError);
+    assert.equal(contentCalls,key?1:0);
+  }
 });
