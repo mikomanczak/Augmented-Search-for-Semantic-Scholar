@@ -89,6 +89,7 @@ export type Paper = {
   citationCount?: number | null;
   url?: string;
   openAccessPdf?: { url: string } | null;
+  externalIds?: { DOI?: string | null; ArXiv?: string | null; PubMedCentral?: string | null } | null;
 };
 
 type PersistedState = {
@@ -246,7 +247,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
 
       const params = new URLSearchParams({
         limit: '50',
-        fields: 'paperId,title,abstract,year,authors,venue,citationCount,url,openAccessPdf',
+        fields: 'paperId,title,abstract,year,authors,venue,citationCount,url,openAccessPdf,externalIds',
       });
       if (startYear && endYear) params.set('publicationDateOrYear', `${startYear}:${endYear}`);
       else if (startYear) params.set('publicationDateOrYear', `${startYear}:`);

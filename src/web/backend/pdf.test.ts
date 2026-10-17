@@ -98,6 +98,13 @@ test('API rejects invalid requests and unapproved browser origins', async () => 
     assert.equal(allowed.headers.get('access-control-allow-origin'), 'http://localhost:5173');
     const invalid = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
     assert.equal(invalid.status, 400);
+    for (const externalIds of [[], 'invalid', { DOI: 42 }, { PubMedCentral: 'x'.repeat(513) }]) {
+      const invalidIds = await fetch(url, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: 'https://publisher.example/paper.pdf', externalIds }),
+      });
+      assert.equal(invalidIds.status, 400);
+    }
     const privateUrl = await fetch(url, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: 'http://127.0.0.1/' }),
     });

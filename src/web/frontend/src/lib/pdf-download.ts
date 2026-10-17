@@ -5,9 +5,10 @@ const MAX_FILE_BYTES = 20 * 1024 * 1024;
 const MAX_BATCH_BYTES = 100 * 1024 * 1024;
 const CONCURRENCY = 3;
 
-export type PdfCandidate = { paperId: string; title: string; year?: number | null; url: string };
+export type PdfCandidate = { paperId: string; title: string; year?: number | null; url: string; externalIds?: NonNullable<Paper['externalIds']> };
 export type DownloadProgress = { completed: number; total: number; downloaded: number; failed: number; packaging: boolean };
-export type DownloadRecord = PdfCandidate & { status: 'downloaded' | 'failed'; filename?: string; reason?: string };
+type DownloadAttempt = { url: string; reason: string; upstreamStatus?: number };
+export type DownloadRecord = PdfCandidate & { status: 'downloaded' | 'failed'; filename?: string; reason?: string; resolvedUrl?: string; attempts?: DownloadAttempt[] };
 
 export function getPdfCandidates(papers: Paper[]): PdfCandidate[] {
   const seenUrls = new Set<string>();
@@ -23,7 +24,11 @@ export function getPdfCandidates(papers: Paper[]): PdfCandidate[] {
     if (seenUrls.has(url) || seenIds.has(paper.paperId)) return [];
     seenUrls.add(url);
     seenIds.add(paper.paperId);
-    return [{ paperId: paper.paperId, title: paper.title, year: paper.year, url }];
+    return [{ paperId: paper.paperId, title: paper.title, year: paper.year, url,
+      ...(paper.externalIds ? { externalIds: {
+        DOI: paper.externalIds.DOI, ArXiv: paper.externalIds.ArXiv, PubMedCentral: paper.externalIds.PubMedCentral,
+      } } : {}),
+    }];
   });
 }
 
@@ -68,6 +73,7 @@ export async function downloadPdfs(
       signal.addEventListener('abort', abort, { once: true });
       const timeout = window.setTimeout(() => controller.abort(new Error('Download timed out.')), 30_000);
       let reader: ReadableStreamDefaultReader<Uint8Array> | undefined;
+      let attempts: DownloadAttempt[] | undefined;
       try {
         let url: URL;
         try { url = new URL(paper.url); }
@@ -82,11 +88,12 @@ export async function downloadPdfs(
           ...(endpoint ? {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ url: url.href }),
+            body: JSON.stringify({ url: url.href, externalIds: paper.externalIds }),
           } : {}),
         });
         if (!response.ok) {
-          const detail = endpoint ? await response.json().catch(() => null) as { error?: string } | null : null;
+          const detail = endpoint ? await response.json().catch(() => null) as { error?: string; attempts?: DownloadAttempt[] } | null : null;
+          attempts = detail?.attempts;
           throw new Error(detail?.error ?? `Publisher returned HTTP ${response.status}.`);
         }
         if (Number(response.headers.get('content-length')) > MAX_FILE_BYTES) throw new Error('PDF exceeds the 20 MB file limit.');
@@ -113,7 +120,10 @@ export async function downloadPdfs(
         for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
         const filename = pdfFilename(paper, index);
         files[filename] = bytes;
-        records[index] = { ...paper, status: 'downloaded', filename };
+        let resolvedUrl = paper.url;
+        try { resolvedUrl = decodeURIComponent(response.headers.get('X-Pdf-Source') ?? '') || response.url || paper.url; }
+        catch { /* Retain the original URL if a source header is malformed. */ }
+        records[index] = { ...paper, status: 'downloaded', filename, resolvedUrl };
         downloaded++;
       } catch (error) {
         if (signal.aborted) throw signal.reason;
@@ -122,7 +132,7 @@ export async function downloadPdfs(
             ? 'Could not reach the PDF service. Check that it is running and allows this website.'
             : 'Could not fetch this PDF. The publisher may block browser downloads (CORS).')
           : error instanceof Error ? error.message : 'Download failed.';
-        records[index] = { ...paper, status: 'failed', reason };
+        records[index] = { ...paper, status: 'failed', reason, ...(attempts ? { attempts } : {}) };
       } finally {
         await reader?.cancel().catch(() => {});
         controller.abort();

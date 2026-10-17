@@ -1,5 +1,7 @@
 import express from 'express';
-import { fetchPdf, PdfError } from './pdf';
+import { PdfError } from './pdf';
+import { resolvePdf, ResolutionError } from './resolve-pdf';
+import { readIdentifiers } from './repository-sources';
 
 export const app = express();
 const allowedOrigins = new Set((process.env.PDF_ALLOWED_ORIGINS ?? '').split(',').map(value => value.trim()).filter(Boolean));
@@ -23,6 +25,7 @@ app.use('/api/pdfs', (req, res, next) => {
     res.set('Access-Control-Allow-Origin', origin);
     res.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.set('Access-Control-Allow-Headers', 'Content-Type');
+    res.set('Access-Control-Expose-Headers', 'X-Pdf-Source');
   }
   if (req.method === 'OPTIONS') { res.sendStatus(204); return; }
   next();
@@ -35,6 +38,12 @@ app.post('/api/pdfs', async (req, res) => {
     res.status(400).json({ error: 'Provide a PDF URL.' });
     return;
   }
+  let externalIds;
+  try { externalIds = readIdentifiers(req.body.externalIds); }
+  catch (error) {
+    res.status(400).json({ error: error instanceof Error ? error.message : 'Invalid article identifiers.' });
+    return;
+  }
   if (activeDownloads >= 6) {
     res.status(429).json({ error: 'PDF service is busy. Try again shortly.' });
     return;
@@ -45,17 +54,20 @@ app.post('/api/pdfs', async (req, res) => {
   const disconnect = () => { if (!res.writableEnded) controller.abort(); };
   res.on('close', disconnect);
   try {
-    const pdf = await fetchPdf(req.body.url, controller.signal);
+    const pdf = await resolvePdf(req.body.url, controller.signal, { externalIds });
     if (!res.destroyed) {
       res.set('Content-Type', 'application/pdf');
       res.set('X-Content-Type-Options', 'nosniff');
-      res.send(pdf);
+      res.set('X-Pdf-Source', encodeURIComponent(pdf.url));
+      res.send(pdf.bytes);
     }
   } catch (error) {
     if (!res.destroyed) {
       const message = controller.signal.aborted ? 'Publisher download timed out or was cancelled.'
         : error instanceof PdfError ? error.message : 'Could not connect to the publisher.';
-      res.status(error instanceof PdfError ? error.status : 502).json({ error: message });
+      res.status(error instanceof PdfError ? error.status : 502).json({
+        error: message, ...(error instanceof ResolutionError ? { attempts: error.attempts } : {}),
+      });
     }
   } finally {
     clearTimeout(timeout);
