@@ -68,7 +68,9 @@ export default function Export({ papers }: { papers?: Paper[] }) {
   const [progress, setProgress] = useState<DownloadProgress | null>(null);
   const [downloadMessage, setDownloadMessage] = useState('');
   const pdfCandidates = getPdfCandidates(exportResults);
-  const pdfEndpoint = import.meta.env.VITE_PDF_API_URL?.trim() || (import.meta.env.DEV ? '/api/pdfs' : undefined);
+  const pdfEndpoint = import.meta.env.VITE_PDF_API_URL?.trim() || (import.meta.env.DEV
+    ? '/api/pdfs'
+    : 'https://augmented-search-for-semantic-scholar.onrender.com/api/pdfs');
   const isDownloading = progress !== null;
 
   useEffect(() => () => downloadController.current?.abort(), []);
