@@ -74,8 +74,33 @@ For frontend development without Semantic Scholar requests, open the Vite URL wi
 Open the URL printed by Vite. The development server forwards PDF requests to
 `http://127.0.0.1:3000`. The service follows up to five redirects, validates PDF bytes,
 blocks private/reserved network destinations on every hop, pins DNS results to each
-connection, and caps active publisher downloads at six. It cannot bypass publisher
-authentication or anti-bot restrictions, or resolve arbitrary landing pages into PDFs.
+connection, and caps active article downloads at six. It follows explicit PDF links
+in article pages (including `citation_pdf_url` metadata), tries at most six source
+URLs per article, and retries temporary HTTP 202/429/502/503/504 responses once.
+`Retry-After` waits longer than two seconds are surfaced instead of retried within
+the batch. Source requests share the existing 25-second server deadline.
+Metadata responses are limited to 2 MB. The service cannot bypass
+publisher authentication or anti-bot restrictions, or discover PDFs from every page.
+
+The ZIP report includes final source URLs for successful downloads and attempted
+source URLs with failure reasons for unsuccessful downloads.
+
+Fresh Semantic Scholar searches request `externalIds` (DOI, arXiv, and PubMed
+Central) alongside the PDF link. If the original source fails, the backend tries
+a matching arXiv PDF and then a matching PMC article from NLM's public Cloud
+Service. When only a DOI is available, PMC's ID Converter can find the matching
+PMCID first. Repository lookups run only after the original source fails, share
+the same 25-second deadline, and require no extra API key or Unpaywall setup.
+The six-source limit reserves attempts for repositories when identifiers are
+available. PMC metadata lookups have a five-second limit and inspect at most two
+article versions. The ZIP report preserves the identifiers and the final PDF URL;
+repository copies may be preprints or accepted manuscripts. Rerun searches made
+before this feature to load their identifiers.
+
+PMC files are retrieved from the NLM PubMed Central Article Datasets. The backend
+uses the current versioned Cloud Service and its article metadata, rather than
+the retired OA Web Service or scraped PMC article pages. See the
+[PMC Cloud Service documentation](https://pmc.ncbi.nlm.nih.gov/tools/pmcaws/).
 
 To use a separately hosted PDF service, set `VITE_PDF_API_URL` to its full
 `https://your-service.example/api/pdfs` endpoint before building the frontend, or set

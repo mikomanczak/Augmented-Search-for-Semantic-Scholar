@@ -74,6 +74,49 @@ test('reports blocked browser downloads and oversized responses', async () => {
   assert.match(JSON.parse(strFromU8(archive['download-report.json'])).papers[0].reason, /20 MB/);
 });
 
+test('records resolved sources and failure attempts', async () => {
+  const papers = getPdfCandidates([
+    { paperId: 'a', title: 'A', openAccessPdf: { url: 'https://publisher.example/a.pdf' } },
+    { paperId: 'b', title: 'B', openAccessPdf: { url: 'https://publisher.example/b.pdf' } },
+  ]);
+  const attempts = [{ url: papers[1].url, reason: 'Publisher returned HTTP 403.', upstreamStatus: 403 }];
+  globalThis.fetch = async (_input, init) => {
+    const body = JSON.parse(String(init?.body));
+    if (body.url === papers[0].url) {
+      return new Response('%PDF-1.4\nfixture\n%%EOF', { headers: { 'X-Pdf-Source': encodeURIComponent('https://repo.example/a.pdf') } });
+    }
+    return Response.json({ error: 'Publisher returned HTTP 403.', attempts }, { status: 422 });
+  };
+  const result = await downloadPdfs(papers, {
+    signal: new AbortController().signal, endpoint: '/api/pdfs', onProgress: () => {},
+  });
+  const archive = unzipSync(new Uint8Array(await result.blob.arrayBuffer()));
+  const report = JSON.parse(strFromU8(archive['download-report.json']));
+  assert.equal(report.papers[0].resolvedUrl, 'https://repo.example/a.pdf');
+  assert.deepEqual(report.papers[1].attempts, attempts);
+});
+
+test('carries repository identifiers from search results to the backend and ZIP report', async () => {
+  const ids = { DOI: '10.1234/test', ArXiv: '2403.13193', PubMedCentral: 'PMC123' };
+  const papers = getPdfCandidates([
+    { paperId: 'a', title: 'A', openAccessPdf: { url: 'https://publisher.example/a.pdf' }, externalIds: ids },
+    { paperId: 'b', title: 'B', openAccessPdf: { url: 'https://publisher.example/b.pdf' }, externalIds: null },
+  ]);
+  assert.deepEqual(papers[0].externalIds, ids);
+  globalThis.fetch = async (_input, init) => {
+    const body = JSON.parse(String(init?.body));
+    assert.deepEqual(body.externalIds, body.url === papers[0].url ? ids : undefined);
+    return new Response('%PDF-1.4\nfixture\n%%EOF', {
+      headers: { 'X-Pdf-Source': encodeURIComponent('https://arxiv.org/pdf/2403.13193') },
+    });
+  };
+  const result = await downloadPdfs(papers, { signal: new AbortController().signal, endpoint: '/api/pdfs', onProgress: () => {} });
+  const archive = unzipSync(new Uint8Array(await result.blob.arrayBuffer()));
+  const report = JSON.parse(strFromU8(archive['download-report.json']));
+  assert.deepEqual(report.papers[0].externalIds, ids);
+  assert.equal(report.papers[0].resolvedUrl, 'https://arxiv.org/pdf/2403.13193');
+});
+
 test('cancels active fetches without producing an archive', async () => {
   let started = 0;
   let aborted = 0;

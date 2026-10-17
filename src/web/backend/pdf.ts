@@ -8,7 +8,7 @@ export const MAX_PDF_BYTES = 20 * 1024 * 1024;
 const MAX_REDIRECTS = 5;
 
 export class PdfError extends Error {
-  constructor(message: string, public status = 422) { super(message); }
+  constructor(message: string, public status = 422, public upstreamStatus?: number, public retryAfterMs?: number) { super(message); }
 }
 
 export function isPublicAddress(address: string): boolean {
@@ -35,7 +35,8 @@ function withAbort<T>(promise: Promise<T>, signal: AbortSignal): Promise<T> {
   });
 }
 
-export async function fetchPdf(rawUrl: string, signal: AbortSignal, dependencies = defaults): Promise<Buffer> {
+export async function fetchResource(rawUrl: string, signal: AbortSignal, dependencies = defaults,
+  mode: 'pdf' | 'document' = 'pdf'): Promise<{ bytes: Buffer; url: string }> {
   let url: URL;
   try { url = new URL(rawUrl); }
   catch { throw new PdfError('Invalid PDF URL.', 400); }
@@ -64,7 +65,7 @@ export async function fetchPdf(rawUrl: string, signal: AbortSignal, dependencies
         lookup: (_host, _options, callback) => callback(null, target.address, target.family),
         headers: {
           'User-Agent': 'AugmentedSearch-PDFDownloader/1.0',
-          Accept: 'application/pdf, application/octet-stream;q=0.9',
+          Accept: 'application/pdf, text/html;q=0.9, application/octet-stream;q=0.8',
           'Accept-Encoding': 'identity',
         },
       });
@@ -83,7 +84,14 @@ export async function fetchPdf(rawUrl: string, signal: AbortSignal, dependencies
     }
     if (response.statusCode !== 200) {
       response.destroy();
-      throw new PdfError(`Publisher returned HTTP ${response.statusCode ?? 'error'}.`);
+      const retryAfter = response.headers['retry-after'];
+      let retryAfterMs: number | undefined;
+      if (retryAfter) {
+        const seconds = Number(retryAfter);
+        const parsed = /^\d+(?:\.\d+)?$/.test(retryAfter) ? seconds * 1000 : Date.parse(retryAfter) - Date.now();
+        if (Number.isFinite(parsed)) retryAfterMs = Math.max(0, parsed);
+      }
+      throw new PdfError(`Publisher returned HTTP ${response.statusCode ?? 'error'}.`, 422, response.statusCode, retryAfterMs);
     }
     if (Number(response.headers['content-length']) > MAX_PDF_BYTES) {
       response.destroy();
@@ -97,16 +105,24 @@ export async function fetchPdf(rawUrl: string, signal: AbortSignal, dependencies
         size += bytes.length;
         if (size > MAX_PDF_BYTES) throw new PdfError('PDF exceeds the 20 MB file limit.');
         chunks.push(bytes);
-        if (size >= 5 && Buffer.concat(chunks, Math.min(size, 5)).toString('ascii', 0, 5) !== '%PDF-') {
+        const isPdf = size >= 5 && Buffer.concat(chunks, Math.min(size, 5)).toString('ascii', 0, 5) === '%PDF-';
+        if (mode !== 'pdf' && !isPdf && size > 2 * 1024 * 1024) {
+          throw new PdfError('Article metadata exceeds the 2 MB limit.');
+        }
+        if (mode === 'pdf' && size >= 5 && !isPdf) {
           throw new PdfError('The link returned a webpage or another non-PDF file.');
         }
       }
     } finally { response.destroy(); }
     const pdf = Buffer.concat(chunks, size);
-    if (pdf.subarray(0, 5).toString('ascii') !== '%PDF-') {
+    if (mode === 'pdf' && pdf.subarray(0, 5).toString('ascii') !== '%PDF-') {
       throw new PdfError('The link returned an empty or non-PDF file.');
     }
-    return pdf;
+    return { bytes: pdf, url: url.href };
   }
   throw new PdfError('Too many redirects.');
+}
+
+export async function fetchPdf(rawUrl: string, signal: AbortSignal, dependencies = defaults): Promise<Buffer> {
+  return (await fetchResource(rawUrl, signal, dependencies)).bytes;
 }
