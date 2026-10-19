@@ -45,13 +45,19 @@ function AppContent() {
         <div className="mobile-notice__queries" aria-label="Example research queries">
           <div className="mobile-notice__queries-label">Queries</div>
           <ol>
-            <li><code>battery<span className="mobile-notice__operator">+</span>electric<span className="mobile-notice__operator">+</span>vehicle</code></li>
-            <li><code className="mobile-notice__phrase">"range anxiety"</code></li>
-            <li><code>BEV</code></li>
+            <li><code>transformer<span className="mobile-notice__operator">+</span>attention</code></li>
+            <li><code className="mobile-notice__phrase">"contrastive learning"</code></li>
+            <li><code>reinforcement learning <span className="mobile-notice__operator">-</span>survey</code></li>
+            <li className="mobile-notice__query-extra"><code>graph neural networks</code></li>
+            <li className="mobile-notice__query-extra"><code className="mobile-notice__phrase">"self-supervised learning"</code></li>
+            <li className="mobile-notice__query-extra"><code>vision transformer <span className="mobile-notice__operator">-</span>review</code></li>
+            <li className="mobile-notice__query-tall"><code>diffusion<span className="mobile-notice__operator">+</span>generation</code></li>
+            <li className="mobile-notice__query-tall"><code className="mobile-notice__phrase">"Bayesian inference"</code></li>
+            <li className="mobile-notice__query-tall"><code>model<span className="mobile-notice__operator">+</span>calibration</code></li>
           </ol>
         </div>
-        <h1 id="mobile-notice-title">Powerful queries.<br />Desktop controls.</h1>
-        <p className="mobile-notice__description">Augmented Search is built for researchers who need more control over Semantic Scholar. Combine advanced queries, fine-tune filters, and explore detailed results in a workspace designed for a larger screen. Open this page on your laptop or desktop to get started.</p>
+        <h1 id="mobile-notice-title">Advanced search needs more space</h1>
+        <p className="mobile-notice__description">Augmented Search is a relatively complex tool for Semantic Scholar power users. Its query editor and advanced search controls require a larger screen than your mobile device can offer. Please open this page on your computer.</p>
         <button className="mobile-notice__copy" type="button" aria-live="polite" onClick={async () => {
           try {
             await navigator.clipboard.writeText(window.location.href);
