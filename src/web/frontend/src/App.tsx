@@ -10,6 +10,7 @@ import './App.css';
 
 function AppContent() {
   const [view, setView] = useState<View>('input');
+  const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'error'>('idle');
   const [lightMode, setLightMode] = useState(() => {
     try {
       return window.localStorage.getItem('theme') === 'light';
@@ -34,6 +35,43 @@ function AppContent() {
   }, [lightMode]);
 
   return (
+    <>
+    <main className="mobile-notice" aria-labelledby="mobile-notice-title">
+      <header className="mobile-notice__header">
+        <img src={`${import.meta.env.BASE_URL}favicon.svg`} width="32" height="32" alt="" />
+        <span>Augmented <strong>Search</strong><small>For Semantic Scholar</small></span>
+      </header>
+      <section className="mobile-notice__content">
+        <div className="mobile-notice__queries" aria-label="Example research queries">
+          <div className="mobile-notice__queries-label">Queries</div>
+          <ol>
+            <li><code>transformer<span className="mobile-notice__operator">+</span>attention</code></li>
+            <li><code className="mobile-notice__phrase">"contrastive learning"</code></li>
+            <li><code>reinforcement learning <span className="mobile-notice__operator">-</span>survey</code></li>
+            <li className="mobile-notice__query-extra"><code>graph neural networks</code></li>
+            <li className="mobile-notice__query-extra"><code className="mobile-notice__phrase">"self-supervised learning"</code></li>
+            <li className="mobile-notice__query-extra"><code>vision transformer <span className="mobile-notice__operator">-</span>review</code></li>
+            <li className="mobile-notice__query-tall"><code>diffusion<span className="mobile-notice__operator">+</span>generation</code></li>
+            <li className="mobile-notice__query-tall"><code className="mobile-notice__phrase">"Bayesian inference"</code></li>
+            <li className="mobile-notice__query-tall"><code>model<span className="mobile-notice__operator">+</span>calibration</code></li>
+          </ol>
+        </div>
+        <h1 id="mobile-notice-title">Advanced search needs more space</h1>
+        <p className="mobile-notice__description">Augmented Search is a relatively complex tool for Semantic Scholar power users. Its query editor and advanced search controls require a larger screen than your mobile device can offer. Please open this page on your computer.</p>
+        <button className="mobile-notice__copy" type="button" aria-live="polite" onClick={async () => {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            setCopyStatus('copied');
+          } catch {
+            setCopyStatus('error');
+          }
+        }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h4" /></svg>
+          {copyStatus === 'copied' ? 'Link copied' : 'Copy page link'}
+        </button>
+        {copyStatus === 'error' && <p className="mobile-notice__status" role="alert">Copy the page address from your browser instead.</p>}
+      </section>
+    </main>
     <main className="app-shell">
       <header className="app-header">
         {view === 'results' ? (
@@ -69,6 +107,7 @@ function AppContent() {
       {view === 'results' && hasSuccessfulSearch && !isSearching && <Results />}
       {view === 'export' && <Export />}
     </main>
+    </>
   );
 }
 
