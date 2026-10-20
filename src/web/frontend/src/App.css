@@ -1128,9 +1128,6 @@ select {
 }
 
 .results-export__selection { margin: 20px 0 16px; }
-.results-export__selection label,
-.results-export__formats label,
-.results-export__format-label { display: block; margin-bottom: 6px; color: #95a2b4; font-size: 12px; font-weight: 400; }
 .results-export__selection select,
 .results-export__formats select {
   width: 100%;
@@ -1197,13 +1194,15 @@ select {
   overflow-wrap: anywhere;
 }
 :root[data-theme="light"] .results-export__preview { background: #f6f8fa; color: #667085; }
-.results-export__preview--pdf { display: flex; align-items: center; gap: 12px; }
-.results-export__document-icon { width: 28px; height: 36px; flex-shrink: 0; stroke: currentColor; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
+.results-export__preview--pdf { display: flex; flex-direction: column; justify-content: center; gap: 4px; white-space: normal; }
+.results-export__file-icon { width: 16px; height: 16px; flex-shrink: 0; stroke: currentColor; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
+.results-export__zip-name,
+.results-export__zip-files li { display: flex; align-items: center; gap: 8px; }
+.results-export__zip-files { list-style: none; margin: 0 0 0 8px; padding: 0 0 0 16px; border-left: 1px solid var(--border-default); }
+.results-export__zip-files li { position: relative; }
+.results-export__zip-files li::before { content: ''; position: absolute; left: -16px; width: 10px; border-top: 1px solid var(--border-default); }
 :root[data-theme="light"] .results-export__description,
-:root[data-theme="light"] .results-export__archive-format,
-:root[data-theme="light"] .results-export__selection label,
-:root[data-theme="light"] .results-export__formats label,
-:root[data-theme="light"] .results-export__format-label { color: #667085; }
+:root[data-theme="light"] .results-export__archive-format { color: #667085; }
 
 @media (max-width: 560px) {
   .results-export__dialog { padding: 20px; }
@@ -1287,7 +1286,8 @@ select {
 :root[data-theme="light"] .results-export__pdfs button { background: #f2f4f7; color: #344054; }
 :root[data-theme="light"] .results-export__pdfs p { color: #667085; }
 :root[data-theme="light"] .results-export__pdfs .results-export__status { color: inherit; }
-.results-export__formats button { background: #3fb950; border-color: #3fb950; color: #fff; }
+.results-export__formats button { background: #3fb950; border-color: #3fb950; color: #fff; font-weight: 400; }
+.results-export__formats button .results-export__icon { stroke-width: 1.7; }
 :root[data-theme="light"] .results-export__formats button { background: #1a7f37; border-color: #1a7f37; color: #fff; }
 
 

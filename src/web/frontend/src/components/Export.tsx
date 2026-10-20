@@ -128,7 +128,6 @@ export default function Export({ papers }: { papers?: Paper[] }) {
     return (
       <div className="results-export__downloads">
         <div className="results-export__formats">
-          <label htmlFor={`${selectionId}-format`}>Format</label>
           <select id={`${selectionId}-format`} aria-label="Results export format"
             value={format} disabled={isDownloading || exportResults.length === 0}
             onChange={event => setFormat(event.target.value)}>
@@ -189,8 +188,7 @@ export default function Export({ papers }: { papers?: Paper[] }) {
                 : 'title,year\nExample paper,2024'}</code></pre>
             </div>
             <div className="results-export__selection">
-              <label htmlFor={selectionId}>Query</label>
-              <select id={selectionId} value={selection} disabled={isDownloading}
+              <select id={selectionId} aria-label="Metadata query" value={selection} disabled={isDownloading}
                 onChange={event => { setSelection(event.target.value); }}>
                 <option value="merged">All queries ({countLabel(mergedResults.length, 'paper')})</option>
                 {queryResults.map((result, index) => (
@@ -206,17 +204,29 @@ export default function Export({ papers }: { papers?: Paper[] }) {
             <h3 id={`${selectionId}-pdfs`}>Full-text PDFs</h3>
             <div>
               <p className="results-export__description">Available open access articles</p>
-              <div className="results-export__preview results-export__preview--pdf" role="img" aria-label="Example full-text article: Example paper.pdf">
-                <svg className="results-export__document-icon" aria-hidden="true" viewBox="0 0 28 36" fill="none">
-                  <path d="M17 1H3a2 2 0 0 0-2 2v30a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11L17 1Z" />
-                  <path d="M17 1v10h10M6 17h16M6 22h16M6 27h10" />
-                </svg>
-                <span>Example paper.pdf</span>
+              <div className="results-export__preview results-export__preview--pdf" role="img" aria-label="Example ZIP folder open-access-pdfs.zip containing paper-1.pdf and paper-2.pdf">
+                <div className="results-export__zip-name">
+                  <svg className="results-export__file-icon" aria-hidden="true" viewBox="0 0 20 20" fill="none">
+                    <path d="M2 6V4a1 1 0 0 1 1-1h5l2 3h7a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6Z" />
+                    <path d="M12 6v2m0 2v2m0 2v3m0-8h2m-2 4h2" />
+                  </svg>
+                  <span>open-access-pdfs.zip</span>
+                </div>
+                <ul className="results-export__zip-files" aria-hidden="true">
+                  {['paper-1.pdf', 'paper-2.pdf'].map(filename => (
+                    <li key={filename}>
+                      <svg className="results-export__file-icon" viewBox="0 0 20 20" fill="none">
+                        <path d="M11 2H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7l-5-5Z" />
+                        <path d="M11 2v5h5M7 11h6M7 14h4" />
+                      </svg>
+                      <span>{filename}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
             <div className="results-export__selection">
-              <label htmlFor={`${selectionId}-pdf-query`}>Queries</label>
-              <select id={`${selectionId}-pdf-query`} value={pdfSelection} disabled={isDownloading}
+              <select id={`${selectionId}-pdf-query`} aria-label="PDF queries" value={pdfSelection} disabled={isDownloading}
                 onChange={event => { setPdfSelection(event.target.value); setDownloadMessage(''); }}>
                 <option value="merged">All queries ({countLabel(getPdfCandidates(mergedResults).length, 'paper')})</option>
                 {queryResults.map((result, index) => (
@@ -226,7 +236,6 @@ export default function Export({ papers }: { papers?: Paper[] }) {
             </div>
             <div className="results-export__pdfs">
               <div className="results-export__formats">
-                <span className="results-export__format-label">Format</span>
                 <div className="results-export__archive-format">ZIP archive</div>
                 <button className="results-export__pdf-button" type="button"
                   disabled={isDownloading || pdfCandidates.length === 0} onClick={() => void handlePdfDownload()}>
