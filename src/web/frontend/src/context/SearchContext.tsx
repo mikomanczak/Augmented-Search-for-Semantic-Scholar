@@ -86,6 +86,7 @@ export type Paper = {
   year?: number | null;
   authors?: { authorId?: string | null; name: string }[];
   venue?: string | null;
+  publicationTypes?: string[] | null;
   citationCount?: number | null;
   url?: string;
   openAccessPdf?: { url: string } | null;
@@ -247,7 +248,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
 
       const params = new URLSearchParams({
         limit: '50',
-        fields: 'paperId,title,abstract,year,authors,venue,citationCount,url,openAccessPdf,externalIds',
+        fields: 'paperId,title,abstract,year,authors,venue,publicationTypes,citationCount,url,openAccessPdf,externalIds',
       });
       if (startYear && endYear) params.set('publicationDateOrYear', `${startYear}:${endYear}`);
       else if (startYear) params.set('publicationDateOrYear', `${startYear}:`);
