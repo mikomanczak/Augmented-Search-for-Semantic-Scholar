@@ -136,7 +136,12 @@ export default function Export({ papers }: { papers?: Paper[] }) {
             <option value="json">JSON</option>
           </select>
           <button type="button" disabled={isDownloading || exportResults.length === 0}
-            onClick={() => handleExport(format, exportResults, filenamePrefix)}>Download</button>
+            onClick={() => handleExport(format, exportResults, filenamePrefix)}>
+            <svg className="results-export__icon" aria-hidden="true" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2.75v9.5m0 0 3.5-3.5M10 12.25l-3.5-3.5M3.75 13.25v3h12.5v-3" />
+            </svg>
+            Download metadata
+          </button>
         </div>
       </div>
     );
@@ -176,7 +181,13 @@ export default function Export({ papers }: { papers?: Paper[] }) {
         </div>
         <div className="results-export__sections">
           <section className="results-export__section" aria-labelledby={`${selectionId}-query`}>
-            <h3 id={`${selectionId}-query`}>Results</h3>
+            <h3 id={`${selectionId}-query`}>Paper metadata</h3>
+            <div>
+              <p className="results-export__description">Titles, authors, abstracts, and links</p>
+              <pre className="results-export__preview" aria-label={`Example ${format.toUpperCase()} metadata for a dummy paper`}><code>{format === 'json'
+                ? '{\n  "title": "Example paper",\n  "year": 2024\n}'
+                : 'title,year\nExample paper,2024'}</code></pre>
+            </div>
             <div className="results-export__selection">
               <label htmlFor={selectionId}>Query</label>
               <select id={selectionId} value={selection} disabled={isDownloading}
@@ -192,7 +203,17 @@ export default function Export({ papers }: { papers?: Paper[] }) {
             {renderDownloads(exportResults, filenamePrefix)}
           </section>
           <section className="results-export__section results-export__section--pdfs" aria-labelledby={`${selectionId}-pdfs`}>
-            <h3 id={`${selectionId}-pdfs`}>PDFs</h3>
+            <h3 id={`${selectionId}-pdfs`}>Full-text PDFs</h3>
+            <div>
+              <p className="results-export__description">Available open access articles</p>
+              <div className="results-export__preview results-export__preview--pdf" role="img" aria-label="Example full-text article: Example paper.pdf">
+                <svg className="results-export__document-icon" aria-hidden="true" viewBox="0 0 28 36" fill="none">
+                  <path d="M17 1H3a2 2 0 0 0-2 2v30a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11L17 1Z" />
+                  <path d="M17 1v10h10M6 17h16M6 22h16M6 27h10" />
+                </svg>
+                <span>Example paper.pdf</span>
+              </div>
+            </div>
             <div className="results-export__selection">
               <label htmlFor={`${selectionId}-pdf-query`}>Queries</label>
               <select id={`${selectionId}-pdf-query`} value={pdfSelection} disabled={isDownloading}
@@ -209,7 +230,10 @@ export default function Export({ papers }: { papers?: Paper[] }) {
                 <div className="results-export__archive-format">ZIP archive</div>
                 <button className="results-export__pdf-button" type="button"
                   disabled={isDownloading || pdfCandidates.length === 0} onClick={() => void handlePdfDownload()}>
-                  Download
+                  <svg className="results-export__icon" aria-hidden="true" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 2.75v9.5m0 0 3.5-3.5M10 12.25l-3.5-3.5M3.75 13.25v3h12.5v-3" />
+                  </svg>
+                  Download PDFs
                 </button>
               </div>
               {progress && (
