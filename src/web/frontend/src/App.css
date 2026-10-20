@@ -1182,7 +1182,7 @@ select {
 .results-export__downloads { min-width: 0; }
 .results-export__archive-format { display: flex; align-items: center; min-height: 40px; padding: 8px 12px; border: 1px solid var(--border-default); border-radius: 6px; color: #95a2b4; }
 .results-export__preview {
-  min-height: 94px;
+  min-height: 116px;
   margin: 10px 0 0;
   padding: 10px 12px;
   border: 1px solid var(--border-default);

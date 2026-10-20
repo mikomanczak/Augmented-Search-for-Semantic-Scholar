@@ -71,6 +71,9 @@ export default function Export({ papers }: { papers?: Paper[] }) {
   const pdfQuery = pdfSelection === 'merged' ? undefined : queryResults[Number(pdfSelection)];
   const pdfResults = pdfSelection === 'merged' ? mergedResults : pdfQuery?.papers ?? [];
   const pdfCandidates = getPdfCandidates(pdfResults);
+  const pdfPreviewFiles = pdfCandidates.length > 3
+    ? ['paper1.pdf', 'paper2.pdf', '....', `paper${pdfCandidates.length}.pdf`]
+    : Array.from({ length: pdfCandidates.length }, (_, index) => `paper${index + 1}.pdf`);
   const pdfFilenamePrefix = pdfSelection === 'merged' ? '' : `query-${Number(pdfSelection) + 1}-`;
   const disabled = isSearching || mergedResults.length === 0;
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -184,8 +187,8 @@ export default function Export({ papers }: { papers?: Paper[] }) {
             <div>
               <p className="results-export__description">Titles, authors, abstracts, and links</p>
               <pre className="results-export__preview" aria-label={`Example ${format.toUpperCase()} metadata for a dummy paper`}><code>{format === 'json'
-                ? '{\n  "title": "Example paper",\n  "year": 2024\n}'
-                : 'title,year\nExample paper,2024'}</code></pre>
+                ? '{\n  "title": "Example paper",\n  "year": 2024,\n  "authors": [{"name": "John Doe"}]\n}'
+                : 'title,year,authors\nExample paper,2024,John Doe'}</code></pre>
             </div>
             <div className="results-export__selection">
               <select id={selectionId} aria-label="Metadata query" value={selection} disabled={isDownloading}
@@ -204,7 +207,7 @@ export default function Export({ papers }: { papers?: Paper[] }) {
             <h3 id={`${selectionId}-pdfs`}>Full-text PDFs</h3>
             <div>
               <p className="results-export__description">Available open access articles</p>
-              <div className="results-export__preview results-export__preview--pdf" role="img" aria-label="Example ZIP folder open-access-pdfs.zip containing paper-1.pdf and paper-2.pdf">
+              <div className="results-export__preview results-export__preview--pdf" role="img" aria-label={`Example ZIP folder open-access-pdfs.zip containing ${countLabel(pdfCandidates.length, 'PDF')}`}>
                 <div className="results-export__zip-name">
                   <svg className="results-export__file-icon" aria-hidden="true" viewBox="0 0 20 20" fill="none">
                     <path d="M2 6V4a1 1 0 0 1 1-1h5l2 3h7a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6Z" />
@@ -213,15 +216,16 @@ export default function Export({ papers }: { papers?: Paper[] }) {
                   <span>open-access-pdfs.zip</span>
                 </div>
                 <ul className="results-export__zip-files" aria-hidden="true">
-                  {['paper-1.pdf', 'paper-2.pdf'].map(filename => (
+                  {pdfPreviewFiles.map(filename => (
                     <li key={filename}>
-                      <svg className="results-export__file-icon" viewBox="0 0 20 20" fill="none">
+                      {filename === '....' ? <span className="results-export__file-icon" /> : <svg className="results-export__file-icon" viewBox="0 0 20 20" fill="none">
                         <path d="M11 2H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7l-5-5Z" />
                         <path d="M11 2v5h5M7 11h6M7 14h4" />
-                      </svg>
+                      </svg>}
                       <span>{filename}</span>
                     </li>
                   ))}
+                  {pdfCandidates.length === 0 && <li>No PDFs available</li>}
                 </ul>
               </div>
             </div>
