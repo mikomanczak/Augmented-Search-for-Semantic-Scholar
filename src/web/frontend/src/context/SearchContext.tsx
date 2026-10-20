@@ -4,7 +4,7 @@ import mockBrowserResults from './mock-results2 copy.json';
 import mockTypescriptResults from './mock-results3.json';
 import type { QueryResult } from '../lib/query-overlap';
 import type { RetryProgress } from '../../../../shared/retry.ts';
-import { searchQueries, SearchError, type SearchProgress, type FetchedPaper } from '../lib/search-queries';
+import { searchQueries, SearchQueryCache, SearchError, type SearchProgress, type FetchedPaper } from '../lib/search-queries';
 
 const STORAGE_KEY = 'augmented-search:state:v1';
 
@@ -200,6 +200,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const [searchError, setSearchError] = useState<string | null>(null);
   const [rateLimited, setRateLimited] = useState(false);
   const isMockResultsEnabled = isLocalMockMode();
+  const [queryCache] = useState(() => new SearchQueryCache());
   const searchControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => () => searchControllerRef.current?.abort(), []);
@@ -259,7 +260,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
       if (openAccessOnly) params.set('openAccessPdf', 'true');
 
       const apiKey = import.meta.env.VITE_SEMANTIC_SCHOLAR_API_KEY;
-      const completed = await searchQueries(keywords, params, apiKey, setRetryProgress, setSearchProgress, setFetchedPapers, controller.signal);
+      const completed = await searchQueries(keywords, params, apiKey, setRetryProgress, setSearchProgress, setFetchedPapers, controller.signal, queryCache);
       if (controller.signal.aborted) return;
       setQueryResults(completed.queryResults);
       setResults(completed.results);

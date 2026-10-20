@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { afterEach, test } from 'node:test';
-import { searchQueries, SearchError, type SearchProgress, type FetchedPaper } from '../src/lib/search-queries.ts';
+import { searchQueries, SearchQueryCache, SearchError, type SearchProgress, type FetchedPaper } from '../src/lib/search-queries.ts';
 
 const originalFetch = globalThis.fetch;
 afterEach(() => { globalThis.fetch = originalFetch; });
@@ -132,5 +132,116 @@ test('cancelling while parsing a response prevents stale paper and progress upda
   finishJson({ data: [paper('first')] });
   await rejected;
   assert.deepEqual(papers, []);
+  assert.deepEqual(progress.map(update => update.completed), [0]);
+});
+
+const cachedSearch = (queries: string[], cache: SearchQueryCache, filters = new URLSearchParams()) =>
+  searchQueries(queries, filters, undefined, undefined, undefined, undefined, undefined, cache);
+
+test('editing and reordering queries reuses unchanged results, including empty results', async () => {
+  const cache = new SearchQueryCache();
+  const calls: string[] = [];
+  globalThis.fetch = async input => {
+    const query = new URL(String(input)).searchParams.get('query')!;
+    calls.push(query);
+    return response(query === 'empty' ? [] : [query, 'shared']);
+  };
+  await cachedSearch(['first', 'second', 'empty'], cache);
+  const result = await cachedSearch(['empty', 'edited', 'first'], cache);
+  assert.deepEqual(calls, ['first', 'second', 'empty', 'edited']);
+  assert.deepEqual(result.queryResults.map(result => result.query), ['empty', 'edited', 'first']);
+  assert.deepEqual(result.results.map(p => p.paperId), ['edited', 'shared', 'first']);
+});
+
+test('changed filters fetch fresh results and parameter order does not matter', async () => {
+  const cache = new SearchQueryCache();
+  let calls = 0;
+  globalThis.fetch = async () => { calls++; return response(['paper']); };
+  await cachedSearch(['query'], cache, new URLSearchParams({ limit: '50', minCitationCount: '5' }));
+  await cachedSearch(['query'], cache, new URLSearchParams({ minCitationCount: '5', limit: '50' }));
+  assert.equal(calls, 1);
+  await cachedSearch(['query'], cache, new URLSearchParams({ limit: '50', minCitationCount: '10' }));
+  assert.equal(calls, 2);
+});
+
+test('completed queries survive a later failure while failures are fetched again', async () => {
+  const cache = new SearchQueryCache();
+  let calls = 0;
+  globalThis.fetch = async () => ++calls === 2 ? new Response('', { status: 500 }) : response(['paper']);
+  await assert.rejects(cachedSearch(['first', 'second'], cache), SearchError);
+  await cachedSearch(['first', 'second'], cache);
+  assert.equal(calls, 3);
+});
+
+test('expired entries and least recently used entries are fetched again', async t => {
+  t.mock.timers.enable({ apis: ['Date'], now: 1000 });
+  const cache = new SearchQueryCache(100, 2);
+  let calls = 0;
+  globalThis.fetch = async () => { calls++; return response([]); };
+  await cachedSearch(['first', 'second'], cache);
+  await cachedSearch(['first', 'third'], cache);
+  await cachedSearch(['second'], cache);
+  assert.equal(calls, 4);
+  t.mock.timers.tick(100);
+  await cachedSearch(['second'], cache);
+  assert.equal(calls, 5);
+});
+
+test('browser storage restores results after recreating the cache and respects expiry', async t => {
+  t.mock.timers.enable({ apis: ['Date'], now: 1000 });
+  let saved: unknown;
+  const storage = { load: async () => saved, save: async (value: unknown) => { saved = structuredClone(value); } };
+  let calls = 0;
+  globalThis.fetch = async () => { calls++; return response(['paper']); };
+  await cachedSearch(['query'], new SearchQueryCache(100, 100, storage));
+  await cachedSearch(['query'], new SearchQueryCache(100, 100, storage));
+  assert.equal(calls, 1);
+  t.mock.timers.tick(100);
+  await cachedSearch(['query'], new SearchQueryCache(100, 100, storage));
+  assert.equal(calls, 2);
+});
+
+test('corrupt or inaccessible browser storage does not prevent searching', async () => {
+  globalThis.fetch = async () => response(['paper']);
+  for (const saved of ['invalid', {}, [['key', null]]]) {
+    const cache = new SearchQueryCache(100, 100, {
+      load: async () => saved,
+      save: async () => { throw new Error('Storage unavailable'); },
+    });
+    const result = await cachedSearch(['query'], cache);
+    assert.deepEqual(result.results, [paper('paper')]);
+    assert.deepEqual(await cache.get('query', new URLSearchParams()), [paper('paper')]);
+  }
+});
+
+test('unavailable IndexedDB falls back to memory', async () => {
+  const cache = new SearchQueryCache(1000, 100, {
+    load: async () => { throw new Error('Unavailable'); },
+    save: async () => { throw new Error('Quota exceeded'); },
+  });
+  let calls = 0;
+  globalThis.fetch = async () => { calls++; return response(['paper']); };
+  await cachedSearch(['query'], cache);
+  await cachedSearch(['query'], cache);
+  assert.equal(calls, 1);
+});
+
+test('cancelling during cache loading prevents requests and stale progress', async () => {
+  let finishLoad!: (value: unknown) => void;
+  const cache = new SearchQueryCache(1000, 100, {
+    load: () => new Promise(resolve => { finishLoad = resolve; }),
+    save: async () => {},
+  });
+  const controller = new AbortController();
+  let calls = 0;
+  globalThis.fetch = async () => { calls++; return response(['paper']); };
+  const progress: SearchProgress[] = [];
+  const pending = searchQueries(['query'], new URLSearchParams(), undefined, undefined,
+    update => progress.push(update), undefined, controller.signal, cache);
+  const rejected = assert.rejects(pending, { name: 'AbortError' });
+  controller.abort();
+  finishLoad([]);
+  await rejected;
+  assert.equal(calls, 0);
   assert.deepEqual(progress.map(update => update.completed), [0]);
 });
