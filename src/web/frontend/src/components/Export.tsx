@@ -1,6 +1,7 @@
 import { Paper, useSearch } from '../context/SearchContext';
 import { useEffect, useId, useRef, useState } from 'react';
 import { downloadPdfs, getPdfCandidates, type DownloadProgress } from '../lib/pdf-download';
+import { toBibtex } from '../lib/bibtex';
 
 const CSV_COLUMNS = [
   'paperId',
@@ -9,6 +10,7 @@ const CSV_COLUMNS = [
   'year',
   'authors',
   'venue',
+  'publicationTypes',
   'citationCount',
   'url',
   'openAccessPdfUrl',
@@ -42,6 +44,7 @@ function toCsv(papers: Paper[]): string {
     paper.year,
     paper.authors?.map(author => author.name).join('; '),
     paper.venue,
+    paper.publicationTypes?.join('; '),
     paper.citationCount,
     paper.url,
     paper.openAccessPdf?.url,
@@ -123,6 +126,8 @@ export default function Export({ papers }: { papers?: Paper[] }) {
       downloadFile(JSON.stringify(exportResults, null, 2), 'application/json;charset=utf-8', `${filenamePrefix}search-results.json`);
     } else if (format === 'csv') {
       downloadFile(toCsv(exportResults), 'text/csv;charset=utf-8', `${filenamePrefix}search-results.csv`);
+    } else if (format === 'bibtex') {
+      downloadFile(toBibtex(exportResults), 'application/x-bibtex;charset=utf-8', `${filenamePrefix}search-results.bib`);
     }
     dialogRef.current?.close();
   }
@@ -136,6 +141,7 @@ export default function Export({ papers }: { papers?: Paper[] }) {
             onChange={event => setFormat(event.target.value)}>
             <option value="csv">CSV</option>
             <option value="json">JSON</option>
+            <option value="bibtex">BibTeX</option>
           </select>
           <button type="button" disabled={isDownloading || exportResults.length === 0}
             onClick={() => handleExport(format, exportResults, filenamePrefix)}>
@@ -188,6 +194,8 @@ export default function Export({ papers }: { papers?: Paper[] }) {
               <p className="results-export__description">Titles, authors, abstracts, and links</p>
               <pre className="results-export__preview" aria-label={`Example ${format.toUpperCase()} metadata for a dummy paper`}><code>{format === 'json'
                 ? '{\n  "title": "Example paper",\n  "year": 2024,\n  "authors": [{"name": "John Doe"}]\n}'
+                : format === 'bibtex'
+                  ? toBibtex([{ paperId: 'example', title: 'Example paper', authors: [{ name: 'John Doe' }], publicationTypes: ['JournalArticle'], venue: 'Example Journal' }])
                 : 'title,year,authors\nExample paper,2024,John Doe'}</code></pre>
             </div>
             <div className="results-export__selection">
